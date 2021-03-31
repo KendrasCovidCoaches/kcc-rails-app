@@ -122,3 +122,5 @@ gem "gibbon", "~> 3.3"
 
 # Formatting Code
 gem 'htmlbeautifier'
+
+gem 'mini_racer', platforms: :ruby
