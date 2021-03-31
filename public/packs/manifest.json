@@ -1,0 +1,117 @@
+{
+  "application.js": "/packs/application-f96c0bff16ddb5f315a4.js",
+  "application.js.map": "/packs/application-f96c0bff16ddb5f315a4.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/application-f96c0bff16ddb5f315a4.js"
+      ],
+      "js.map": [
+        "/packs/application-f96c0bff16ddb5f315a4.js.map"
+      ]
+    },
+    "hello_erb": {
+      "js": [
+        "/packs/hello_erb-f96c0bff16ddb5f315a4.js"
+      ],
+      "js.map": [
+        "/packs/hello_erb-f96c0bff16ddb5f315a4.js.map"
+      ]
+    },
+    "translations/en": {
+      "js": [
+        "/packs/translations/en-f96c0bff16ddb5f315a4.js"
+      ],
+      "js.map": [
+        "/packs/translations/en-f96c0bff16ddb5f315a4.js.map"
+      ]
+    },
+    "translations/es": {
+      "js": [
+        "/packs/translations/es-f96c0bff16ddb5f315a4.js"
+      ],
+      "js.map": [
+        "/packs/translations/es-f96c0bff16ddb5f315a4.js.map"
+      ]
+    }
+  },
+  "hello_erb.js": "/packs/hello_erb-f96c0bff16ddb5f315a4.js",
+  "hello_erb.js.map": "/packs/hello_erb-f96c0bff16ddb5f315a4.js.map",
+  "media/images/CSUN.png": "/packs/media/images/CSUN-b902715cc6ffb6cb1e41beffe0640283.png",
+  "media/images/DigitalOcean_logo.png": "/packs/media/images/DigitalOcean_logo-a46efb57aa1d9fc73ae33e2cb7008e15.png",
+  "media/images/all-categories.jpg": "/packs/media/images/all-categories-ecb56aba48bf898212f19e847b1eefb1.jpg",
+  "media/images/cf-logo-big.png": "/packs/media/images/cf-logo-big-b32317b61840f2f68fe50f5b938785e4.png",
+  "media/images/cityhelplogo.png": "/packs/media/images/cityhelplogo-7ef2f661e54eb8f46ea349e26874ba80.png",
+  "media/images/driving.jpg": "/packs/media/images/driving-1646f1708eea86b735803e0a70167430.jpg",
+  "media/images/hero.jpg": "/packs/media/images/hero-9b8dc4add4ce99ae1e00c24f2de78711.jpg",
+  "media/images/internships.jpg": "/packs/media/images/internships-062a44f99c0a8a218aa0c3a9ac743dd8.jpg",
+  "media/images/on-site.jpg": "/packs/media/images/on-site-15aa50d40f7ade57bcb5654cef89b3eb.jpg",
+  "media/images/one-time.jpg": "/packs/media/images/one-time-6662fc7bcf4582c61616ff8819f5abe5.jpg",
+  "media/images/ongoing.jpg": "/packs/media/images/ongoing-095bc80fb651677f259dbc9d0456fa08.jpg",
+  "media/images/other.jpg": "/packs/media/images/other-00c4e9783f16e021cb359f58399d7275.jpg",
+  "media/images/podcast-01.png": "/packs/media/images/podcast-01-2926ce7dc85ccf9e9b5f75bd60e2398c.png",
+  "media/images/remote.jpg": "/packs/media/images/remote-22430d89104b2312b6b60012b9645874.jpg",
+  "media/images/suggested-hero.jpg": "/packs/media/images/suggested-hero-080f92523af56a775915c50c7e55c594.jpg",
+  "media/svgs/Twitter.svg": "/packs/media/svgs/Twitter-183b9ff7145036e9efe7362ec6b7cfe4.svg",
+  "media/svgs/calendar.svg": "/packs/media/svgs/calendar-7af69e176427bcd56949152c6f956ee1.svg",
+  "media/svgs/category-all-categories.svg": "/packs/media/svgs/category-all-categories-17231610819b2e93784d82cc2d2d2c0e.svg",
+  "media/svgs/category-all-projects.svg": "/packs/media/svgs/category-all-projects-17231610819b2e93784d82cc2d2d2c0e.svg",
+  "media/svgs/category-business-directory.svg": "/packs/media/svgs/category-business-directory-86d0987fea8b13f2df18cb023fa1ea7e.svg",
+  "media/svgs/category-community.svg": "/packs/media/svgs/category-community-d3e9ad1117fe2a6787747e9c40d1df02.svg",
+  "media/svgs/category-driving-1.svg": "/packs/media/svgs/category-driving-1-a6f7e2b11f4325c2fa850e7b5a63d30e.svg",
+  "media/svgs/category-driving.svg": "/packs/media/svgs/category-driving-d0dc060d7d3e29a93ef94df870d9d202.svg",
+  "media/svgs/category-education.svg": "/packs/media/svgs/category-education-2b01d0eb31bfe0604bcfe768eca7b691.svg",
+  "media/svgs/category-health.svg": "/packs/media/svgs/category-health-c5100209ae30da4a91b0fe3c9497b106.svg",
+  "media/svgs/category-internships.svg": "/packs/media/svgs/category-internships-9d59bdc7769b09e386594e20211cf186.svg",
+  "media/svgs/category-medical.svg": "/packs/media/svgs/category-medical-69e71ba87e08710dec5caa9807878411.svg",
+  "media/svgs/category-mutual-aid-1.svg": "/packs/media/svgs/category-mutual-aid-1-683577d9d30dfa56bf5ed713e326ddbe.svg",
+  "media/svgs/category-on-site.svg": "/packs/media/svgs/category-on-site-fabb3c4371820a45e31d30d8a2313a7c.svg",
+  "media/svgs/category-one-time.svg": "/packs/media/svgs/category-one-time-6b395e9e7578049740f4ed95931c7f14.svg",
+  "media/svgs/category-ongoing.svg": "/packs/media/svgs/category-ongoing-a5e299053b7652e2dbf890dd92f9cd84.svg",
+  "media/svgs/category-other.svg": "/packs/media/svgs/category-other-2e0c8cd9bc8f56c3a06caff959d8a732.svg",
+  "media/svgs/category-prevention.svg": "/packs/media/svgs/category-prevention-f35cc96aa32436537aabe90644007f5b.svg",
+  "media/svgs/category-remote.svg": "/packs/media/svgs/category-remote-048947c0f50be8912da9b41da7bd06d0.svg",
+  "media/svgs/category-social-justice.svg": "/packs/media/svgs/category-social-justice-8bae629a0b27c0bc475d01f05efd7f97.svg",
+  "media/svgs/category-wealth.svg": "/packs/media/svgs/category-wealth-31ec8fb50b7cdd4a58314ee8771cff75.svg",
+  "media/svgs/cc_logo1.svg": "/packs/media/svgs/cc_logo1-8ec63a9baabc9ef36778d7bf556b0558.svg",
+  "media/svgs/check.svg": "/packs/media/svgs/check-8b4d6e74cffa8b09d37d84376cd22e12.svg",
+  "media/svgs/chevron-right.svg": "/packs/media/svgs/chevron-right-bb60c2a7cffec913686fdb9948e18ddf.svg",
+  "media/svgs/color-swatch.svg": "/packs/media/svgs/color-swatch-7d721d815d8cba51d85670b19f045f31.svg",
+  "media/svgs/discord.svg": "/packs/media/svgs/discord-b4006c5a6f109cedadc291f013abfbdf.svg",
+  "media/svgs/drop-down-arrow.svg": "/packs/media/svgs/drop-down-arrow-4dbd3417e4e8a62d8237e4cc1a693879.svg",
+  "media/svgs/drop-up-arrow.svg": "/packs/media/svgs/drop-up-arrow-813376652d8fc3d220794ed9a967d8ba.svg",
+  "media/svgs/empty-graphic.svg": "/packs/media/svgs/empty-graphic-3d2c75a4e221b0b7a398d85b15eadae4.svg",
+  "media/svgs/external-link.svg": "/packs/media/svgs/external-link-7d7307998e2f0f6c0eaff41874d43daa.svg",
+  "media/svgs/facebook.svg": "/packs/media/svgs/facebook-659ad8db4c2938d5cb486edd81962719.svg",
+  "media/svgs/featured-projects.svg": "/packs/media/svgs/featured-projects-3d22602c2e607194d5f12c92d15fb815.svg",
+  "media/svgs/filter-outline.svg": "/packs/media/svgs/filter-outline-ad3ec3eb12496fee3082e0323947ad6b.svg",
+  "media/svgs/for-organizations.svg": "/packs/media/svgs/for-organizations-79cd0902b3b89f6a5801a717b3bab228.svg",
+  "media/svgs/for-volunteers.svg": "/packs/media/svgs/for-volunteers-cda645f4b7919e4150764834eba13107.svg",
+  "media/svgs/glowing-lightbulb.svg": "/packs/media/svgs/glowing-lightbulb-d2576e094faf7c2c994fdb225a369e23.svg",
+  "media/svgs/half-dotted-circle.svg": "/packs/media/svgs/half-dotted-circle-2c1746b8cf074d27014c343c9db6769f.svg",
+  "media/svgs/home-hero-triangle.svg": "/packs/media/svgs/home-hero-triangle-65f050bc4308ba0361f3363ac2c06d3f.svg",
+  "media/svgs/lightning.svg": "/packs/media/svgs/lightning-e169a2528d74212a6afbb58a94ab6284.svg",
+  "media/svgs/link.svg": "/packs/media/svgs/link-99f7573e8b197e5dccfa71b5063f4c5f.svg",
+  "media/svgs/location-pin.svg": "/packs/media/svgs/location-pin-fce16e242d3d01cc70b7e578669c0d96.svg",
+  "media/svgs/logo-new-01.svg": "/packs/media/svgs/logo-new-01-c4936797e919bb08efbf980f27088a07.svg",
+  "media/svgs/logo.svg": "/packs/media/svgs/logo-ed2862a3cb79dbc46b358cb0110f8fb3.svg",
+  "media/svgs/magnifier.svg": "/packs/media/svgs/magnifier-6ef0aea0eac807fb6ec6941633f70e63.svg",
+  "media/svgs/mail.svg": "/packs/media/svgs/mail-a69b14d341e687bc5a465820990fbd7b.svg",
+  "media/svgs/people.svg": "/packs/media/svgs/people-9c84f078b620d392e32f66165fc65a15.svg",
+  "media/svgs/plus.svg": "/packs/media/svgs/plus-d2ad3c399e09d3ac9384158aaa21a998.svg",
+  "media/svgs/project-card-location.svg": "/packs/media/svgs/project-card-location-e2d43feb2956497e1995c7246376a857.svg",
+  "media/svgs/question-mark-circle.svg": "/packs/media/svgs/question-mark-circle-5e0b6ef667282c0769ba36776b5b388d.svg",
+  "media/svgs/remove.svg": "/packs/media/svgs/remove-12333ffe8a17ede83c2d63ec75cc1a45.svg",
+  "media/svgs/resi-logo-white2-01.svg": "/packs/media/svgs/resi-logo-white2-01-d656b2614dd8f47d7829ae9cba67153b.svg",
+  "media/svgs/right-link.svg": "/packs/media/svgs/right-link-59b311c294e0646dedfc2560c8469215.svg",
+  "media/svgs/search-outline.svg": "/packs/media/svgs/search-outline-cfa203507fe9a9185f04afae060cff23.svg",
+  "media/svgs/sort-descending.svg": "/packs/media/svgs/sort-descending-f9d676aa7d10e5274855bc1e08f1563f.svg",
+  "media/svgs/sparkling-stars.svg": "/packs/media/svgs/sparkling-stars-fa0e4f843a8ddf2bd4bb31e6f3d2228f.svg",
+  "media/svgs/status-bolt.svg": "/packs/media/svgs/status-bolt-5628e2c562df6fa9ae1d64ec85f7710a.svg",
+  "media/svgs/time-ago.svg": "/packs/media/svgs/time-ago-c6f3aa14eafc3d5514a5a98abbc67bc4.svg",
+  "media/svgs/trash.svg": "/packs/media/svgs/trash-b623d7a8d302c59295bf5bbe2ae13171.svg",
+  "translations/en.js": "/packs/translations/en-f96c0bff16ddb5f315a4.js",
+  "translations/en.js.map": "/packs/translations/en-f96c0bff16ddb5f315a4.js.map",
+  "translations/es.js": "/packs/translations/es-f96c0bff16ddb5f315a4.js",
+  "translations/es.js.map": "/packs/translations/es-f96c0bff16ddb5f315a4.js.map"
+}

@@ -1,0 +1,120 @@
+<div class="flex flex-col justify-center sm:px-2 lg:px-2">
+  <div class="mx-auto w-full max-w-3xl border-2 border-primary-500 p-3">
+    <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+      Our Story
+    </h2>
+     <p class="mt-8 text-left text-sm leading-5 text-gray-600 max-w">
+      Over 210,000 dead. 8% unemployed. Temperatures rising. Wildfires. Smoke-filled air. 
+      George Floyd. Breonna Taylor. Jacob Blake. Say their names. 
+      On the zipcode level, 23,000+ cases in <%= CITY_NAME %> county alone. 445 deaths. 
+    </p>
+    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
+      We are living in a nation divided. But in the midst of a global pandemic and climate related risk, 
+      it’s small businesses, people of color, the elderly, the environment, and low-income communities 
+      who are disproportionately impacted.  
+    </p>
+    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
+      The data looks grim. But on a local level, we can make a difference. 
+      When communities come together, we can make it work. 
+    </p>
+    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
+      ResiTown is brought to you by Community Connections: Sacramento. In partnership with the Clinton Foundation, 
+      City Help with COVID, and CSU Northridge's Innovation Corps, we are dedicated to bringing people together and 
+      activating positive change. 
+    </p>
+    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
+      We believe that engaged and connected communities are not only healthier, but also more equitable and resilient. In the 
+      face of COVID-19, we want to help local economies thrive—by connecting students, retirees, individuals looking for work, 
+      and professionals with meaningful opportunities. 
+    </p>
+    <p class="mt-4 mb-4 text-center text-sm leading-5 text-gray-600 max-w">
+      Welcome to our community. We're happy to have you. 
+    </p>
+  </div>
+
+  <div class="mx-auto w-full max-w-3xl">
+    <a id='how-it-works'>
+      <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+        How Does It Work?
+      </h2>
+    </a>
+     <p class="mt-8 text-center text-sm leading-5 text-gray-600 max-w">
+      ResiTown is a web-based platform, where you’ll be able to sign-up for local opportunities - both in-person and remote. 
+    </p>
+    <h3 class="mt-6 text-center text-2xl leading-9 font-extrabold text-gray-900">
+    Here are step-by-step instructions:
+    </h3>
+    <div class="flex justify-center">
+    <p class="mt-8 text-center text-sm leading-5 text-gray-600 max-w">
+      <ol id="instructions" class="mt-4 list-none pl-15 text-sm leading-5 text-gray-600">
+        <li>1. Create a profile on the ResiTown website or click here</li>
+        <li>2. Find a volunteer opportunity that you're interested in</li>
+        <li>3. Sign-up for the opportunity</li>
+        <li>4. Sit tight and an email with additional details will be sent to your inbox</li>
+      </ol>  
+    </p>
+    </div>
+  </div>
+
+  <div align="center" class="flex flex-col mt-8">
+    <div class="sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      <div class="align-middle inline-block w-max shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+        <table id="team-table" class="w-max table-fixed">
+          <tbody>
+          <% striped_classes_cycle = [ "bg-white", "bg-gray-50" ] %>
+          <% TEAM.each do |group, team| %>
+            <% if !group.empty? %>
+              <tr class="<%= cycle striped_classes_cycle %>">
+                <td colspan="3" class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-white text-center bg-primary-500">
+                  <%= html_escape group %>
+                </td>
+              </tr>
+            <% end %>
+            <% team.each do |name, role, desc| %>
+              <tr class="<%= cycle striped_classes_cycle %>">
+                <td class="px-6 py-4 whitespace-no-wrap text-sm w-1/3 leading-5 font-medium text-gray-900 text-left">
+                  <%= html_escape name %>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap w-1/3 text-sm leading-5 text-gray-500 text-right">
+                  <%= html_escape role %>
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap w-1/3 text-sm leading-5 text-gray-500 text-left">
+                  <%= desc %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="sm:mx-auto sm:w-full w-screen">
+    <h3 class="mt-8 text-center text-xl leading-9 font-extrabold text-gray-900">
+    This platform is powered by City Help!
+    </h3>
+    <div class="mt-8 text-center w-max items-center text-xl text-primary-400 leading-9">
+      <ul id="city-help-links" class="text-center items-center font-bold">
+        <li class="mr-10 inline hover:text-primary-300">
+          <%= link_to "Athens Help With Covid", "http://athenshelpwithcovid.com", target: "_blank" %>
+        </li>
+        <li class="mr-10 inline hover:text-primary-300">
+        <%= link_to "New Haven Help With Covid", "https://newhavenhelpwithcovid.com", target: "_blank" %>
+        </li>
+        <li class="mr-10 inline hover:text-primary-300">
+        <%= link_to "City Help", "https://city-help.org/", target: "_blank" %>
+        </li>
+        <li class="mr-10 inline hover:text-primary-300">
+        <%= link_to "Help With Covid", "https://helpwithcovid.com/", target: "_blank" %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sm:mx-auto sm:w-full sm:max-w-lg">
+    <h2 class="mt-8 text-center text-3xl leading-9 font-extrabold text-gray-900">
+      Thank you to all volunteers!
+    </h2>
+  </div>
+</div>
+
