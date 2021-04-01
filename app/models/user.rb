@@ -18,9 +18,6 @@ class User < ApplicationRecord
   has_many :offers
   acts_as_taggable_on :skills
 
-  has_many :office_hours
-  has_many :participates_in_office_hours
-
   pg_search_scope :search, against: %i(name email about location level_of_availability)
 
   def volunteered_for_project?(project)
