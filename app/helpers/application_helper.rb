@@ -39,16 +39,16 @@ module ApplicationHelper
     end
   end
 
-  def all_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'index' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  def all_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'index' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def volunteered_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'volunteered' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  def volunteered_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'volunteered' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
-  def own_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  def own_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
   def profile_nav_link_class(variant = 'DESKTOP')
@@ -114,7 +114,7 @@ module ApplicationHelper
 
     applied = get_query_params[filter_by].include?(label)
 
-    if filter_by == 'project_types' and @applied_project_types.present? and @applied_project_types.include?(label)
+    if filter_by == 'appointment_types' and @applied_appointment_types.present? and @applied_appointment_types.include?(label)
       applied = true
     end
 
@@ -192,7 +192,7 @@ module ApplicationHelper
   end
 
   def sort_drop_down_option(path, title, sort_by = nil)
-    new_params = params.permit(:sort_by, :skills, :project_types, :categories, :locations).dup
+    new_params = params.permit(:sort_by, :skills, :appointment_types, :categories, :locations).dup
 
     case params[:sort_by]
     when sort_by
@@ -212,7 +212,7 @@ module ApplicationHelper
   end
 
   def filter_bar_filter(label, filter, options)
-    render partial: 'projects/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
+    render partial: 'appointments/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
   end
 
   def google_analytics_id
