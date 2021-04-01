@@ -74,19 +74,17 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # NOTE: This configures the mailer to use gmail for both sending and receiving,
-  # so the no-reply@newhavenhelpwithcovid.com account won't actually be used.
-  # The commented out lines below might be on the right track to fix this, but
-  # it's completely untested.
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
-      port: 587,
-      domain: 'resitown.com',
-      user_name: ENV['SMTP_USERNAME'],
-      password: ENV['SMTP_PASSWORD'],
-      authentication: :plain,
-      enable_starttls_auto: true
-  }
+  
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #     address: 'smtp.gmail.com',
+  #     port: 587,
+  #     domain: 'resitown.com',
+  #     user_name: ENV['SMTP_USERNAME'],
+  #     password: ENV['SMTP_PASSWORD'],
+  #     authentication: :plain,
+  #     enable_starttls_auto: true
+  # }
 
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.smtp_settings = {
