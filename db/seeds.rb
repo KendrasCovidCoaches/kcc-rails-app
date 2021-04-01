@@ -46,7 +46,7 @@ user = User.create!(
 #   accepting_volunteers: true,
 #   highlight: false)
 # appointment1.skill_list.add('Anything')
-# appointment1.volunteered_users << user3
+# appointment1.requested_users << user3
 # appointment1.save! # FIXME is this necessary? We were modifying associations
 
 # appointment2 = Appointment.create!(
@@ -66,11 +66,11 @@ user = User.create!(
 # appointment5 = Appointment.create(user: user, status: Settings.appointment_statuses.shuffle.first, name: 'Selfie lenses to spread public health into in a fun way appointment ', description: %{We are a group called Lefty Lenses who have been applying selfie lenses (like the Snapchat puppy filter) to politics for the 2020 election. Our lenses have reached 125M people in 10 weeks, and we've spent $0.}, accepting_volunteers: true, highlight: true)
 
 # VOLUNTEERS
-# appointment1.volunteered_users << [user3]
-# appointment2.volunteered_users << []
-# appointment3.volunteered_users << [user, user2, user3, user4]
-# appointment4.volunteered_users << [user4, user5]
-# appointment5.volunteered_users << [user5, user6]
+# appointment1.requested_users << [user3]
+# appointment2.requested_users << []
+# appointment3.requested_users << [user, user2, user3, user4]
+# appointment4.requested_users << [user4, user5]
+# appointment5.requested_users << [user5, user6]
 
 # SKILLS
 # appointment1.skill_list.add('Design')
