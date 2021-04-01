@@ -67,6 +67,6 @@ class SuccessStoriesController < ApplicationController
     end
 
     def success_story_params
-      params.fetch(:success_story, {}).permit(:title, :body, :links, :image, :project_ids, :highlight)
+      params.fetch(:success_story, {}).permit(:title, :body, :links, :image, :appointment_ids, :highlight)
     end
 end
