@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Applicant, type: :model do
+RSpec.describe Patient, type: :model do
   let!(:user) { create(:user) }
   let!(:appointment) { create(:appointment, user: user) }
 
