@@ -48,7 +48,7 @@ const Appointment = {
       `
     }
 
-    const headerHTML = I18n.t('you_re_about_to_volunteer');
+    const headerHTML = I18n.t('you_re_about_to_request');
     const bodyHTML = `
       ${I18n.t('appointment_is_looking_for', { appointment_name: appointmentName })}
       <br>

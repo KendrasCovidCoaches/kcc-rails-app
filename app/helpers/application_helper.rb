@@ -43,8 +43,8 @@ module ApplicationHelper
     params[:controller] == 'appointments' && params[:action] == 'index' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def volunteered_appointments_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'appointments' && params[:action] == 'volunteered' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  def requested_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'requested' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
   def own_appointments_nav_link_class(variant = 'DESKTOP')

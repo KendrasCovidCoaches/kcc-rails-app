@@ -14,10 +14,10 @@ class SummaryReport
 
     #create total count
     @user_count = User.all.count
-    @volunteered_user_count = User.where("pair_with_appointments = ?","True").count
+    @requested_user_count = User.where("pair_with_appointments = ?","True").count
     @new_user_count = User.where("created_at >= ?", Date.today - 7).count
     @appointment_count = Appointment.all.count
-    @volunteered_appointment_count = Volunteer.count('DISTINCT appointment_id')
+    @requested_appointment_count = Volunteer.count('DISTINCT appointment_id')
     @new_appointment_count = Appointment.where("created_at >= ?", Date.today - 7).count
 
     #create input arrays for the user and appointment table, 
@@ -40,7 +40,7 @@ class SummaryReport
       User.where("created_at >= ? and created_at <= ?", bom, eom).count
     }
 
-    @volunteered_user_count_per_month = @end_of_month_dates.map { |date|
+    @requested_user_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
       User.where("created_at >= ? and created_at <= ? and pair_with_appointments = ? ", bom, eom, "True").count
@@ -50,7 +50,7 @@ class SummaryReport
       eom = date.end_of_month
       Appointment.where("created_at >= ? and created_at <= ?", bom, eom).count
     }
-    @volunteered_appointment_count_per_month = @end_of_month_dates.map { |date|
+    @requested_appointment_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
       Volunteer.where("created_at >= ? and created_at <= ?", bom, eom).count('DISTINCT appointment_id')
@@ -60,11 +60,11 @@ class SummaryReport
 
   end
 
-  attr_reader :user_count, :volunteered_user_count, :new_user_count, 
-    :appointment_count, :volunteered_appointment_count, :new_appointment_count,
+  attr_reader :user_count, :requested_user_count, :new_user_count, 
+    :appointment_count, :requested_appointment_count, :new_appointment_count,
     :user_table, :appointment_table, 
-    :user_count_per_month, :volunteered_user_count_per_month, 
-    :appointment_count_per_month, :volunteered_appointment_count_per_month,
+    :user_count_per_month, :requested_user_count_per_month, 
+    :appointment_count_per_month, :requested_appointment_count_per_month,
     :month_labels
 
 

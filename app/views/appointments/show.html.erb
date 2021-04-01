@@ -37,7 +37,7 @@
             <% end %>
           </span>
 
-          <% if @appointment.volunteered_users.count > 0 %>
+          <% if @appointment.requested_users.count > 0 %>
             <% volunteer_emails = @appointment.volunteer_emails %>
 
             <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
@@ -123,7 +123,7 @@
   <% end %>
 
   <!--
-  <% if current_user && @appointment.volunteered_users.count < Settings.max_volunteers_for_highlight_offer && @appointment.user == current_user && !cookies[:highlight_appointments_alert] %>
+  <% if current_user && @appointment.requested_users.count < Settings.max_volunteers_for_highlight_offer && @appointment.user == current_user && !cookies[:highlight_appointments_alert] %>
     <div class="bg-white mt-6 mb-8 border-2 border-orange-300 bg-orange-100 shadow sm:rounded-lg" id="disable_highlight_appointments_container">
       <div class="px-4 py-5 sm:p-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -307,7 +307,7 @@
     </div>
   </div>
 
-  <% if current_user && @appointment.volunteered_users.count > 0 && (current_user == @appointment.user || current_user.is_admin?) %>
+  <% if current_user && @appointment.requested_users.count > 0 && (current_user == @appointment.user || current_user.is_admin?) %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
       <div class="bg-white px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">

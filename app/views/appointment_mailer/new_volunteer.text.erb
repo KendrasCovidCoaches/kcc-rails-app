@@ -31,7 +31,7 @@ About:
 
 
 Notes:
-<%- if @appointment.volunteered_users.count >= VOLUNTEERS_REQUIRED_FOR_FUNDING %>
+<%- if @appointment.requested_users.count >= VOLUNTEERS_REQUIRED_FOR_FUNDING %>
   * ** Since you have over <%= VOLUNTEERS_REQUIRED_FOR_FUNDING %> volunteers you can now apply for funding. Visit your appointment page. **
 <%- end -%>
 

@@ -1,12 +1,12 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :volunteered, :own, :volunteers ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :requested, :own, :volunteers ]
   before_action :set_appointment, only: [ :show, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :volunteers ]
   before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :volunteers ]
   before_action :set_filters_open, only: :index
   before_action :set_appointments_query, only: :index
   before_action :hydrate_appointment_categories, only: :index
   before_action :ensure_no_legacy_filtering, only: :index
-  before_action :set_bg_white, only: [:index, :own, :volunteered]
+  before_action :set_bg_white, only: [:index, :own, :requested]
 
   def index
     params[:page] ||= 1
@@ -58,16 +58,16 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def volunteered
+  def requested
     params[:page] ||= 1
 
-    @appointments = current_user.volunteered_appointments.page(params[:page]).per(25)
+    @appointments = current_user.requested_appointments.page(params[:page]).per(25)
     @index_from = (@appointments.prev_page || 0) * @appointments.limit_value + 1
     @index_to = [@index_from + @appointments.limit_value - 1, @appointments.total_count].min
 
-    @appointments_header = I18n.t('volunteered_appointments')
-    @appointments_subheader = I18n.t('these_are_the_appointments_where_you_volunteered')
-    @page_title = I18n.t('volunteered_appointments')
+    @appointments_header = I18n.t('requested_appointments')
+    @appointments_subheader = I18n.t('these_are_the_appointments_where_you_requested')
+    @page_title = I18n.t('requested_appointments')
     render action: 'index'
   end
 
@@ -94,7 +94,7 @@ class AppointmentsController < ApplicationController
 
   def volunteers
     respond_to do |format|
-      format.csv { send_data @appointment.volunteered_users.to_csv, filename: "volunteers-#{Date.today}.csv" }
+      format.csv { send_data @appointment.requested_users.to_csv, filename: "volunteers-#{Date.today}.csv" }
     end
   end
 
@@ -145,10 +145,10 @@ class AppointmentsController < ApplicationController
   end
 
   def toggle_volunteer
-    if @appointment.volunteered_users.include?(current_user)
+    if @appointment.requested_users.include?(current_user)
       #byebug
       @appointment.volunteers.where(user: current_user).destroy_all
-      flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_volunteered_peo')
+      flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
       AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_volunteer.deliver_now
     else
       params[:volunteer_note] ||= ''
@@ -157,8 +157,8 @@ class AppointmentsController < ApplicationController
 
       AppointmentMailer.with(appointment: @appointment, user: current_user, note: params[:volunteer_note]).new_volunteer.deliver_now
 
-      flash[:notice] = I18n.t('thanks_for_volunteering_the_appointment_owners_will_be')
-      track_event 'User volunteered'
+      flash[:notice] = I18n.t('thanks_for_requesting_the_coaches_will_be')
+      track_event 'User requested'
     end
 
     redirect_to appointment_path(@appointment)
@@ -166,14 +166,14 @@ class AppointmentsController < ApplicationController
 
   def completed_volunteer
     #byebug
-    if @appointment.volunteered_users.include?(current_user)
+    if @appointment.requested_users.include?(current_user)
       #byebug
       @appointment.volunteers.where(user: current_user).destroy_all
       flash[:notice] = I18n.t('completed')
       #AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_volunteer.deliver_now
     end
 
-    redirect_to volunteered_appointments_path
+    redirect_to requested_appointments_path
   end
 
   private

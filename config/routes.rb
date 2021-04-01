@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   resources :appointments do
     collection do
-      get :volunteered
+      get :requested
       get :own
     end
 

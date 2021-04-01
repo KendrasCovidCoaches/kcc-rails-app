@@ -10,7 +10,7 @@ class Appointment < ApplicationRecord
   validate :date_order, on: :create
 
   has_many :volunteers, dependent: :destroy
-  has_many :volunteered_users, through: :volunteers, source: :user, dependent: :destroy
+  has_many :requested_users, through: :volunteers, source: :user, dependent: :destroy
 
   acts_as_taggable_on :skills
   acts_as_taggable_on :categories
@@ -49,11 +49,11 @@ class Appointment < ApplicationRecord
   end
 
   def volunteer_emails
-    self.volunteered_users.collect { |u| u.email }
+    self.requested_users.collect { |u| u.email }
   end
 
-  def volunteered_users_count
-    volunteered_users.count
+  def requested_users_count
+    requested_users.count
   end
 
   def serializable_hash(options = {})
@@ -79,7 +79,7 @@ class Appointment < ApplicationRecord
         :status,
         :short_description
       ],
-      methods: [:to_param, :volunteered_users_count, :appointment_type_list, :location_list, :category_list, :skill_list]
+      methods: [:to_param, :requested_users_count, :appointment_type_list, :location_list, :category_list, :skill_list]
     )
   end
 

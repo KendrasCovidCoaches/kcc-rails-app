@@ -13,15 +13,15 @@ class User < ApplicationRecord
 
   has_many :appointments, dependent: :destroy
   has_many :volunteers, dependent: :destroy
-  has_many :volunteered_appointments, through: :volunteers, source: :appointment, dependent: :destroy
+  has_many :requested_appointments, through: :volunteers, source: :appointment, dependent: :destroy
 
   has_many :offers
   acts_as_taggable_on :skills
 
   pg_search_scope :search, against: %i(name email about location level_of_availability)
 
-  def volunteered_for_appointment?(appointment)
-    self.volunteered_appointments.where(id: appointment.id).exists?
+  def requested_for_appointment?(appointment)
+    self.requested_appointments.where(id: appointment.id).exists?
   end
 
   def has_complete_profile?
@@ -41,8 +41,8 @@ class User < ApplicationRecord
     return true if user_trying_view == self
     return true if self.future_office_hours.length > 0
 
-    # Check if this user volunteered for any appointment by user_trying_view.
-    self.volunteered_appointments.where(user_id: user_trying_view.id).exists?
+    # Check if this user requested for any appointment by user_trying_view.
+    self.requested_appointments.where(user_id: user_trying_view.id).exists?
   end
 
   def future_office_hours
