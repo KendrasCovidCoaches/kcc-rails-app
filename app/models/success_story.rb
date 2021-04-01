@@ -5,11 +5,11 @@ class SuccessStory < ApplicationRecord
     [id, title.parameterize].join('-')
   end
 
-  def projects
-    return if project_ids.blank?
+  def appointments
+    return if appointment_ids.blank?
 
     begin
-      Project.where id: project_ids.split(',').map(&:strip)
+      Appointment.where id: appointment_ids.split(',').map(&:strip)
     end
   end
 end
