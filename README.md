@@ -1,11 +1,12 @@
-# ResiTown Sacramento
+# KCC Rails App
 
-This repository stores the code for the ResiTown Sacramento website.
+This repository stores the code for the KCC Rails app.
+Currently all code is still related to the non-profit this app was originally for
 
 The stack is:
 
-- Ruby on Rails 6.0
-- Tailwind CSS
+- Ruby on Rails 6.0 with react-on-rails/webpacker
+- Tailwind CSS (for now..)
 - Postgres
 
 # Running app locally
@@ -29,10 +30,11 @@ bundle install
 yarn install
 ```
 
-Setup the database and seed data:
+Setup the database:
 
 ```
 rails db:setup
+rails db:migrate
 ```
 
 ## Configuration
@@ -41,6 +43,11 @@ Check config/initializers to edit admins, team, and email settings. All other se
 
 ## Launch app
 
+start dev server
+```
+./bin/webpack-dev-server
+```
+in separate terminal
 ```
 rails server
 ```
