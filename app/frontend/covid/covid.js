@@ -6,8 +6,6 @@ import stickybits from 'stickybits';
 import './direct-upload'
 import Project from './project'
 import ProjectForm from './project_form'
-import OfficeHour from './office_hour'
-import OfficeHourForm from './office_hour_form'
 import Resources from './resources'
 
 const Covid = {
