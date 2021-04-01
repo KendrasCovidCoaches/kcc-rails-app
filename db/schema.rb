@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_213009) do
+ActiveRecord::Schema.define(version: 2021_04_01_223836) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,18 +36,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_213009) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "offers", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name", default: "", null: false
-    t.string "description", default: "", null: false
-    t.string "limitations", default: "", null: false
-    t.string "redemption", default: "", null: false
-    t.string "location", default: "", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "projects", force: :cascade do |t|
+  create_table "appointments", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
@@ -81,11 +70,22 @@ ActiveRecord::Schema.define(version: 2021_04_01_213009) do
     t.boolean "background_screening_required"
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "limitations", default: "", null: false
+    t.string "redemption", default: "", null: false
+    t.string "location", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "success_stories", force: :cascade do |t|
     t.string "title", null: false
     t.text "body"
     t.text "links"
-    t.text "project_ids"
+    t.text "appointment_ids"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "highlight", default: false, null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_213009) do
     t.string "profile_links", default: "", null: false
     t.boolean "visibility", default: false
     t.string "name", default: "", null: false
-    t.boolean "pair_with_projects", default: false
+    t.boolean "pair_with_appointments", default: false
     t.boolean "deactivated", default: false, null: false
     t.text "office_hour_description"
     t.boolean "newsletter_consent"
@@ -150,7 +150,7 @@ ActiveRecord::Schema.define(version: 2021_04_01_213009) do
 
   create_table "volunteers", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "project_id"
+    t.integer "appointment_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "note", default: "", null: false
