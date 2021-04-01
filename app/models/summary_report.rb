@@ -1,7 +1,7 @@
 class SummaryReport
   def initialize()
 
-    #create end of month date starting from the beginning of the project to doday
+    #create end of month date starting from the beginning of the appointment to doday
     cutoff = Date.new(2020,3,31)
     @end_of_month_dates = []
 
@@ -14,23 +14,23 @@ class SummaryReport
 
     #create total count
     @user_count = User.all.count
-    @volunteered_user_count = User.where("pair_with_projects = ?","True").count
+    @volunteered_user_count = User.where("pair_with_appointments = ?","True").count
     @new_user_count = User.where("created_at >= ?", Date.today - 7).count
-    @project_count = Project.all.count
-    @volunteered_project_count = Volunteer.count('DISTINCT project_id')
-    @new_project_count = Project.where("created_at >= ?", Date.today - 7).count
+    @appointment_count = Appointment.all.count
+    @volunteered_appointment_count = Volunteer.count('DISTINCT appointment_id')
+    @new_appointment_count = Appointment.where("created_at >= ?", Date.today - 7).count
 
-    #create input arrays for the user and project table, 
+    #create input arrays for the user and appointment table, 
     #counts the total for each end of month
  
     @user_table = @end_of_month_dates.map { |date|
       [date, User.where("created_at <= ?", date).count,
-      User.where("created_at <= ? and pair_with_projects = ? ", date, "True").count]
+      User.where("created_at <= ? and pair_with_appointments = ? ", date, "True").count]
     }
 
-    @project_table = @end_of_month_dates.map { |date|
-      [date, Project.where("created_at <= ?", date).count,
-      Volunteer.where("created_at <= ?", date).count('DISTINCT project_id')]
+    @appointment_table = @end_of_month_dates.map { |date|
+      [date, Appointment.where("created_at <= ?", date).count,
+      Volunteer.where("created_at <= ?", date).count('DISTINCT appointment_id')]
     }
 
     #create input for graphs, total for each month
@@ -43,17 +43,17 @@ class SummaryReport
     @volunteered_user_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
-      User.where("created_at >= ? and created_at <= ? and pair_with_projects = ? ", bom, eom, "True").count
+      User.where("created_at >= ? and created_at <= ? and pair_with_appointments = ? ", bom, eom, "True").count
     }
-    @project_count_per_month = @end_of_month_dates.map { |date|
+    @appointment_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
-      Project.where("created_at >= ? and created_at <= ?", bom, eom).count
+      Appointment.where("created_at >= ? and created_at <= ?", bom, eom).count
     }
-    @volunteered_project_count_per_month = @end_of_month_dates.map { |date|
+    @volunteered_appointment_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
-      Volunteer.where("created_at >= ? and created_at <= ?", bom, eom).count('DISTINCT project_id')
+      Volunteer.where("created_at >= ? and created_at <= ?", bom, eom).count('DISTINCT appointment_id')
     }
 
     @month_labels = @end_of_month_dates.map { |e| e.strftime("%B") }
@@ -61,10 +61,10 @@ class SummaryReport
   end
 
   attr_reader :user_count, :volunteered_user_count, :new_user_count, 
-    :project_count, :volunteered_project_count, :new_project_count,
-    :user_table, :project_table, 
+    :appointment_count, :volunteered_appointment_count, :new_appointment_count,
+    :user_table, :appointment_table, 
     :user_count_per_month, :volunteered_user_count_per_month, 
-    :project_count_per_month, :volunteered_project_count_per_month,
+    :appointment_count_per_month, :volunteered_appointment_count_per_month,
     :month_labels
 
 
