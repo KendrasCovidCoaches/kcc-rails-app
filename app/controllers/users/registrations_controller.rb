@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if @user.blank? || !@user.is_visible_to_user?(current_user)
       flash[:error] = I18n.t('sorry_no_such_user')
-      redirect_to projects_path
+      redirect_to appointments_path
     end
   end
 
@@ -63,12 +63,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :about, :profile_links, :location, :phone, :affiliation, :remote_location, :newsletter_consent, :resume, :visibility, :pair_with_projects,  :level_of_availability, skill_list: []])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:name, :about, :profile_links, :location, :phone, :affiliation, :remote_location, :newsletter_consent, :resume, :visibility, :pair_with_appointments,  :level_of_availability, skill_list: []])
     end
 
     # The path used after sign up.
     def after_sign_up_path_for(resource)
-      projects_path
+      appointments_path
     end
 
     # The path used after sign up for inactive accounts.
