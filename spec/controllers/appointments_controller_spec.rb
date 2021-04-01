@@ -4,14 +4,14 @@ RSpec.describe AppointmentsController, type: :controller do
   render_views
 
   let!(:user) { create(:user) }
-  let!(:project) { create(:project, user: user) }
-  let(:valid_params) { { project: { name: 'My Project Name', status: Settings.project_statuses.first } } }
+  let!(:appointment) { create(:appointment, user: user) }
+  let(:valid_params) { { appointment: { name: 'My Appointment Name', status: Settings.appointment_statuses.first } } }
 
   describe 'GET #index' do
     it 'works' do
       get :index
       expect(response).to be_successful
-      expect(assigns(:projects)).to include(project)
+      expect(assigns(:appointments)).to include(appointment)
     end
 
     it 'returns json' do
@@ -24,76 +24,76 @@ RSpec.describe AppointmentsController, type: :controller do
     end
 
     describe 'Volunteering' do
-      let!(:no_volunteers_project) { create(:project, user: user, accepting_volunteers: false) }
+      let!(:no_volunteers_appointment) { create(:appointment, user: user, accepting_volunteers: false) }
 
       it 'filters by ?accepting_volunteers=0' do
         get :index, params: { accepting_volunteers: '0' }
         expect(response).to be_successful
-        expect(assigns(:projects)).to include(no_volunteers_project)
-        expect(assigns(:projects)).to_not include(project)
+        expect(assigns(:appointments)).to include(no_volunteers_appointment)
+        expect(assigns(:appointments)).to_not include(appointment)
       end
 
       it 'filters by ?accepting_volunteers=1' do
         get :index, params: { accepting_volunteers: '1' }
         expect(response).to be_successful
-        expect(assigns(:projects)).to_not include(no_volunteers_project)
-        expect(assigns(:projects)).to include(project)
+        expect(assigns(:appointments)).to_not include(no_volunteers_appointment)
+        expect(assigns(:appointments)).to include(appointment)
       end
 
-      it 'shows projects filtered by status' do
-        project.update_attribute(:status, Settings.project_statuses.last)
-        project2 = create(:project, user: user, status: Settings.project_statuses.first)
-        get :index, params: { status: Settings.project_statuses.last }
-        expect(assigns(:projects)).to include(project)
-        expect(assigns(:projects)).to_not include(project2)
+      it 'shows appointments filtered by status' do
+        appointment.update_attribute(:status, Settings.appointment_statuses.last)
+        appointment2 = create(:appointment, user: user, status: Settings.appointment_statuses.first)
+        get :index, params: { status: Settings.appointment_statuses.last }
+        expect(assigns(:appointments)).to include(appointment)
+        expect(assigns(:appointments)).to_not include(appointment2)
       end
     end
 
-    it 'shows highlighted projects only' do
-      project.update_attribute(:highlight, true)
-      reg_project = create(:project, user: user, highlight: false)
+    it 'shows highlighted appointments only' do
+      appointment.update_attribute(:highlight, true)
+      reg_appointment = create(:appointment, user: user, highlight: false)
       get :index, params: { highlight: true }
       expect(response).to be_successful
-      expect(assigns(:projects)).to include(project)
-      expect(assigns(:projects)).to_not include(reg_project)
+      expect(assigns(:appointments)).to include(appointment)
+      expect(assigns(:appointments)).to_not include(reg_appointment)
     end
   end
 
   describe 'GET #show' do
     it 'works' do
-      # get :show, project.id
-      get :show, params: { id: project.to_param }
+      # get :show, appointment.id
+      get :show, params: { id: appointment.to_param }
       expect(response).to be_successful
-      expect(assigns(:project)).to eq(project)
+      expect(assigns(:appointment)).to eq(appointment)
     end
 
     it 'returns json' do
-      get :show, params: { id: project.to_param }, format: 'json'
+      get :show, params: { id: appointment.to_param }, format: 'json'
       json = JSON.parse(response.body)
       expect(response).to be_successful
-      expect(json['name']).to eq(project.name)
-      expect(json['description']).to eq(project.description)
-      expect(json['volunteer_location']).to eq(project.volunteer_location)
-      expect(json['accepting_volunteers']).to eq(project.accepting_volunteers)
-      expect(json['to_param']).to eq(project.to_param)
+      expect(json['name']).to eq(appointment.name)
+      expect(json['description']).to eq(appointment.description)
+      expect(json['volunteer_location']).to eq(appointment.volunteer_location)
+      expect(json['accepting_volunteers']).to eq(appointment.accepting_volunteers)
+      expect(json['to_param']).to eq(appointment.to_param)
     end
 
     describe 'Volunteering' do
       it 'hide volunteer info' do
-        project.number_of_volunteers = '100'
-        project.accepting_volunteers = false
-        project.save
-        get :show, params: { id: project.to_param }
+        appointment.number_of_volunteers = '100'
+        appointment.accepting_volunteers = false
+        appointment.save
+        get :show, params: { id: appointment.to_param }
         expect(response).to be_successful
         expect(response.body).to_not include('Number of volunteers')
         expect(response.body).to_not include('Sign up to volunteer')
       end
 
       it 'show volunteer info' do
-        project.number_of_volunteers = '100'
-        project.accepting_volunteers = true
-        project.save
-        get :show, params: { id: project.to_param }
+        appointment.number_of_volunteers = '100'
+        appointment.accepting_volunteers = true
+        appointment.save
+        get :show, params: { id: appointment.to_param }
         expect(response).to be_successful
         expect(response.body).to include('Number of volunteers')
         expect(response.body).to include('Sign up to volunteer')
@@ -104,16 +104,16 @@ RSpec.describe AppointmentsController, type: :controller do
         sign_in user
         user.skill_list.add('Design')
         user.save
-        project.skill_list.add('Design')
-        project.save
-        get :show, params: { id: project.to_param }
+        appointment.skill_list.add('Design')
+        appointment.save
+        get :show, params: { id: appointment.to_param }
         expect(response.body).to include('volunteers-btn')
       end
 
       it 'shows volunteer filled button if you dont have the right skills' do
         user = create(:user_complete_profile)
         sign_in user
-        get :show, params: { id: project.to_param }
+        get :show, params: { id: appointment.to_param }
         expect(response.body).to include('volunteers-filled-btn')
       end
     end
@@ -133,23 +133,23 @@ RSpec.describe AppointmentsController, type: :controller do
 
     it 'tracks an event' do
       sign_in user
-      expect(controller).to receive(:track_event).with('Project creation started').and_call_original
+      expect(controller).to receive(:track_event).with('Appointment creation started').and_call_original
       get :new
       # This doesn't work since the GET request sets and deletes the variable within same request
-      # expect(session[:track_event]).to eq('Project creation started')
-      expect(response.body).to match(/Project creation started/)
+      # expect(session[:track_event]).to eq('Appointment creation started')
+      expect(response.body).to match(/Appointment creation started/)
     end
   end
 
   describe 'GET #edit' do
     it 'works' do
       sign_in user
-      get :edit, params: { id: project.id }
+      get :edit, params: { id: appointment.id }
       expect(response).to be_successful
     end
 
     it 'fails if not signed in' do
-      get :edit, params: { id: project.id }
+      get :edit, params: { id: appointment.id }
       expect(response).to_not be_successful
     end
   end
@@ -158,24 +158,24 @@ RSpec.describe AppointmentsController, type: :controller do
     it 'works' do
       sign_in user
       post :create, params: valid_params
-      expect(assigns(:project)).to be_present
+      expect(assigns(:appointment)).to be_present
       expect(response).to be_redirect
     end
 
     it 'tracks an event' do
       sign_in(user)
       post :create, params: valid_params
-      expect(session[:track_event]).to eq('Project creation complete')
+      expect(session[:track_event]).to eq('Appointment creation complete')
     end
   end
 
   describe 'PUT #update' do
     it 'updating accepting_volunteers works' do
       sign_in user
-      expect(project.accepting_volunteers).to eq(true)
-      put :update, params: { id: project.id, project: { accepting_volunteers: false } }
+      expect(appointment.accepting_volunteers).to eq(true)
+      put :update, params: { id: appointment.id, appointment: { accepting_volunteers: false } }
       expect(response).to be_redirect
-      expect(assigns(:project).accepting_volunteers).to eq(false)
+      expect(assigns(:appointment).accepting_volunteers).to eq(false)
     end
   end
 

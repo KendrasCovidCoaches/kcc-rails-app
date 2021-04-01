@@ -42,15 +42,15 @@ FactoryBot.define do
     skill_list { ['Analytics'] }
   end
 
-  factory :project do
-    name { 'My First Project' }
+  factory :appointment do
+    name { 'My First Appointment' }
     description { 'My description' }
     volunteer_location { 'location' }
-    status { Settings.project_statuses.first }
+    status { Settings.appointment_statuses.first }
   end
 
-  factory :project_with_type, parent: :project do
-    project_type_list { ['Track the outbreak'] }
+  factory :appointment_with_type, parent: :appointment do
+    appointment_type_list { ['Track the outbreak'] }
   end
 
   factory :volunteer do

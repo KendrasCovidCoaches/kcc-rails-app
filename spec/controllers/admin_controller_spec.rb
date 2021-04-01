@@ -16,13 +16,13 @@ RSpec.describe AdminController, type: :controller do
 
     it "returns 401 Unauthorized if you're not logged in" do
       post :delete_user, params: valid_params
-      expect(response).to redirect_to(projects_path)
+      expect(response).to redirect_to(appointments_path)
     end
 
     it "returns 401 unauthorized if you're logged in but not an admin" do
       sign_in(user)
       post :delete_user, params: valid_params
-      expect(response).to redirect_to(projects_path)
+      expect(response).to redirect_to(appointments_path)
     end
 
     it "works if you're signed-in as an admin" do
@@ -43,30 +43,30 @@ RSpec.describe AdminController, type: :controller do
   end
 
   describe 'POST #toggle_highlight' do
-    let!(:project) { create(:project, user: user) }
-    let!(:valid_params) { { project_id: project.to_param } }
+    let!(:appointment) { create(:appointment, user: user) }
+    let!(:valid_params) { { appointment_id: appointment.to_param } }
 
     it 'calls ensure_admin' do
       expect(controller).to receive(:ensure_admin)
       post :toggle_highlight, params: valid_params
     end
 
-    it 'highlights if project is not currently highlighted. highlit? highlighted' do
+    it 'highlights if appointment is not currently highlighted. highlit? highlighted' do
       sign_in(admin)
-      expect(project.highlight?).to eq(false)
+      expect(appointment.highlight?).to eq(false)
       post :toggle_highlight, params: valid_params
-      expect(response).to redirect_to(project_path(project))
-      expect(project.reload.highlight?).to eq(true)
-      expect(flash[:notice]).to match(/Project highlighted/)
+      expect(response).to redirect_to(appointment_path(appointment))
+      expect(appointment.reload.highlight?).to eq(true)
+      expect(flash[:notice]).to match(/Appointment highlighted/)
     end
 
-    it 'unhighlights if project was already highlighted' do
+    it 'unhighlights if appointment was already highlighted' do
       sign_in(admin)
-      active_project = create(:project, user: user, highlight: true)
-      expect(active_project.highlight?).to eq(true)
-      post :toggle_highlight, params: { project_id: active_project.to_param }
-      expect(response).to redirect_to(project_path(active_project))
-      expect(active_project.reload.highlight?).to eq(false)
+      active_appointment = create(:appointment, user: user, highlight: true)
+      expect(active_appointment.highlight?).to eq(true)
+      post :toggle_highlight, params: { appointment_id: active_appointment.to_param }
+      expect(response).to redirect_to(appointment_path(active_appointment))
+      expect(active_appointment.reload.highlight?).to eq(false)
       expect(flash[:notice]).to match(/Removed highlight/)
     end
   end
