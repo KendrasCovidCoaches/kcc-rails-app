@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     track_event 'User registration complete' if resource.persisted?
-    UserMailer.with(user: @user).welcome_email.deliver_now
+    # UserMailer.with(user: @user).welcome_email.deliver_now
   end
 
   # GET /resource/edit
