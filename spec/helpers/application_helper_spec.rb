@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-path = 'http://localhost:3000/projects?skills=Biology,Software&project_types=Track%20the%20outbreak,Reduce%20spread&filters_open=true'
+path = 'http://localhost:3000/appointments?skills=Biology,Software&appointment_types=Track%20the%20outbreak,Reduce%20spread&filters_open=true'
 
 RSpec.describe ApplicationHelper do
   let(:request) { double('request', fullpath: path) }
@@ -8,7 +8,7 @@ RSpec.describe ApplicationHelper do
 
   it 'gets query params' do
     params = get_query_params
-    desired_params = { 'skills'=>['Biology', 'Software'], 'project_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
+    desired_params = { 'skills'=>['Biology', 'Software'], 'appointment_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
     assert params.eql? desired_params
   end
 
@@ -24,19 +24,19 @@ RSpec.describe ApplicationHelper do
 
   it 'toggles a filter on' do
     toggled_on = toggle_filter('skills', 'JellyFishing')
-    desired_params = { 'skills'=>['Biology', 'Software', 'JellyFishing'], 'project_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
+    desired_params = { 'skills'=>['Biology', 'Software', 'JellyFishing'], 'appointment_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
     assert toggled_on.eql? desired_params
   end
 
   it 'toggles a filter off' do
     toggled_on = toggle_filter('skills', 'Biology')
-    desired_params = { 'skills'=>['Software'], 'project_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
+    desired_params = { 'skills'=>['Software'], 'appointment_types'=>['Track the outbreak', 'Reduce spread'], 'filters_open'=>['true'] }
     assert toggled_on.eql? desired_params
   end
 
   it 'builds a query string' do
     querystring = build_query_string(toggle_filter('skills', 'Software'))
-    desired_qs = 'skills[]=Biology&project_types[]=Track+the+outbreak,Reduce+spread&filters_open[]=true'
+    desired_qs = 'skills[]=Biology&appointment_types[]=Track+the+outbreak,Reduce+spread&filters_open[]=true'
     assert querystring.eql? desired_qs
   end
 

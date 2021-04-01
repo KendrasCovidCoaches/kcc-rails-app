@@ -193,7 +193,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
         it { is_expected.to_not be_successful }
 
-        it { is_expected.to redirect_to(projects_path) }
+        it { is_expected.to redirect_to(appointments_path) }
 
         it 'displays flash error' do
           subject
@@ -208,7 +208,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
       it { is_expected.to_not be_successful }
 
-      it { is_expected.to redirect_to(projects_path) }
+      it { is_expected.to redirect_to(appointments_path) }
 
       it 'displays flash error' do
         subject
@@ -221,7 +221,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   describe 'GET #new' do
     it 'tracks an event' do
       # The line below doesn't work since the GET request sets and deletes the variable within same request:
-      # expect(session[:track_event]).to eq('Project creation started')
+      # expect(session[:track_event]).to eq('Appointment creation started')
       expect(controller).to receive(:track_event).with('User registration started')
 
       get :new
@@ -246,16 +246,16 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     context 'when email does not already exist' do
       it 'tracks an event' do
         # The line below doesn't work since the GET request sets and deletes the variable within same request:
-        # expect(session[:track_event]).to eq('Project creation started')
+        # expect(session[:track_event]).to eq('Appointment creation started')
         expect(controller).to receive(:track_event).with('User registration complete')
 
         post :create, params: params
       end
 
-      it 'redirects to the projects page' do
+      it 'redirects to the appointments page' do
         post :create, params: params
 
-        expect(response).to redirect_to projects_path
+        expect(response).to redirect_to appointments_path
       end
 
       it 'adds user to db' do
@@ -291,10 +291,10 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
     before do
       sign_in user
-      session[:return_to] = projects_path
+      session[:return_to] = appointments_path
     end
 
-    it 'we should be on projects path' do
+    it 'we should be on appointments path' do
       put :update, params: params
       
       user.reload
@@ -304,7 +304,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     it 'should redirect to return_to cookie path' do
       put :update, params: params
 
-      expect(response).to redirect_to projects_path
+      expect(response).to redirect_to appointments_path
     end
 
   end
