@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/about', to: 'home#about', as: 'about'
-  get '/podcast', to: 'home#podcast', as: 'podcast'
 
   get '/guidelines', to: 'projects#guidelines', as: 'guidelines'
 
