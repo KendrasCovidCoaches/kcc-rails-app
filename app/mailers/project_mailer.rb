@@ -1,19 +1,19 @@
-class ProjectMailer < ApplicationMailer
+class AppointmentMailer < ApplicationMailer
   def new_volunteer
-    @project = params[:project]
+    @appointment = params[:appointment]
     @user = params[:user]
 
-    mail(to: "<#{@project.user.email}>", bcc: MAILER_BCC, subject: "You got a new volunteer for #{@project.name}!")
+    mail(to: "<#{@appointment.user.email}>", bcc: MAILER_BCC, subject: "You got a new volunteer for #{@appointment.name}!")
   end
 
-  def new_project
-    @project = params[:project]
-    mail(to: "<#{@project.user.email}>", bcc: MAILER_BCC, subject: "You created a new opportunity: #{@project.name}!")
+  def new_appointment
+    @appointment = params[:appointment]
+    mail(to: "<#{@appointment.user.email}>", bcc: MAILER_BCC, subject: "You created a new opportunity: #{@appointment.name}!")
   end
 
   def cancel_volunteer
     @user = params[:user]
-    @project = params[:project]
+    @appointment = params[:appointment]
     mail(to: "<#{@user.email}>", subject: "[ResiTown Sacramento: noreply] Your Request To Volunteer Has Been Canceled")
   end
 
