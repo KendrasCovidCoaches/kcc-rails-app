@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+RSpec.describe Appointment, type: :model do
   let(:user) { build(:user) }
   let(:project) { build(:project, user: user) }
 

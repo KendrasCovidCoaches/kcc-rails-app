@@ -1,4 +1,4 @@
-class Project < ApplicationRecord
+class Appointment < ApplicationRecord
   include HasCoverPhoto
   include PgSearch::Model
 
@@ -128,6 +128,6 @@ class Project < ApplicationRecord
 
   def self.get_featured_projects
     projects_count = Settings.homepage_featured_projects_count
-    Project.where(highlight: true).includes(:project_types, :categories, :locations, :skills, :volunteers).limit(projects_count).order('RANDOM()')
+    Appointment.where(highlight: true).includes(:project_types, :categories, :locations, :skills, :volunteers).limit(projects_count).order('RANDOM()')
   end
 end

@@ -1,6 +1,6 @@
-class CreateProjects < ActiveRecord::Migration[6.0]
+class CreateAppointments < ActiveRecord::Migration[6.0]
   def change
-    create_table :projects do |t|
+    create_table :appointments do |t|
       t.integer :user_id
       t.string :name, null: false, default: ""
       t.string :description, null: false, default: ""
