@@ -81,8 +81,8 @@
                                 <div class="rounded-full p-5 bg-blue-600"><i class="fas fa-building fa-2x fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-600">Total Projects</h5>
-                                <h3 class="font-bold text-3xl"><%=@report.project_count%></h3>
+                                <h5 class="font-bold uppercase text-gray-600">Total Appointments</h5>
+                                <h3 class="font-bold text-3xl"><%=@report.appointment_count%></h3>
                             </div>
                         </div>
                     </div>
@@ -96,8 +96,8 @@
                                 <div class="rounded-full p-5 bg-indigo-600"><i class="fas fa-rocket fa-2x fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-600">Total Volunteered Projects</h5>
-                                <h3 class="font-bold text-3xl"><%=@report.volunteered_project_count%></h3>
+                                <h5 class="font-bold uppercase text-gray-600">Total Volunteered Appointments</h5>
+                                <h3 class="font-bold text-3xl"><%=@report.volunteered_appointment_count%></h3>
                             </div>
                         </div>
                     </div>
@@ -111,8 +111,8 @@
                                 <div class="rounded-full p-5 bg-red-600"><i class="fas fa-building fa-2x fa-inverse"></i></div>
                             </div>
                             <div class="flex-1 text-right md:text-center">
-                                <h5 class="font-bold uppercase text-gray-600">New Projects last 7 days</h5>
-                                <h3 class="font-bold text-3xl"><%=@report.new_project_count%></h3>
+                                <h5 class="font-bold uppercase text-gray-600">New Appointments last 7 days</h5>
+                                <h3 class="font-bold text-3xl"><%=@report.new_appointment_count%></h3>
                             </div>
                         </div>
                     </div>
@@ -233,7 +233,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                            <h5 class="font-bold uppercase text-gray-600">Projects</h5>
+                            <h5 class="font-bold uppercase text-gray-600">Appointments</h5>
                         </div>
                         <div class="p-5">
                             <canvas id="chartjs-2" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -243,7 +243,7 @@
                                     "data": {
                                         "labels": <%=@report.month_labels.to_json.html_safe%>,
                                         "datasets": [{
-                                            "data": <%=@report.project_count_per_month%>,
+                                            "data": <%=@report.appointment_count_per_month%>,
                                             "borderColor": "rgb(75, 192, 192)",
                                             "backgroundColor": "rgba(75, 192, 192, 0.2)",
                                             "borderWidth": 1
@@ -265,7 +265,7 @@
                     <!--Graph Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                            <h5 class="font-bold uppercase text-gray-600">Volunteered Projects</h5>
+                            <h5 class="font-bold uppercase text-gray-600">Volunteered Appointments</h5>
                         </div>
                         <div class="p-5">
                             <canvas id="chartjs-3" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -275,7 +275,7 @@
                                     "data": {
                                         "labels": <%=@report.month_labels.to_json.html_safe%>,
                                         "datasets": [{
-                                            "data": <%=@report.volunteered_project_count_per_month%>,
+                                            "data": <%=@report.volunteered_appointment_count_per_month%>,
                                             "borderColor": "rgb(255, 159, 64)",
                                             "backgroundColor": "rgba(255, 159, 64, 0.2)",
                                             "borderWidth": 1
@@ -297,24 +297,24 @@
                     <!--Table Card-->
                     <div class="bg-white border-transparent rounded-lg shadow-lg">
                         <div class="bg-gray-400 border-b-2 border-gray-500 rounded-tl-lg rounded-tr-lg p-2">
-                            <h5 class="font-bold uppercase text-gray-600">Project Table</h5>
+                            <h5 class="font-bold uppercase text-gray-600">Appointment Table</h5>
                         </div>
                         <div class="p-5">
                             <table class="w-full p-5 text-gray-700 text-center">
                                 <thead>
                                     <tr>
                                         <th class="text-left text-blue-900 text-center">Date</th>
-                                        <th class="text-left text-blue-900 center">Projects</th>
-                                        <th class="text-left text-blue-900 center">Volunteered Projects</th>
+                                        <th class="text-left text-blue-900 center">Appointments</th>
+                                        <th class="text-left text-blue-900 center">Volunteered Appointments</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                  <% @report.project_table.each do |date, project_count, volunteered_project_count| %> 
+                                  <% @report.appointment_table.each do |date, appointment_count, volunteered_appointment_count| %> 
                                     <tr>
                                       <td class="border px-4 py-2"><%= date %></td>
-                                      <td class="border px-4 py-2"><%= project_count %></td>
-                                      <td class="border px-4 py-2"><%= volunteered_project_count %></td>
+                                      <td class="border px-4 py-2"><%= appointment_count %></td>
+                                      <td class="border px-4 py-2"><%= volunteered_appointment_count %></td>
                                     </tr>
                                   <% end %>
                                 </tbody>

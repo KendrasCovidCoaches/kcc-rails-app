@@ -1,8 +1,8 @@
 Hey there!
 
-You got a new volunteer for your project <%= @project.name %>!
+You got a new volunteer for your appointment <%= @appointment.name %>!
 
-Current volunteers are visible on your project page: <%= url_for project_url(@project) %>.
+Current volunteers are visible on your appointment page: <%= url_for appointment_url(@appointment) %>.
 
 Volunteer Details:
 ------------------
@@ -31,8 +31,8 @@ About:
 
 
 Notes:
-<%- if @project.volunteered_users.count >= VOLUNTEERS_REQUIRED_FOR_FUNDING %>
-  * ** Since you have over <%= VOLUNTEERS_REQUIRED_FOR_FUNDING %> volunteers you can now apply for funding. Visit your project page. **
+<%- if @appointment.volunteered_users.count >= VOLUNTEERS_REQUIRED_FOR_FUNDING %>
+  * ** Since you have over <%= VOLUNTEERS_REQUIRED_FOR_FUNDING %> volunteers you can now apply for funding. Visit your appointment page. **
 <%- end -%>
 
 - Your friends at <%= DOMAIN_NAME %>
