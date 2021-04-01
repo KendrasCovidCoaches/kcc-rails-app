@@ -39,9 +39,9 @@
         <%= simple_format @success_story.body, class: 'mt-2 mb-2 leading-loose text-gray-600' %>
       </div>
     </div>
-    <% if @success_story.projects.present? %>
+    <% if @success_story.appointments.present? %>
       <div class="bg-primary-100 text-primary-600 p-8 sm:px-16 md:px-24 font-medium">
-        <%= t('volunteer') %> → <%= @success_story.projects.map { |project| link_to project.name, project, class: 'underline' }.join(' ').html_safe %>.
+        <%= t('volunteer') %> → <%= @success_story.appointments.map { |appointment| link_to appointment.name, appointment, class: 'underline' }.join(' ').html_safe %>.
       </div>
     <% end %>
   </div>

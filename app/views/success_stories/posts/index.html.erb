@@ -3,7 +3,7 @@
 <div class="container">
   <div class="mx-auto w-full text-center mt-6 mb-12">
     <div class="font-bold text-2xl mb-4 text-gray-700"><%= @page_title %></div>
-    <div class="mb-4 leading-tight text-gray-700">How projects bring people together<br/>and the progress they made.</div>
+    <div class="mb-4 leading-tight text-gray-700">How appointments bring people together<br/>and the progress they made.</div>
   </div>
 
   <% if user_signed_in? and current_user.is_admin? %>
@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="border-t border-gray-200 mt-8">
-        <%= paginate @succces_stories, theme: 'projects_paginator' %>
+        <%= paginate @succces_stories, theme: 'appointments_paginator' %>
       </div>
     </div>
   <% else %>
