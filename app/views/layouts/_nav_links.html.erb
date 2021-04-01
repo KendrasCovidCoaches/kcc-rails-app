@@ -1,4 +1,4 @@
-<%= link_to projects_path, class: "#{all_projects_nav_link_class(variant)}" do %>
+<%= link_to appointments_path, class: "#{all_appointments_nav_link_class(variant)}" do %>
   <%= t('find_opportunities') %>
 <% end %>
 
@@ -40,13 +40,13 @@
 
     <div class="md:hidden md:group-hover:flex w-full md:flex-col md:absolute md:z-30 md:nset-auto md:left-0 md:bg-white md:shadow-lg md:p-4 md:w-48 md:text-sm md:space-y-2 md:mt-14">
       <div>
-        <%= link_to volunteered_projects_path, class: "#{volunteered_projects_nav_link_class(variant)}" do %>
-          <%= t('volunteered_projects') %>
+        <%= link_to volunteered_appointments_path, class: "#{volunteered_appointments_nav_link_class(variant)}" do %>
+          <%= t('volunteered_appointments') %>
         <% end %>
       </div>
       <div>
-        <%= link_to own_projects_path, class: "#{own_projects_nav_link_class(variant)}" do %>
-          <%= t('your_projects') %>
+        <%= link_to own_appointments_path, class: "#{own_appointments_nav_link_class(variant)}" do %>
+          <%= t('your_appointments') %>
         <% end %>
       </div>
       <div>
@@ -78,9 +78,9 @@
 <% end %>
 
 <div class="self-center ml-4 mt-1">
-  <%= link_to new_project_path do %>
+  <%= link_to new_appointment_path do %>
     <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
-      <%= t('create_project') %>
+      <%= t('create_appointment') %>
     </button>
   <% end %>
 </div>

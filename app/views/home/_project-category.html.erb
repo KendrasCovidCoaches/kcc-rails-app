@@ -8,14 +8,14 @@
           <%= category[:body] %>
         </div>
         <%= link_to category[:slug], class: 'float-right text-primary-700 font-bold group' do %>
-          See all <%= category[:projects_count] %> <%= 'project'.pluralize category[:projects_count] %> <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'inline-block fill-current transform transition-transform duration-100 -translate-x-1 group-hover:translate-x-0' %>
+          See all <%= category[:appointments_count] %> <%= 'appointment'.pluralize category[:appointments_count] %> <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'inline-block fill-current transform transition-transform duration-100 -translate-x-1 group-hover:translate-x-0' %>
         <% end %>
       </div>
     </div>
   </div>
   <!---
   <%= list_cards do %>
-    <%= render partial: 'projects/project-card', collection: category[:featured_projects], locals: { category: category[:name] }, as: :project, cached: false %>
+    <%= render partial: 'appointments/appointment-card', collection: category[:featured_appointments], locals: { category: category[:name] }, as: :appointment, cached: false %>
   <% end %>
   --->
 </div>
