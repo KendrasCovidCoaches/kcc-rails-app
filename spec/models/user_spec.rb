@@ -61,13 +61,13 @@ RSpec.describe User, type: :model do
   end
 
   describe '#has_correct_skills?' do
-    let(:project) { create(:project, user: user, skill_list: ['Design']) }
+    let(:appointment) { create(:appointment, user: user, skill_list: ['Design']) }
 
     context 'when user does not have correct skills' do
       let(:user) { create(:user, skill_list: ['Legal']) }
 
       it 'returns false' do
-        expect(user.has_correct_skills?(project)).to eq(false)  
+        expect(user.has_correct_skills?(appointment)).to eq(false)  
       end
     end  
 
@@ -75,15 +75,15 @@ RSpec.describe User, type: :model do
       let(:user) { create(:user, skill_list: ['Design']) }
 
       it 'returns true' do
-        expect(user.has_correct_skills?(project)).to eq(true)  
+        expect(user.has_correct_skills?(appointment)).to eq(true)  
       end
     end
 
-    context 'when project requires "Anything"' do
-      let(:project) { create(:project, user: user, skill_list: ['Anything']) }
+    context 'when appointment requires "Anything"' do
+      let(:appointment) { create(:appointment, user: user, skill_list: ['Anything']) }
 
       it 'returns true' do
-        expect(user.has_correct_skills?(project)).to eq(true)  
+        expect(user.has_correct_skills?(appointment)).to eq(true)  
       end
     end
   end
