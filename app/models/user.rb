@@ -12,8 +12,8 @@ class User < ApplicationRecord
   include PgSearch::Model
 
   has_many :appointments, dependent: :destroy
-  has_many :volunteers, dependent: :destroy
-  has_many :requested_appointments, through: :volunteers, source: :appointment, dependent: :destroy
+  has_many :patients, dependent: :destroy
+  has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
 
   has_many :offers
   acts_as_taggable_on :skills

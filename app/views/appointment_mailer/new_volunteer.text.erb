@@ -1,10 +1,10 @@
 Hey there!
 
-You got a new volunteer for your appointment <%= @appointment.name %>!
+You got a new request for your appointment <%= @appointment.name %>!
 
-Current volunteers are visible on your appointment page: <%= url_for appointment_url(@appointment) %>.
+Current requests are visible on your appointment page: <%= url_for appointment_url(@appointment) %>.
 
-Volunteer Details:
+Patient Details:
 ------------------
 
 Name: <%= @user.name %>
@@ -31,8 +31,8 @@ About:
 
 
 Notes:
-<%- if @appointment.requested_users.count >= VOLUNTEERS_REQUIRED_FOR_FUNDING %>
-  * ** Since you have over <%= VOLUNTEERS_REQUIRED_FOR_FUNDING %> volunteers you can now apply for funding. Visit your appointment page. **
+<%- if @appointment.requested_users.count >= PATIENTS_REQUIRED_FOR_FUNDING %>
+  * ** Since you have over <%= PATIENTS_REQUIRED_FOR_FUNDING %> patients you can now apply for funding. Visit your appointment page. **
 <%- end -%>
 
 - Your friends at <%= DOMAIN_NAME %>

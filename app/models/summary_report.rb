@@ -17,7 +17,7 @@ class SummaryReport
     @requested_user_count = User.where("pair_with_appointments = ?","True").count
     @new_user_count = User.where("created_at >= ?", Date.today - 7).count
     @appointment_count = Appointment.all.count
-    @requested_appointment_count = Volunteer.count('DISTINCT appointment_id')
+    @requested_appointment_count = Patient.count('DISTINCT appointment_id')
     @new_appointment_count = Appointment.where("created_at >= ?", Date.today - 7).count
 
     #create input arrays for the user and appointment table, 
@@ -30,7 +30,7 @@ class SummaryReport
 
     @appointment_table = @end_of_month_dates.map { |date|
       [date, Appointment.where("created_at <= ?", date).count,
-      Volunteer.where("created_at <= ?", date).count('DISTINCT appointment_id')]
+      Patient.where("created_at <= ?", date).count('DISTINCT appointment_id')]
     }
 
     #create input for graphs, total for each month
@@ -53,7 +53,7 @@ class SummaryReport
     @requested_appointment_count_per_month = @end_of_month_dates.map { |date|
       bom = date.beginning_of_month
       eom = date.end_of_month
-      Volunteer.where("created_at >= ? and created_at <= ?", bom, eom).count('DISTINCT appointment_id')
+      Patient.where("created_at >= ? and created_at <= ?", bom, eom).count('DISTINCT appointment_id')
     }
 
     @month_labels = @end_of_month_dates.map { |e| e.strftime("%B") }
