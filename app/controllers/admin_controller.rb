@@ -14,7 +14,7 @@ class AdminController < ApplicationController
     @user.destroy!
 
     flash[:notice] = 'User deleted'
-    redirect_to volunteers_path
+    redirect_to patients_path
   end
 
   def toggle_highlight
