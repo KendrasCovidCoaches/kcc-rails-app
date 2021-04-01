@@ -1,14 +1,14 @@
 module AppointmentsHelper
-  def project_row_class(project)
-    if project.highlight
+  def appointment_row_class(appointment)
+    if appointment.highlight
       'border-2 border-orange-300 bg-orange-100'
     else
       'hover:bg-gray-50 focus:outline-none focus:bg-gray-50'
     end
   end
 
-  def is_projects_path
-    request.path == projects_path or request.path.include?('/projects/p') or Settings.project_categories.map(&:slug).include?(params[:category_slug]) or Settings.project_locations.map(&:slug).include?(params[:category_slug])
+  def is_appointments_path
+    request.path == appointments_path or request.path.include?('/appointments/p') or Settings.appointment_categories.map(&:slug).include?(params[:category_slug]) or Settings.appointment_locations.map(&:slug).include?(params[:category_slug])
   end
 
   def format_country(country)
@@ -22,8 +22,8 @@ module AppointmentsHelper
     end
   end
 
-  def project_panel_item(title: '', &block)
-    render layout: 'partials/project-panel-item', locals: {title: title} do
+  def appointment_panel_item(title: '', &block)
+    render layout: 'partials/appointment-panel-item', locals: {title: title} do
       capture(&block)
     end
   end
