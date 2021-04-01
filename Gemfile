@@ -22,6 +22,9 @@ gem 'redis', '~> 4.0'
 # React integration
 gem "react_on_rails", "12.0.0"
 
+# Renaming/Refactoring
+gem 'rails_refactor'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
