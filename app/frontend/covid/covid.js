@@ -4,7 +4,6 @@ import pluralize from 'pluralize'
 import URI from 'urijs'
 import stickybits from 'stickybits';
 import './direct-upload'
-import VolunteerGroups from './volunteer_groups'
 import Project from './project'
 import ProjectForm from './project_form'
 import OfficeHour from './office_hour'
@@ -25,12 +24,9 @@ const Covid = {
       })
     });
 
-    VolunteerGroups.initialize();
     ProjectForm.initialize();
     Project.initialize();
     Resources.initialize();
-    OfficeHour.initialize();
-    OfficeHourForm.initialize();
   },
 
   toggleFiltersOpen() {
