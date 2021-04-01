@@ -1,6 +1,6 @@
 class DataController < ApplicationController
-  def projects
-    respond_with_csv(Project, ["id", "user_id", "name", 
+  def appointments
+    respond_with_csv(Appointment, ["id", "user_id", "name", 
     "description", "created_at", "updated_at", "location", 
     "highlight", "number_of_volunteers", "organization", 
     "level_of_urgency", "start_date", "end_date", 
@@ -11,11 +11,11 @@ class DataController < ApplicationController
   def users
     respond_with_csv(User, ["id", 
     "created_at", "updated_at", "location", 
-    "level_of_availability", "pair_with_projects", "affiliation"])
+    "level_of_availability", "pair_with_appointments", "affiliation"])
   end
 
   def volunteers
-    respond_with_csv(Volunteer, ["id", "user_id", "project_id",
+    respond_with_csv(Volunteer, ["id", "user_id", "appointment_id",
   "created_at", "updated_at"])
   end
 
