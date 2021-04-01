@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe AppointmentsController, type: :controller do
   render_views
 
   let!(:user) { create(:user) }

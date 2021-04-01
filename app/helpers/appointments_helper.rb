@@ -1,4 +1,4 @@
-module ProjectsHelper
+module AppointmentsHelper
   def project_row_class(project)
     if project.highlight
       'border-2 border-orange-300 bg-orange-100'

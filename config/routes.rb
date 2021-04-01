@@ -11,9 +11,9 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about', as: 'about'
 
-  get '/guidelines', to: 'projects#guidelines', as: 'guidelines'
+  get '/guidelines', to: 'appointments#guidelines', as: 'guidelines'
 
-  get '/data/projects',   to: 'data#projects'
+  get '/data/appointments',   to: 'data#appointments'
   get '/data/users',      to: 'data#users'
   get '/data/volunteers', to: 'data#volunteers'
 
@@ -30,11 +30,11 @@ Rails.application.routes.draw do
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end
 
-  get '/projects/p/:page' => 'projects#index', as: 'projects_with_pagination'
+  get '/appointments/p/:page' => 'appointments#index', as: 'appointments_with_pagination'
 
   delete '/images/:resource_name/:resource_id', to: 'images#destroy'
 
-  resources :projects do
+  resources :appointments do
     collection do
       get :volunteered
       get :own
@@ -57,8 +57,8 @@ Rails.application.routes.draw do
   end
 
 
-  get '/:category_slug(/p/:page)', to: 'projects#index', action: :index
-  # get '/:location_slug(/p/:page)', to: 'projects#index', action: :index
+  get '/:category_slug(/p/:page)', to: 'appointments#index', action: :index
+  # get '/:location_slug(/p/:page)', to: 'appointments#index', action: :index
 
 
 end

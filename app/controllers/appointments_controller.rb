@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class AppointmentsController < ApplicationController
   before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :volunteered, :own, :volunteers ]
   before_action :set_project, only: [ :show, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :volunteers ]
   before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :volunteers ]
