@@ -14,30 +14,30 @@ class Appointment < ApplicationRecord
 
   acts_as_taggable_on :skills
   acts_as_taggable_on :categories
-  acts_as_taggable_on :project_types
+  acts_as_taggable_on :appointment_types
   acts_as_taggable_on :locations
   acts_as_taggable_on :completions
 
   pg_search_scope :search, against: %i(name description participants looking_for volunteer_location target_country target_location highlight)
 
   after_save do
-    # expire homepage caches if they contain this project
-    Settings.project_categories.each do |category|
-      cache_key = "project_category_#{category[:name].downcase}_featured_projects"
-      featured_projects = Rails.cache.read cache_key
+    # expire homepage caches if they contain this appointment
+    Settings.appointment_categories.each do |category|
+      cache_key = "appointment_category_#{category[:name].downcase}_featured_appointments"
+      featured_appointments = Rails.cache.read cache_key
 
-      next if featured_projects.blank?
+      next if featured_appointments.blank?
 
-      Rails.cache.delete(cache_key) if featured_projects.map(&:id).include? self.id
+      Rails.cache.delete(cache_key) if featured_appointments.map(&:id).include? self.id
     end
   end
 
-  validates :status, inclusion: { in: Settings.project_statuses }
+  validates :status, inclusion: { in: Settings.appointment_statuses }
 
   before_validation :default_values
 
   def default_values
-    self.status = Settings.project_statuses.first if self.status.blank?
+    self.status = Settings.appointment_statuses.first if self.status.blank?
   end
 
   def to_param
@@ -79,7 +79,7 @@ class Appointment < ApplicationRecord
         :status,
         :short_description
       ],
-      methods: [:to_param, :volunteered_users_count, :project_type_list, :location_list, :category_list, :skill_list]
+      methods: [:to_param, :volunteered_users_count, :appointment_type_list, :location_list, :category_list, :skill_list]
     )
   end
 
@@ -98,14 +98,14 @@ class Appointment < ApplicationRecord
   end
 
   def category
-    project_categories = {}
+    appointment_categories = {}
     begin
-      Settings.project_categories.each do |category|
-        intersection = self.project_type_list.to_a & category['project_types'].to_a
-        project_categories[category.name] = intersection.count
+      Settings.appointment_categories.each do |category|
+        intersection = self.appointment_type_list.to_a & category['appointment_types'].to_a
+        appointment_categories[category.name] = intersection.count
       end
 
-      present_category = project_categories.sort_by { |k, v| v }.reverse.first.first
+      present_category = appointment_categories.sort_by { |k, v| v }.reverse.first.first
     end
 
     present_category
@@ -126,8 +126,8 @@ class Appointment < ApplicationRecord
     end
   end
 
-  def self.get_featured_projects
-    projects_count = Settings.homepage_featured_projects_count
-    Appointment.where(highlight: true).includes(:project_types, :categories, :locations, :skills, :volunteers).limit(projects_count).order('RANDOM()')
+  def self.get_featured_appointments
+    appointments_count = Settings.homepage_featured_appointments_count
+    Appointment.where(highlight: true).includes(:appointment_types, :categories, :locations, :skills, :volunteers).limit(appointments_count).order('RANDOM()')
   end
 end
