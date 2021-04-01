@@ -2,11 +2,11 @@ const AppointmentForm = {
   initialize() {
     $(document).on('turbolinks:load', () => {
       if ($('form.new_appointment,form.edit_appointment').length > 0) {
-        $('input[name="appointment[accepting_volunteers]"]').on('click', function (e) {
+        $('input[name="appointment[accepting_patients]"]').on('click', function (e) {
           AppointmentForm.updateState();
         });
 
-        $('input[name="appointment[accepting_volunteers]"]').on('click', function (e) {
+        $('input[name="appointment[accepting_patients]"]').on('click', function (e) {
           AppointmentForm.updateState();
         });
 
@@ -20,12 +20,12 @@ const AppointmentForm = {
   },
 
   updateState() {
-    if ($('input[name="appointment[accepting_volunteers]"]:checked').val() == 'true') {
-      $('.is-accepting-volunteers').show();
+    if ($('input[name="appointment[accepting_patients]"]:checked').val() == 'true') {
+      $('.is-accepting-patients').show();
       $('#appointment_looking_for').attr('required', 'required');
     }
     else {
-      $('.is-accepting-volunteers').hide();
+      $('.is-accepting-patients').hide();
       $('#appointment_looking_for').removeAttr('required');
     }
 

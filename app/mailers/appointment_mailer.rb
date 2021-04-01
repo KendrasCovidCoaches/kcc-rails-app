@@ -1,9 +1,9 @@
 class AppointmentMailer < ApplicationMailer
-  def new_volunteer
+  def new_patient
     @appointment = params[:appointment]
     @user = params[:user]
 
-    mail(to: "<#{@appointment.user.email}>", bcc: MAILER_BCC, subject: "You got a new volunteer for #{@appointment.name}!")
+    mail(to: "<#{@appointment.user.email}>", bcc: MAILER_BCC, subject: "You got a new patient for #{@appointment.name}!")
   end
 
   def new_appointment
@@ -11,13 +11,13 @@ class AppointmentMailer < ApplicationMailer
     mail(to: "<#{@appointment.user.email}>", bcc: MAILER_BCC, subject: "You created a new opportunity: #{@appointment.name}!")
   end
 
-  def cancel_volunteer
+  def cancel_patient
     @user = params[:user]
     @appointment = params[:appointment]
-    mail(to: "<#{@user.email}>", subject: "[ResiTown Sacramento: noreply] Your Request To Volunteer Has Been Canceled")
+    mail(to: "<#{@user.email}>", subject: "[KCC@noreply] Your Request Has Been Canceled")
   end
 
-  # def volunteer_outreach
+  # def patient_outreach
   #   @user = params[:user]
   #   mail(to: "<#{@user.email}>", reply_to: HWC_EMAIL, subject: "[ResiTown Sacramento - action required] Thank you and an update")
   # end

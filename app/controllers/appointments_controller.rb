@@ -1,7 +1,7 @@
 class AppointmentsController < ApplicationController
-  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :requested, :own, :volunteers ]
-  before_action :set_appointment, only: [ :show, :edit, :update, :destroy, :toggle_volunteer, :completed_volunteer, :volunteers ]
-  before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :volunteers ]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy, :toggle_patient, :completed_patient, :requested, :own, :patients ]
+  before_action :set_appointment, only: [ :show, :edit, :update, :destroy, :toggle_patient, :completed_patient, :patients ]
+  before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :patients ]
   before_action :set_filters_open, only: :index
   before_action :set_appointments_query, only: :index
   before_action :hydrate_appointment_categories, only: :index
@@ -42,7 +42,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       format.html do
-        @appointments_header = I18n.t('appointments_looking_for_volunteers')
+        @appointments_header = I18n.t('appointments_looking_for_patients')
         @appointments_subheader = I18n.t('new_or_established_appointments_helping_with')
         @page_title = I18n.t('all_appointments')
 
@@ -92,9 +92,9 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def volunteers
+  def patients
     respond_to do |format|
-      format.csv { send_data @appointment.requested_users.to_csv, filename: "volunteers-#{Date.today}.csv" }
+      format.csv { send_data @appointment.requested_users.to_csv, filename: "patients-#{Date.today}.csv" }
     end
   end
 
@@ -105,7 +105,7 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = current_user.appointments.new(appointment_params)
-    @appointment.volunteer_location = @appointment.location_list[0]
+    @appointment.patient_location = @appointment.location_list[0]
     respond_to do |format|
       if @appointment.save
         track_event 'Appointment creation complete'
@@ -144,18 +144,18 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def toggle_volunteer
+  def toggle_patient
     if @appointment.requested_users.include?(current_user)
       #byebug
-      @appointment.volunteers.where(user: current_user).destroy_all
+      @appointment.patients.where(user: current_user).destroy_all
       flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
-      AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_volunteer.deliver_now
+      AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_patient.deliver_now
     else
-      params[:volunteer_note] ||= ''
+      params[:patient_note] ||= ''
 
-      Volunteer.create(user: current_user, appointment: @appointment, note: params[:volunteer_note])
+      Patient.create(user: current_user, appointment: @appointment, note: params[:patient_note])
 
-      AppointmentMailer.with(appointment: @appointment, user: current_user, note: params[:volunteer_note]).new_volunteer.deliver_now
+      AppointmentMailer.with(appointment: @appointment, user: current_user, note: params[:patient_note]).new_patient.deliver_now
 
       flash[:notice] = I18n.t('thanks_for_requesting_the_coaches_will_be')
       track_event 'User requested'
@@ -164,13 +164,13 @@ class AppointmentsController < ApplicationController
     redirect_to appointment_path(@appointment)
   end
 
-  def completed_volunteer
+  def completed_patient
     #byebug
     if @appointment.requested_users.include?(current_user)
       #byebug
-      @appointment.volunteers.where(user: current_user).destroy_all
+      @appointment.patients.where(user: current_user).destroy_all
       flash[:notice] = I18n.t('completed')
-      #AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_volunteer.deliver_now
+      #AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_patient.deliver_now
     end
 
     redirect_to requested_appointments_path
@@ -184,7 +184,7 @@ class AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.fetch(:appointment, {}).permit(:name, :organization, :organization_mission, :organization_registered, :level_of_urgency, :level_of_exposure, :description, :participants, :looking_for, :contact, :volunteer_location, :links, :start_date, :end_date, :end_date_recurring, :compensation, :background_screening_required, :progress, :docs_and_demo, :number_of_volunteers, :was_helpful, :exit_comments, :visible, :category_slug, :page, :skill_list => [], :completion_list => [], :category_list => [], :location_list => [], :appointment_type_list => [], :vol_list => [])
+      params.fetch(:appointment, {}).permit(:name, :organization, :organization_mission, :organization_registered, :level_of_urgency, :level_of_exposure, :description, :participants, :looking_for, :contact, :patient_location, :links, :start_date, :end_date, :end_date_recurring, :compensation, :background_screening_required, :progress, :docs_and_demo, :number_of_patients, :was_helpful, :exit_comments, :visible, :category_slug, :page, :skill_list => [], :completion_list => [], :category_list => [], :location_list => [], :appointment_type_list => [], :vol_list => [])
     end
 
     def ensure_owner_or_admin
@@ -202,52 +202,52 @@ class AppointmentsController < ApplicationController
       @appointments = @appointments.tagged_with(params[:appointment_types], any: true, on: :appointment_types) if params[:appointment_types].present?
       @appointments = @appointments.tagged_with(params[:categories], any: true, on: :categories) if params[:categories].present?
       @appointments = @appointments.tagged_with(params[:locations], any: true, on: :locations) if params[:locations].present?
-      @appointments = @appointments.where(accepting_volunteers: params[:accepting_volunteers] == '1') if params[:accepting_volunteers].present?
+      @appointments = @appointments.where(accepting_patients: params[:accepting_patients] == '1') if params[:accepting_patients].present?
       @appointments = @appointments.where(highlight: true) if params[:highlight].present?
       @appointments = @appointments.where(target_country: params[:target_country]) if params[:target_country].present?
       @appointments = @appointments.where(status: params[:status]) if params[:status].present?
 
       if params[:query].present?
-        @appointments = @appointments.search(params[:query]).left_joins(:volunteers).reorder(nil).group(:id)
+        @appointments = @appointments.search(params[:query]).left_joins(:patients).reorder(nil).group(:id)
       else
-        @appointments = @appointments.left_joins(:volunteers).group(:id)
+        @appointments = @appointments.left_joins(:patients).group(:id)
       end
 
       if params[:sort_by]
         @appointments = @appointments.order(get_order_param)
       else
-        @appointments = @appointments.order('highlight DESC, COUNT(volunteers.id) DESC, created_at DESC')
+        @appointments = @appointments.order('highlight DESC, COUNT(patients.id) DESC, created_at DESC')
       end
 
       if params[:appointment_types].present?
         @applied_filters[:appointment_types] = params[:appointment_types]
-        @appointments = @appointments.tagged_with(params[:appointment_types]).left_joins(:volunteers).reorder(nil).group(:id)
+        @appointments = @appointments.tagged_with(params[:appointment_types]).left_joins(:patients).reorder(nil).group(:id)
       else
-        @appointments = @appointments.left_joins(:volunteers).group(:id)
+        @appointments = @appointments.left_joins(:patients).group(:id)
       end
 
       if params[:categories].present?
         @applied_filters[:categories] = params[:categories]
-        @appointments = @appointments.tagged_with(params[:categories]).left_joins(:volunteers).reorder(nil).group(:id)
+        @appointments = @appointments.tagged_with(params[:categories]).left_joins(:patients).reorder(nil).group(:id)
       else
-        @appointments = @appointments.left_joins(:volunteers).group(:id)
+        @appointments = @appointments.left_joins(:patients).group(:id)
       end
 
       if params[:locations].present?
         @applied_filters[:locations] = params[:locations]
-        @appointments = @appointments.tagged_with(params[:locations]).left_joins(:volunteers).reorder(nil).group(:id)
+        @appointments = @appointments.tagged_with(params[:locations]).left_joins(:patients).reorder(nil).group(:id)
       else
-        @appointments = @appointments.left_joins(:volunteers).group(:id)
+        @appointments = @appointments.left_joins(:patients).group(:id)
       end
 
       if params[:skills].present?
         @applied_filters[:skills] = params[:skills]
-        @appointments = @appointments.tagged_with(params[:skills]).left_joins(:volunteers).reorder(nil).group(:id)
+        @appointments = @appointments.tagged_with(params[:skills]).left_joins(:patients).reorder(nil).group(:id)
       else
-        @appointments = @appointments.left_joins(:volunteers).group(:id)
+        @appointments = @appointments.left_joins(:patients).group(:id)
       end
 
-      @appointments = @appointments.includes(:appointment_types, :skills, :categories, :locations, :volunteers)
+      @appointments = @appointments.includes(:appointment_types, :skills, :categories, :locations, :patients)
     end
 
     def ensure_no_legacy_filtering
@@ -275,6 +275,6 @@ class AppointmentsController < ApplicationController
     def get_order_param
       return 'created_at asc' if params[:sort_by] == 'earliest'
       return 'created_at desc' if params[:sort_by] == 'latest'
-      return 'volunteers.count asc' if params[:sort_by] == 'volunteers_needed'
+      return 'patients.count asc' if params[:sort_by] == 'patients_needed'
     end
 end

@@ -9,8 +9,8 @@ class Appointment < ApplicationRecord
   validate :must_have_one_skill, on: :create
   validate :date_order, on: :create
 
-  has_many :volunteers, dependent: :destroy
-  has_many :requested_users, through: :volunteers, source: :user, dependent: :destroy
+  has_many :patients, dependent: :destroy
+  has_many :requested_users, through: :patients, source: :user, dependent: :destroy
 
   acts_as_taggable_on :skills
   acts_as_taggable_on :categories
@@ -18,7 +18,7 @@ class Appointment < ApplicationRecord
   acts_as_taggable_on :locations
   acts_as_taggable_on :completions
 
-  pg_search_scope :search, against: %i(name description participants looking_for volunteer_location target_country target_location highlight)
+  pg_search_scope :search, against: %i(name description participants looking_for patient_location target_country target_location highlight)
 
   after_save do
     # expire homepage caches if they contain this appointment
@@ -48,7 +48,7 @@ class Appointment < ApplicationRecord
     edit_user && (self.user == edit_user || edit_user.is_admin?)
   end
 
-  def volunteer_emails
+  def patient_emails
     self.requested_users.collect { |u| u.email }
   end
 
@@ -65,15 +65,15 @@ class Appointment < ApplicationRecord
         :participants,
         :goal,
         :looking_for,
-        :volunteer_location,
+        :patient_location,
         :target_country,
         :target_location,
         :contact,
         :highlight,
         :progress,
         :docs_and_demo,
-        :number_of_volunteers,
-        :accepting_volunteers,
+        :number_of_patients,
+        :accepting_patients,
         :created_at,
         :updated_at,
         :status,
@@ -128,6 +128,6 @@ class Appointment < ApplicationRecord
 
   def self.get_featured_appointments
     appointments_count = Settings.homepage_featured_appointments_count
-    Appointment.where(highlight: true).includes(:appointment_types, :categories, :locations, :skills, :volunteers).limit(appointments_count).order('RANDOM()')
+    Appointment.where(highlight: true).includes(:appointment_types, :categories, :locations, :skills, :patients).limit(appointments_count).order('RANDOM()')
   end
 end

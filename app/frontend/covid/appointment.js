@@ -1,35 +1,35 @@
 const Appointment = {
   initialize() {
     $(document).on('turbolinks:load', () => {
-      $('.not-accepting-volunteers').click(function (ev) {
-        Appointment.notAcceptingVolunteers(this, ev);
+      $('.not-accepting-patients').click(function (ev) {
+        Appointment.notAcceptingPatients(this, ev);
       });
 
-      $('.volunteer-with-skills').click(function (ev) {
-        Appointment.volunteerWithSkills(this, ev);
+      $('.patient-with-skills').click(function (ev) {
+        Appointment.patientWithSkills(this, ev);
       });
 
-      $('.volunteer-without-skills').click(function (ev) {
-        Appointment.volunteerWithoutSkills(this, ev);
+      $('.patient-without-skills').click(function (ev) {
+        Appointment.patientWithoutSkills(this, ev);
       });
     });
   },
 
-  notAcceptingVolunteers(that, ev) {
+  notAcceptingPatients(that, ev) {
     ev.preventDefault();
     ev.stopPropagation();
 
     const targetHref = $(that).attr('href');
 
-    const headerHTML = I18n.t('this_appointment_is_not_accepting_volunteers');
-    const bodyHTML = I18n.t('we_re_sorry_this_appointment_has_indicated_no_volunteers');
+    const headerHTML = I18n.t('this_appointment_is_not_accepting_patients');
+    const bodyHTML = I18n.t('we_re_sorry_this_appointment_has_indicated_no_patients');
 
     Covid.showModal(headerHTML, bodyHTML, [{ type: 'cancel', text: 'OK' }], 'warning');
 
     return false;
   },
 
-  volunteerWithSkills(that, ev) {
+  patientWithSkills(that, ev) {
     ev.preventDefault();
     ev.stopPropagation();
 
@@ -42,8 +42,8 @@ const Appointment = {
     if (orgStatus == "For-profit") {
       forProfitAlert = `
       <div class="mt-3 text-xs">
-        The U.S. Department of Labor has indicated that volunteers should not provide services equivalent to that of an employee for <span class='text-orange-400'>for-profit</span> private sector employers.<br/><br/>
-        Discuss with the appointment team before proceeding in volunteering.
+        The U.S. Department of Labor has indicated that patients should not provide services equivalent to that of an employee for <span class='text-orange-400'>for-profit</span> private sector employers.<br/><br/>
+        Discuss with the appointment team before proceeding in patienting.
       </div>
       `
     }
@@ -58,9 +58,9 @@ const Appointment = {
       ${I18n.t('optionally_you_can_also_send_them_a_note')}
       <br>
       <div class="mt-3">
-        <label for="volunteer_note" class="sr-only">${I18n.t('volunteer_note')}</label>
+        <label for="patient_note" class="sr-only">${I18n.t('patient_note')}</label>
         <div class="relative rounded-md shadow-sm">
-          <input id="volunteer_note" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="${I18n.t('in_one_sentence_why_are_you_interested')}" />
+          <input id="patient_note" class="form-input block w-full sm:text-sm sm:leading-5" placeholder="${I18n.t('in_one_sentence_why_are_you_interested')}" />
         </div>
       </div>
 
@@ -68,16 +68,16 @@ const Appointment = {
       `;
 
     const callback = () => {
-      const volunteerNote = $("#volunteer_note").val();
-      $.post(targetHref, { volunteer_note: volunteerNote });
+      const patientNote = $("#patient_note").val();
+      $.post(targetHref, { patient_note: patientNote });
     }
 
-    Covid.showModal(headerHTML, bodyHTML, [{ type: 'cancel' }, { type: 'submit', text: I18n.t('volunteer'), callback }], 'warning');
+    Covid.showModal(headerHTML, bodyHTML, [{ type: 'cancel' }, { type: 'submit', text: I18n.t('patient'), callback }], 'warning');
 
     return false;
   },
 
-  volunteerWithoutSkills(that, ev) {
+  patientWithoutSkills(that, ev) {
     ev.preventDefault();
     ev.stopPropagation();
 

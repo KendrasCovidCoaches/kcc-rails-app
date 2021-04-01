@@ -11,7 +11,7 @@ class HomeController < ApplicationController
     # Display the appointments in increments of 50
     @appointment_count = (@appointment_count / 50).floor * 50
 
-    @volunteer_count = Rails.cache.fetch('volunteer_count', expires_in: 1.day) do
+    @patient_count = Rails.cache.fetch('patient_count', expires_in: 1.day) do
       User.count
     end
 

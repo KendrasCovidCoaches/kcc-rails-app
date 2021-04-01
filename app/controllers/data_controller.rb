@@ -2,7 +2,7 @@ class DataController < ApplicationController
   def appointments
     respond_with_csv(Appointment, ["id", "user_id", "name", 
     "description", "created_at", "updated_at", "location", 
-    "highlight", "number_of_volunteers", "organization", 
+    "highlight", "number_of_patients", "organization", 
     "level_of_urgency", "start_date", "end_date", 
     "compensation", "background_screening_required",
     "level_of_exposure", "visible", "was_helpful"])
@@ -14,8 +14,8 @@ class DataController < ApplicationController
     "level_of_availability", "pair_with_appointments", "affiliation"])
   end
 
-  def volunteers
-    respond_with_csv(Volunteer, ["id", "user_id", "appointment_id",
+  def patients
+    respond_with_csv(Patient, ["id", "user_id", "appointment_id",
   "created_at", "updated_at"])
   end
 
