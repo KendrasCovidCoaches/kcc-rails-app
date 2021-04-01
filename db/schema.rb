@@ -146,7 +146,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_165147) do
     t.string "profile_links", default: "", null: false
     t.boolean "visibility", default: false
     t.string "name", default: "", null: false
-    t.string "level_of_availability"
     t.boolean "pair_with_projects", default: false
     t.boolean "deactivated", default: false, null: false
     t.text "office_hour_description"
