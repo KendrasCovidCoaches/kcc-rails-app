@@ -18,11 +18,11 @@ class AdminController < ApplicationController
   end
 
   def toggle_highlight
-    @project = Project.find(params[:project_id])
-    @project.highlight = !@project.highlight
-    @project.save
+    @appointment = Appointment.find(params[:appointment_id])
+    @appointment.highlight = !@appointment.highlight
+    @appointment.save
 
-    flash[:notice] = @project.highlight? ? 'Project highlighted' : 'Removed highlight on project'
-    redirect_to project_path(@project)
+    flash[:notice] = @appointment.highlight? ? 'Appointment highlighted' : 'Removed highlight on appointment'
+    redirect_to appointment_path(@appointment)
   end
 end
