@@ -1,16 +1,16 @@
-const Project = {
+const Appointment = {
   initialize() {
     $(document).on('turbolinks:load', () => {
       $('.not-accepting-volunteers').click(function (ev) {
-        Project.notAcceptingVolunteers(this, ev);
+        Appointment.notAcceptingVolunteers(this, ev);
       });
 
       $('.volunteer-with-skills').click(function (ev) {
-        Project.volunteerWithSkills(this, ev);
+        Appointment.volunteerWithSkills(this, ev);
       });
 
       $('.volunteer-without-skills').click(function (ev) {
-        Project.volunteerWithoutSkills(this, ev);
+        Appointment.volunteerWithoutSkills(this, ev);
       });
     });
   },
@@ -21,8 +21,8 @@ const Project = {
 
     const targetHref = $(that).attr('href');
 
-    const headerHTML = I18n.t('this_project_is_not_accepting_volunteers');
-    const bodyHTML = I18n.t('we_re_sorry_this_project_has_indicated_no_volunteers');
+    const headerHTML = I18n.t('this_appointment_is_not_accepting_volunteers');
+    const bodyHTML = I18n.t('we_re_sorry_this_appointment_has_indicated_no_volunteers');
 
     Covid.showModal(headerHTML, bodyHTML, [{ type: 'cancel', text: 'OK' }], 'warning');
 
@@ -35,7 +35,7 @@ const Project = {
 
     const targetHref = $(that).attr('href');
     const skillsRequired = $(that).attr('x-skills-required').split(', ');
-    const projectName = $(that).attr('x-project-name');
+    const appointmentName = $(that).attr('x-appointment-name');
     const orgStatus = $(that).attr('x-org-status');
 
     let forProfitAlert = '';
@@ -43,18 +43,18 @@ const Project = {
       forProfitAlert = `
       <div class="mt-3 text-xs">
         The U.S. Department of Labor has indicated that volunteers should not provide services equivalent to that of an employee for <span class='text-orange-400'>for-profit</span> private sector employers.<br/><br/>
-        Discuss with the project team before proceeding in volunteering.
+        Discuss with the appointment team before proceeding in volunteering.
       </div>
       `
     }
 
     const headerHTML = I18n.t('you_re_about_to_volunteer');
     const bodyHTML = `
-      ${I18n.t('project_is_looking_for', { project_name: projectName })}
+      ${I18n.t('appointment_is_looking_for', { appointment_name: appointmentName })}
       <br>
       ${Covid.skillBadges(skillsRequired, 'primary')}
       <br>
-      ${I18n.t('are_you_sure_the_project_owner_will_be_alerted')}<br><br>
+      ${I18n.t('are_you_sure_the_appointment_owner_will_be_alerted')}<br><br>
       ${I18n.t('optionally_you_can_also_send_them_a_note')}
       <br>
       <div class="mt-3">
@@ -94,4 +94,4 @@ const Project = {
   }
 }
 
-export default Project;
+export default Appointment;
