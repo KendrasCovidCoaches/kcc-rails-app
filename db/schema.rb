@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_165147) do
+ActiveRecord::Schema.define(version: 2021_04_01_212648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,16 +45,6 @@ ActiveRecord::Schema.define(version: 2020_10_22_165147) do
     t.string "location", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "office_hours", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "participant_id"
-    t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "application_user_ids", default: [], null: false, array: true
   end
 
   create_table "projects", force: :cascade do |t|
