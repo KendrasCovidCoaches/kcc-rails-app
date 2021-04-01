@@ -95,27 +95,27 @@ class ApplicationController < ActionController::Base
 
     end
 
-    def hydrate_project_categories
-      @project_categories = Settings.project_categories
-      @project_locations = Settings.project_locations
+    def hydrate_appointment_categories
+      @appointment_categories = Settings.appointment_categories
+      @appointment_locations = Settings.appointment_locations
 
       exclude_ids = []
-      @project_categories.each do |category|
+      @appointment_categories.each do |category|
         exclude_ids.flatten!
-        category[:featured_projects] = Rails.cache.fetch("project_category_#{category[:name].downcase}_featured_projects", expires_in: 1.hour) { Project.where(highlight: true).includes(:project_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
-        exclude_ids << category[:featured_projects].map(&:id)
+        category[:featured_appointments] = Rails.cache.fetch("appointment_category_#{category[:name].downcase}_featured_appointments", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:appointment_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
+        exclude_ids << category[:featured_appointments].map(&:id)
         # byebug
-        category[:projects_count] = Rails.cache.fetch("project_category_#{category[:name].downcase}_projects_count", expires_in: 1.hour) { Project.tagged_with(category[:name], any: true, on: :categories).count }
+        category[:appointments_count] = Rails.cache.fetch("appointment_category_#{category[:name].downcase}_appointments_count", expires_in: 1.hour) { Appointment.tagged_with(category[:name], any: true, on: :categories).count }
         # byebug
       end
-      @project_locations.each do |location|
+      @appointment_locations.each do |location|
         exclude_ids.flatten!
-        location[:featured_projects] = Rails.cache.fetch("project_location_#{location[:name].downcase}_featured_projects", expires_in: 1.hour) { Project.where(highlight: true).includes(:project_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(location[:name], any: true, on: :locations).limit(3).order('RANDOM()') }
-        exclude_ids << location[:featured_projects].map(&:id)
+        location[:featured_appointments] = Rails.cache.fetch("appointment_location_#{location[:name].downcase}_featured_appointments", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:appointment_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(location[:name], any: true, on: :locations).limit(3).order('RANDOM()') }
+        exclude_ids << location[:featured_appointments].map(&:id)
         # byebug
-        location[:projects_count] = Rails.cache.fetch("project_location_#{location[:name].downcase}_projects_count", expires_in: 1.hour) { Project.tagged_with(location[:name], any: true, on: :locations).count }
+        location[:appointments_count] = Rails.cache.fetch("appointment_location_#{location[:name].downcase}_appointments_count", expires_in: 1.hour) { Appointment.tagged_with(location[:name], any: true, on: :locations).count }
         # byebug
-        # puts location[:projects_count]
+        # puts location[:appointments_count]
       end
     end
 
