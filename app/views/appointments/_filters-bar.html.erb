@@ -6,16 +6,16 @@
         
         <!--
         <div class="flex-1 lg:flex-none mb-2 w-full md:w-auto sm:mb-0 sm:mr-4 md:mb-0 sm:w-auto">
-          <%= filter_bar_filter 'Location', :locations, Settings.project_form_locations.map { |o| [o, o] } %>
+          <%= filter_bar_filter 'Location', :locations, Settings.appointment_form_locations.map { |o| [o, o] } %>
         </div>
         -->
 
         <div class="flex-1 lg:flex-none mb-2 w-full md:w-auto sm:mb-0 sm:mr-4 md:mb-0 sm:w-auto">
-          <%= filter_bar_filter 'Category', :categories, Settings.project_form_categories.map { |o| [o, o] } %>
+          <%= filter_bar_filter 'Category', :categories, Settings.appointment_form_categories.map { |o| [o, o] } %>
         </div>
         
         <div class="flex-1 lg:flex-none mb-2 w-full md:w-auto sm:mb-0 sm:mr-4 md:mb-0 sm:w-auto">
-          <%= filter_bar_filter 'Project Types', :project_types, Settings.project_types.map { |o| [o, o] } %>
+          <%= filter_bar_filter 'Appointment Types', :appointment_types, Settings.appointment_types.map { |o| [o, o] } %>
         </div>
 
         <div class="flex-1 lg:flex-none mb-2 w-full md:w-auto sm:mb-0 sm:mr-4 md:mb-0 sm:w-auto">
@@ -26,7 +26,7 @@
 
         </div>
         <div class="flex-1 lg:flex-none mb-2 w-full md:w-auto sm:mb-0 md:mb-0 sm:w-auto">
-          <%= filter_bar_filter 'Status', :status, Settings.project_statuses.map { |o| [o, o] }  %>
+          <%= filter_bar_filter 'Status', :status, Settings.appointment_statuses.map { |o| [o, o] }  %>
         </div>
         -->
       </div>
