@@ -18,7 +18,7 @@ TWITTER_LINK = 'http://twitter.com/_Resitown'
 NEWSLETTER_LINK = 'https://landing.mailerlite.com/webforms/landing/p8i0f4 '
 LOCAL_AFFILIATES = 'University of Georgia, UNG, Piedmont College, etc.'
 GITHUB_LINK = 'https://github.com/Community-Connections-Sacramento/resi-town'
-ALL_PROJECT_TYPES = [
+ALL_APPOINTMENT_TYPES = [
     'Contact tracing',
     'Reduce spread',
     'Healthcare',
