@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Volunteer, type: :model do
+RSpec.describe Applicant, type: :model do
   let!(:user) { create(:user) }
   let!(:appointment) { create(:appointment, user: user) }
 
