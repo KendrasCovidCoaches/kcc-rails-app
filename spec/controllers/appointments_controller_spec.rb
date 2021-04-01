@@ -197,7 +197,7 @@ RSpec.describe AppointmentsController, type: :controller do
       fail
     end
 
-    it 'unvolunteers you if you had already volunteered' do
+    it 'unrequests you if you had already requested' do
       pending 'TODO'
       fail
     end
