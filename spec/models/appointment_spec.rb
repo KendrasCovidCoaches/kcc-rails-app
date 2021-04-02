@@ -20,9 +20,9 @@ RSpec.describe Appointment, type: :model do
     expect(appointment).to_not be_valid
   end
 
-  it 'accepting_volunteers defaults true' do
+  it 'accepting_patients defaults true' do
     appointment = build(:appointment, user: nil)
-    expect(appointment.accepting_volunteers).to eq(true)
+    expect(appointment.accepting_patients).to eq(true)
   end
 
   describe 'can_edit?' do
