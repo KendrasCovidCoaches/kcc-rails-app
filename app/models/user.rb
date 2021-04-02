@@ -54,7 +54,7 @@ class User < ApplicationRecord
   end
 
   def is_patient?
-    !COACHES.include(self.email)
+    !COACHES.include?(self.email)
   end
 
   def to_param

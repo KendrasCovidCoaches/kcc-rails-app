@@ -1,5 +1,5 @@
-<%= link_to appointments_path, class: "#{all_appointments_nav_link_class(variant)}" do %>
-  <%= t('find_opportunities') %>
+<%= link_to resources_path, class: "#{all_appointments_nav_link_class(variant)}" do %>
+  Self-Booking Resources
 <% end %>
 
 <% if current_user %>
@@ -10,25 +10,27 @@
 
     <div class="md:hidden md:group-hover:flex w-full md:flex-col md:absolute md:z-30 md:nset-auto md:left-0 md:bg-white md:shadow-lg md:p-4 md:w-48 md:text-sm md:space-y-2 md:mt-14">
       <div>
-        <%= link_to requested_appointments_path, class: "#{requested_appointments_nav_link_class(variant)}" do %>
-          <%= t('requested_appointments') %>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to own_appointments_path, class: "#{own_appointments_nav_link_class(variant)}" do %>
-          <%= t('your_appointments') %>
-        <% end %>
-      </div>
-      <div>
         <%= link_to edit_user_registration_path, class: "#{profile_nav_link_class(variant)}" do %>
           <%= t('your_profile') %>
         <% end %>
       </div>
+      <% if current_user.is_patient?%>
+      <div>
+        <%= link_to requested_appointments_path, class: "#{requested_appointments_nav_link_class(variant)}" do %>
+          <%= t('requested_appointments') %>
+        <% end %>
+      </div>
+      <% end %>
       <% if current_user.is_coach?%>
       <div>
           <%= link_to admin_path, class: "#{admin_nav_link_class(variant)}" do %>
             <%= t('dashboard') %>
           <% end %>
+      </div>
+      <div>
+        <%= link_to own_appointments_path, class: "#{own_appointments_nav_link_class(variant)}" do %>
+          <%= t('your_appointments') %>
+        <% end %>
       </div>
       <% end %>
       <div>
@@ -43,6 +45,15 @@
   <%= link_to new_appointment_path do %>
     <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('create_appointment') %>
+    </button>
+  <% end %>
+</div>
+<% end %>
+<% if current_user.is_patient?%>
+  <div class="self-center ml-4 mt-1">
+  <%= link_to new_appointment_path do %>
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+      <%= t('request_appointment') %>
     </button>
   <% end %>
 </div>

@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if @user.blank? || !@user.is_visible_to_user?(current_user)
       flash[:error] = I18n.t('sorry_no_such_user')
-      redirect_to appointments_path
+      redirect_to root_path
     end
   end
 

@@ -39,6 +39,7 @@ en:
   dashboard: "Dashboard"
   log_out: "Log out"
   create_appointment: "Create Appointment"
+  request_appointment: "Request Appointment"
   funding_patients_research_resources: "Funding, Patients, & Research Resources"
   for_instance_amazon_free_aws_hosting: "For instance: Amazon - free AWS hosting."
   describe_the_resource: "Describe the resource"
