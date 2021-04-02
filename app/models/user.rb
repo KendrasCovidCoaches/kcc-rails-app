@@ -13,7 +13,6 @@ class User < ApplicationRecord
 
   has_many :appointments #, dependent: :destroy
   has_many :patients, dependent: :destroy
-  has_many :coaches, dependent: :destroy
   has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
 
   acts_as_taggable_on :skills
