@@ -47,10 +47,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :offers
-
-  resources :success_stories
-
   scope 'admin' do
     post :delete_user, to: 'admin#delete_user', as: 'delete_user'
     # post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_appointment_highlight'

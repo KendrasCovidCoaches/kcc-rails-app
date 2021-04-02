@@ -11,11 +11,10 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
-  has_many :appointments, dependent: :destroy
+  has_many :appointments #, dependent: :destroy
   has_many :patients, dependent: :destroy
   has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
 
-  has_many :offers
   acts_as_taggable_on :skills
 
   pg_search_scope :search, against: %i(name email about location level_of_availability)
