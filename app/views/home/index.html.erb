@@ -6,14 +6,13 @@
   <div class="container text-center mb-24">
     <h1 class="text-2xl sm:text-4xl text-pink-500 font-bold tracking-tight leading-tight"><%= @home_header %></h1>
     <h2 class="sm:text-2xl tracking-tight leading-tight mt-2">
-    We are a non-profit dedicated to bringing people together and activating positive change. In the face of COVID-19, we want 
-    to help local economies thrive by connecting individuals with meaningful opportunities—starting with <%= CITY_NAME %>, CA.
+    We are a group of volunteers dedicated to helping find Covid-19 vaccination appointments for those in need. Resources for self-booking are also available!
     </h2>
     <h3 class="sm:text-xl tracking-tight leading-tight mt-2">
     Our web-based platform allows you to sign-up for local opportunities - both in-person and remote. Instructions <%= link_to "here", about_path(anchor: 'how-it-works'), class: 'font-bold' %>.
     </h3>
     <h3 class="sm:text-xl tracking-tight leading-tight mt-2">
-    Welcome to the ResiTown family!
+    Welcome to the Kendra's Covid Coaches family!
     </h3>
 
     <div class="relative w-64 mx-auto">
@@ -31,41 +30,5 @@
   </div>
   </div>
 </div>
-  <!-- Featured appointments -->
-  <div class="relative container z-10 pb-4">
-    <%= render partial: 'partials/featured-appointments', locals: {appointments: @featured_appointments, category: nil} %>
-  </div>
-</div>
-
-<!-- Appointment categories -->
-<div class="relative featured-categories bg-primary-600 color-white pt-32 mb-16 sm:-mt-12 xl:-mt-24">
-  <div class="container z-10 grid grid-cols-1 sm:grid-cols-2 gap-12 sm:gap-4 md:gap-12 lg:gap-24 xl:gap-48 pb-24 sm:py-20 px-12 sm:px-0 lg:px-12 xl:px-24">
-    <%= link_to appointments_path, class: 'relative z-10 text-white text-center group h-full flex flex-col justify-between' do %>
-      <div class="rounded-full bg-white fill-current text-primary-600 w-24 h-24 flex justify-center items-center mx-auto my-4">
-        <%= inline_svg_pack_tag "media/svgs/for-patients.svg", class: 'text-primary-600' %>
-      </div>
-      <div class="font-bold text-lg mb-4">For Patients</div>
-      <div class="mb-4 leading-tight">Support our community by patienting for appointments with local organizations.</div>
-      <div>See all <%= @appointment_count_total %> appointments <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'inline-block fill-current transform transition-transform duration-100 group-hover:translate-x-1' %></div>
-    <% end %>
-    <%= link_to new_appointment_path, class: 'relative z-10 text-white text-center group h-full flex flex-col justify-between' do %>
-      <div class="rounded-full bg-white fill-current text-primary-600 w-24 h-24 flex justify-center items-center mx-auto my-4">
-        <%= inline_svg_pack_tag "media/svgs/for-organizations.svg", class: 'text-primary-600' %>
-      </div>
-      <div class="font-bold text-lg mb-4">For Organizations</div>
-      <div class="mb-4 leading-tight">Find the patients you need by posting your on-site or remote appointment.</div>
-      <div>Create Appointment <%= inline_svg_pack_tag 'media/svgs/chevron-right.svg', class: 'inline-block fill-current transform transition-transform duration-100 group-hover:translate-x-1' %></div>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="container">
-  <% cache @appointment_locations do %>
-    <%= render partial: 'appointment-location', collection: @appointment_locations, as: :location %>
-  <% end %>
-  <% cache @appointment_categories do %>
-    <%= render partial: 'appointment-category', collection: @appointment_categories, as: :category %>
-  <% end %>
-</div>
+  
 

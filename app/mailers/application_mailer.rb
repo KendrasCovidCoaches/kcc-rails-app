@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "ResiTown #{CITY_NAME} <info@sacconect.com>"
+  default from: "Kendra\'s Covid Coaches <-please-change-to-correct-email@address.com>"
   layout 'mailer'
 end

@@ -19,6 +19,6 @@ class AppointmentMailer < ApplicationMailer
 
   # def patient_outreach
   #   @user = params[:user]
-  #   mail(to: "<#{@user.email}>", reply_to: HWC_EMAIL, subject: "[ResiTown Sacramento - action required] Thank you and an update")
+  #   mail(to: "<#{@user.email}>", reply_to: HWC_EMAIL, subject: "[KCC - action required] Thank you and an update")
   # end
 end
