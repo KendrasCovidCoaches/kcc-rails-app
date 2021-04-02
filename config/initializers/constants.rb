@@ -1,5 +1,5 @@
 ALL_AVAILABILITY = [ '1-2 hours a day', '2-4 hours a day', '4+ hours a day', 'Only on Weekends', 'Full Time' ].freeze
-ALL_NUMBER_OF_VOLUNTEERS = [ '1-10', '10-50', '50-100', '100+' ]
+ALL_NUMBER_OF_PATIENTS = [ '1-10', '10-50', '50-100', '100+' ]
 ALL_LEVELS_OF_URGENCY = [ 'Extremely urgent', 'Very urgent', 'Moderately urgent', 'Somewhat urgent', 'Not urgent' ]
 ALL_LEVELS_OF_EXPOSURE = [ 'I', 'II', 'III', 'IV', 'V' ]
 REMOTE_LOCATION = 'Remote'
@@ -40,5 +40,5 @@ ALL_APPOINTMENT_TYPES = [
 ].freeze
 
 BLANK_SLATE_TRAINING_STATUS_URL = 'https://app.blankslatetechnologies.com/sreo/v0.1/app/covidvolunteers/user/check-status'
-VOLUNTEERS_REQUIRED_FOR_FUNDING = 50
-MAX_VOLUNTEERS_FOR_HIGHLIGHT_OFFER = 30
+PATIENTS_REQUIRED_FOR_FUNDING = 50
+MAX_PATIENTS_FOR_HIGHLIGHT_OFFER = 30

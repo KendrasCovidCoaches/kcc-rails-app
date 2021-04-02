@@ -23,20 +23,20 @@ RSpec.describe AppointmentsController, type: :controller do
       expect(json[0]['to_param']).to be_present
     end
 
-    describe 'Volunteering' do
-      let!(:no_volunteers_appointment) { create(:appointment, user: user, accepting_volunteers: false) }
+    describe 'Requesting' do
+      let!(:no_patients_appointment) { create(:appointment, user: user, accepting_patients: false) }
 
-      it 'filters by ?accepting_volunteers=0' do
-        get :index, params: { accepting_volunteers: '0' }
+      it 'filters by ?accepting_patients=0' do
+        get :index, params: { accepting_patients: '0' }
         expect(response).to be_successful
-        expect(assigns(:appointments)).to include(no_volunteers_appointment)
+        expect(assigns(:appointments)).to include(no_patients_appointment)
         expect(assigns(:appointments)).to_not include(appointment)
       end
 
-      it 'filters by ?accepting_volunteers=1' do
-        get :index, params: { accepting_volunteers: '1' }
+      it 'filters by ?accepting_patients=1' do
+        get :index, params: { accepting_patients: '1' }
         expect(response).to be_successful
-        expect(assigns(:appointments)).to_not include(no_volunteers_appointment)
+        expect(assigns(:appointments)).to_not include(no_patients_appointment)
         expect(assigns(:appointments)).to include(appointment)
       end
 
@@ -73,33 +73,33 @@ RSpec.describe AppointmentsController, type: :controller do
       expect(response).to be_successful
       expect(json['name']).to eq(appointment.name)
       expect(json['description']).to eq(appointment.description)
-      expect(json['volunteer_location']).to eq(appointment.volunteer_location)
-      expect(json['accepting_volunteers']).to eq(appointment.accepting_volunteers)
+      expect(json['patient_location']).to eq(appointment.patient_location)
+      expect(json['accepting_patients']).to eq(appointment.accepting_patients)
       expect(json['to_param']).to eq(appointment.to_param)
     end
 
-    describe 'Volunteering' do
-      it 'hide volunteer info' do
-        appointment.number_of_volunteers = '100'
-        appointment.accepting_volunteers = false
+    describe 'Requesting' do
+      it 'hide patient info' do
+        appointment.number_of_patients = '100'
+        appointment.accepting_patients = false
         appointment.save
         get :show, params: { id: appointment.to_param }
         expect(response).to be_successful
-        expect(response.body).to_not include('Number of volunteers')
-        expect(response.body).to_not include('Sign up to volunteer')
+        expect(response.body).to_not include('Number of patients')
+        expect(response.body).to_not include('Sign up to request')
       end
 
-      it 'show volunteer info' do
-        appointment.number_of_volunteers = '100'
-        appointment.accepting_volunteers = true
+      it 'show patient info' do
+        appointment.number_of_patients = '100'
+        appointment.accepting_patients = true
         appointment.save
         get :show, params: { id: appointment.to_param }
         expect(response).to be_successful
-        expect(response.body).to include('Number of volunteers')
-        expect(response.body).to include('Sign up to volunteer')
+        expect(response.body).to include('Number of patients')
+        expect(response.body).to include('Sign up to request')
       end
 
-      it 'shows volunteer button if your profile is complete' do
+      it 'shows patient button if your profile is complete' do
         user = create(:user_complete_profile)
         sign_in user
         user.skill_list.add('Design')
@@ -107,14 +107,14 @@ RSpec.describe AppointmentsController, type: :controller do
         appointment.skill_list.add('Design')
         appointment.save
         get :show, params: { id: appointment.to_param }
-        expect(response.body).to include('volunteers-btn')
+        expect(response.body).to include('patients-btn')
       end
 
-      it 'shows volunteer filled button if you dont have the right skills' do
+      it 'shows patient filled button if you dont have the right skills' do
         user = create(:user_complete_profile)
         sign_in user
         get :show, params: { id: appointment.to_param }
-        expect(response.body).to include('volunteers-filled-btn')
+        expect(response.body).to include('patients-filled-btn')
       end
     end
   end
@@ -170,12 +170,12 @@ RSpec.describe AppointmentsController, type: :controller do
   end
 
   describe 'PUT #update' do
-    it 'updating accepting_volunteers works' do
+    it 'updating accepting_patients works' do
       sign_in user
-      expect(appointment.accepting_volunteers).to eq(true)
-      put :update, params: { id: appointment.id, appointment: { accepting_volunteers: false } }
+      expect(appointment.accepting_patients).to eq(true)
+      put :update, params: { id: appointment.id, appointment: { accepting_patients: false } }
       expect(response).to be_redirect
-      expect(assigns(:appointment).accepting_volunteers).to eq(false)
+      expect(assigns(:appointment).accepting_patients).to eq(false)
     end
   end
 
@@ -186,13 +186,13 @@ RSpec.describe AppointmentsController, type: :controller do
     end
   end
 
-  describe 'POST #toggle_volunteer' do
-    it 'volunteers you if you are not currently a volunteer' do
+  describe 'POST #toggle_patient' do
+    it 'requests you if you are not currently a patient' do
       pending 'TODO'
       fail
     end
 
-    it 'tracks an event if you are not currently a volunteer' do
+    it 'tracks an event if you are not currently a patient' do
       pending 'TODO'
       fail
     end

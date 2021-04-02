@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/data/appointments',   to: 'data#appointments'
   get '/data/users',      to: 'data#users'
-  get '/data/volunteers', to: 'data#volunteers'
+  get '/data/patients', to: 'data#patients'
 
   # get '/reports', to: "reports#index"
 
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_scope :user do
     get '/users/p/:page' => 'users/registrations#index', as: 'users_with_pagination'
-    get 'users', to: 'users/registrations#index', as: 'volunteers'
+    get 'users', to: 'users/registrations#index', as: 'patients'
     get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end
 
@@ -41,9 +41,9 @@ Rails.application.routes.draw do
     end
 
     member do
-      post :toggle_volunteer
-      post :completed_volunteer
-      get :volunteers
+      post :toggle_patient
+      post :completed_patient
+      get :patients
     end
   end
 

@@ -11,7 +11,7 @@ FactoryBot.define do
     links { Faker::Internet.url }
   end
 
-  factory :volunteer_group do
+  factory :patient_group do
   end
 
   factory :user do
@@ -45,7 +45,7 @@ FactoryBot.define do
   factory :appointment do
     name { 'My First Appointment' }
     description { 'My description' }
-    volunteer_location { 'location' }
+    patient_location { 'location' }
     status { Settings.appointment_statuses.first }
   end
 
@@ -53,7 +53,7 @@ FactoryBot.define do
     appointment_type_list { ['Track the outbreak'] }
   end
 
-  factory :volunteer do
+  factory :patient do
     # ...
   end
 

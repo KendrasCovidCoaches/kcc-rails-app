@@ -41,7 +41,7 @@
     </div>
     <% if @success_story.appointments.present? %>
       <div class="bg-primary-100 text-primary-600 p-8 sm:px-16 md:px-24 font-medium">
-        <%= t('volunteer') %> → <%= @success_story.appointments.map { |appointment| link_to appointment.name, appointment, class: 'underline' }.join(' ').html_safe %>.
+        <%= t('patient') %> → <%= @success_story.appointments.map { |appointment| link_to appointment.name, appointment, class: 'underline' }.join(' ').html_safe %>.
       </div>
     <% end %>
   </div>

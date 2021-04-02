@@ -6,13 +6,13 @@ site_subtitle: 'Helping facilitate vaccination appointments for central Texas'
 
 # Site features
 features_enabled:
-  volunteer_directory: false
+  patient_directory: false
   resources: true
   # office_hours: false
   # success_stories: false
 
-# These are the skills that volunteers can have and appointments can request.
-volunteer_skills:
+# These are the skills that patients can have and appointments can request.
+patient_skills:
   - Analytics
   - Biology
   - Biotech
@@ -45,16 +45,16 @@ volunteer_skills:
   - Tutoring
   - Other
 
-# Availability windows that are suggested to volunteers
-volunteer_availabilities:
+# Availability windows that are suggested to patients
+patient_availabilities:
   - '1-2 hours a day'
   - '2-4 hours a day'
   - '4+ hours a day'
   - 'Only on Weekends'
   - 'Full Time'
 
-# Options for how many volunteers a appointment might request
-volunteers_needed_for_appointment:
+# Options for how many patients a appointment might request
+patients_needed_for_appointment:
   - '1-10'
   - '10-50'
   - '50-100'
@@ -65,7 +65,7 @@ appointment_types:
   - Help Out Communities
   - Job Placement
   - Other
-  - Map Volunteers To Needs
+  - Map Patients To Needs
   - Mental Health
   - News and Information
   - Social Giving
@@ -82,9 +82,9 @@ organization_statuses:
   - 'Not incorporated'
 
 
-# If a appointment has less than N volunteers
+# If a appointment has less than N patients
 # it can ask to be highlighted.
-max_volunteers_for_highlight_offer: 30
+max_patients_for_highlight_offer: 30
 
 appointment_form_locations:
   - On-Site
@@ -100,7 +100,7 @@ appointment_form_categories:
 appointment_locations:
   - name: On-Site
     slug: on-site
-    body: In-person volunteer opportunities
+    body: In-person patient opportunities
     appointment_types:
       - Job Placement
       - Mental Health
@@ -109,10 +109,10 @@ appointment_locations:
     image: on-site
   - name: Remote
     slug: remote
-    body: Volunteer opportunities that can be performed remotely and safely from your home
+    body: Patient opportunities that can be performed remotely and safely from your home
     appointment_types:
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -120,7 +120,7 @@ appointment_locations:
     image: remote
   - name: Driving
     slug: driving
-    body: Volunteer opportunities that require a vehicle
+    body: Patient opportunities that require a vehicle
     appointment_types:
       - Job Placement
       - Mental Health
@@ -136,7 +136,7 @@ appointment_categories:
       - Job Placement
       - Mental Health
       - Help Out Communities
-      - Map Volunteers To Needs
+      - Map Patients To Needs
     color: blue
     image: ongoing
   - name: Internships
@@ -144,7 +144,7 @@ appointment_categories:
     body: Turn your love of helping others into a career
     appointment_types:
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -152,7 +152,7 @@ appointment_categories:
     image: internships
   - name: One-Time
     slug: one-time
-    body: Volunteer opportunities requiring less that 2 hours of your time
+    body: Patient opportunities requiring less that 2 hours of your time
     appointment_types:
       - Job Placement
       - Mental Health
@@ -166,7 +166,7 @@ appointment_categories:
       - News and Information
       - Social Giving
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -175,7 +175,7 @@ appointment_categories:
 
 global_announcements:
 #  - title: Helpful resources for your appointments
-#    sub_title: We wrote a playbook on how to manage volunteers, had some amazing panels, and gathered some deals for you.
+#    sub_title: We wrote a playbook on how to manage patients, had some amazing panels, and gathered some deals for you.
 #    cta_text: Browse resources
 #    cta_url: /offers
 
@@ -205,7 +205,7 @@ events:
     cta_text: View recording
     cta_url: https://openai.zoom.us/rec/share/3dZaM6vJy1NJfp3c2UHkfa8oQL-7T6a82yRN-fsOmkl9jfRS3GPg-L-gS4Y9zJu3
   - title: Live panel on How to Scale Volunteers
-    sub_title: Glen Moriarty, founder of 7cups on how he manages 320k volunteers.
+    sub_title: Glen Moriarty, founder of 7cups on how he manages 320k patients.
     cta_text: View recording
     cta_url: https://openai.zoom.us/rec/play/vZN-dbuq-m03TNKSsASDAfEtW466J6qs1XQWrvtYxRvmU3QDNVv0NLJGYbffjdiMo1gf68qHVnbe2mOi?continueMode=true
   - title: Live panel on Picking Ideas to Work On

@@ -28,7 +28,7 @@ RSpec.describe AdminController, type: :controller do
     it "works if you're signed-in as an admin" do
       sign_in(admin)
       post :delete_user, params: valid_params
-      expect(response).to redirect_to(volunteers_path)
+      expect(response).to redirect_to(patients_path)
       expect(flash[:notice]).to match(/User deleted/)
     end
 
