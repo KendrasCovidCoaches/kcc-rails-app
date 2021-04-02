@@ -12,7 +12,7 @@
     <div class="mt-6 sm:mt-5">
       <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('title_of_volunteer_position') %><span class="text-red-500">*</span>
+          <%= t('title_of_appointment') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
@@ -84,7 +84,7 @@
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="description" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('describe_your_appointment_and_the_volunteer_position.') %><span class="text-red-500">*</span>
+          <%= t('describe_your_appointment') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
@@ -104,7 +104,7 @@
           <div class="max-w-lg flex rounded-md shadow-sm">
             <%= f.text_field "contact", class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
-          <p class="mt-2 text-sm text-gray-500"><%= t('you_ll_get_an_email_when_a_volunteer_applies_but_p') %></p>
+          <p class="mt-2 text-sm text-gray-500"><%= t('you_ll_get_an_email_when_a_patient_applies_but_p') %></p>
         </div>
       </div>
 
@@ -125,10 +125,10 @@
   <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">
-        <%= t('volunteer_information') %>
+        <%= t('patient_information') %>
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-        <%= t('tell_us_what_you_are_looking_for_in_volunteers') %>
+        <%= t('tell_us_what_you_are_looking_for_in_patients') %>
       </p>
     </div>
 
@@ -139,20 +139,20 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('are_you_actively_looking_for_volunteers') %>
+                  <%= t('are_you_actively_looking_for_patients') %>
                 </legend>
                 <div class="text-sm text-gray-500"><%= t('you_can_always_change_this_later') %></div>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
                   <div class="block">
-                    <%= f.radio_button :accepting_volunteers, true, checked: @appointment.new_record? ? true : @appointment.accepting_volunteers, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
-                    <%= f.label :accepting_volunteers, t('yes_volunteers_will_be_able_to_apply'), value: "true", class: "pl-2 text-sm text-gray-700"  %>
+                    <%= f.radio_button :accepting_patients, true, checked: @appointment.new_record? ? true : @appointment.accepting_patients, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :accepting_patients, t('yes_patients_will_be_able_to_apply'), value: "true", class: "pl-2 text-sm text-gray-700"  %>
                   </div>
 
                   <div class="block">
-                    <%= f.radio_button :accepting_volunteers, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
-                    <%= f.label :accepting_volunteers, t('no_we_have_all_the_people_and_resources_we_need_at'), value: "false", class: "pl-2 text-sm text-gray-700" %>
+                    <%= f.radio_button :accepting_patients, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :accepting_patients, t('no_we_have_all_the_people_and_resources_we_need_at'), value: "false", class: "pl-2 text-sm text-gray-700" %>
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
@@ -172,7 +172,7 @@
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
-                  <% Settings.volunteer_skills.each do |skill| %>
+                  <% Settings.patient_skills.each do |skill| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
                         <%= f.check_box :skill_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, skill, nil %>
@@ -191,25 +191,25 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('number_of_volunteers_needed') %>
+                  <%= t('number_of_patients_needed') %>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
-                  <% Settings.volunteers_needed_for_appointment.each do |number_of_volunteers| %>
+                  <% Settings.patients_needed_for_appointment.each do |number_of_patients| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.radio_button :number_of_volunteers, number_of_volunteers, { :multiple => false, class:  "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
+                        <%= f.radio_button :number_of_patients, number_of_patients, { :multiple => false, class:  "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label class="font-medium text-gray-700">
-                          <%= number_of_volunteers %>
+                          <%= number_of_patients %>
                         </label>
                       </div>
                     </div>
@@ -321,7 +321,7 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
@@ -352,7 +352,7 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">

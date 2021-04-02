@@ -38,30 +38,30 @@
           </span>
 
           <% if @appointment.requested_users.count > 0 %>
-            <% volunteer_emails = @appointment.volunteer_emails %>
+            <% patient_emails = @appointment.patient_emails %>
 
             <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
-              <%= mail_to current_user.email, target: :_blank, bcc: volunteer_emails.join(', ') do %>
+              <%= mail_to current_user.email, target: :_blank, bcc: patient_emails.join(', ') do %>
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
                   </svg>
                   <span>
-                    <%= t('send_email_to_volunteers') %>
+                    <%= t('send_email_to_patients') %>
                   </span>
                 </button>
               <% end %>
             </span>
 
             <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
-              <%= link_to volunteers_appointment_path(@appointment, format: 'csv') do %>
+              <%= link_to patients_appointment_path(@appointment, format: 'csv') do %>
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
                   </svg>
                   <span>
-                    <%= t('export_volunteers_to_csv') %>
+                    <%= t('export_patients_to_csv') %>
                   </span>
                 </button>
               <% end %>
@@ -123,7 +123,7 @@
   <% end %>
 
   <!--
-  <% if current_user && @appointment.requested_users.count < Settings.max_volunteers_for_highlight_offer && @appointment.user == current_user && !cookies[:highlight_appointments_alert] %>
+  <% if current_user && @appointment.requested_users.count < Settings.max_patients_for_highlight_offer && @appointment.user == current_user && !cookies[:highlight_appointments_alert] %>
     <div class="bg-white mt-6 mb-8 border-2 border-orange-300 bg-orange-100 shadow sm:rounded-lg" id="disable_highlight_appointments_container">
       <div class="px-4 py-5 sm:p-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -147,7 +147,7 @@
 
   <div>
     <div class="overflow-hidden sticky top-10 z-40 mb-8 sm:hidden">
-      <%= render partial: 'volunteer_button' %>
+      <%= render partial: 'patient_button' %>
     </div>
     <div class="mt-0 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden sm:mx-0 sm:grid sm:grid-cols-2">
       <div class="sm:col-span-1 flex-col justify-between">
@@ -176,7 +176,7 @@
             </div>
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/people.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-              <span class="text-gray-500 text-xs font-bold leading-tight"><%= @appointment.volunteers.count %> <%= 'Volunteer'.pluralize @appointment.volunteers.count %></span>
+              <span class="text-gray-500 text-xs font-bold leading-tight"><%= @appointment.patients.count %> <%= 'Request'.pluralize @appointment.patients.count %></span>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@
       <div class="mt-8 sm:col-span-1 sm:mt-0">
         <div class="sm:sticky sm:top-10">
           <div class="overflow-hidden mb-8 hidden sm:block">
-            <%= render partial: 'volunteer_button' %>
+            <%= render partial: 'patient_button' %>
           </div>
 
           <div class="bg-white overflow-hidden rounded-lg sm:sticky sm:top-0 shadow">
@@ -287,16 +287,16 @@
                 <% end %>
               <% end %>
 
-              <% if @appointment.accepting_volunteers? %>
-                <% if @appointment.number_of_volunteers.present? %>
-                  <%= appointment_panel_item(title: t('number_of_volunteers_needed')) do %>
-                    <%= @appointment.number_of_volunteers %>
+              <% if @appointment.accepting_patients? %>
+                <% if @appointment.number_of_patients.present? %>
+                  <%= appointment_panel_item(title: t('number_of_patients_needed')) do %>
+                    <%= @appointment.number_of_patients %>
                   <% end %>
                 <% end %>
 
-                <% if @appointment.volunteer_location.present? %>
-                  <%= appointment_panel_item(title: t('preferred_volunteer_location')) do %>
-                    <%= @appointment.volunteer_location %>
+                <% if @appointment.patient_location.present? %>
+                  <%= appointment_panel_item(title: t('preferred_patient_location')) do %>
+                    <%= @appointment.patient_location %>
                   <% end %>
                 <% end %>
               </div>
@@ -311,14 +311,14 @@
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
       <div class="bg-white px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
-          <%= t('volunteers') %>
+          <%= t('patients') %>
         </h3>
       </div>
 
         <ul>
-          <% @appointment.volunteers.includes(user: :skills).each do |volunteer| %>
-            <% user = volunteer.user %>
-            <%= render partial: 'devise/registrations/user', locals: { user: user, volunteer: volunteer } %>
+          <% @appointment.patients.includes(user: :skills).each do |patient| %>
+            <% user = patient.user %>
+            <%= render partial: 'devise/registrations/user', locals: { user: user, patient: patient } %>
           <% end %>
         </ul>
       </div>
