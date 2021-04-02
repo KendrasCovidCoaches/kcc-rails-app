@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :coach do
+    user_id { 1 }
+    first_name { "MyString" }
+    last_name { "MyString" }
+  end
+
   factory :content do
     
   end
