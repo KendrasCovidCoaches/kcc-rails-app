@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AdminController, type: :controller do
   let!(:user) { create(:user) }
-  let!(:admin) { User.where(email: ADMINS[0]).first || create(:user, email: ADMINS[0]) }
+  let!(:admin) { User.where(email: COACHES[0]).first || create(:user, email: COACHES[0]) }
 
   describe 'POST #delete_user' do
     let!(:valid_params) { { user_id: user.to_param } }

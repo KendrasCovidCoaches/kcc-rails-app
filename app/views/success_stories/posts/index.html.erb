@@ -6,7 +6,7 @@
     <div class="mb-4 leading-tight text-gray-700">How appointments bring people together<br/>and the progress they made.</div>
   </div>
 
-  <% if user_signed_in? and current_user.is_admin? %>
+  <% if user_signed_in? and current_user.is_coach? %>
     <div class="w-full flex justify-end">
       <div class="self-center ml-4 mt-1">
         <%= link_to new_success_story_path do %>

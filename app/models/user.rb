@@ -37,7 +37,7 @@ class User < ApplicationRecord
   def is_visible_to_user?(user_trying_view)
     return true if self.visibility == true
     return false if user_trying_view.blank?
-    return true if user_trying_view.is_admin?
+    return true if user_trying_view.is_coach?
     return true if user_trying_view == self
     return true if self.future_office_hours.length > 0
 
@@ -49,8 +49,8 @@ class User < ApplicationRecord
     self.office_hours.where('start_at > ?', DateTime.now).order('start_at ASC')
   end
 
-  def is_admin?
-    ADMINS.include?(self.email)
+  def is_coach?
+    COACHES.include?(self.email)
   end
 
   def to_param

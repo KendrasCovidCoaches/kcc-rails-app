@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
 
   def ensure_admin
-    redirect_to root_path if !current_user || !current_user.is_admin?
+    redirect_to root_path if !current_user || !current_user.is_coach?
   end
 
   def set_filters_open
@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
 
     #   @show_filters = true unless params[:id]
     # else
-    #   @users = @users.where(visibility: true) unless current_user && current_user.is_admin?
+    #   @users = @users.where(visibility: true) unless current_user && current_user.is_coach?
 
     #   @show_filters = true
     # end

@@ -45,7 +45,7 @@ class Appointment < ApplicationRecord
   end
 
   def can_edit?(edit_user)
-    edit_user && (self.user == edit_user || edit_user.is_admin?)
+    edit_user && (self.user == edit_user || edit_user.is_coach?)
   end
 
   def patient_emails

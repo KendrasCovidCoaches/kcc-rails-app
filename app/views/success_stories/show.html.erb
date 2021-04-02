@@ -1,5 +1,5 @@
 <div class="container p-8 sm:p-0">
-  <% if user_signed_in? and current_user.is_admin? %>
+  <% if user_signed_in? and current_user.is_coach? %>
     <div class="w-full flex justify-end mb-6">
       <%= link_to edit_success_story_path do %>
         <span class="inline-flex rounded-md shadow-sm mt-4">

@@ -2,7 +2,7 @@
 <%- share_url appointment_url(@appointment); %>
 
 <div class="container">
-  <% if current_user && (current_user == @appointment.user || current_user.is_admin?) %>
+  <% if current_user && (current_user == @appointment.user || current_user.is_coach?) %>
     <div class="mx-4 sm:mx-0 bg-white px-4 py-5 border-b border-gray-200 sm:px-6 mb-8 rounded-lg shadow">
       <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap">
         <div class="ml-4 mt-4">
@@ -87,7 +87,7 @@
     </div>
   <% end %>
 
-  <% if current_user && current_user.is_admin? %>
+  <% if current_user && current_user.is_coach? %>
     <div class="bg-white mt-6 border-2 border-red-300 bg-red-100 shadow sm:rounded-lg mb-8">
       <div class="px-4 py-5 sm:p-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -307,7 +307,7 @@
     </div>
   </div>
 
-  <% if current_user && @appointment.requested_users.count > 0 && (current_user == @appointment.user || current_user.is_admin?) %>
+  <% if current_user && @appointment.requested_users.count > 0 && (current_user == @appointment.user || current_user.is_coach?) %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
       <div class="bg-white px-4 py-5 sm:px-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900">

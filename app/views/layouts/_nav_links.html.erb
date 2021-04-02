@@ -54,7 +54,7 @@
           <%= t('your_profile') %>
         <% end %>
       </div>
-      <% if current_user.is_admin?%>
+      <% if current_user.is_coach?%>
       <div>
           <%= link_to admin_path, class: "#{admin_nav_link_class(variant)}" do %>
             <%= t('dashboard') %>
