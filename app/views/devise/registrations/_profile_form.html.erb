@@ -5,7 +5,7 @@
   </div>
   <div class="pl-7 text-sm leading-5">
     <%= f.label 'newsletter_consent', 'Newsletter', class: 'font-medium text-red-700' %>
-    <p class="text-gray-500">I consent to receiving emails about the latest volunteer openings.</p>
+    <p class="text-gray-500">I consent to receiving emails about the latest appointment openings.</p>
   </div>
 </div>
 
@@ -67,7 +67,7 @@
           </div>
           <div class="mt-4 sm:mt-0 sm:col-span-2">
             <div class="max-w-lg">
-              <% Settings.volunteer_skills.each do |skill| %>
+              <% Settings.patient_skills.each do |skill| %>
                 <div class="relative flex items-start">
                   <div class="absolute flex items-center h-5">
                   <%= f.check_box :skill_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, skill, nil %>

@@ -2,9 +2,9 @@
   <%= t('find_opportunities') %>
 <% end %>
 
-<% if feature_enabled?('volunteer_directory') %>
-  <%= link_to volunteers_path, class: "#{volunteers_nav_link_class(variant)}" do %>
-    <%= t('volunteers') %>
+<% if feature_enabled?('patient_directory') %>
+  <%= link_to patients_path, class: "#{patients_nav_link_class(variant)}" do %>
+    <%= t('patients') %>
   <% end %>
 <% end %>
 
