@@ -10,6 +10,7 @@ class Appointment < ApplicationRecord
   validate :date_order, on: :create
 
   has_many :patients, dependent: :destroy
+  has_many :coaches, dependent: :destroy
   has_many :requested_users, through: :patients, source: :user, dependent: :destroy
 
   acts_as_taggable_on :skills

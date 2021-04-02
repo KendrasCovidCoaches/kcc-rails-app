@@ -2,36 +2,6 @@
   <%= t('find_opportunities') %>
 <% end %>
 
-<% if feature_enabled?('patient_directory') %>
-  <%= link_to patients_path, class: "#{patients_nav_link_class(variant)}" do %>
-    <%= t('patients') %>
-  <% end %>
-<% end %>
-
-<% if feature_enabled?('resources') %>
-  <%= link_to offers_path, class: "#{offers_nav_link_class(variant)}" do %>
-    <%= t('resources') %>
-  <% end %>
-<% end %>
-
-<% if feature_enabled?('office_hours') %>
-  <%= link_to office_hours_path, class: "#{office_hours_nav_link_class(variant)}" do %>
-    <%= t('office_hours') %>
-  <% end %>
-<% end %>
-
-<% if feature_enabled?('success_stories') %>
-  <%= link_to success_stories_path, class: "#{success_stories_nav_link_class(variant)}" do %>
-    <%= t('success_stories') %>
-  <% end %>
-<% end %>
-
-<% if Settings.discord_link %>
-  <%= link_to Settings.discord_link, target: "_blank", class: "#{discord_nav_link_class(variant)}" do %>
-    <%= t('discord') %>
-  <% end %>
-<% end %>
-
 <% if current_user %>
   <div class="relative group flex">
     <%= link_to 'javascript:void(0);', class: "#{nav_link_inactive_class(variant)} hidden md:flex" do %>
@@ -68,6 +38,15 @@
       </div>
     </div>
   </div>
+  <% if current_user.is_coach?%>
+  <div class="self-center ml-4 mt-1">
+  <%= link_to new_appointment_path do %>
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+      <%= t('create_appointment') %>
+    </button>
+  <% end %>
+</div>
+<% end %>
 <% else %>
   <%= link_to new_user_registration_path, class: "#{sign_up_nav_link_class(variant)}" do %>
     <%= t('sign_up') %>
@@ -76,11 +55,3 @@
     <%= t('log_in') %>
   <% end %>
 <% end %>
-
-<div class="self-center ml-4 mt-1">
-  <%= link_to new_appointment_path do %>
-    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
-      <%= t('create_appointment') %>
-    </button>
-  <% end %>
-</div>

@@ -7,7 +7,7 @@ site_subtitle: 'Helping facilitate vaccination appointments for central Texas'
 # Site features
 features_enabled:
   patient_directory: false
-  resources: true
+  resources: false
   # office_hours: false
   # success_stories: false
 
