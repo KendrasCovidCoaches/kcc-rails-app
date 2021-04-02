@@ -51,7 +51,7 @@
 <% end %>
 <% if current_user.is_patient?%>
   <div class="self-center ml-4 mt-1">
-  <%= link_to new_appointment_path do %>
+  <%= link_to appointments_path do %>
     <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('request_appointment') %>
     </button>

@@ -235,7 +235,7 @@ en:
   none: "None"
   apply_filters: "Apply filters"
   no_patients: "No patients"
-  no_appointment_found_try_another_search_br_or_create: "No appointment found. Try another search! <br> Or create an appointment %{link_to}."
+  no_appointment_found_try_another_search_br_or_create: "No appointments found."
   create_new_appointment: "Create new appointment"
   appointment_name: "Appointment %{name}"
   how_to_get_in_touch: "How to get in touch"
