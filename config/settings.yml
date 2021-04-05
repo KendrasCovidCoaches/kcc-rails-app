@@ -75,6 +75,21 @@ appointment_statuses:
   - 'In progress'
   - 'Launched'
 
+request_types:
+  - E-Learning
+  - Help Out Communities
+  - Job Placement
+  - Other
+  - Map Patients To Needs
+  - Mental Health
+  - News and Information
+  - Social Giving
+
+request_statuses:
+  - 'Just started'
+  - 'In progress'
+  - 'Launched'
+
 organization_statuses:
   - 'Non-profit'
   - 'For-profit'
