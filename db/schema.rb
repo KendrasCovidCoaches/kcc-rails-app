@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_02_021147) do
+ActiveRecord::Schema.define(version: 2021_04_05_234457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,40 @@ ActiveRecord::Schema.define(version: 2021_04_02_021147) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "note", default: "", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name", default: "", null: false
+    t.string "description", default: "", null: false
+    t.string "participants", default: "", null: false
+    t.string "looking_for", default: "", null: false
+    t.string "patient_location", default: "", null: false
+    t.string "contact", default: "", null: false
+    t.boolean "highlight", default: false, null: false
+    t.string "progress", default: "", null: false
+    t.string "docs_and_demo", default: "", null: false
+    t.string "number_of_patients", default: "", null: false
+    t.string "links", default: ""
+    t.string "status", default: "", null: false
+    t.boolean "accepting_patients", default: true
+    t.string "short_description", default: "", null: false
+    t.string "target_country", default: "", null: false
+    t.string "target_location", default: "", null: false
+    t.string "organization_status", default: "", null: false
+    t.string "ein"
+    t.string "organization", default: ""
+    t.string "level_of_urgency", default: "", null: false
+    t.string "start_date", default: ""
+    t.string "end_date", default: ""
+    t.string "compensation", default: ""
+    t.string "organization_mission"
+    t.boolean "organization_registered"
+    t.boolean "end_date_recurring"
+    t.string "level_of_exposure"
+    t.boolean "background_screening_required"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
