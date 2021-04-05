@@ -4,7 +4,7 @@ class AppointmentMailerPreview < ActionMailer::Preview
     user = User.first
     appointment = Appointment.last
 
-    AppointmentMailer.with(appointment: appointment, user: user, note: 'Note from patient').new_patient
+    # AppointmentMailer.with(appointment: appointment, user: user, note: 'Note from patient').new_patient
   end
 
   # def volunter_outreach

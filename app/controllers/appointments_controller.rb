@@ -109,7 +109,7 @@ class AppointmentsController < ApplicationController
     respond_to do |format|
       if @appointment.save
         track_event 'Appointment creation complete'
-        AppointmentMailer.with(appointment: @appointment).new_appointment.deliver_now
+        # AppointmentMailer.with(appointment: @appointment).new_appointment.deliver_now
         format.html { redirect_to @appointment, notice: I18n.t('appointment_was_successfully_created') }
         format.json { render :show, status: :created, location: @appointment }
       else
@@ -149,13 +149,13 @@ class AppointmentsController < ApplicationController
       #byebug
       @appointment.patients.where(user: current_user).destroy_all
       flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
-      AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_patient.deliver_now
+      # AppointmentMailer.with(appointment: @appointment, user: current_user).cancel_patient.deliver_now
     else
       params[:patient_note] ||= ''
 
       Patient.create(user: current_user, appointment: @appointment, note: params[:patient_note])
 
-      AppointmentMailer.with(appointment: @appointment, user: current_user, note: params[:patient_note]).new_patient.deliver_now
+      # AppointmentMailer.with(appointment: @appointment, user: current_user, note: params[:patient_note]).new_patient.deliver_now
 
       flash[:notice] = I18n.t('thanks_for_requesting_the_coaches_will_be')
       track_event 'User requested'
