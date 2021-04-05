@@ -1,0 +1,70 @@
+<li class="border-t border-gray-200">
+  <div class="block transition duration-150 ease-in-out <%= appointment_row_class appointment %>">
+    <div class="px-4 py-4 sm:px-6">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+        <div class="text-sm leading-5 font-medium text-primary-600 truncate">
+          <%= link_to appointment.name, appointment_path(appointment) %>
+        </div>
+        <div class="mt-2 md:mt-0 md:ml-4 flex-shrink-0 flex">
+          <% appointment_patient_class = appointment.requested_users.count > 0 ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800" %>
+          <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full <%= appointment_patient_class %>">
+            <% if appointment.accepting_patients? %>
+              <% if appointment.requested_users.count == 0 %>
+                <%= t('no_patients') %>
+              <% else %>
+                <%= pluralize(appointment.requested_users.count, t('patient')) %>
+              <% end %>
+
+              <% if current_user.blank? %>
+                - <%= t('sign_up_to_patient').downcase %>
+              <% elsif !current_user.has_complete_profile? %>
+                - <%= t('complete_your_profile_to_request').downcase %>
+              <% end %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <div class="mt-2 sm:flex sm:justify-between">
+        <div class="text-sm leading-5 text-gray-500">
+          <%= simple_format appointment.description, class: 'mb-2' %>
+        </div>
+      </div>
+      <% if appointment.appointment_types.present? || appointment.skills.present?  %>
+        <div class="flex flex-col md:flex-row items-start justify-between">
+          <div class="flex flex-col  flex-1 justify-end flex-wrap mt-2">
+            <% if appointment.appointment_types.present? %>
+              <div class="mt-2 text-sm leading-5 text-gray-500 sm:mt-0 font-bold">Helping with: </div>
+              <div class="flex flex-row flex-wrap space-x-right-2 space-y-top-2">
+                <%= skill_badges appointment.appointment_types.map(&:name), limit: 3, model: 'appointments', filter_by: 'appointment_types' %>
+              </div>
+            <% end %>
+          </div>
+          <% if appointment.skills.present? %>
+            <div class="flex flex-col md:justify-end flex-wrap mt-2">
+              <div class="mt-2 text-sm md:text-right leading-5 text-gray-500 sm:mt-0 font-bold">Looking for:</div>
+              <div class="flex flex-row flex-wrap md:items-end md:content-end md:justify-end space-x-right-2 md:space-x-right-0 md:space-x-left-2 space-y-top-2">
+                <%= skill_badges appointment.skills.map(&:name), limit: 3, color: 'blue', model: 'appointments', filter_by: 'skills' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="mt-2 sm:flex sm:justify-between">
+        <div class="sm:flex">
+          <div class="mt-2 flex items-center text-sm leading-5 text-gray-500 sm:mt-0">
+            <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+            <%= appointment.patient_location.present? ? appointment.patient_location : 'Remote' %>
+          </div>
+        </div>
+        <div class="mt-2 flex items-center text-xs leading-5 text-gray-500 sm:mt-0">
+          <span>
+            <%= t('created') %>
+            <time><%= distance_of_time_in_words_to_now appointment.created_at %> ago</time>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,327 @@
+<%- share_title t('appointment_name', name: @appointment.name) %>
+<%- share_url appointment_url(@appointment); %>
+
+<div class="container">
+  <% if current_user && (current_user == @appointment.user || current_user.is_coach?) %>
+    <div class="mx-4 sm:mx-0 bg-white px-4 py-5 border-b border-gray-200 sm:px-6 mb-8 rounded-lg shadow">
+      <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap">
+        <div class="ml-4 mt-4">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <%= @appointment.name %>
+          </h3>
+
+          <% if @appointment.user && @appointment.user.name.present? %>
+            <div class="mt-1">
+              <% if @appointment.user.visibility %>
+                <%= link_to profile_path(@appointment.user), class: 'flex-shrink-0 group inline-block focus:outline-none' do %>
+                  <%= render partial: 'user_avatar', locals: {user: @appointment.user} %>
+                <% end %>
+              <% else %>
+                <%= render partial: 'user_avatar', locals: {user: @appointment.user} %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="flex flex-shrink-0 flex-wrap max-w-full">
+          <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
+            <%= link_to edit_appointment_path(@appointment) do %>
+              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+                <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+                <span>
+                  <%= t('edit') %>
+                </span>
+              </button>
+            <% end %>
+          </span>
+
+          <% if @appointment.requested_users.count > 0 %>
+            <% patient_emails = @appointment.patient_emails %>
+
+            <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
+              <%= mail_to current_user.email, target: :_blank, bcc: patient_emails.join(', ') do %>
+                <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                  </svg>
+                  <span>
+                    <%= t('send_email_to_patients') %>
+                  </span>
+                </button>
+              <% end %>
+            </span>
+
+            <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
+              <%= link_to patients_appointment_path(@appointment, format: 'csv') do %>
+                <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>
+                    <%= t('export_patients_to_csv') %>
+                  </span>
+                </button>
+              <% end %>
+            </span>
+          <% end %>
+
+          <% if @appointment.can_edit?(current_user) %>
+            <%= link_to appointment_path(appointment_id: @appointment.id), method: :delete, data: { confirm: "Are you sure you want to delete this appointment?" } do %>
+              <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
+                <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>
+                    <%= t('delete') %>
+                  </span>
+                </button>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if current_user && current_user.is_coach? %>
+    <div class="bg-white mt-6 border-2 border-red-300 bg-red-100 shadow sm:rounded-lg mb-8">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Admin area
+        </h3>
+        <div class="flex justify-left mt-3 text-sm leading-5">
+          <%= link_to toggle_appointment_highlight_path(appointment_id: @appointment.id), method: :post do %>
+            <span class="inline-flex rounded-md shadow-sm mt-4">
+              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                <span>
+                  <% if @appointment.highlight %>
+                    Remove highlight
+                  <% else %>
+                    Highlight
+                  <% end %>
+                </span>
+              </button>
+            </span>
+          <% end %>
+
+          <%= link_to edit_appointment_path(appointment_id: @appointment.id) do %>
+            <span class="ml-6 inline-flex rounded-md shadow-sm mt-4">
+              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                <span>
+                  Edit appointment
+                </span>
+              </button>
+            </span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <!--
+  <% if current_user && @appointment.requested_users.count < Settings.max_patients_for_highlight_offer && @appointment.user == current_user && !cookies[:highlight_appointments_alert] %>
+    <div class="bg-white mt-6 mb-8 border-2 border-orange-300 bg-orange-100 shadow sm:rounded-lg" id="disable_highlight_appointments_container">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <%= t('are_you_a_validated_or_established_appointment_with_la') %>
+        </h3>
+        <div class="mt-2 text-sm leading-5 text-gray-500">
+          <p>
+            <%= t('we_try_our_best_to_surface_interesting_appointments_wi') %>
+          </p>
+        </div>
+        <div class="flex justify-between mt-3 text-sm leading-5">
+          <%= mail_to ENV['EMAIL_ADDRESS'], "Tell us about your appointment &rarr;".html_safe, subject: "[Highlight request] #{@appointment.name} ", encoding: "hex", target: "_blank", class: "font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:underline transition ease-in-out duration-150" %>
+          <%= link_to "javascript:void(0)", id: "disable_highlight_appointments_alert", class: "font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:underline transition ease-in-out duration-150" do %>
+            <%= t('don_t_show_this_again') %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  -->
+
+  <div>
+    <div class="overflow-hidden sticky top-10 z-40 mb-8 sm:hidden">
+      <%= render partial: 'patient_button' %>
+    </div>
+    <div class="mt-0 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden sm:mx-0 sm:grid sm:grid-cols-2">
+      <div class="sm:col-span-1 flex-col justify-between">
+        <div class="p-4 sm:p-6 pb-7">
+          <h1 class="text-xl leading-tight text-primary-600 font-bold">
+            <%= @appointment.name %>
+          </h1>
+          <% if @appointment.description? %>
+            <%= simple_format Rinku.auto_link(sanitize(@appointment.short_description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-5 mt-3 text-sm' }, sanitize: false %>
+          <% end %>
+          <% if @appointment.categories.present? %>
+            <div class="mt-5 text-sm leading-5 text-gray-900 flex content-center flex-wrap space-y-bottom-2 space-x-right-2">
+              <%= skill_badges @appointment.category_list, model: 'appointments', filter_by: 'categories' %>
+            </div>
+          <% end %>
+          <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
+            <div class="flex items-center text-primary-600 col-span-1">
+              <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
+              <span class="text-gray-500 text-xs font-bold leading-tight">
+                <%= @appointment.location_list[0] %>
+              </span>
+            </div>
+            <div class="flex items-center text-primary-600 col-span-1">
+              <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
+              <span class="text-gray-500 text-xs font-bold leading-tight">Created <%= time_ago_in_words(@appointment.created_at) %> ago</span>
+            </div>
+            <div class="flex items-center text-primary-600 col-span-1">
+              <%= inline_svg_pack_tag 'media/svgs/people.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
+              <span class="text-gray-500 text-xs font-bold leading-tight"><%= @appointment.patients.count %> <%= 'Request'.pluralize @appointment.patients.count %></span>
+            </div>
+          </div>
+        </div>
+        <% parsed_url_from_demo = url_from_string(@appointment.docs_and_demo) %>
+        <% if (@appointment.docs_and_demo.present? && parsed_url_from_demo) %>
+          <div class="p-6 pt-3 pb-3 bg-primary-600 text-white">
+            <a href="<%= parsed_url_from_demo %>" rel="nofollow noopener noreferrer" target="_blank" class="flex justify-center items-center text-sm font-medium">
+              <span><%= shorten_url parsed_url_from_demo %></span>
+              <%= inline_svg_pack_tag 'media/svgs/external-link.svg', class: 'ml-2 text-white fill-current' %>
+            </a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10 sm:mx-0">
+      <div class="sm:col-span-2">
+        <div class="bg-white overflow-hidden rounded-lg sm:pb-4 shadow">
+          <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
+            <h3 class="text-primary-700 font-bold"><%= t('about_the_appointment') %></h3>
+          </div>
+
+          <div class="p-4 sm:px-6 sm:pt-5 sm:pb-2">
+            <dt class="text-sm leading-5 font-bold text-gray-800">
+              <%= t('description') %>
+            </dt>
+            <dd class="mt-2 text-sm leading-5 text-gray-600">
+              <%= simple_format Rinku.auto_link(sanitize(@appointment.description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
+            </dd>
+          </div>
+
+          <% if @appointment.progress.present? %>
+            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
+              <dt class="text-sm leading-5 font-bold text-gray-800">
+                <%= t('how_far_along_is_it') %>
+              </dt>
+              <dd class="mt-2 text-sm leading-5 text-gray-600">
+                <%= simple_format Rinku.auto_link(sanitize(@appointment.progress), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
+              </dd>
+            </div>
+          <% end %>
+
+          <% if @appointment.appointment_types.present? %>
+            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
+              <dt class="text-sm leading-5 font-bold text-gray-800">
+                <%= t('appointment_type') %>:
+              </dt>
+              <dd class="mt-2 text-sm leading-5 text-gray-600">
+                  <%= skill_badges @appointment.appointment_type_list, color: 'blue', model: 'appointments', filter_by: 'appointment_types' %>
+              </dd>    
+            </div>
+          <% end %>
+
+          <% if @appointment.target_location.present? %>
+            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
+              <dt class="text-sm leading-5 font-bold text-gray-800">
+                <%= t('appointment_target_location') %>
+              </dt>
+              <dd class="mt-2 text-sm leading-5 text-gray-600">
+                <%= @appointment.target_location %>
+              </dd>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mt-8 bg-white overflow-hidden rounded-lg shadow">
+          <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
+            <h3 class="text-primary-700 font-bold"><%= t('help_needed') %></h3>
+          </div>
+
+          <% if @appointment.skill_list.present? %>
+            <div class="p-4 sm:px-6 sm:pt-5 sm:pb-2">
+              <dt class="text-sm leading-5 font-medium text-gray-800">
+                <%= t('skills_needed') %>
+              </dt>
+              <dd class="mt-2 text-sm leading-5 text-gray-600 flex content-center flex-wrap space-y-bottom-2 space-x-right-2">
+                <%= skill_badges @appointment.skill_list, color: 'blue', model: 'appointments', filter_by: 'skills' %>
+              </dd>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="mt-8 sm:col-span-1 sm:mt-0">
+        <div class="sm:sticky sm:top-10">
+          <div class="overflow-hidden mb-8 hidden sm:block">
+            <%= render partial: 'patient_button' %>
+          </div>
+
+          <div class="bg-white overflow-hidden rounded-lg sm:sticky sm:top-0 shadow">
+            <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
+              <h3 class="text-primary-700 font-bold"><%= t('appointment_details') %></h3>
+            </div>
+
+              <% if @appointment.links.present? %>
+                <%= appointment_panel_item(title: t('helpful_links')) do %>
+                  <div>
+                    <%= simple_format (Rinku.auto_link(sanitize(@appointment.links), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"') do |url|
+                      url.length > 35 ? shorten_url(url_from_string(url.start_with?('http') ? url : "http://#{url}")) : url
+                    end), { class: 'mb-1' }, sanitize: false %>
+                  </div>
+                <% end %>
+              <% end %>
+
+              <% if @appointment.contact.present? %>
+                <%= appointment_panel_item(title: t('how_to_get_in_touch')) do %>
+                  <%= Rinku.auto_link(sanitize(@appointment.contact), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"').html_safe %>
+                <% end %>
+              <% end %>
+
+              <% if @appointment.accepting_patients? %>
+                <% if @appointment.number_of_patients.present? %>
+                  <%= appointment_panel_item(title: t('number_of_patients_needed')) do %>
+                    <%= @appointment.number_of_patients %>
+                  <% end %>
+                <% end %>
+
+                <% if @appointment.patient_location.present? %>
+                  <%= appointment_panel_item(title: t('preferred_patient_location')) do %>
+                    <%= @appointment.patient_location %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if current_user && @appointment.requested_users.count > 0 && (current_user == @appointment.user || current_user.is_coach?) %>
+    <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
+      <div class="bg-white px-4 py-5 sm:px-6">
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          <%= t('patients') %>
+        </h3>
+      </div>
+
+        <ul>
+          <% @appointment.patients.includes(user: :skills).each do |patient| %>
+            <% user = patient.user %>
+            <%= render partial: 'devise/registrations/user', locals: { user: user, patient: patient } %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>
