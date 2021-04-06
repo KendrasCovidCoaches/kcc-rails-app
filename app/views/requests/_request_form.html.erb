@@ -146,7 +146,7 @@
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
                   <div class="block">
-                    <%= f.radio_button :accepting_patients, true, checked: @appointment.new_record? ? true : @appointment.accepting_patients, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.radio_button :accepting_patients, true, checked: @request.new_record? ? true : @request.accepting_patients, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
                     <%= f.label :accepting_patients, t('yes_patients_will_be_able_to_apply'), value: "true", class: "pl-2 text-sm text-gray-700"  %>
                   </div>
 
@@ -178,7 +178,7 @@
                         <%= f.check_box :skill_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, skill, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for="appointment_skill_list_<%= skill.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                        <label for="request_skill_list_<%= skill.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
                           <%= skill %>
                         </label>
                       </div>
@@ -364,14 +364,14 @@
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
-                  <% Settings.appointment_types.each do |appointment_type| %>
+                  <% Settings.appointment_types.each do |request_type| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :appointment_type_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, appointment_type, nil %>
+                        <%= f.check_box :request_type_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, request_type, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for="appointment_type_list_<%= appointment_type.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
-                          <%= appointment_type %>
+                        <label for="request_type_list_<%= request_type.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= request_type %>
                         </label>
                       </div>
                     </div>

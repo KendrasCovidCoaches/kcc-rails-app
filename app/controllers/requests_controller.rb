@@ -17,8 +17,8 @@ class RequestsController < ApplicationController
       @applied_filters = params.dup
   
       if request.path != requests_path and params[:category_slug].present?
-        @request_category = Settings.request_categories.find { |category| category.slug == params[:category_slug] }
-        @request_location = Settings.request_locations.find { |location| location.slug == params[:category_slug] }
+        @request_category = Settings.appointment_categories.find { |category| category.slug == params[:category_slug] }
+        @request_location = Settings.appointment_locations.find { |location| location.slug == params[:category_slug] }
         #byebug
         raise ActionController::RoutingError, 'Not Found' if @request_category.blank? && @request_location.blank?
   

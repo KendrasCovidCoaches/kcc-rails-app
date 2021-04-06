@@ -27,4 +27,10 @@ module AppointmentsHelper
       capture(&block)
     end
   end
+
+  def request_panel_item(title: '', &block)
+    render layout: 'partials/request-panel-item', locals: {title: title} do
+      capture(&block)
+    end
+  end
 end
