@@ -24,6 +24,7 @@ es:
   dashboard: "Tabla de Analíticas"
   log_out: "Cierre sesión"
   create_appointment: "Crea proyecto"
+  create_request: ""
   request_appointment: ""
   create_patient_request: ""
   created: "Creados"

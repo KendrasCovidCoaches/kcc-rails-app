@@ -25,6 +25,7 @@ en:
   log_out: "Log out"
   create_appointment: "Browse Patient Requests"
   request_appointment: "Request Appointment"
+  create_request: "Submit Request"
   create_patient_request: "Create Patient Request"
   created: "Created"
   see_more: "... (see more)"
