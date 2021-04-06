@@ -79,6 +79,41 @@ ActiveRecord::Schema.define(version: 2021_04_05_235159) do
     t.integer "request_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "patient_email", default: "", null: false
+    t.string "f_name", default: "", null: false
+    t.string "l_name", default: "", null: false
+    t.datetime "birth_date", null: false
+    t.string "phone", default: "", null: false
+    t.string "address", default: "", null: false
+    t.boolean "highlight", default: false, null: false
+    t.string "city", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "zip", default: "", null: false
+    t.string "sex", default: "", null: false
+    t.string "pref_language", default: "", null: false
+    t.boolean "self_book", default: true, null: false
+    t.string "closest_city", default: "", null: false
+    t.string "travel_radius", default: "", null: false
+    t.string "weekday_avail", default: "", null: false
+    t.string "weekday_times", default: "", null: false
+    t.string "weekend_avail", default: "", null: false
+    t.string "weekend_times", default: "", null: false
+    t.string "eligibility_group", default: "", null: false
+    t.boolean "critical_to_book_with", default: false
+    t.string "book_with_full_name", default: ""
+    t.string "book_with_email", default: ""
+    t.string "book_with_phone"
+    t.boolean "open_to_same_day"
+    t.text "notes"
+    t.string "requested_by_email", default: ""
+    t.string "requested_by_name", default: ""
+    t.boolean "over_50"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
