@@ -105,7 +105,10 @@ class RequestsController < ApplicationController
   
     def create
       @request = current_user.requests.new(request_params)
-      @request.patient_location = @request.location_list[0]
+      @request.weekday_avail = @request.weekday_list.join("-")
+      @request.weekday_times = @request.weekday_time_list.join("-")
+      @request.weekend_avail = @request.weekend_list.join("-")
+      @request.weekend_times = @request.weekend_time_list.join("-")
       respond_to do |format|
         if @request.save
           track_event 'Request creation complete'
@@ -187,7 +190,7 @@ class RequestsController < ApplicationController
         params.fetch(:request, {}).permit(:user_id, :patient_email, :f_name, :l_name, :birth_date, :phone, :address, :highlight, :city, :state, 
         :zip, :sex, :pref_language, :self_book, :closest_city, :travel_radius, :weekday_avail, :weekday_times, :weekend_avail, :weekend_times, 
         :eligibility_group, :critical_to_book_with, :book_with_full_name, :book_with_email, :book_with_phone, :open_to_same_day, :notes, :requested_by_email,
-        :requested_by_name, :over_50, :vol_list => [])
+        :requested_by_name, :over_50, :weekday_list => [], :weekend_list => [], :weekday_time_list => [], :weekend_time_list => [])
       end
   
       def ensure_owner_or_admin
