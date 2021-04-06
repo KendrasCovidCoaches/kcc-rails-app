@@ -123,6 +123,26 @@ eligibility:
   - Ages 16-49 with chronic illness
   - Ages 16-49, general population
 
+weekdays:
+  - Monday
+  - Tuesday
+  - Wednesday
+  - Thurdsay
+  - Friday
+  - N/A
+
+weekends:
+  - Saturday
+  - Sunday
+  - N/A
+
+times:
+  - Mornings
+  - Midday
+  - Afternoons
+  - Evenings
+
+
 # Availability windows that are suggested to patients
 patient_availabilities:
   - '1-2 hours a day'
