@@ -13,12 +13,12 @@
 /db/*.sqlite3-*
 
 # Ignore all logfiles and tempfiles.
-/log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 /log 
 /tmp
+log/*
 
 # Ignore uploaded files in development.
 /storage/*
