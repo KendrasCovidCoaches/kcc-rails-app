@@ -66,7 +66,7 @@ Rails.application.routes.draw do
 
   scope 'admin' do
     post :delete_user, to: 'admin#delete_user', as: 'delete_user'
-    # post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_appointment_highlight'
+    post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_appointment_highlight'
   end
 
 

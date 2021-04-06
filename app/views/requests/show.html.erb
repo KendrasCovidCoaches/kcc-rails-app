@@ -94,22 +94,8 @@
           Admin area
         </h3>
         <div class="flex justify-left mt-3 text-sm leading-5">
-          <%= link_to toggle_appointment_highlight_path(request_id: @request.id), method: :post do %>
-            <span class="inline-flex rounded-md shadow-sm mt-4">
-              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                <span>
-                  <% if @request.highlight %>
-                    Remove highlight
-                  <% else %>
-                    Highlight
-                  <% end %>
-                </span>
-              </button>
-            </span>
-          <% end %>
-
           <%= link_to edit_request_path(request_id: @request.id) do %>
-            <span class="ml-6 inline-flex rounded-md shadow-sm mt-4">
+            <span class="inline-flex rounded-md shadow-sm mt-4">
               <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                 <span>
                   Edit request

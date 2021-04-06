@@ -17,6 +17,7 @@ en:
   discord: "Discord"
   account: "Account"
   requested_appointments: "Requested Appointments"
+  all_patient_requests: "Patient Requests"
   your_appointments: "Created Appointments"
   your_profile: "Your Profile"
   dashboard: "Dashboard"
@@ -115,6 +116,7 @@ en:
   appointments_looking_for_patients: "Appointments looking for patients"
   new_or_established_appointments_helping_with: "New or established appointments that need help. Request yourself or create a new one." # remove or change
   all_appointments: "All Appointments"
+  all_requests: "All Requests"
   these_are_the_appointments_where_you_requested: "These are the appointments you have requested."
   own_appointments: "Own Appointments"
   these_are_the_appointments_you_created: "These are the appointments you have created."
