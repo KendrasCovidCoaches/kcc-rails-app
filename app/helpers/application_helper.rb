@@ -44,7 +44,11 @@ module ApplicationHelper
   end
 
   def c_requested_appointments_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'requests' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+    params[:controller] == 'requests' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  end
+
+  def c_all_requests_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'requests' && params[:action] == 'index' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
   def p_requested_appointments_nav_link_class(variant = 'DESKTOP')
