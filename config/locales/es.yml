@@ -143,6 +143,7 @@ es:
   i_want_to_be_paired_with_relevant_appointments_based_o: "Quiero ser emparejado con proyectos relevantes basados ​​en mis habilidades"
   or_change_your_email_password: "O cambia tu correo electrónico / contraseña"
   email_address: "Dirección de correo electrónico"
+  patient_email: ""
   password: "Contraseña"
   leave_blank_if_you_don_t_want_to_change_it: "Déjalo en blanco si no deseas cambiarlo."
   password_confirmation: "Confirmación de contraseña"

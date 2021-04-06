@@ -11,7 +11,7 @@
       </p>
           </strong>
       </div>
-      <h3 class="text-lg mt-2 leading-6 font-medium text-gray-900">
+      <h3 class="text-lg mt-3 leading-6 font-medium text-gray-900">
         <%= title %>
       </h3>
       <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
@@ -22,11 +22,11 @@
     <div class="mt-6 sm:mt-5">
       <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('title_of_appointment') %><span class="text-red-500">*</span>
+          <%= t('patient_email') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_field "name", class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            <%= f.text_field :patient_email_list, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
           </div>
         </div>
       </div>

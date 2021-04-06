@@ -147,6 +147,7 @@ en:
   i_want_to_be_paired_with_relevant_appointments_based_o: "I want to be paired with relevant appointments based on my needs"
   or_change_your_email_password: "Or change your email/password"
   email_address: "Email address"
+  patient_email: "Patient Email"
   password: "Password"
   leave_blank_if_you_don_t_want_to_change_it: "Leave blank if you don't want to change it."
   password_confirmation: "Password confirmation"
