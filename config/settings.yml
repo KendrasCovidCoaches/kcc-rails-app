@@ -13,132 +13,115 @@ features_enabled:
 
 # Closest Texas Cities
 closest_cities:
-  - Abilene
-  - Arlington
-  - Amarillo
-  - Austin
-  - Bastrop
-  - Baytown
-  - Beaumont
-  - Belton
-  - Blanco
-  - Boerne
-  - Brenham
-  - Brownsville
-  - Bryan
-  - Buda
-  - Burnet
-  - Carrollton
-  - Cedar Creek
-  - Cedar Park
-  - College Station
-  - Conroe
-  - Corpus Christi
-  - Dallas
-  - Denton
-  - Driftwood
-  - Dripping Springs
-  - El Paso
-  - Elgin
-  - Flower Mound
-  - Fort Worth
-  - Fredericksburg
-  - Frisco
-  - Galveston
-  - Garland
-  - Georgetown
-  - Giddings
-  - Grand Prairie
-  - Harlingen
-  - Houston
-  - Hutto
-  - Irving
-  - Johnson City
-  - Kerrville
-  - Killeen
-  - Kingsland
-  - Kyle
-  - La Grange
-  - Lago Vista
-  - Lakeway
-  - Lampasas
-  - Laredo
-  - League City
-  - Leander
-  - Liberty Hill
-  - Llano
-  - Lockhart
-  - Longview
-  - Lubbock
-  - Manor
-  - Marble Falls
-  - McAllen
-  - McKinney
-  - Mesquite
-  - Midland
-  - New Braunfels
-  - Odessa
-  - Pasadena
-  - Pearland
-  - Pflugerville
-  - Plano
-  - Richardson
-  - Rockdale
-  - Round Rock
-  - Rowlett
-  - S. Austin
-  - San Angelo
-  - San Antonio
-  - San Marcos
-  - Schertz
-  - Seguin
-  - Smithville
-  - Spicewood
-  - Spring
-  - Sugar Land
-  - Taylor
-  - Temple
-  - The Woodlands
-  - Tyler
-  - Uvalde
-  - Victoria
-  - Waco
-  - Wimberly
-  - N/A - Outside of Texas
+  - Abilene, 1
+  - Arlington, 2
+  - Amarillo, 3
+  - Austin, 4
+  - Bastrop, 5
+  - Baytown, 6
+  - Beaumont, 7
+  - Belton, 8
+  - Blanco, 9
+  - Boerne, 10
+  - Brenham, 11
+  - Brownsville, 12
+  - Bryan, 13
+  - Buda, 14
+  - Burnet, 15
+  - Carrollton, 16
+  - Cedar Creek, 17
+  - Cedar Park, 18
+  - College Station, 19
+  - Conroe, 20
+  - Corpus Christi, 21
+  - Dallas, 22
+  - Denton, 23
+  - Driftwood, 24
+  - Dripping Springs, 25
+  - El Paso, 26
+  - Elgin, 27
+  - Flower Mound, 28
+  - Fort Worth, 29
+  - Fredericksburg, 30
+  - Frisco, 31
+  - Galveston, 32
+  - Garland, 33
+  - Georgetown, 34
+  - Giddings, 35
+  - Grand Prairie, 36
+  - Harlingen, 37
+  - Houston, 38
+  - Hutto, 39
+  - Irving, 40
+  - Johnson City, 41
+  - Kerrville, 42
+  - Killeen, 43
+  - Kingsland, 44
+  - Kyle, 45
+  - La Grange, 46
+  - Lago Vista, 47
+  - Lakeway, 48
+  - Lampasas, 49
+  - Laredo, 50
+  - League City, 51
+  - Leander, 52
+  - Liberty Hill, 53
+  - Llano, 54
+  - Lockhart, 55
+  - Longview, 56
+  - Lubbock, 57
+  - Manor, 58
+  - Marble Falls, 59
+  - McAllen, 60
+  - McKinney, 61
+  - Mesquite, 62
+  - Midland, 63
+  - New Braunfels, 64
+  - Odessa, 65
+  - Pasadena, 66
+  - Pearland, 67
+  - Pflugerville, 68
+  - Plano, 69
+  - Richardson, 70
+  - Rockdale, 71
+  - Round Rock, 72
+  - Rowlett, 73
+  - S. Austin, 74
+  - San Angelo, 75
+  - San Antonio, 76
+  - San Marcos, 77
+  - Schertz, 78
+  - Seguin, 79
+  - Smithville, 80
+  - Spicewood, 81
+  - Spring, 82
+  - Sugar Land, 83
+  - Taylor, 84
+  - Temple, 85
+  - The Woodlands, 86
+  - Tyler, 87
+  - Uvalde, 88
+  - Victoria, 89
+  - Waco, 90
+  - Wimberly, 91
+  - N/A - Outside of Texas, 91
+
+# Travel Radius
+travel_rad:
+  - '10'
+  - '25'
+  - '50'
+  - '100'
+  - Over 100
 
 # These are the skills that patients can have and appointments can request.
-patient_skills:
-  - Analytics
-  - Biology
-  - Biotech
-  - Childcare
-  - Communications
-  - Community Outreach
-  - Content
-  - Data Entry
-  - Delivery
-  - Design
-  - Food preparation
-  - Funding
-  - Helpdesk
-  - Healthcare/Public Health
-  - Legal
-  - Manufacturing
-  - Marketing
-  - Medicine
-  - Mechanics & Electronics
-  - Occupational Health
-  - Operations
-  - Process Improvement
-  - Appointment Management
-  - Quality Assurance
-  - Sales
-  - Social Media
-  - Strategic Planning
-  - Software
-  - Training Development
-  - Tutoring
-  - Other
+eligibility:
+  - Healthcare Professionals
+  - Teachers and Educators
+  - Frontline/Essential Workers
+  - Adults over 50
+  - Ages 16-49 with chronic illness
+  - Ages 16-49, general population
 
 # Availability windows that are suggested to patients
 patient_availabilities:
