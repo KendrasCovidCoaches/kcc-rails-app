@@ -32,6 +32,11 @@
           <%= t('your_appointments') %>
         <% end %>
       </div>
+      <div>
+        <%= link_to requests_path, class: "#{own_appointments_nav_link_class(variant)}" do %>
+          <%= t('requested_appointments') %>
+        <% end %>
+      </div>
       <% end %>
       <div>
         <%= link_to destroy_user_session_path, method: :delete, class: "#{logout_nav_link_class(variant)}" do %>
@@ -46,8 +51,15 @@
     <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('create_appointment') %>
     </button>
-  <% end %>
-</div>
+   <% end %>
+  </div>
+  <div class="self-center ml-4 mt-1">
+  <%= link_to new_request_path do %>
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+      <%= t('create_patient_request') %>
+    </button>
+   <% end %>
+  </div>
 <% end %>
 <% if current_user.is_patient?%>
   <div class="self-center ml-4 mt-1">
@@ -55,8 +67,8 @@
     <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-teal-500 hover:text-teal-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('request_appointment') %>
     </button>
-  <% end %>
-</div>
+   <% end %>
+  </div>
 <% end %>
 <% else %>
   <%= link_to new_user_registration_path, class: "#{sign_up_nav_link_class(variant)}" do %>

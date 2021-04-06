@@ -23,6 +23,7 @@ es:
   log_out: "Cierre sesión"
   create_appointment: "Crea proyecto"
   request_appointment: ""
+  create_patient_request: ""
   created: "Creados"
   see_more: "... (ve más)"
   apply_here: "Aplica aquí"
