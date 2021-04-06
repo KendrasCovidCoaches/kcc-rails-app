@@ -81,34 +81,35 @@ ActiveRecord::Schema.define(version: 2021_04_05_235159) do
 
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
-    t.string "name", default: "", null: false
-    t.string "description", default: "", null: false
-    t.string "participants", default: "", null: false
-    t.string "looking_for", default: "", null: false
-    t.string "patient_location", default: "", null: false
-    t.string "contact", default: "", null: false
+    t.string "patient_email", default: "", null: false
+    t.string "f_name", default: "", null: false
+    t.string "l_name", default: "", null: false
+    t.datetime "birth_date", null: false
+    t.string "phone", default: "", null: false
+    t.string "address", default: "", null: false
     t.boolean "highlight", default: false, null: false
-    t.string "progress", default: "", null: false
-    t.string "docs_and_demo", default: "", null: false
-    t.string "number_of_patients", default: "", null: false
-    t.string "links", default: ""
-    t.string "status", default: "", null: false
-    t.boolean "accepting_patients", default: true
-    t.string "short_description", default: "", null: false
-    t.string "target_country", default: "", null: false
-    t.string "target_location", default: "", null: false
-    t.string "organization_status", default: "", null: false
-    t.string "ein"
-    t.string "organization", default: ""
-    t.string "level_of_urgency", default: "", null: false
-    t.string "start_date", default: ""
-    t.string "end_date", default: ""
-    t.string "compensation", default: ""
-    t.string "organization_mission"
-    t.boolean "organization_registered"
-    t.boolean "end_date_recurring"
-    t.string "level_of_exposure"
-    t.boolean "background_screening_required"
+    t.string "city", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "zip", default: "", null: false
+    t.string "sex", default: "", null: false
+    t.string "pref_language", default: "", null: false
+    t.boolean "self_book", default: true, null: false
+    t.string "closest_city", default: "", null: false
+    t.string "travel_radius", default: "", null: false
+    t.string "weekday_avail", default: "", null: false
+    t.string "weekday_times", default: "", null: false
+    t.string "weekend_avail", default: "", null: false
+    t.string "weekend_times", default: "", null: false
+    t.string "eligibility_group", default: "", null: false
+    t.boolean "critical_to_book_with", default: false
+    t.string "book_with_full_name", default: ""
+    t.string "book_with_email", default: ""
+    t.string "book_with_phone"
+    t.boolean "open_to_same_day"
+    t.text "notes"
+    t.string "requested_by_email", default: ""
+    t.string "requested_by_name", default: ""
+    t.boolean "over_50"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

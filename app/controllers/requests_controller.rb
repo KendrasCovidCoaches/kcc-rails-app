@@ -184,7 +184,10 @@ class RequestsController < ApplicationController
   
       # Only allow a list of trusted parameters through.
       def request_params
-        params.fetch(:request, {}).permit(:name, :organization, :organization_mission, :organization_registered, :level_of_urgency, :level_of_exposure, :description, :participants, :looking_for, :contact, :patient_location, :links, :start_date, :end_date, :end_date_recurring, :compensation, :background_screening_required, :progress, :docs_and_demo, :number_of_patients, :was_helpful, :exit_comments, :visible, :category_slug, :page, :skill_list => [], :completion_list => [], :category_list => [], :location_list => [], :request_type_list => [], :vol_list => [])
+        params.fetch(:request, {}).permit(:user_id, :patient_email, :f_name, :l_name, :birth_date, :phone, :address, :highlight, :city, :state, 
+        :zip, :sex, :pref_language, :self_book, :closest_city, :travel_radius, :weekday_avail, :weekday_times, :weekend_avail, :weekend_times, 
+        :eligibility_group, :critical_to_book_with, :book_with_full_name, :book_with_email, :book_with_phone, :open_to_same_day, :notes, :requested_by_email,
+        :requested_by_name, :over_50, :vol_list => [])
       end
   
       def ensure_owner_or_admin
