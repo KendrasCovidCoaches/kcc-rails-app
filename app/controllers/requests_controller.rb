@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
     before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :patients ]
     before_action :set_filters_open, only: :index
     before_action :set_requests_query, only: :index
-    before_action :hydrate_request_categories, only: :index
+    before_action :hydrate_appointment_categories, only: :index
     before_action :ensure_no_legacy_filtering, only: :index
     before_action :set_bg_white, only: [:index, :own, :requested]
   
