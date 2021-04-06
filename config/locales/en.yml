@@ -212,3 +212,36 @@ en:
   in_one_sentence_why_are_you_interested: "In one sentence, why are you interested?" # remove or change
   you_re_missing_skills: "You're missing skills" # remove or change
   edit_profile: "Edit Profile"
+  first_name: "First Name"
+  last_name: "Last Name"
+  birth_date: "Date of Birth"
+  phone_number: "Primary Phone Number"
+  sex: "Sex"
+  address: "Street Address (including unit number if applicable)"
+  city: "City"
+  state: "State"
+  zip: "Zip Code"
+  preferred_lang: "Preferred Language"
+  is_self_booking: "Are you requesting this appointment for yourself?"
+  requestor_first: "Requestor First Name"
+  requestor_last: "Requestor Last Name"
+  requestor_email: "Requestor Email Address"
+  requestor_phone: "Requestor Primary Phone"
+  closest_city: "Closest Major City"
+  travel_radius: "Miles Willing to Travel"
+  same_day: "Is the patient open to a same-day appointment?"
+  weekdays_avail: "Which weekdays work best for the patient?"
+  weekday_times: "Which times during the week work best for the patient?"
+  weekend_avail: "Which weekend days work best for the patient?"
+  weekend_times: "Which times during the weekend work best for the patient?"
+  critical_sync_book: "Is it critical to be booked at the same time as another person?"
+  sync_book_info: "Please list the full name, full address, email, DOB, sex, and phone number for the person you wish to be booked with."
+  comments: "Please add any additional notes, necessary accommodations, or comments here"
+  please_read: "Please read and agree to the terms and conditions before submitting"
+  terms_and_conds: "Terms and Conditions"
+
+
+
+
+
+

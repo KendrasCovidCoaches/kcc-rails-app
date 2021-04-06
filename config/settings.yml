@@ -11,6 +11,101 @@ features_enabled:
   # office_hours: false
   # success_stories: false
 
+# Closest Texas Cities
+closest_cities:
+  - Abilene
+  - Arlington
+  - Amarillo
+  - Austin
+  - Bastrop
+  - Baytown
+  - Beaumont
+  - Belton
+  - Blanco
+  - Boerne
+  - Brenham
+  - Brownsville
+  - Bryan
+  - Buda
+  - Burnet
+  - Carrollton
+  - Cedar Creek
+  - Cedar Park
+  - College Station
+  - Conroe
+  - Corpus Christi
+  - Dallas
+  - Denton
+  - Driftwood
+  - Dripping Springs
+  - El Paso
+  - Elgin
+  - Flower Mound
+  - Fort Worth
+  - Fredericksburg
+  - Frisco
+  - Galveston
+  - Garland
+  - Georgetown
+  - Giddings
+  - Grand Prairie
+  - Harlingen
+  - Houston
+  - Hutto
+  - Irving
+  - Johnson City
+  - Kerrville
+  - Killeen
+  - Kingsland
+  - Kyle
+  - La Grange
+  - Lago Vista
+  - Lakeway
+  - Lampasas
+  - Laredo
+  - League City
+  - Leander
+  - Liberty Hill
+  - Llano
+  - Lockhart
+  - Longview
+  - Lubbock
+  - Manor
+  - Marble Falls
+  - McAllen
+  - McKinney
+  - Mesquite
+  - Midland
+  - New Braunfels
+  - Odessa
+  - Pasadena
+  - Pearland
+  - Pflugerville
+  - Plano
+  - Richardson
+  - Rockdale
+  - Round Rock
+  - Rowlett
+  - S. Austin
+  - San Angelo
+  - San Antonio
+  - San Marcos
+  - Schertz
+  - Seguin
+  - Smithville
+  - Spicewood
+  - Spring
+  - Sugar Land
+  - Taylor
+  - Temple
+  - The Woodlands
+  - Tyler
+  - Uvalde
+  - Victoria
+  - Waco
+  - Wimberly
+  - N/A - Outside of Texas
+
 # These are the skills that patients can have and appointments can request.
 patient_skills:
   - Analytics
