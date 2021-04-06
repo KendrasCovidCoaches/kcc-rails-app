@@ -18,6 +18,7 @@ class Request < ApplicationRecord
     acts_as_taggable_on :request_types
     acts_as_taggable_on :locations
     acts_as_taggable_on :completions
+    acts_as_taggable_on :patient_emails  
   
     pg_search_scope :search, against: %i(name description participants looking_for patient_location target_country target_location highlight)
   

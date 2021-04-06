@@ -31,6 +31,7 @@ log/*
 /config/master.key
 
 /public/packs
+/public/packs/manifest.json
 /public/packs-test
 public/packs
 public/packs/manifest.json
