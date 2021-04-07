@@ -105,10 +105,10 @@ class RequestsController < ApplicationController
   
     def create
       @request = current_user.requests.new(request_params)
-      # @request.weekday_avail = @request.weekday_list
-      # @request.weekday_times = @request.weekday_time_list
-      # @request.weekend_avail = @request.weekend_list
-      # @request.weekend_times = @request.weekend_time_list
+      # @request.weekday_avail = @request.weekday_list.join(".").to_s
+      # @request.weekday_times = @request.weekday_time_list.join(".").to_s
+      # @request.weekend_avail = @request.weekend_list.join(".").to_s
+      # @request.weekend_times = @request.weekend_time_list.join(".").to_s
       respond_to do |format|
         if @request.save
           track_event 'Request creation complete'

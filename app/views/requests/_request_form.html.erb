@@ -388,10 +388,10 @@
                   <% Settings.weekdays.each do |weekday| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekday_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}%>
+                        <%= f.check_box :weekday_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekday, nil%>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for="category_list_<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                        <label for=<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
                           <%= weekday %>
                         </label>
                       </div>
