@@ -11,7 +11,7 @@ class Request < ApplicationRecord
     # validate :date_order, on: :create
   
     has_many :patients, dependent: :destroy
-    has_many :coaches, dependent: :destroy
+    has_many :coaches #, dependent: :destroy
     has_many :requested_users, through: :patients, source: :user, dependent: :destroy
   
     acts_as_taggable_on :weekdays
@@ -19,7 +19,10 @@ class Request < ApplicationRecord
     acts_as_taggable_on :request_types
     acts_as_taggable_on :locations
     acts_as_taggable_on :weekday_times
-    acts_as_taggable_on :weekend_times  
+    acts_as_taggable_on :weekend_times
+    acts_as_taggable_on :skills  
+    acts_as_taggable_on :categories  
+
   
     pg_search_scope :search, against: %i(name description participants looking_for patient_location target_country target_location highlight)
   
