@@ -1,6 +1,5 @@
 <div>
   <div>
-  needs to be changed to match params****
     <div>
       <div class="bg-yellow-100 border border-yellow-400 text-red-700 px-4 py-3 rounded relative" role="alert">
           <strong class="font-bold">
@@ -66,7 +65,7 @@
       </div>
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label for="l_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+        <label for="phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
           <%= t('phone_number') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -91,7 +90,7 @@
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="contact" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('city') %><span class="text-red-500">*</span>ext-xs"><%= t('optional') %></span>
+          <%= t('city') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
@@ -128,7 +127,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('sex') %>
+                  <%= t('sex') %><span class="text-red-500">*</span>
                 </legend>
                 <div class="text-sm text-gray-500"><%= t('bio_sex') %></div>
               </div>
@@ -156,7 +155,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('preferred_lang') %>
+                  <%= t('eligibility') %><span class="text-red-500">*</span>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
@@ -180,7 +179,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('preferred_lang') %>
+                  <%= t('preferred_lang') %><span class="text-red-500">*</span>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
@@ -207,34 +206,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('is_self_booking') %>
-                </legend>
-              </div>
-              <div class="mt-4 sm:mt-0 sm:col-span-2">
-                <div class="max-w-lg">
-                  <div class="block">
-                    <%= f.radio_button :self_book, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
-                    <%= f.label :self_book, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
-                  </div>
-
-                  <div class="block">
-                    <%= f.radio_button :self_book, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
-                    <%= f.label :self_book, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-      </div>
-
-      <div class="mt-6 sm:mt-5">
-        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
-          <fieldset>
-            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
-              <div>
-                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('over_50') %>
+                  <%= t('over_50') %><span class="text-red-500">*</span>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
@@ -254,6 +226,63 @@
           </fieldset>
         </div>
       </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('is_self_booking') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :self_book, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :self_book, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :self_book, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :self_book, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('other_booker') %>
+      </h3>
+
+      <div class="mt-6 sm:mt-5">
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="booker email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('email_address') %>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :requested_by_email, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"%>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="f_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('your_full_name')%>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :requested_by_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"%>
+          </div>
+        </div>
+      </div>
+  </div>
+
 
   <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
     <div>
@@ -293,7 +322,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('travel_radius') %>
+                  <%= t('travel_radius') %><span class="text-red-500">*</span>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
@@ -305,7 +334,7 @@
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label class="font-medium text-gray-700">
-                          <%= number_of_patients %>
+                          <%= number_of_miles %>
                         </label>
                       </div>
                     </div>
@@ -323,7 +352,7 @@
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
-                  <%= t('same_day') %>
+                  <%= t('same_day') %><span class="text-red-500">*</span>
                 </legend>
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
@@ -359,7 +388,7 @@
                   <% Settings.weekdays.each do |weekday| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekday_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekday, nil %>
+                        <%= f.check_box :weekday_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}%>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="category_list_<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -390,7 +419,7 @@
                   <% Settings.times.each do |time| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekday_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
+                        <%= f.check_box :weekday_times, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="weekday_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -421,7 +450,7 @@
                   <% Settings.weekends.each do |weekend| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekend_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekend, nil %>
+                        <%= f.check_box :weekend_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}%>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="category_list_<%= weekend.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -452,7 +481,7 @@
                   <% Settings.times.each do |time| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekend_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
+                        <%= f.check_box :weekend_times, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="weekend_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -467,6 +496,61 @@
           </fieldset>
         </div>
       </div>
+
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('critical_sync_book') %>
+      </h3><br />
+      <span class="text-xs"><%= t('sync_book_info') %></span>
+      <div class="mt-6 sm:mt-5">
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('email_address') %>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_email, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_full_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('your_full_name')%>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_full_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('phone')%>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_phone, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('comments') %>
+      </h3>
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_area :notes, class: "flex-1 form-textarea block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+    </div>
 
       <div class="mt-8 border-t border-gray-200 pt-5">
         <div class="flex justify-end">

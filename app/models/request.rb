@@ -4,10 +4,11 @@ class Request < ApplicationRecord
   
     belongs_to :user
   
-    validates :name, presence: true
-    validates :short_description, length: { maximum: 129 }
-    validate :must_have_one_skill, on: :create
-    validate :date_order, on: :create
+    validates :f_name, presence: true
+    validates :l_name, presence: true
+    # validates :short_description, length: { maximum: 129 }
+    # validate :must_have_one_skill, on: :create
+    # validate :date_order, on: :create
   
     has_many :patients, dependent: :destroy
     has_many :coaches, dependent: :destroy
@@ -34,16 +35,16 @@ class Request < ApplicationRecord
       end
     end
   
-    validates :status, inclusion: { in: Settings.request_statuses }
+    # validates :status, inclusion: { in: Settings.request_statuses }
   
-    before_validation :default_values
+    # before_validation :default_values
   
-    def default_values
-      self.status = Settings.request_statuses.first if self.status.blank?
-    end
+    # def default_values
+    #   self.status = Settings.request_statuses.first if self.status.blank?
+    # end
   
     def to_param
-      [id, name.parameterize].join('-')
+      [id, f_name.parameterize, l_name.parameterize].join('-')
     end
   
     def can_edit?(edit_user)

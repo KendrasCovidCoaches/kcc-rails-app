@@ -1,4 +1,3 @@
-<%- share_title t('appointment_name', name: @request.name) %>
 <%- share_url request_url(@request); %>
 
 <div class="container">
@@ -7,10 +6,10 @@
       <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap">
         <div class="ml-4 mt-4">
           <h3 class="text-lg leading-6 font-medium text-gray-900">
-            <%= @request.name %>
+            <%= @request.f_name %> <%= @request.l_name %>
           </h3>
 
-          <% if @request.user && @request.user.name.present? %>
+          <% if @request.user && @request.user.email.present? %>
             <div class="mt-1">
               <% if @request.user.visibility %>
                 <%= link_to profile_path(@request.user), class: 'flex-shrink-0 group inline-block focus:outline-none' do %>
@@ -108,29 +107,6 @@
     </div>
   <% end %>
 
-  <!--
-  <% if current_user && @request.requested_users.count < Settings.max_patients_for_highlight_offer && @request.user == current_user && !cookies[:highlight_appointments_alert] %>
-    <div class="bg-white mt-6 mb-8 border-2 border-orange-300 bg-orange-100 shadow sm:rounded-lg" id="disable_highlight_appointments_container">
-      <div class="px-4 py-5 sm:p-6">
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          <%= t('are_you_a_validated_or_established_appointment_with_la') %>
-        </h3>
-        <div class="mt-2 text-sm leading-5 text-gray-500">
-          <p>
-            <%= t('we_try_our_best_to_surface_interesting_appointments_wi') %>
-          </p>
-        </div>
-        <div class="flex justify-between mt-3 text-sm leading-5">
-          <%= mail_to ENV['EMAIL_ADDRESS'], "Tell us about your appointment &rarr;".html_safe, subject: "[Highlight request] #{@request.name} ", encoding: "hex", target: "_blank", class: "font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:underline transition ease-in-out duration-150" %>
-          <%= link_to "javascript:void(0)", id: "disable_highlight_appointments_alert", class: "font-medium text-primary-600 hover:text-primary-500 focus:outline-none focus:underline transition ease-in-out duration-150" do %>
-            <%= t('don_t_show_this_again') %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  -->
-
   <div>
     <div class="overflow-hidden sticky top-10 z-40 mb-8 sm:hidden">
       <%= render partial: 'patient_button' %>
@@ -139,21 +115,12 @@
       <div class="sm:col-span-1 flex-col justify-between">
         <div class="p-4 sm:p-6 pb-7">
           <h1 class="text-xl leading-tight text-primary-600 font-bold">
-            <%= @request.name %>
+            <%= @request.f_name %> <%= @request.l_name %>
           </h1>
-          <% if @request.description? %>
-            <%= simple_format Rinku.auto_link(sanitize(@request.short_description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-5 mt-3 text-sm' }, sanitize: false %>
-          <% end %>
-          <% if @request.categories.present? %>
-            <div class="mt-5 text-sm leading-5 text-gray-900 flex content-center flex-wrap space-y-bottom-2 space-x-right-2">
-              <%= skill_badges @request.category_list, model: 'requests', filter_by: 'categories' %>
-            </div>
-          <% end %>
           <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
               <span class="text-gray-500 text-xs font-bold leading-tight">
-                <%= @request.location_list[0] %>
               </span>
             </div>
             <div class="flex items-center text-primary-600 col-span-1">
@@ -166,15 +133,6 @@
             </div>
           </div>
         </div>
-        <% parsed_url_from_demo = url_from_string(@request.docs_and_demo) %>
-        <% if (@request.docs_and_demo.present? && parsed_url_from_demo) %>
-          <div class="p-6 pt-3 pb-3 bg-primary-600 text-white">
-            <a href="<%= parsed_url_from_demo %>" rel="nofollow noopener noreferrer" target="_blank" class="flex justify-center items-center text-sm font-medium">
-              <span><%= shorten_url parsed_url_from_demo %></span>
-              <%= inline_svg_pack_tag 'media/svgs/external-link.svg', class: 'ml-2 text-white fill-current' %>
-            </a>
-          </div>
-        <% end %>
       </div>
     </div>
 
@@ -184,68 +142,7 @@
           <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
             <h3 class="text-primary-700 font-bold"><%= t('about_the_appointment') %></h3>
           </div>
-
-          <div class="p-4 sm:px-6 sm:pt-5 sm:pb-2">
-            <dt class="text-sm leading-5 font-bold text-gray-800">
-              <%= t('description') %>
-            </dt>
-            <dd class="mt-2 text-sm leading-5 text-gray-600">
-              <%= simple_format Rinku.auto_link(sanitize(@request.description), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
-            </dd>
-          </div>
-
-          <% if @request.progress.present? %>
-            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
-              <dt class="text-sm leading-5 font-bold text-gray-800">
-                <%= t('how_far_along_is_it') %>
-              </dt>
-              <dd class="mt-2 text-sm leading-5 text-gray-600">
-                <%= simple_format Rinku.auto_link(sanitize(@request.progress), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"'), { class: 'mb-3' }, sanitize: false %>
-              </dd>
-            </div>
-          <% end %>
-
-          <% if @request.request_types.present? %>
-            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
-              <dt class="text-sm leading-5 font-bold text-gray-800">
-                <%= t('appointment_type') %>:
-              </dt>
-              <dd class="mt-2 text-sm leading-5 text-gray-600">
-                  <%= skill_badges @request.request_type_list, color: 'blue', model: 'requests', filter_by: 'request_types' %>
-              </dd>    
-            </div>
-          <% end %>
-
-          <% if @request.target_location.present? %>
-            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
-              <dt class="text-sm leading-5 font-bold text-gray-800">
-                <%= t('appointment_target_location') %>
-              </dt>
-              <dd class="mt-2 text-sm leading-5 text-gray-600">
-                <%= @request.target_location %>
-              </dd>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="mt-8 bg-white overflow-hidden rounded-lg shadow">
-          <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
-            <h3 class="text-primary-700 font-bold"><%= t('help_needed') %></h3>
-          </div>
-
-          <% if @request.skill_list.present? %>
-            <div class="p-4 sm:px-6 sm:pt-5 sm:pb-2">
-              <dt class="text-sm leading-5 font-medium text-gray-800">
-                <%= t('skills_needed') %>
-              </dt>
-              <dd class="mt-2 text-sm leading-5 text-gray-600 flex content-center flex-wrap space-y-bottom-2 space-x-right-2">
-                <%= skill_badges @request.skill_list, color: 'blue', model: 'requests', filter_by: 'skills' %>
-              </dd>
-            </div>
-          <% end %>
-        </div>
-      </div>
-
+    
       <div class="mt-8 sm:col-span-1 sm:mt-0">
         <div class="sm:sticky sm:top-10">
           <div class="overflow-hidden mb-8 hidden sm:block">
@@ -257,36 +154,19 @@
               <h3 class="text-primary-700 font-bold"><%= t('appointment_details') %></h3>
             </div>
 
-              <% if @request.links.present? %>
-                <%= request_panel_item(title: t('helpful_links')) do %>
-                  <div>
-                    <%= simple_format (Rinku.auto_link(sanitize(@request.links), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"') do |url|
-                      url.length > 35 ? shorten_url(url_from_string(url.start_with?('http') ? url : "http://#{url}")) : url
-                    end), { class: 'mb-1' }, sanitize: false %>
-                  </div>
-                <% end %>
-              <% end %>
 
-              <% if @request.contact.present? %>
+              <% if @request.patient_email.present? %>
                 <%= request_panel_item(title: t('how_to_get_in_touch')) do %>
-                  <%= Rinku.auto_link(sanitize(@request.contact), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"').html_safe %>
+                  <%= Rinku.auto_link(sanitize(@request.patient_email), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"').html_safe %>
                 <% end %>
               <% end %>
 
-              <% if @request.accepting_patients? %>
-                <% if @request.number_of_patients.present? %>
-                  <%= request_panel_item(title: t('number_of_patients_needed')) do %>
-                    <%= @request.number_of_patients %>
-                  <% end %>
-                <% end %>
-
-                <% if @request.patient_location.present? %>
+                <% if @request.city.present? %>
                   <%= request_panel_item(title: t('preferred_patient_location')) do %>
-                    <%= @request.patient_location %>
+                    <%= @request.city %>
                   <% end %>
                 <% end %>
               </div>
-            <% end %>
           </div>
         </div>
       </div>

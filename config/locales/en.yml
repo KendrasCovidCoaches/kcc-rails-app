@@ -133,7 +133,7 @@ en:
   thanks_for_requesting_the_coaches_will_be: "Thanks for requesting! The coaches will be alerted."
   you_got_a_new_patient_for_name: "You got a new patient for %{name}!" #change to appointment request
   name: "Name"
-  your_full_name: "Your full name."
+  your_full_name: "Full Name"
   about_you: "About you"
   phone: "Phone"
   affiliation: "Affiliation/Organization"
@@ -242,12 +242,14 @@ en:
   weekend_avail: "Which weekend days work best for the patient?"
   weekend_times: "Which times during the weekend work best for the patient?"
   critical_sync_book: "Is it critical to be booked at the same time as another person?"
-  sync_book_info: "Please list the full name, full address, email, DOB, sex, and phone number for the person you wish to be booked with."
+  sync_book_info: "Please list the full name, email, and phone number for the person you wish to be booked with."
   comments: "Please add any additional notes, necessary accommodations, or comments here"
   please_read: "Please read and agree to the terms and conditions before submitting"
   terms_and_conds: "Terms and Conditions"
   travel_avail: "Travel and Availability"
   is_yes: "Yes"
+  eligibility: "Eligibility Group"
+  other_booker: "If you are booking for someone else, please supply your information below"
 
 
 
