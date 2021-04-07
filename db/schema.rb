@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_05_235159) do
+ActiveRecord::Schema.define(version: 2021_04_07_190928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,10 +96,6 @@ ActiveRecord::Schema.define(version: 2021_04_05_235159) do
     t.boolean "self_book", default: true, null: false
     t.string "closest_city", default: "", null: false
     t.string "travel_radius", default: "", null: false
-    t.string "weekday_avail", default: "", null: false
-    t.string "weekday_times", default: "", null: false
-    t.string "weekend_avail", default: "", null: false
-    t.string "weekend_times", default: "", null: false
     t.string "eligibility_group", default: "", null: false
     t.boolean "critical_to_book_with", default: false
     t.string "book_with_full_name", default: ""
