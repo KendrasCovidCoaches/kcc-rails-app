@@ -255,6 +255,10 @@ es:
   travel_avail:
   is_yes: "Si"
   eligibility: ""
-  other_booker:
+  other_booker: ""
+  show_weekdays_avail: ""
+  show_weekday_time_avail: ""
+  show_weekend_time_avail: ""
+  availability: ""
 
 

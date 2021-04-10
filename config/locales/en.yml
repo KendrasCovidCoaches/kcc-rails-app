@@ -257,6 +257,11 @@ en:
   is_yes: "Yes"
   eligibility: "Eligibility Group"
   other_booker: "If you are booking for someone else, please supply your information below."
+  show_weekdays_avail: "Weekday Availability"
+  show_weekday_time_avail: "Weekday Time Availability"
+  show_weekends_avail: "Weekend Availability"
+  show_weekend_time_avail: "Weekend Time Availability"
+  availability: "Patient Availability"
 
 
 
