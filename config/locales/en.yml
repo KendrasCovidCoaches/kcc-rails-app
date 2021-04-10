@@ -193,6 +193,8 @@ en:
   create_new_appointment: "Create new appointment"
   create_new_request: "Create New Appointment Request"
   appointment_name: "Appointment %{name}"
+  request_name: "Request for %{name}"
+  request_status: "Request Status"
   how_to_get_in_touch: "How to get in touch"
   preferred_patient_location: "Preferred Patient location"
   only_jpg_and_png_files: "Only jpg/jpeg and png files are allowed!"

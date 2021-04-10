@@ -1,3 +1,5 @@
+<% req_name = "#{@request.f_name} #{@request.l_name}" %>
+<%- share_title t('request_name', name: req_name) %>
 <%- share_url request_url(@request); %>
 
 <div class="container">
@@ -6,7 +8,7 @@
       <div class="-ml-4 -mt-4 flex justify-between items-center flex-wrap">
         <div class="ml-4 mt-4">
           <h3 class="text-lg leading-6 font-medium text-gray-900">
-            <%= @request.f_name %> <%= @request.l_name %>
+            Request for <%= @request.f_name %> <%= @request.l_name %>
           </h3>
 
           <% if @request.user && @request.user.email.present? %>
@@ -36,11 +38,11 @@
             <% end %>
           </span>
 
-          <% if @request.requested_users.count > 0 %>
-            <% patient_emails = @request.patient_emails %>
+          <% if @request.patient_email %>
+            <% patient_email = @request.patient_email %>
 
             <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
-              <%= mail_to current_user.email, target: :_blank, bcc: patient_emails.join(', ') do %>
+              <%= mail_to current_user.email, target: :_blank, bcc: patient_email do %>
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
@@ -121,15 +123,12 @@
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
               <span class="text-gray-500 text-xs font-bold leading-tight">
+              <%= @request.city %>
               </span>
             </div>
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
               <span class="text-gray-500 text-xs font-bold leading-tight">Created <%= time_ago_in_words(@request.created_at) %> ago</span>
-            </div>
-            <div class="flex items-center text-primary-600 col-span-1">
-              <%= inline_svg_pack_tag 'media/svgs/people.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-              <span class="text-gray-500 text-xs font-bold leading-tight"><%= @request.patients.count %> <%= 'Request'.pluralize @request.patients.count %></span>
             </div>
           </div>
         </div>
