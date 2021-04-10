@@ -218,6 +218,8 @@ es:
   last_name: ""
   birth_date: ""
   phone_number: ""
+  phone_format: ""
+  phone_example: ""
   sex: ""
   bio_sex: ""
   female: ""

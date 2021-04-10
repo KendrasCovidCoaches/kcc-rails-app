@@ -66,7 +66,9 @@
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('phone_number') %><span class="text-red-500">*</span>
+          <%= t('phone_number') %><span class="text-red-500">*</span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_format') %></span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_example') %></span><br />
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
@@ -99,14 +101,28 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label for="contact" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('state') %><span class="text-red-500">*</span>
-        </label>
-        <div class="mt-1 sm:mt-0 sm:col-span-2">
-          <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_field :state, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
-          </div>
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('state') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                    <div class="relative flex items-start">
+                      <div class="absolute pb-4 flex items-center h-5">
+                        <% num = 0 %>
+                        <% states_array = Settings.states.map { |state| [state, state] } %>
+                        <%= f.select :state, options_for_select(states_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
         </div>
       </div>
 
@@ -303,7 +319,7 @@
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
                     <div class="relative flex items-start">
-                      <div class="absolute flex items-center h-5">
+                      <div class="absolute flex pb-4 items-center h-5">
                         <% num = 0 %>
                         <% cities_array = Settings.closest_cities.map { |city| [city, city] } %>
                         <%= f.select :closest_city, options_for_select(cities_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
@@ -373,13 +389,15 @@
         </div>
       </div>
 <!-- WeekDAY availability -->
-      <div class="mt-6 sm:mt-5 is-accepting-patients">
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
                   <%= t('weekdays_avail') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
                   </p>
                 </legend>
               </div>
@@ -388,10 +406,10 @@
                   <% Settings.weekdays.each do |weekday| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekday_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekday, nil%>
+                        <%= f.check_box :weekday_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekday, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for=<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                        <label for="weekday_list_<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
                           <%= weekday %>
                         </label>
                       </div>
@@ -404,13 +422,15 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-patients">
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
                   <%= t('weekday_times') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
                   </p>
                 </legend>
               </div>
@@ -419,7 +439,7 @@
                   <% Settings.times.each do |time| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekday_times, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
+                        <%= f.check_box :weekday_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="weekday_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -435,13 +455,15 @@
         </div>
       </div>
 <!-- WeekEND availability -->
-      <div class="mt-6 sm:mt-5 is-accepting-patients">
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
                   <%= t('weekends_avail') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
                   </p>
                 </legend>
               </div>
@@ -450,10 +472,10 @@
                   <% Settings.weekends.each do |weekend| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekend_avail, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}%>
+                        <%= f.check_box :weekend_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekend, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for="category_list_<%= weekend.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                        <label for="weekend_list_<%= weekend.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
                           <%= weekend %>
                         </label>
                       </div>
@@ -466,13 +488,15 @@
         </div>
       </div>
 
-      <div class="mt-6 sm:mt-5 is-accepting-patients">
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
         <div class="sm:border-t sm:border-gray-200 sm:pt-5">
           <fieldset>
             <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
               <div>
                 <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
                   <%= t('weekend_times') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
                   </p>
                 </legend>
               </div>
@@ -481,7 +505,7 @@
                   <% Settings.times.each do |time| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :weekend_times, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
+                        <%= f.check_box :weekend_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
                         <label for="weekend_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
@@ -501,8 +525,27 @@
     <div>
       <h3 class="text-lg leading-6 font-medium text-gray-900">
         <%= t('critical_sync_book') %>
-      </h3><br />
-      <span class="text-xs"><%= t('sync_book_info') %></span>
+      </h3>
+      <div class="mt-2 sm:mt-2">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :critical_to_book_with, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :critical_to_book_with, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :critical_to_book_with, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :critical_to_book_with, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      </div><br />
+      <span class="text-s"><%= t('sync_book_info') %></span>
       <div class="mt-6 sm:mt-5">
       <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="book_with_email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
@@ -528,7 +571,9 @@
 
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <label for="book_with_phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-          <%= t('phone')%>
+          <%= t('phone')%><br />
+          <span class="text-xs text-gray-500"><%= t('phone_format') %></span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_example') %></span><br />
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
@@ -546,7 +591,7 @@
       <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_area :notes, class: "flex-1 form-textarea block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            <%= f.text_area :notes, class: "flex-1 form-textarea block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
         </div>
       </div>

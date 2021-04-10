@@ -219,6 +219,8 @@ en:
   last_name: "Last Name"
   birth_date: "Date of Birth"
   phone_number: "Primary Phone Number"
+  phone_format: "Please do not include special characters."
+  phone_example: "Example: 5125555555"
   sex: "Sex"
   bio_sex: "We support all our trans/non-binary/gender-fluid friends, but are required to provide these options only for medical purposes."
   female: "Female"
@@ -245,14 +247,14 @@ en:
   weekend_avail: "Which weekend days work best for the patient?"
   weekend_times: "Which times during the weekend work best for the patient?"
   critical_sync_book: "Is it critical to be booked at the same time as another person?"
-  sync_book_info: "Please list the full name, email, and phone number for the person you wish to be booked with."
-  comments: "Please add any additional notes, necessary accommodations, or comments here"
+  sync_book_info: "If yes, please list the full name, email, and phone number for the person you wish to be booked with."
+  comments: "Please add any additional notes, necessary accommodations, or comments below."
   please_read: "Please read and agree to the terms and conditions before submitting"
   terms_and_conds: "Terms and Conditions"
   travel_avail: "Travel and Availability"
   is_yes: "Yes"
   eligibility: "Eligibility Group"
-  other_booker: "If you are booking for someone else, please supply your information below"
+  other_booker: "If you are booking for someone else, please supply your information below."
 
 
 
