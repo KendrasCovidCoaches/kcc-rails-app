@@ -238,9 +238,11 @@ request_types:
   - Social Giving
 
 request_statuses:
-  - 'Just started'
-  - 'In progress'
-  - 'Launched'
+  - 'Unbooked'
+  - 'Booking in progress'
+  - 'Booking completed, awaiting patient confirmation'
+  - 'Patient Confirmed'
+  - 'Completed'
 
 organization_statuses:
   - 'Non-profit'
