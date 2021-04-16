@@ -135,6 +135,7 @@
       </div>
     </div>
 
+  <div>
     <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10 sm:mx-0">
       <div class="sm:col-span-2">
         <div class="bg-white overflow-hidden rounded-lg sm:pb-4 shadow">
@@ -197,24 +198,19 @@
             </div>
           <% end %>
         </div>
+        </div>
 
-        <div class="mt-8 bg-white overflow-hidden rounded-lg shadow">
+        <div class="mt-0 bg-white overflow-hidden rounded-lg shadow">
           <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
             <h3 class="text-primary-700 font-bold"><%= t('help_needed') %></h3>
           </div>
     
-      <div class="mt-8 sm:col-span-2 sm:mt-0">
+      <div class="mt-8 sm:col-span-2 sm:mt-2">
         <div class="sm:sticky sm:top-10">
           <div class="overflow-hidden mb-8 hidden sm:block">
             <%= render partial: 'patient_button' %>
           </div>
-
-          <div class="bg-white overflow-hidden rounded-lg sm:sticky sm:top-0 shadow">
-            <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
-              <h3 class="text-primary-700 font-bold"><%= t('appointment_details') %></h3>
-            </div>
-
-
+          <div class="mt-8 ml-4 sm:col-span-2 sm:mt-2">
               <% if @request.patient_email.present? %>
                 <%= request_panel_item(title: t('how_to_get_in_touch')) do %>
                   <%= Rinku.auto_link(sanitize(@request.patient_email), :all, 'class="text-primary-500" rel="nofollow noopener noreferrer"').html_safe %>
@@ -243,8 +239,8 @@
 
         <ul>
           <% @request.patients.includes(user: :skills).each do |patient| %>
-            <% user = patient.user %>
-            <%= render partial: 'devise/registrations/user', locals: { user: user, patient: patient } %>
+            <% user = patient %>
+            <%= render partial: 'devise/registrations/user', locals: { user: user, patient: patient, request: @request } %>
           <% end %>
         </ul>
       </div>

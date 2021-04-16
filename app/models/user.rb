@@ -40,14 +40,9 @@ class User < ApplicationRecord
     return false if user_trying_view.blank?
     return true if user_trying_view.is_coach?
     return true if user_trying_view == self
-    return true if self.future_office_hours.length > 0
 
     # Check if this user requested for any appointment by user_trying_view.
     self.requested_appointments.where(user_id: user_trying_view.id).exists?
-  end
-
-  def future_office_hours
-    self.office_hours.where('start_at > ?', DateTime.now).order('start_at ASC')
   end
 
   def is_coach?

@@ -196,7 +196,7 @@ en:
   request_name: "Request for %{name}"
   request_status: "Request Status"
   how_to_get_in_touch: "How to get in touch"
-  preferred_patient_location: "Preferred Patient location"
+  preferred_patient_location: "Preferred Appointment Location"
   only_jpg_and_png_files: "Only jpg/jpeg and png files are allowed!"
   you_have_accepted_oh: "<br/>You have accepted:<br/><span class='text-primary-600'>%{participant_name}</span> / <span class='text-primary-600'>%{participant_email}</span>"
   you_have_a_slot_at_when: "You have a slot at <span class='text-primary-600'>%{when}</span>." # remove or change
