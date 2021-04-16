@@ -112,7 +112,8 @@ class RequestsController < ApplicationController
       respond_to do |format|
         if @request.save
           track_event 'Request creation complete'
-          Patient.create(user: current_user, request_id: @request.id)
+          Patient.create(user_id: current_user.id, request_id: @request.id)
+          byebug
           # RequestMailer.with(request: @request).new_request.deliver_now
           format.html { redirect_to @request, notice: I18n.t('request_was_successfully_created') }
           format.json { render :show, status: :created, location: @request }
