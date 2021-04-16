@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :appointments #, dependent: :destroy
   has_many :requests #, dependent: :destroy
   has_many :patients, dependent: :destroy
-  has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
+  # has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
   has_many :requested_appointments, through: :patients, source: :request, dependent: :destroy
 
   acts_as_taggable_on :skills
