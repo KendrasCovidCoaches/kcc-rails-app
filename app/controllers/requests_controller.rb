@@ -173,7 +173,7 @@ class RequestsController < ApplicationController
       #byebug
       if @request.requested_users.include?(current_user)
         #byebug
-        @request.patients.where(user: current_user).destroy_all
+        @request.destroy
         flash[:notice] = I18n.t('completed')
         #RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
       end
