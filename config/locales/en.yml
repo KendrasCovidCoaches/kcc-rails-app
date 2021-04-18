@@ -262,6 +262,7 @@ en:
   show_weekends_avail: "Weekend Availability"
   show_weekend_time_avail: "Weekend Time Availability"
   availability: "Patient Availability"
+  booking_status: "Booking Status"
 
 
 
