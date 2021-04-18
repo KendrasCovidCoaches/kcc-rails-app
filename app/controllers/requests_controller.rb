@@ -173,12 +173,12 @@ class RequestsController < ApplicationController
       #byebug
       if @request.requested_users.include?(current_user)
         #byebug
-        @request.destroy
+        @request.update(status: 'Completed')
         flash[:notice] = I18n.t('completed')
         #RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
       end
   
-      redirect_to requested_requests_path
+      redirect_to request_path(@request)
     end
 
     def confirm_appointment

@@ -133,7 +133,8 @@ en:
   request_was_successfully_deleted: "Request was successfully deleted."
   we_ve_removed_you_from_the_list_of_requested_peo: "Request canceled and removed."
   completed: "We've marked your request as complete and removed the request from your list."
-  patient_completed: "I have self-booked"
+  patient_self_booked: "I have self-booked"
+  patient_completed: "Appointment Completed"
   thanks_for_requesting_the_coaches_will_be: "Thanks for requesting! The coaches will be alerted."
   you_got_a_new_patient_for_name: "You got a new patient for %{name}!" #change to appointment request
   name: "Name"

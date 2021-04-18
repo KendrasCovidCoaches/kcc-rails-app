@@ -194,8 +194,11 @@
     
       <div class="mt-8 sm:col-span-2 sm:mt-2">
         <div class="sm:sticky sm:top-10">
-          <div class="overflow-hidden mb-8 hidden sm:block">
+        <div class="overflow-hidden mb-8 hidden sm:block">
             <%= render partial: 'status' %>
+          </div>
+          <div class="overflow-hidden mb-8 hidden sm:block">
+            <%= render partial: 'change_status' %>
           </div>
           <div class="mt-8 ml-4 sm:col-span-2 sm:mt-2">
               <% if @request.patient_email.present? %>
@@ -204,9 +207,9 @@
                 <% end %>
               <% end %>
 
-                <% if @request.city.present? %>
+                <% if @request.closest_city.present? %>
                   <%= request_panel_item(title: t('preferred_patient_location')) do %>
-                    <%= @request.city %>
+                    <%= @request.closest_city %>
                   <% end %>
                 <% end %>
               </div>
