@@ -267,6 +267,8 @@ en:
   booking_status: "Booking Status"
   confirmation_success: "Confirmation successful!"
   patient_confirm: "Click to confirm this appointment"
+  requested_by_name: "Requested by (name)"
+  requested_by_email: "Requested by (email)"
 
 
 

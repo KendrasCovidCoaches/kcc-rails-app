@@ -212,6 +212,18 @@
                     <%= @request.closest_city %>
                   <% end %>
                 <% end %>
+              
+              <% if @request.requested_by_name.present? %>
+                  <%= request_panel_item(title: t('requested_by_name')) do %>
+                    <%= @request.requested_by_name %>
+                  <% end %>
+              <% end %>
+
+              <% if @request.requested_by_email.present? %>
+                  <%= request_panel_item(title: t('requested_by_email')) do %>
+                    <%= @request.requested_by_email %>
+                  <% end %>
+              <% end %>
               </div>
           </div>
         </div>
