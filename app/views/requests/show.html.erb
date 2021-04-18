@@ -106,6 +106,22 @@
           <h1 class="text-xl leading-tight text-primary-600 font-bold">
             <%= @request.f_name %> <%= @request.l_name %>
           </h1>
+          <span class="text-sm leading-tight text-black font-normal">
+          <strong>Address:</strong> <br />
+          <%= @request.address %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+          <%= @request.city %>, <%= @request.state %> <%= @request.zip %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Email:</strong> <%= @request.patient_email %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Phone:</strong> <%= @request.phone %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Sex:</strong> <%= @request.sex.capitalize %>
+          </span><br />
           <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
@@ -120,6 +136,25 @@
           </div>
         </div>
       </div>
+      <div class="sm:col-span-1 flex-col justify-between">
+        <div class="p-4 sm:p-6 pb-7">
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>DOB:</strong> <%= @request.birth_date.strftime("%m/%d/%Y") %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Eligibility Group:</strong> <%= @request.eligibility_group %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Over 50?</strong>  <%= @request.over_50 ? "Yes" : "No" %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Open to Same-Day?</strong>  <%= @request.open_to_same_day ? "Yes" : "No" %>
+          </span><br />
+          <span class="text-sm leading-tight text-black font-normal">
+            <strong>Preferred Language:</strong> <%= @request.pref_language.capitalize %>
+          </span><br />
+        </div>
+      </div>
     </div>
 
   <div>
@@ -129,6 +164,23 @@
           <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
             <h3 class="text-primary-700 font-bold"><%= t('availability') %></h3>
           </div>
+
+          <% if @request.travel_radius.present? %>
+            <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">
+              <span class="text-sm leading-5 font-normal text-gray-800">
+                <%= t('willing_to_travel') %>
+              </span>
+              <span class="text-sm leading-5 font-bold text-gray-800"> 
+                <%= @request.travel_radius %> 
+                </span> 
+              <span class="text-sm leading-5 font-normal text-gray-800"> 
+              miles from zip:
+              </span>
+              <span class="text-sm leading-5 font-bold text-gray-800"> 
+                <%= @request.zip %> 
+              </span> 
+            </div>
+          <% end %>
 
           <% if @request.weekdays.present? %>
             <div class="p-4 sm:px-6 sm:pt-4 sm:pb-2">

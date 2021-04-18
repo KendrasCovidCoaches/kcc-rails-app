@@ -3,14 +3,14 @@
     <div class="px-4 py-4 sm:px-6">
       <div class="flex items-center justify-between">
         <div class="text-sm leading-5 font-medium text-primary-600 truncate">
-          <%= user.f_name %> <%= user.l_name %> / <%= mail_to user.email, nil, encode: 'javascript' %>
+          <%= user.f_name %> <%= user.l_name %> / <%= mail_to user.email, nil, encode: 'javascript' %> / <%= user.phone %>
         </div>
       </div>
       <% if request.book_with_full_name.present? %>
       <div class="flex py-4 items-center justify-between">
         <div class="text-sm leading-5 font-medium text-primary-600 truncate">
           <span class="text-base leading-5 font-medium text-red-600">Requested to book with: </span><br />
-          <%= request.book_with_full_name %> / <%= mail_to request.book_with_email, nil, encode: 'javascript' %>
+          <%= request.book_with_full_name %> / <%= mail_to request.book_with_email, nil, encode: 'javascript' %> / <%= request.book_with_phone %>
         </div>
       </div>
       <% end %>

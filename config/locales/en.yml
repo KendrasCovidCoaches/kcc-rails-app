@@ -12,7 +12,7 @@ en:
   apply: "apply"
   signed_up: "signed up"
   find_appointments: "Find Appointments"
-  patients: "Patients"
+  patients: "Patient(s)"
   resources: "Resources"
   discord: "Discord"
   account: "Account"
@@ -112,6 +112,7 @@ en:
   appointment_details: "Appointment details"
   not_specified: "Not specified"
   save_appointment: "Save Appointment"
+  save_request: "Save Request"
   edit_appointment_name: "Edit appointment %{name}"
   sorry_no_such_user: "Sorry, no such user."
   apologies_you_don_t_have_access_to_this: "Apologies, you don't have access to this."
@@ -269,6 +270,7 @@ en:
   patient_confirm: "Click to confirm this appointment"
   requested_by_name: "Requested by (name)"
   requested_by_email: "Requested by (email)"
+  willing_to_travel: "Willing to travel"
 
 
 
