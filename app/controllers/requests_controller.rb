@@ -61,7 +61,7 @@ class RequestsController < ApplicationController
     def requested
       params[:page] ||= 1
   
-      @requests = current_user.requested_requests.page(params[:page]).per(25)
+      @requests = current_user.requests.page(params[:page]).per(25)
       @index_from = (@requests.prev_page || 0) * @requests.limit_value + 1
       @index_to = [@index_from + @requests.limit_value - 1, @requests.total_count].min
   
@@ -150,9 +150,9 @@ class RequestsController < ApplicationController
     end
   
     def toggle_patient
-      if @request.patients.include?(current_user)
+      if @request.user == current_user
         #byebug
-        # @request.patients.where(user: current_user).destroy_all
+        @request.destroy
         flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
         # RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
       else
@@ -166,7 +166,7 @@ class RequestsController < ApplicationController
         track_event 'User requested'
       end
   
-      redirect_to request_path(@request)
+      redirect_to own_requests_path(current_user)
     end
   
     def completed_patient
