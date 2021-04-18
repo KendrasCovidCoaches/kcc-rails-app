@@ -150,9 +150,9 @@ class RequestsController < ApplicationController
     end
   
     def toggle_patient
-      if @request.requested_users.include?(current_user)
+      if @request.patients.include?(current_user)
         #byebug
-        @request.patients.where(user: current_user).destroy_all
+        # @request.patients.where(user: current_user).destroy_all
         flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
         # RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
       else
@@ -180,6 +180,24 @@ class RequestsController < ApplicationController
   
       redirect_to requested_requests_path
     end
+
+    def confirm_appointment
+      set_request
+      #byebug
+      if @request.status != 'Patient Confirmed'
+        updated = @request.update(status: 'Patient Confirmed')
+        respond_to do |format|
+          if updated
+            format.html { redirect_to request_path(@request), notice: I18n.t('confirmation_success') }
+            format.json { render :show, status: :ok, location: @request }
+          else
+            format.html { render :edit }
+            format.json { render json: @request.errors, status: :unprocessable_entity }
+          end
+        end
+        # RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
+      end  
+    end
   
     private
       # Use callbacks to share common setup or constraints between actions.
@@ -192,7 +210,7 @@ class RequestsController < ApplicationController
         params.fetch(:request, {}).permit(:user_id, :patient_email, :f_name, :l_name, :birth_date, :phone, :address, :highlight, :city, :state, 
         :zip, :sex, :pref_language, :self_book, :closest_city, :travel_radius, :weekday_avail, :weekday_times, :weekend_avail, :weekend_times, 
         :eligibility_group, :critical_to_book_with, :book_with_full_name, :book_with_email, :book_with_phone, :open_to_same_day, :notes, :requested_by_email,
-        :requested_by_name, :over_50, :weekday_list => [], :weekend_list => [], :weekday_time_list => [], :weekend_time_list => [])
+        :requested_by_name, :over_50, :status, :weekday_list => [], :weekend_list => [], :weekday_time_list => [], :weekend_time_list => [])
       end
   
       def ensure_owner_or_admin

@@ -60,6 +60,7 @@ Rails.application.routes.draw do
     member do
       post :toggle_patient
       post :completed_patient
+      post :confirm_appointment
       get :patients
     end
   end

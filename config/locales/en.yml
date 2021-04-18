@@ -132,7 +132,7 @@ en:
   request_was_successfully_deleted: "Request was successfully deleted."
   we_ve_removed_you_from_the_list_of_requested_peo: "We've removed you from the list of requested people."
   completed: "We've marked your patient offer as complete and removed the appointment from your list."
-  patient_completed: "Mark as Completed and Remove"
+  patient_completed: "I have self-booked"
   thanks_for_requesting_the_coaches_will_be: "Thanks for requesting! The coaches will be alerted."
   you_got_a_new_patient_for_name: "You got a new patient for %{name}!" #change to appointment request
   name: "Name"
@@ -263,6 +263,8 @@ en:
   show_weekend_time_avail: "Weekend Time Availability"
   availability: "Patient Availability"
   booking_status: "Booking Status"
+  confirmation_success: "Confirmation successful!"
+  patient_confirm: "Click to confirm this appointment"
 
 
 
