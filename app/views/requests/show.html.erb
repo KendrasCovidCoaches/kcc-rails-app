@@ -97,9 +97,6 @@
   <% end %>
 
   <div>
-    <div class="overflow-hidden sticky top-10 z-40 mb-8 sm:hidden">
-      <%= render partial: 'patient_button' %>
-    </div>
     <div class="mt-0 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden sm:mx-0 sm:grid sm:grid-cols-2">
       <div class="sm:col-span-1 flex-col justify-between">
         <div class="p-4 sm:p-6 pb-7">
@@ -156,6 +153,36 @@
         </div>
       </div>
     </div>
+    <% if @request.notes.present? %>
+    <div class="mt-4 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden sm:mx-0">
+      <div class="justify-between">
+        <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
+          <h3 class="text-primary-700 font-bold">Notes:</h3>
+        </div>
+        <div>
+          <% if current_user && (current_user == @request.user || current_user.is_coach?) %>
+            <span class="ml-3 mr-3 inline-flex float-right rounded-md shadow-sm mt-4">
+              <%= link_to edit_request_path(@request, anchor: "notes") do %>
+                <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+                  <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                  </svg>
+                  <span>
+                    <%= t('edit') %>
+                  </span>
+                </button>
+              <% end %>
+            </span>
+          <% end %>
+        </div>
+        <div class="p-4 sm:p-6 pb-7">
+          <span class="text-sm leading-tight text-black font-normal">
+          <%= @request.notes %>
+          </span>
+        </div>
+      </div>
+    </div>
+    <% end %>
 
   <div>
     <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10 sm:mx-0">
