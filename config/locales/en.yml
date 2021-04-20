@@ -268,13 +268,15 @@ en:
   booking_status: "Booking Status"
   confirmation_success: "Confirmation successful!"
   click_to_confirm: "Click to confirm this appointment"
-  patient_confirm: 'Patient confirmed'
+  patient_confirm: 'Patient Confirmed'
   requested_by_name: "Requested by (name)"
   requested_by_email: "Requested by (email)"
   willing_to_travel: "Willing to travel"
   patient_self_booked: "Patient has self-booked"
   booking_in_progress: 'Booking in progress'
   booking_completed_awaiting: 'Booking completed, awaiting patient confirmation'
+  mark_booking_complete: 'Mark as Booking Completed'
+  booking_complete: 'The request status has successfully been changed to "Booking completed, awaiting patient confirmation".'
   unbooked: 'Mark as Unbooked'
   has_been_unbooked: 'The request status has successfully been changed to "unbooked".'
   in_progress: 'Mark as In Progress'

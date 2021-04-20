@@ -59,7 +59,7 @@
         <% end %>
       <% end %>
     <% end %> <!--end patient options-->
-    <% if current_user.requested_for_appointment?(@request) && @request.status != 'Completed' && current_user.is_coach? %>
+    <% if current_user.is_coach? %>
       <%= link_to toggle_patient_request_path(@request), method: :post do %>
         <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:shadow-outline-orange focus:border-orange-700 active:bg-orange-700">
           <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -72,7 +72,7 @@
       <% end %>
       <br /><br />
       <%= link_to completed_patient_request_path(@request), method: :post do %>
-        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700">
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-gray-400 hover:bg-gray-300 focus:outline-none focus:shadow-outline-gray focus:border-gray-400 active:bg-gray-400">
           <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
             <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
           </svg>
@@ -104,8 +104,18 @@
         </button>
       <% end %>
       <br /><br />
+      <%= link_to mark_as_book_complete_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:shadow-outline-yellow focus:border-yellow-400 active:bg-yellow-400">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('mark_booking_complete') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
       <% if @request.status == 'Booking completed, awaiting patient confirmation' %>
-        <br /><br />
         <%= link_to confirm_appointment_request_path(@request), method: :post do %>
           <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-blue-700">
             <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -117,7 +127,6 @@
           </button>
         <% end %>
       <% elsif @request.status == 'Patient Confirmed' %>
-        <br /><br />
         <%= link_to completed_patient_request_path(@request), method: :post do %>
         <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:shadow-outline-green focus:border-green-700 active:bg-green-700">
           <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">

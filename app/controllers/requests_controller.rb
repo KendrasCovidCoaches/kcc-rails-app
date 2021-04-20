@@ -207,6 +207,19 @@ class RequestsController < ApplicationController
       redirect_to request_path(@request)
     end
 
+    def mark_as_book_complete
+      #byebug
+      set_request
+      if current_user.is_coach?
+        #byebug
+        @request.update(status: 'Booking completed, awaiting patient confirmation')
+        flash[:notice] = I18n.t('booking_complete')
+        #RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
+      end
+  
+      redirect_to request_path(@request)
+    end
+
     def confirm_appointment
       set_request
       #byebug

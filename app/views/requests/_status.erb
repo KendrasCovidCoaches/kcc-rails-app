@@ -17,7 +17,7 @@
       <% elsif @request.status == 'Booking in progress' %>
         <% status_class = "w-full px-4 py-2 border border-transparent text-2xl leading-5 font-bold text-white bg-orange-400 hover:bg-orange-300 focus:outline-none focus:shadow-outline-orange focus:border-orange-400 active:bg-orange-300"%>
       <% elsif @request.status == 'Booking completed, awaiting patient confirmation' %>
-        <% status_class = "w-full px-4 py-2 border border-transparent text-2xl leading-5 font-bold text-white bg-yellow-400 hover:bg-yellow-300 focus:outline-none focus:shadow-outline-yellow focus:border-yellow-400 active:bg-yellow-400"%>
+        <% status_class = "w-full px-4 py-2 border border-transparent text-2xl leading-5 font-bold text-white bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:shadow-outline-yellow focus:border-yellow-300 active:bg-yellow-300"%>
       <% elsif @request.status == 'Patient Confirmed' %>
         <% status_class = "w-full px-4 py-2 border border-transparent text-2xl leading-5 font-bold text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-blue-700"%>
       <% elsif @request.status == 'Completed' %>
