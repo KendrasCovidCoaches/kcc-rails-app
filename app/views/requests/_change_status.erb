@@ -93,6 +93,17 @@
         </button>
       <% end %>
       <br /><br />
+      <%= link_to mark_as_in_progress_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-orange-400 hover:bg-orange-300 focus:outline-none focus:shadow-outline-red focus:border-orange-400 active:bg-orange-300">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('in_progress') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
       <% if @request.status == 'Booking completed, awaiting patient confirmation' %>
         <br /><br />
         <%= link_to confirm_appointment_request_path(@request), method: :post do %>

@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       post :completed_patient
       post :confirm_appointment
       post :mark_as_unbooked
+      post :mark_as_in_progress
       get :patients
     end
   end

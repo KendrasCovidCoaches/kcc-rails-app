@@ -276,7 +276,9 @@ en:
   booking_in_progress: 'Booking in progress'
   booking_completed_awaiting: 'Booking completed, awaiting patient confirmation'
   unbooked: 'Mark as Unbooked'
-  has_been_unbooked: 'The request status has successfully been changed to unbooked.'
+  has_been_unbooked: 'The request status has successfully been changed to "unbooked".'
+  in_progress: 'Mark as In Progress'
+  is_in_progress: 'The request status has successfully been changed to "in progress".'
 
 
 

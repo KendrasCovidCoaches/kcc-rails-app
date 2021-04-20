@@ -194,6 +194,19 @@ class RequestsController < ApplicationController
       redirect_to request_path(@request)
     end
 
+    def mark_as_in_progress
+      #byebug
+      set_request
+      if current_user.is_coach?
+        #byebug
+        @request.update(status: 'Booking in progress')
+        flash[:notice] = I18n.t('is_in_progress')
+        #RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
+      end
+  
+      redirect_to request_path(@request)
+    end
+
     def confirm_appointment
       set_request
       #byebug
