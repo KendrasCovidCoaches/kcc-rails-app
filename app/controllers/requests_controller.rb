@@ -181,6 +181,19 @@ class RequestsController < ApplicationController
       redirect_to request_path(@request)
     end
 
+    def mark_as_unbooked
+      #byebug
+      set_request
+      if current_user.is_coach?
+        #byebug
+        @request.update(status: 'Unbooked')
+        flash[:notice] = I18n.t('has_been_unbooked')
+        #RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
+      end
+  
+      redirect_to request_path(@request)
+    end
+
     def confirm_appointment
       set_request
       #byebug

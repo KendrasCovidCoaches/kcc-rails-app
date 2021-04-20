@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       post :toggle_patient
       post :completed_patient
       post :confirm_appointment
+      post :mark_as_unbooked
       get :patients
     end
   end

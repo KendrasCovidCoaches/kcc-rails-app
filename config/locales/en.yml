@@ -134,7 +134,7 @@ en:
   request_was_successfully_deleted: "Request was successfully deleted."
   we_ve_removed_you_from_the_list_of_requested_peo: "Request canceled and removed."
   completed: "We've marked your request as complete."
-  patient_self_booked: "I have self-booked"
+  i_have_self_booked: "I have self-booked"
   patient_completed: "Appointment Completed"
   thanks_for_requesting_the_coaches_will_be: "Thanks for requesting! The coaches will be alerted."
   you_got_a_new_patient_for_name: "You got a new patient for %{name}!" #change to appointment request
@@ -267,10 +267,16 @@ en:
   availability: "Patient Availability"
   booking_status: "Booking Status"
   confirmation_success: "Confirmation successful!"
-  patient_confirm: "Click to confirm this appointment"
+  click_to_confirm: "Click to confirm this appointment"
+  patient_confirm: 'Patient confirmed'
   requested_by_name: "Requested by (name)"
   requested_by_email: "Requested by (email)"
   willing_to_travel: "Willing to travel"
+  patient_self_booked: "Patient has self-booked"
+  booking_in_progress: 'Booking in progress'
+  booking_completed_awaiting: 'Booking completed, awaiting patient confirmation'
+  unbooked: 'Mark as Unbooked'
+  has_been_unbooked: 'The request status has successfully been changed to unbooked.'
 
 
 
