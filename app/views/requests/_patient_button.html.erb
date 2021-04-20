@@ -10,14 +10,6 @@
           </span>
         </button>
       <% end %>
-  <% elsif !current_user.has_complete_profile? %>
-      <%= link_to edit_user_registration_path do %>
-        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
-          <span>
-            <%= t('complete_your_profile_to_request') %>
-          </span>
-        </button>
-      <% end %>
   <% else %>
     <% if current_user.requested_for_appointment?(@request) %>
       <%= link_to toggle_patient_request_path(@request), method: :post do %>

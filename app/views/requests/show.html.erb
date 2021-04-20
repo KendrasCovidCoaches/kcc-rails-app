@@ -13,13 +13,7 @@
 
           <% if @request.user && @request.user.email.present? %>
             <div class="mt-1">
-              <% if @request.user.visibility %>
-                <%= link_to profile_path(@request.user), class: 'flex-shrink-0 group inline-block focus:outline-none' do %>
-                  <%= render partial: 'user_avatar', locals: {user: @request.user} %>
-                <% end %>
-              <% else %>
-                <%= render partial: 'user_avatar', locals: {user: @request.user} %>
-              <% end %>
+              <%= render partial: 'user_avatar', locals: {user: @request.user} %>
             </div>
           <% end %>
         </div>

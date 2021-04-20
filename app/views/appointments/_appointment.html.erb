@@ -17,8 +17,6 @@
 
               <% if current_user.blank? %>
                 - <%= t('sign_up_to_patient').downcase %>
-              <% elsif !current_user.has_complete_profile? %>
-                - <%= t('complete_your_profile_to_request').downcase %>
               <% end %>
             <% end %>
           </span>

@@ -1,19 +1,9 @@
 <%- share_title "Profile" %>
 
 <div class="container">
-  <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+  <div class="bg-white px-4 py-5 sm:px-6">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <div>
-        <div>
-          <div>
-            <h3 class="text-lg leading-6 font-medium text-gray-900">
-              <%= t('your_profile') %>
-            </h3>
-            <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-              <%= t('this_information_will_be_displayed_publicly_fill_e') %>
-            </p>
-          </div>
-
           <div class="mt-6 flex justify-center">
             <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -21,10 +11,7 @@
               <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
             <% end %>
           </div>
-
-
           <%= render partial: 'profile_form', locals: { f: f } %>
-        </div>
       </div>
       <div class="mt-8 border-t border-gray-200 pt-5">
         <div class="flex justify-between">
@@ -33,7 +20,7 @@
           <% end %>
           <span class="ml-3 inline-flex rounded-md shadow-sm">
             <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary active:bg-primary-700 transition duration-150 ease-in-out">
-              <%= t('save_profile') %>
+              <%= t('save_changes') %>
             </button>
           </span>
         </div>

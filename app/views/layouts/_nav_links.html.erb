@@ -28,11 +28,6 @@
           <% end %>
       </div>
       <div>
-        <%= link_to own_appointments_path, class: "#{own_appointments_nav_link_class(variant)}" do %>
-          <%= t('your_appointments') %>
-        <% end %>
-      </div>
-      <div>
         <%= link_to own_requests_path, class: "#{c_requested_appointments_nav_link_class(variant)}" do %>
           <%= t('requests_for_patients') %>
         <% end %>

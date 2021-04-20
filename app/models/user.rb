@@ -25,10 +25,6 @@ class User < ApplicationRecord
     self.requested_appointments.where(id: appointment.id).exists?
   end
 
-  def has_complete_profile?
-    self.about.present? && self.profile_links.present? && self.location.present?
-  end
-
   def has_correct_skills?(appointment)
     appointment_skills = appointment.skills.map(&:name)
     return true if appointment_skills.include?('Anything')

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/p/:page' => 'users/registrations#index', as: 'users_with_pagination'
     get 'users', to: 'users/registrations#index', as: 'patients'
-    get 'users/:id', to: 'users/registrations#show', as: 'profile'
+    # get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end
 
   get '/appointments/p/:page' => 'appointments#index', as: 'appointments_with_pagination'
