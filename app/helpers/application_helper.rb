@@ -122,7 +122,7 @@ module ApplicationHelper
 
     applied = get_query_params[filter_by].include?(label)
 
-    if filter_by == 'appointment_types' and @applied_appointment_types.present? and @applied_appointment_types.include?(label)
+    if filter_by == 'request_types' and @applied_request_types.present? and @applied_request_types.include?(label)
       applied = true
     end
 
@@ -200,7 +200,7 @@ module ApplicationHelper
   end
 
   def sort_drop_down_option(path, title, sort_by = nil)
-    new_params = params.permit(:sort_by, :skills, :appointment_types, :categories, :locations).dup
+    new_params = params.permit(:sort_by, :skills, :request_types, :categories, :locations).dup
 
     case params[:sort_by]
     when sort_by
@@ -220,7 +220,7 @@ module ApplicationHelper
   end
 
   def filter_bar_filter(label, filter, options)
-    render partial: 'appointments/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
+    render partial: 'requests/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
   end
 
   def google_analytics_id

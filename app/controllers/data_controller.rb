@@ -1,6 +1,6 @@
 class DataController < ApplicationController
-  def appointments
-    respond_with_csv(Appointment, ["id", "user_id", "name", 
+  def requests
+    respond_with_csv(Request, ["id", "user_id", "name", 
     "description", "created_at", "updated_at", "location", 
     "highlight", "number_of_patients", "organization", 
     "level_of_urgency", "start_date", "end_date", 
@@ -11,11 +11,11 @@ class DataController < ApplicationController
   def users
     respond_with_csv(User, ["id", 
     "created_at", "updated_at", "location", 
-    "level_of_availability", "pair_with_appointments", "affiliation"])
+    "level_of_availability", "pair_with_requests", "affiliation"])
   end
 
   def patients
-    respond_with_csv(Patient, ["id", "user_id", "appointment_id",
+    respond_with_csv(Patient, ["id", "user_id", "request_id",
   "created_at", "updated_at"])
   end
 

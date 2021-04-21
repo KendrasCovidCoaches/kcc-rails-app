@@ -1,39 +1,20 @@
 Hey there!
 
-You got a new request for your appointment <%= @appointment.name %>!
+You got a new request for <%= @request.f_name %> <%= @request.l_name %>!
 
-Current requests are visible on your appointment page: <%= url_for appointment_url(@appointment) %>.
+Current requests are visible here: <%= url_for requests_url %>.
 
 Patient Details:
 ------------------
 
-Name: <%= @user.name %>
-Email: <%= @user.email %>
-<%- if @user.phone.present? %>
-  Phone: <%= @user.phone %>
+Name: <%= @request.f_name %> <%= @request.l_name %>
+Email: <%= @request.email %>
+<%- if @request.phone.present? %>
+  Phone: <%= @request.phone %>
 <%- end -%>
-<%- if @user.affiliation.present? %>
-  Affiliation: <%= @user.affiliation %>
-<%- end -%>
-<%- if @user.skill_list.present? %>
-  Skills: <%= @user.skill_list.join(', ') %>
-<%- end -%>
-<%- if @user.level_of_availability.present? %>
-  Level of Availability: <%= @user.level_of_availability %>
-<%- end -%>
-<%- if @user.resume.present? %>
-  Resume / Headline: <%= @user.resume %>
-<%- end -%>
-
-About:
-<%= @user.about %>
 
 
 
-Notes:
-<%- if @appointment.requested_users.count >= PATIENTS_REQUIRED_FOR_FUNDING %>
-  * ** Since you have over <%= PATIENTS_REQUIRED_FOR_FUNDING %> patients you can now apply for funding. Visit your appointment page. **
-<%- end -%>
 
 - Your friends at <%= DOMAIN_NAME %>
 For any feedback or questions regarding <%= DOMAIN_NAME %>, let us know at <%= AFFILIATE_EMAIL %>.

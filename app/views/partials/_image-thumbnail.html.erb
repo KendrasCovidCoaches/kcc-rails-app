@@ -1,8 +1,8 @@
 <div class="relative">
   <div class="inline-block">
-    <% if appointment.image.representable? %>
-      <%= link_to appointment.image, class: 'inline-block', 'data-fancybox': 'hwc-gallery' do %>
-        <%= image_tag appointment.cover_photo %>
+    <% if request.image.representable? %>
+      <%= link_to request.image, class: 'inline-block', 'data-fancybox': 'hwc-gallery' do %>
+        <%= image_tag request.cover_photo %>
       <% end %>
     <% else %>
       <%= link_to inline_svg_pack_tag('media/svgs/question-mark-circle.svg'), image, class: 'h-full fill-current flex justify-center items-center' %>

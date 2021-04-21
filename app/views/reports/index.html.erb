@@ -82,7 +82,7 @@
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-600">Total Appointments</h5>
-                                <h3 class="font-bold text-3xl"><%=@report.appointment_count%></h3>
+                                <h3 class="font-bold text-3xl"><%=@report.request_count%></h3>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             </div>
                             <div class="flex-1 text-right md:text-center">
                                 <h5 class="font-bold uppercase text-gray-600">New Appointments last 7 days</h5>
-                                <h3 class="font-bold text-3xl"><%=@report.new_appointment_count%></h3>
+                                <h3 class="font-bold text-3xl"><%=@report.new_request_count%></h3>
                             </div>
                         </div>
                     </div>
@@ -243,7 +243,7 @@
                                     "data": {
                                         "labels": <%=@report.month_labels.to_json.html_safe%>,
                                         "datasets": [{
-                                            "data": <%=@report.appointment_count_per_month%>,
+                                            "data": <%=@report.request_count_per_month%>,
                                             "borderColor": "rgb(75, 192, 192)",
                                             "backgroundColor": "rgba(75, 192, 192, 0.2)",
                                             "borderWidth": 1
@@ -310,10 +310,10 @@
                                 </thead>
 
                                 <tbody>
-                                  <% @report.appointment_table.each do |date, appointment_count, requested_appointment_count| %> 
+                                  <% @report.request_table.each do |date, request_count, requested_appointment_count| %> 
                                     <tr>
                                       <td class="border px-4 py-2"><%= date %></td>
-                                      <td class="border px-4 py-2"><%= appointment_count %></td>
+                                      <td class="border px-4 py-2"><%= request_count %></td>
                                       <td class="border px-4 py-2"><%= requested_appointment_count %></td>
                                     </tr>
                                   <% end %>

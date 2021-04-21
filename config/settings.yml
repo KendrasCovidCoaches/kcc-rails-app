@@ -206,26 +206,11 @@ patient_availabilities:
   - 'Full Time'
 
 # Options for how many patients a appointment might request
-patients_needed_for_appointment:
+patients_needed_for_request:
   - '1-10'
   - '10-50'
   - '50-100'
   - '100+'
-
-appointment_types:
-  - E-Learning
-  - Help Out Communities
-  - Job Placement
-  - Other
-  - Map Patients To Needs
-  - Mental Health
-  - News and Information
-  - Social Giving
-
-appointment_statuses:
-  - 'Just started'
-  - 'In progress'
-  - 'Launched'
 
 request_types:
   - E-Learning
@@ -297,11 +282,11 @@ appointment_locations:
     color: blue
     image: driving
 
-appointment_categories:
+request_categories:
   - name: Ongoing
     slug: ongoing
     body: Neighbors helping neighbors for periods of 2 weeks or more
-    appointment_types:
+    request_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -311,7 +296,7 @@ appointment_categories:
   - name: Internships
     slug: internships
     body: Turn your love of helping others into a career
-    appointment_types:
+    request_types:
       - E-Learning
       - Map Patients To Needs
       - Job Placement
@@ -322,7 +307,7 @@ appointment_categories:
   - name: One-Time
     slug: one-time
     body: Patient opportunities requiring less that 2 hours of your time
-    appointment_types:
+    request_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -331,7 +316,7 @@ appointment_categories:
   - name: Other
     slug: other
     body: Sharing events, news, social giving, and other information
-    appointment_types:
+    request_types:
       - News and Information
       - Social Giving
       - E-Learning
@@ -458,6 +443,6 @@ media_kit:
 
 google_fonts_request: 'Lora&family=Roboto:wght@400;500;700'
 
-homepage_featured_appointments_count: 3
+homepage_featured_requests_count: 3
 
 list_id: 0c97d3c7b8

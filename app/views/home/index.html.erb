@@ -16,7 +16,7 @@
     </h3>
 
     <div class="relative w-64 mx-auto">
-      <%= form_with url: appointments_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
+      <%= form_with url: requests_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
         <%= form.text_field :query, placeholder: "Search", value: params[:query], class: "border border-black-100 p-2 pr-9 mt-4 rounded-full w-full text-center border-black-400 text-black-600 outline-none focus:border-black-600", required: true %>
         <button class="absolute inset-auto right-0 p-2 rounded-full cursor-pointer border-none shadow-none text-sm bg-transparent hover:bg-gray-100 transition duration-75" style="margin-top: 19px; margin-right: 5px" @click="$refs.searchForm.submit()">
           <%= inline_svg_pack_tag 'media/svgs/magnifier.svg' %>
@@ -24,8 +24,7 @@
       <% end %>
     </div>
     <div class="text-gray-900 mt-4">
-      We are <%= number_with_delimiter round_number_to_closest(@appointment_count_total, 50) %>+ appointments
-      and <%= number_with_delimiter round_number_to_closest(@patient_count, 1001) %>+ patients strong.
+      We are <%= number_with_delimiter round_number_to_closest(@request_count_total, 50) %>+ requests strong.
     </div>
   </div>
   </div>

@@ -27,7 +27,7 @@ class Request < ApplicationRecord
   
     after_save do
       # expire homepage caches if they contain this request
-      Settings.appointment_categories.each do |category|
+      Settings.request_categories.each do |category|
         cache_key = "request_category_#{category[:name].downcase}_featured_requests"
         featured_requests = Rails.cache.read cache_key
   
@@ -105,7 +105,7 @@ class Request < ApplicationRecord
     def category
       request_categories = {}
       begin
-        Settings.appointment_categories.each do |category|
+        Settings.request_categories.each do |category|
           intersection = self.request_type_list.to_a & category['request_types'].to_a
           request_categories[category.name] = intersection.count
         end

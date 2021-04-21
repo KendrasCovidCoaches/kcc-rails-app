@@ -10,13 +10,8 @@
 
 user = User.create!(
   email: 'user@gmail.com',
-  name: 'Bob Smith',
   password: 'password',
-  password_confirmation: 'password',
-  about: 'about section',
-  location: 'location section',
-  profile_links: 'github.com',
-  visibility: false
+  password_confirmation: 'password'
 )
 
 # user2 = User.create!(

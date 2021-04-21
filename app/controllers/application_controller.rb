@@ -95,27 +95,16 @@ class ApplicationController < ActionController::Base
 
     end
 
-    def hydrate_appointment_categories
-      @appointment_categories = Settings.appointment_categories
-      @appointment_locations = Settings.appointment_locations
-
+    def hydrate_request_categories
+      @request_categories = Settings.request_categories
       exclude_ids = []
-      @appointment_categories.each do |category|
+      @request_categories.each do |category|
         exclude_ids.flatten!
-        category[:featured_appointments] = Rails.cache.fetch("appointment_category_#{category[:name].downcase}_featured_appointments", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:appointment_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
-        exclude_ids << category[:featured_appointments].map(&:id)
+        category[:featured_requests] = Rails.cache.fetch("request_category_#{category[:name].downcase}_featured_requests", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:request_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
+        exclude_ids << category[:featured_requests].map(&:id)
         # byebug
-        category[:appointments_count] = Rails.cache.fetch("appointment_category_#{category[:name].downcase}_appointments_count", expires_in: 1.hour) { Appointment.tagged_with(category[:name], any: true, on: :categories).count }
+        category[:requests_count] = Rails.cache.fetch("request_category_#{category[:name].downcase}_requests_count", expires_in: 1.hour) { Appointment.tagged_with(category[:name], any: true, on: :categories).count }
         # byebug
-      end
-      @appointment_locations.each do |location|
-        exclude_ids.flatten!
-        location[:featured_appointments] = Rails.cache.fetch("appointment_location_#{location[:name].downcase}_featured_appointments", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:appointment_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(location[:name], any: true, on: :locations).limit(3).order('RANDOM()') }
-        exclude_ids << location[:featured_appointments].map(&:id)
-        # byebug
-        location[:appointments_count] = Rails.cache.fetch("appointment_location_#{location[:name].downcase}_appointments_count", expires_in: 1.hour) { Appointment.tagged_with(location[:name], any: true, on: :locations).count }
-        # byebug
-        # puts location[:appointments_count]
       end
     end
 

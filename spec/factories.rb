@@ -48,15 +48,15 @@ FactoryBot.define do
     skill_list { ['Analytics'] }
   end
 
-  factory :appointment do
+  factory :request do
     name { 'My First Appointment' }
     description { 'My description' }
     patient_location { 'location' }
-    status { Settings.appointment_statuses.first }
+    status { Settings.request_statuses.first }
   end
 
-  factory :appointment_with_type, parent: :appointment do
-    appointment_type_list { ['Track the outbreak'] }
+  factory :request_with_type, parent: :request do
+    request_type_list { ['Track the outbreak'] }
   end
 
   factory :patient do

@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
     before_action :ensure_owner_or_admin, only: [ :edit, :update, :destroy, :patients ]
     before_action :set_filters_open, only: :index
     before_action :set_requests_query, only: :index
-    before_action :hydrate_appointment_categories, only: :index
+    before_action :hydrate_request_categories, only: :index
     before_action :ensure_no_legacy_filtering, only: :index
     before_action :set_bg_white, only: [:index, :own, :requested]
   
@@ -17,8 +17,7 @@ class RequestsController < ApplicationController
       @applied_filters = params.dup
   
       if request.path != requests_path and params[:category_slug].present?
-        @request_category = Settings.appointment_categories.find { |category| category.slug == params[:category_slug] }
-        @request_location = Settings.appointment_locations.find { |location| location.slug == params[:category_slug] }
+        @request_category = Settings.request_categories.find { |category| category.slug == params[:category_slug] }
         #byebug
         raise ActionController::RoutingError, 'Not Found' if @request_category.blank? && @request_location.blank?
   

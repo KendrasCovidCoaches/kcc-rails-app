@@ -1,6 +1,6 @@
 <%= link_to request, class: 'relative block shadow-lg transform transition-transform duration-100 hover:scale-105' do %>
   <%
-    category = Settings.appointment_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
+    category = Settings.request_categories.select { |cat| cat.name == local_assigns[:category] }.first if local_assigns[:category].present?
     category_override = category.present? ? local_assigns[:category] : nil
   %>
 

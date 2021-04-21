@@ -11,24 +11,22 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
-  has_many :appointments #, dependent: :destroy
   has_many :requests #, dependent: :destroy
   has_many :patients, dependent: :destroy
-  # has_many :requested_appointments, through: :patients, source: :appointment, dependent: :destroy
   has_many :requested_appointments, through: :patients, source: :request, dependent: :destroy
 
   acts_as_taggable_on :skills
 
   pg_search_scope :search, against: %i(name email about location level_of_availability)
 
-  def requested_for_appointment?(appointment)
-    self.requested_appointments.where(id: appointment.id).exists?
+  def requested_for_appointment?(request)
+    self.requested_appointments.where(id: request.id).exists?
   end
 
-  def has_correct_skills?(appointment)
-    appointment_skills = appointment.skills.map(&:name)
-    return true if appointment_skills.include?('Anything')
-    (self.skills.map(&:name) & appointment.skills.map(&:name)).present?
+  def has_correct_skills?(request)
+    request_skills = request.skills.map(&:name)
+    return true if request_skills.include?('Anything')
+    (self.skills.map(&:name) & request.skills.map(&:name)).present?
   end
 
   def is_visible_to_user?(user_trying_view)
