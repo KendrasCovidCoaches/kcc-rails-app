@@ -1,7 +1,0 @@
-<div class="container">
-  <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
-    <%= form_for @appointment do |f| %>
-      <%= render partial: 'appointment_form', locals: { f: f, title: t('edit_appointment_name', name: @appointment.name), cta: t('save_appointment') } %>
-    <% end %>
-  </div>
-</div>
