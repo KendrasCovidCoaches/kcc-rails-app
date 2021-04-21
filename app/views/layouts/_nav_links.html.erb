@@ -48,14 +48,14 @@
   <% if current_user.is_coach?%>
   <div class="self-center ml-4 mt-1">
   <%= link_to new_request_path do %>
-    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-900 hover:text-green-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-500 hover:text-white focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('create_patient_request') %>
     </button>
    <% end %>
   </div>
   <div class="self-center ml-4 mt-1 -mr-20">
   <%= link_to requests_path do %>
-    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-900 hover:text-green-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-500 hover:text-white focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('all_patient_requests') %>
     </button>
    <% end %>
@@ -64,7 +64,7 @@
 <% if current_user.is_patient?%>
   <div class="self-center ml-4 mt-1 -mr-20">
   <%= link_to new_request_path do %>
-    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-900 hover:text-green-50 focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
+    <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-primary-500 bg-white hover:bg-green-500 hover:text-white focus:outline-none focus:shadow-outline-primary focus:border-primary-700 active:bg-primary-700 flex-shrink-0 flex-grow-0">
       <%= t('request_appointment') %>
     </button>
    <% end %>
