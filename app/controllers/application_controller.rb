@@ -100,10 +100,10 @@ class ApplicationController < ActionController::Base
       exclude_ids = []
       @request_categories.each do |category|
         exclude_ids.flatten!
-        category[:featured_requests] = Rails.cache.fetch("request_category_#{category[:name].downcase}_featured_requests", expires_in: 1.hour) { Appointment.where(highlight: true).includes(:request_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
+        category[:featured_requests] = Rails.cache.fetch("request_category_#{category[:name].downcase}_featured_requests", expires_in: 1.hour) { Request.where(highlight: true).includes(:request_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
         exclude_ids << category[:featured_requests].map(&:id)
         # byebug
-        category[:requests_count] = Rails.cache.fetch("request_category_#{category[:name].downcase}_requests_count", expires_in: 1.hour) { Appointment.tagged_with(category[:name], any: true, on: :categories).count }
+        category[:requests_count] = Rails.cache.fetch("request_category_#{category[:name].downcase}_requests_count", expires_in: 1.hour) { Request.tagged_with(category[:name], any: true, on: :categories).count }
         # byebug
       end
     end

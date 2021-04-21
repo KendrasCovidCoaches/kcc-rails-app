@@ -64,7 +64,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && !self.deactivated
+    super
   end
 
 # this function uses Gibbon and Mailchimp API to subscribe/unsubscribe users
@@ -82,22 +82,10 @@ class User < ApplicationRecord
     end
   end
 
-# this function checks the newsletter_consent field in before_save
-  def check_newsletter_consent
-    if self.newsletter_consent
-      subscribe_to_mailchimp(true)
-    else
-      subscribe_to_mailchimp(false)
-    end
-  end
+  
 
 # this function is used with before_create
-  def opt_into_newsletter_on_sign_up
-    if Rails.env.production?
-      self.newsletter_consent = true
-      subscribe_to_mailchimp(true)
-    end
-  end
+  
 
 # this function checks if this user has completed Blank Slate training
   # def finished_training?
@@ -128,14 +116,6 @@ class User < ApplicationRecord
   def age_consent?
     return self.age_consent
   end
-
-# before saving, we check if the user opted in or out,
-# if so they will be subscribed or unsubscribed
-# TODO: prevent unnecessary requests to mailchimp by checking the previous state
-  before_update :check_newsletter_consent
-
-# after sign up, the user will be opted into the newsletter by default
-  before_create :opt_into_newsletter_on_sign_up
 
 end
 

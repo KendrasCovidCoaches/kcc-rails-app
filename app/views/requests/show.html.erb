@@ -13,7 +13,7 @@
 
           <% if @request.user && @request.user.email.present? %>
             <div class="mt-1">
-              <%= render partial: 'user_avatar', locals: {user: @request.user} %>
+              <%= render partial: 'user_avatar', locals: {user: @request.patients.first} %>
             </div>
           <% end %>
         </div>
