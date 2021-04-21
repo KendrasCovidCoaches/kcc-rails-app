@@ -6,7 +6,7 @@ module ApplicationHelper
   def nav_link_active_class(variant = 'DESKTOP')
     case variant
     when 'DESKTOP'
-      'inline-flex items-center px-1 pt-1 border-b-2 border-primary-600 text-sm leading-5 text-teal-500 focus:outline-none focus:border-teal-200 transition duration-150 ease-in-out ml-4 text-center font-bold'
+      'inline-flex items-center px-1 pt-1 border-b-2 border-primary-600 text-sm leading-5 text-green-900 focus:outline-none focus:border-green-200 transition duration-150 ease-in-out ml-4 text-center font-bold'
     when 'MOBILE'
       'mt-1 block pl-3 pr-4 py-2 border-l-4 border-primary-600 text-base text-primary-700 bg-primary-50 focus:outline-none focus:text-primary-800 focus:bg-primary-100 focus:border-primary-700 transition duration-150 ease-in-out'
     end
@@ -15,7 +15,7 @@ module ApplicationHelper
   def nav_link_inactive_class(variant = 'DESKTOP')
     case variant
     when 'DESKTOP'
-      'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm leading-5 text-white hover:text-teal-500 hover:border-teal-500 focus:outline-none focus:text-teal-200 focus:border-teal-200 transition duration-150 ease-in-out ml-4 text-center'
+      'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm leading-5 text-white hover:text-green-900 hover:border-green-900 focus:outline-none focus:text-green-200 focus:border-green-200 transition duration-150 ease-in-out ml-4 text-center'
     when 'MOBILE'
       'mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out'
     end
@@ -105,7 +105,7 @@ module ApplicationHelper
     if [ 'alert', 'error'].include?(type)
       base_class += ' bg-red-100 border-red-400 text-red-700'
     elsif type == 'notice'
-      base_class += ' bg-green-100 border-green-400 text-green-700'
+      base_class += ' bg-green-100 border-green-400 text-green-900'
     else
       base_class += ' bg-orange-100 border-orange-400 text-orange-700'
     end
