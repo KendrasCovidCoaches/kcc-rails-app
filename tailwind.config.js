@@ -21,6 +21,7 @@ let themeColors = {
   secondary: uiColors.gray,
   pink: uiColors.pink,
   green: uiColors.green,
+  ltgrey: uiColors.ltgrey
 }
 
 // Parsing the theme config
@@ -53,6 +54,9 @@ module.exports = {
         },
         green: {
           ...themeColors.green
+        },
+        ltgrey: {
+          ...themeColors.ltgrey
         },
         'hero-black': '#3D3D3D',
         'cat-education': '#F82B2B',

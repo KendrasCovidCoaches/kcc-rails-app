@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_bg_gray
-    @bg_color = 'bg-gray-100'
+    @bg_color = 'bg-ltgrey-500'
   end
 
   def set_bg_white
