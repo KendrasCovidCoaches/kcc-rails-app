@@ -3,25 +3,20 @@
   <div class="-mt-10 bg-center bg-ltgrey-500 bg-no-repeat bg-contain w-screen h-96" style="background-image: url('<%= asset_pack_path('media/images/KCC_logo_horizontal.png') %>')"></div>
 </div>
 <div class="bg-ltgrey-500 -mt-10 -mb-40 pt-10 pb-4 ">
-  <div class="container w-1/2 text-center mb-24">
+  <div class="container w-2/3 text-center mb-24">
     <h2 class="sm:text-xl tracking-tight leading-tight mt-2">
     We are a group of volunteers dedicated to helping find Covid-19 vaccination appointments for those in need. Resources for self-booking are also available!
     </h2>
     <h3 class="sm:text-xl tracking-tight leading-tight mt-2">
-    Our web-based platform allows you to sign-up for local opportunities - both in-person and remote. Instructions <%= link_to "here", about_path(anchor: 'how-it-works'), class: 'font-bold' %>.
+    Our web-based platform allows patients to request aid in booking vaccine appointments. Coaches will be able to review your request and assist with booking an appointment. Instructions <%= link_to "here", about_path(anchor: 'how-it-works'), class: 'font-bold' %>.
     </h3>
     <h3 class="sm:text-xl tracking-tight leading-tight mt-2">
-    Welcome to the Kendra's Covid Coaches family!
+    If you feel you can book your own appointment, but don't know where to start, check out the Self-Booking Resources located in the navigation menu, or click <%= link_to "here", resources_path, class: 'font-bold' %>.
+    </h3>
+    <h3 class="sm:text-xl tracking-tight leading-tight mt-2">
+    We look forward to helping you and all communities in the central Texas area!
     </h3>
 
-    <div class="relative w-64 mx-auto">
-      <%= form_with url: requests_path, local: true, method: :get, html: {'x-ref': 'searchForm'} do |form| %>
-        <%= form.text_field :query, placeholder: "Search", value: params[:query], class: "border border-black-100 p-2 pr-9 mt-4 rounded-full w-full text-center border-black-400 text-black-600 outline-none focus:border-black-600", required: true %>
-        <button class="absolute inset-auto right-0 p-2 rounded-full cursor-pointer border-none shadow-none text-sm bg-transparent hover:bg-gray-100 transition duration-75" style="margin-top: 19px; margin-right: 5px" @click="$refs.searchForm.submit()">
-          <%= inline_svg_pack_tag 'media/svgs/magnifier.svg' %>
-        </button>
-      <% end %>
-    </div>
     <div class="text-gray-900 mt-4">
       We are <%= number_with_delimiter round_number_to_closest(@request_count_total, 50) %>+ requests strong.
     </div>
