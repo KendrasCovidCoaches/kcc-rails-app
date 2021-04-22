@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :appointments
   resources :resources
   get 'hello_world', to: 'hello_world#index'
   # Redirect www to non-www.

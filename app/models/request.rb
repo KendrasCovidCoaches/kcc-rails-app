@@ -3,6 +3,7 @@ class Request < ApplicationRecord
     include PgSearch::Model
   
     belongs_to :user
+    has_one :appointment, dependent: :destroy
   
     validates :f_name, presence: true
     validates :l_name, presence: true
