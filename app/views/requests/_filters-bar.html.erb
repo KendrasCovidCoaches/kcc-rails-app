@@ -15,7 +15,6 @@
       <div class="mb-2 sm:mr-4 md:mr-0 md:mb-0 w-full sm:w-auto" x-data="{ open: false, sortOpen: false }">
         <%= sort_drop_down do %>
           <%= sort_drop_down_option(request.path, t('sort_by')) %>
-          <%= sort_drop_down_option(request.path, t('patients_needed'), 'patients_needed') %>
           <%= sort_drop_down_option(request.path, t('most_recent'), 'latest') %>
           <%= sort_drop_down_option(request.path, t('oldest'), 'earliest') %>
         <% end %>

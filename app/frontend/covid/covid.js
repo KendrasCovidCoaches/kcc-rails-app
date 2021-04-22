@@ -169,8 +169,8 @@ const Covid = {
     query[filterKey] = values
     uri.query(query)
 
-    if (uri.path() !== '/appointments' && filter === 'appointment_types') {
-      uri.path('appointments')
+    if (uri.path() !== '/requests' && filter === 'Eligibility') {
+      uri.path('requests')
     }
 
     Turbolinks.visit(uri.readable())

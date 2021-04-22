@@ -269,6 +269,7 @@ class RequestsController < ApplicationController
         @requests = @requests.where(accepting_patients: params[:accepting_patients] == '1') if params[:accepting_patients].present?
         @requests = @requests.where(highlight: true) if params[:highlight].present?
         @requests = @requests.where(target_country: params[:target_country]) if params[:target_country].present?
+        @requests = @requests.where(eligibility_group: params[:eligibility_group]) if params[:eligibility_group].present?
         @requests = @requests.where(status: params[:status]) if params[:status].present?
   
         if params[:query].present?
