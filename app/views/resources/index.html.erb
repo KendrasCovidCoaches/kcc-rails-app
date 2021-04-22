@@ -1,25 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%- share_title t('resources') %>
 
-<h1>Resources</h1>
+<div class="-mt-6 pb-4 w-full flex flex-col sm:flex-row justify-center border-b border-gray-200 sm:visible invisible">
+  <div class="w-full sm:w-auto mx-auto sm:mx-0 overflow-x-auto scrolling-touch scrollbar-hidden sm:overflow-x-auto">
+    <div class="flex flex-row flex-no-wrap h-full resource-submenu">
+      <span class="submenu-item"><%= link_to t('playbook'), '#resource_playbook' %></span>
+      <span class="submenu-item"><%= link_to t('upcoming_events'), '#resources_upcoming_events' %></span>
+      <span class="submenu-item"><%= link_to t('recorded_panels'), '#resources_recorded_live_panels' %></span>
+      <span class="submenu-item"><%= link_to t('funding_resources'), '#resource_funding' %></span>
+      <span class="submenu-item"><%= link_to t('partner_resources'), '#partner_resource' %></span>
+      <span class="submenu-item"><%= link_to t('deals'), '#resource_deals' %></span>
+      <span class="submenu-item "><%= link_to t('media_kit'), '#media_kit' %></span>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= render partial: 'partials/events' %>
 
-  <tbody>
-    <% @resources.each do |resource| %>
-      <tr>
-        <td><%= link_to 'Show', resource %></td>
-        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
-        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: 'resources-links', locals: { title: t('funding_volunteers_research_resources'), resources: Settings.funding_resources, html_id: 'resource_funding' } %>
 
-<br>
+<%= render partial: 'partner-resources' %>
 
-<%= link_to 'New Resource', new_resource_path %>
+<section class="resource-section" id="resource_deals">
+  <div class="container mb-8">
+    <div class="px-4 sm:px-0 mt-10 mb-3 font-bold text-center">
+      <%= t('deals_from_organizations_that_want_to_help_out_wit') %>
+    </div>
+
+    <div class="flex-shrink-0 text-center mb-6">
+      <span class="inline-flex rounded-md shadow-sm">
+        <%= link_to new_offer_path do %>
+          <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:shadow-outline-primary- focus:border-primary-700 active:bg-primary-700">
+            <%= t('create_resource') %>
+          </button>
+        <% end %>
+      </span>
+
+      <span class="text-xs ml-3">
+        <%= t('find_more_deals') %> <%= link_to t('here'), "https://www.notion.so/Deals-for-businesses-in-the-time-of-COVID-19-bed1c16caf6e4861a24a6e2c21ee1c9a", target: '_blank', class: 'underline' %>.
+      </span>
+    </div>
+  </div>
+
+  <%= render partial: 'offers' %>
+
+  <%= render partial: 'media-kit' %>
+</section>
