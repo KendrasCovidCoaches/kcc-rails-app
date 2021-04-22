@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resources
   get 'hello_world', to: 'hello_world#index'
   # Redirect www to non-www.
   if ENV['CANONICAL_HOST']
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
 
   get '/about', to: 'home#about', as: 'about'
 
-  get '/resources', to: 'home#resources', as: 'resources'
+  # get '/resources', to: 'home#resources', as: 'resources'
 
   # get '/guidelines', to: 'appointments#guidelines', as: 'guidelines'
 
