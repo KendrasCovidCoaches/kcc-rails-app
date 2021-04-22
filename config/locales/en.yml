@@ -1,11 +1,10 @@
 en:
   make_yourself_available_to_the_community: "Make yourself available to the community."
   specify_what_you_would_like_to_help_with: "Specify what you would like to Help With"
-  i_m_available_for: "I'm available for"
-  on: "on"
+  i_m_available_for: "I am available for"
   at: "at"
   cancel: "Cancel"
-  share: "share:"
+  share: "share"
   manage: "manage"
   filled: "filled"
   already_applied: "already applied"
@@ -24,12 +23,12 @@ en:
   your_profile: "Change Email and Password"
   dashboard: "Dashboard"
   log_out: "Log out"
-  create_appointment: "Browse Patient Requests"
+  create_appointment: "Create Appointment"
   request_appointment: "Request Appointment"
   create_request: "Submit Request"
   create_patient_request: "Create Patient Request"
   created: "Created"
-  see_more: "... (see more)"
+  see_more: "...see more"
   apply_here: "Go to Site"
   this_information_will_be_displayed_publicly: "This information will be displayed publicly."
   this_info_will_only_be_visible_coaches: "This infomation will only be displayed to KCC booking volunteers"
@@ -52,10 +51,10 @@ en:
   complete_your_profile_to_request: "Complete your profile to request an appointment"
   describe_your_appointment_in_a_tweet: "Describe your appointment in a tweet"
   title_of_appointment: "Title of Appointment"
-  mission_of_organization: "Mission of Organization" #remove
-  are_you_a_registered_organization: "Are You a Registered 501(c)(3) Organization?" # remove
-  a_brief_description_about_your_appointment_max_129_cha: "A brief description about your appointment (max 129 characters)." #remove
-  describe_your_appointment: "Describe Your Appointment" #remove or change
+  mission_of_organization: "Mission of Organization"
+  are_you_a_registered_organization: "Are You a Registered 501(c)(3) Organization?"
+  a_brief_description_about_your_appointment_max_129_cha: "A brief description about your appointment (max 129 characters)."
+  describe_your_appointment: "Describe Your Appointment"
   write_a_few_sentences_about_your_appointment: "Write any additional details about the appointment."
   image: "Image"
   appointment_type: "Appointment type(s)"
@@ -63,49 +62,49 @@ en:
   who_is_already_working_on_this: "Who is already working on this?"
   tell_patients_about_you_and_your_teammates: "Tell patients about you and your teammates."
   how_far_along_are_you: "How far along are you?"
-  tell_patients_about_the_progress_you_ve_made: "Tell patients about the progress you've made." # remove or change
-  do_you_have_a_demo_or_extra_documentation: "Do you have a demo or extra documentation?" # remove or change
-  demo_can_be_anything_that_shows_patients_how_the: "Demo can be anything that shows patients how the product works. Docs/mockups are also OK." # remove or change
+  tell_patients_about_the_progress_you_ve_made: "Tell patients about the progress you have made."
+  do_you_have_a_demo_or_extra_documentation: "Do you have a demo or extra documentation?"
+  demo_can_be_anything_that_shows_patients_how_the: "Demo can be anything that shows patients how the product works. Docs/mockups are also OK."
   target_country: "Target Country"
   is_this_appointment_only_targeting_people_in_a_specifi: "Is this appointment only targeting people in a specific country?"
   target_location: "Target Location"
   optional: "(optional)"
   specific_state_province_or_city_within_that_countr: "Specific state, province or city within that country?"
   best_way_to_get_in_touch: "Best way to get in touch"
-  you_ll_get_an_email_when_a_patient_applies_but_p: "You'll get an email when a patient applies, but perhaps there is another way, like telephone or discord."
-  helpful_links: "Website/Social Media Links" # remove or change
-  any_other_relevant_links_such_as_the_organizations_website_or_social_media: "Please include any links for the organization's website or social media accounts. One per line." # remove or change
+  you_ll_get_an_email_when_a_patient_applies_but_p: "You will get an email when a patient applies, but perhaps there is another way, like telephone or discord."
+  helpful_links: "Website/Social Media Links"
+  any_other_relevant_links_such_as_the_organizations_website_or_social_media: "Please include any links for the organization website or social media accounts. One per line."
   patient_information: "Patient Information"
-  tell_us_what_you_are_looking_for_in_patients: "Tell us what you are looking for in patients." # remove or change
+  tell_us_what_you_are_looking_for_in_patients: "Tell us what you are looking for in patients."
   are_you_actively_looking_for_patients: "Are you actively looking for patients?"
   you_can_always_change_this_later: "You can always change this later"
   yes_patients_will_be_able_to_apply: "Yes - Patients will be able to apply."
   no_we_have_all_the_people_and_resources_we_need_at: "No - We have all the appointments filled at the moment."
-  what_tasks_need_to_get_done: "What tasks need to get done?" # remove or change
-  tell_patients_how_they_might_help_you_be_specifi: "Tell patients how they might help you. Be specific. If it's tech mention the stack." # remove or change
-  skills_needed: "Skills needed" # remove or change
-  number_of_patients_needed: "Number of patients needed" # remove or change
+  what_tasks_need_to_get_done: "What tasks need to get done?"
+  tell_patients_how_they_might_help_you_be_specifi: "Tell patients how they might help you. Be specific. If it is tech mention the stack."
+  skills_needed: "Skills needed"
+  number_of_patients_needed: "Number of patients needed"
   patient_location: "Patient Location"
   category: "Category"
   categories: "Categories"
-  specify_location: "Please specify your appointment location, as well as any other categories that apply" # remove or change
-  do_patients_need_to_live_in_a_certain_location_w: "Do patients need to live in a certain location? Write remote otherwise." # remove or change
-  organization_status: "Organization status" # remove or change
-  this_is_important_to_a_lot_of_patients_write_not: "This is important to a lot of patients. Write 'not US based' if outside of the USA." # remove or change
+  specify_location: "Please specify your appointment location, as well as any other categories that apply"
+  do_patients_need_to_live_in_a_certain_location_w: "Do patients need to live in a certain location? Write remote otherwise."
+  organization_status: "Organization status"
+  this_is_important_to_a_lot_of_patients_write_not: "This is important to a lot of patients. Write not US based if outside of the USA."
   cancel_request: "Cancel request"
   patients_filled: "Patients filled"
   send_email_to_patients: "Send email to patients"
   export_patients_to_csv: "Export patients to CSV"
   delete: "Delete"
-  are_you_a_validated_or_established_appointment_with_la: "Are you a validated or established appointment with large impact?" # remove or change
-  we_try_our_best_to_surface_interesting_appointments_wi: "We try our best to surface interesting appointments with lots of potential that just need a bit of a boost. Write to us if that's the case." # remove or change
-  don_t_show_this_again: "Don't show this again"
-  idea_stage: "Idea Stage" # remove or change
+  are_you_a_validated_or_established_appointment_with_la: "Are you a validated or established appointment with large impact?"
+  we_try_our_best_to_surface_interesting_appointments_wi: "We try our best to surface interesting appointments with lots of potential that just need a bit of a boost. Write to us if that is the case."
+  don_t_show_this_again: "Do not show this again"
+  idea_stage: "Idea Stage"
   in_progress: "In Progress"
   launched: "Launched"
-  actively_recruiting: "Actively accepting patients" # **** change key in es.yml and code location
+  actively_recruiting: "Actively accepting patients"
   about_the_appointment: "About the Appointment"
-  how_far_along_is_it: "How far along is it" # remove or change
+  how_far_along_is_it: "How far along is it"
   appointment_target_location: "Appointment target location"
   help_needed: "Help Needed"
   tasks_that_need_to_get_done: "Tasks that need to get done"
@@ -114,12 +113,14 @@ en:
   save_appointment: "Save Appointment"
   save_request: "Save Request"
   edit_appointment_name: "Edit appointment %{name}"
+  edit_appointment_details: "Edit Appointment Details"
+  update_appointment: "Update Appointment"
   sorry_no_such_user: "Sorry, no such user."
-  apologies_you_don_t_have_access_to_this: "Apologies, you don't have access to this."
-  you_request_was_sent: "You request was sent." # *** change ref in code loc
-  application_accepted_invite_being_sent: "Application accepted. Invite being sent!" # remove or change
+  apologies_you_don_t_have_access_to_this: "Apologies, you do not have access to this."
+  you_request_was_sent: "You request was sent."
+  application_accepted_invite_being_sent: "Application accepted. Invite being sent!"
   appointments_looking_for_patients: "Appointments looking for patients"
-  new_or_established_appointments_helping_with: "New or established appointments that need help. Request yourself or create a new one." # remove or change
+  new_or_established_appointments_helping_with: "New or established appointments that need help. Request yourself or create a new one."
   all_appointments: "All Appointments"
   all_requests: "All Requests"
   these_are_the_appointments_where_you_requested: "These are the requests you have made."
@@ -133,30 +134,30 @@ en:
   request_was_successfully_updated: "Request was successfully updated."
   request_was_successfully_deleted: "Request was successfully deleted."
   we_ve_removed_you_from_the_list_of_requested_peo: "Request canceled and removed."
-  completed: "We've marked your request as complete."
+  completed: "We have marked your request as complete."
   i_have_self_booked: "I have self-booked"
   patient_completed: "Appointment Completed"
   thanks_for_requesting_the_coaches_will_be: "Thanks for requesting! The coaches will be alerted."
-  you_got_a_new_patient_for_name: "You got a new patient for %{name}!" #change to appointment request
+  you_got_a_new_patient_for_name: "You got a new patient!"
   name: "Name"
   your_full_name: "Full Name"
   about_you: "About you"
   phone: "Phone"
   affiliation: "Affiliation/Organization"
-  skills_you_can_help_with: "Skills you can help with" # remove or change
+  skills_you_can_help_with: "Skills you can help with"
   level_of_availability: "Level of Availability"
-  links_to_places_where_people_can_get_to_know_you_b: "Links to places where people can get to know you better" # remove or change
-  for_instance_your_ar_xiv_git_hub_linked_in_twitter: "For instance your arXiv, GitHub, LinkedIn, Twitter, YouTube, or portfolio. One per line." # remove or change
+  links_to_places_where_people_can_get_to_know_you_b: "Links to places where people can get to know you better"
+  for_instance_your_ar_xiv_git_hub_linked_in_twitter: "For instance your arXiv, GitHub, LinkedIn, Twitter, YouTube, or portfolio. One per line."
   your_location: "Your Location "
-  city_state_country_ideally_don_t_be_too_specific: "City/State/Country ideally, don't be too specific."
+  city_state_country_ideally_don_t_be_too_specific: "City/State/Country ideally, do not be too specific."
   options: "Options"
-  i_want_my_information_including_my_email_to_be_vis: "I want my information (including my email) to be visible in the private coache's directory."
+  i_want_my_information_including_my_email_to_be_vis: "I want my information (including my email) to be visible in the private coaches directory."
   i_want_to_be_paired_with_relevant_appointments_based_o: "I want to be paired with relevant appointments based on my needs"
   change_your_email_password: "Change your email/password"
   email_address: "Email address"
   patient_email: "Patient Email"
   password: "Password"
-  leave_blank_if_you_don_t_want_to_change_it: "Leave blank if you don't want to change it."
+  leave_blank_if_you_don_t_want_to_change_it: "Leave blank if you do not want to change it."
   password_confirmation: "Password confirmation"
   old_password: "Old password"
   only_if_you_are_changing_your_password: "Only if you are changing your password."
@@ -166,7 +167,7 @@ en:
   sign_up_to_patient: "Sign up to request or book appointments."
   no_user_found_try_another_search: "No user found. Try another search!"
   sign_up_for_an_account: "Sign up for an account"
-  you_ll_be_able_to_either_request_or_create_an_appointment: "Patients: You'll be able to request an appointment after. Coaches: You will be able to book appointments after."
+  you_ll_be_able_to_either_request_or_create_an_appointment: "Patients: You will be able to request an appointment after. Coaches: You will be able to book appointments after."
   or: "Or"
   email: "Contact"
   about: "About"
@@ -180,8 +181,8 @@ en:
   send_me_reset_password_instructions: "Send me reset password instructions"
   log_in: "Log in"
   sign_up: "Sign up"
-  didn_t_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
-  didn_t_receive_unlock_instructions: "Didn't receive unlock instructions?"
+  didn_t_receive_confirmation_instructions: "Did not receive confirmation instructions?"
+  didn_t_receive_unlock_instructions: "Did not receive unlock instructions?"
   edit_resource_name: "Edit resource %{name}"
   count_signed_up: "%{count1} signed up"
   filter_by: "Filter by"
@@ -201,24 +202,24 @@ en:
   how_to_get_in_touch: "How to get in touch"
   preferred_patient_location: "Preferred Appointment Location"
   only_jpg_and_png_files: "Only jpg/jpeg and png files are allowed!"
-  you_have_accepted_oh: "<br/>You have accepted:<br/><span class='text-primary-600'>%{participant_name}</span> / <span class='text-primary-600'>%{participant_email}</span>"
-  you_have_a_slot_at_when: "You have a slot at <span class='text-primary-600'>%{when}</span>." # remove or change
-  appointment_is_looking_for: "<span class='text-primary-600'>%{appointment_name}</span> is looking for" # remove or change
-  skills_needed_do_not_match: "It looks like the skills needed for this appointment do not match your skillset. If you think this is incorrect, please update your profile with one of the following skills: <b>%{skills_required}</b>." # remove or change
-  we_re_sorry_you_can_enter_a_maximum_of_160_char: "We're sorry, you can enter a maximum of 160 characters."
+  you_have_accepted_oh: "You have accepted."
+  you_have_a_slot_at_when: "You have a slot."
+  appointment_is_looking_for: "We are looking for"
+  skills_needed_do_not_match: "It looks like the skills needed for this appointment do not match your skillset."
+  we_re_sorry_you_can_enter_a_maximum_of_160_char: "We are sorry, you can enter a maximum of 160 characters."
   please_enter_a_date_and_a_time: "Please enter a date and a time."
-  we_re_sorry_it_seems_like_the_dates_overlap: "We're sorry, it seems like the dates overlap."
+  we_re_sorry_it_seems_like_the_dates_overlap: "We are sorry, it seems like the dates overlap."
   please_choose_a_patient: "Please choose a patient."
   accept: "Accept"
   nobody_has_applied_yet: "Nobody has applied yet."
   this_appointment_is_not_accepting_patients: "This appointment is not accepting patients"
-  we_re_sorry_this_appointment_has_indicated_no_patients: "We're sorry. This appointment has indicated that they have all the patients they need at this time."
-  you_re_about_to_request: "You're about to request an appointment"
+  we_re_sorry_this_appointment_has_indicated_no_patients: "We are sorry. This appointment has indicated that they have all the patients they need at this time."
+  you_re_about_to_request: "You are about to request an appointment"
   are_you_sure_the_appointment_owner_will_be_alerted: "Are you sure? The KCC coaches team will be alerted."
   optionally_you_can_also_send_them_a_note: "Optionally, you can also send them a note on any special needs, accomodations, or requests."
   patient_note: "Patient note"
-  in_one_sentence_why_are_you_interested: "In one sentence, why are you interested?" # remove or change
-  you_re_missing_skills: "You're missing skills" # remove or change
+  in_one_sentence_why_are_you_interested: "In one sentence, why are you interested?"
+  you_re_missing_skills: "You are missing skills"
   edit_profile: "Edit Profile"
   first_name: "First Name"
   last_name: "Last Name"
@@ -268,29 +269,36 @@ en:
   booking_status: "Booking Status"
   confirmation_success: "Confirmation successful!"
   click_to_confirm: "Click to confirm this appointment"
-  patient_confirm: 'Patient Confirmed'
+  patient_confirm: "Patient Confirmed"
   requested_by_name: "Requested by (name)"
   requested_by_email: "Requested by (email)"
   willing_to_travel: "Willing to travel"
   patient_self_booked: "Patient has self-booked"
-  booking_in_progress: 'Booking in progress'
-  booking_completed_awaiting: 'Booking completed, awaiting patient confirmation'
-  mark_booking_complete: 'Mark as Booking Completed'
-  booking_complete: 'The request status has successfully been changed to "Booking completed, awaiting patient confirmation".'
-  unbooked: 'Mark as Unbooked'
-  has_been_unbooked: 'The request status has successfully been changed to "unbooked".'
-  in_progress: 'Mark as In Progress'
-  is_in_progress: 'The request status has successfully been changed to "in progress".'
-  link: 'Link'
-  resource_was_successfully_created: 'Resource successfully created.'
-  resource_was_successfully_updated: 'Resource successfully updated.'
-  resource_was_successfully_destroyed: 'Resource successfully deleted.'
-  provider_name: 'Provider Name'
-  if_statewide: 'Please change to the city or county name unless this is a statewide resource'
-  click_to_edit: 'Click to Edit'
-
-
-
-
-
-
+  booking_in_progress: "Booking in progress"
+  booking_completed_awaiting: "Booking completed, awaiting patient confirmation"
+  mark_booking_complete: "Mark as Booking Completed"
+  booking_complete: "The request status has successfully been changed to Booking completed, awaiting patient confirmation."
+  unbooked: "Mark as Unbooked"
+  has_been_unbooked: "The request status has successfully been changed to unbooked."
+  in_progress: "Mark as In Progress"
+  is_in_progress: "The request status has successfully been changed to in progress."
+  link: "Link"
+  resource_was_successfully_created: "Resource successfully created."
+  resource_was_successfully_updated: "Resource successfully updated."
+  resource_was_successfully_destroyed: "Resource successfully deleted."
+  provider_name: "Provider"
+  provider_address: "Provider Address"
+  provider_city: "Provider City"
+  provider_state: "Provider State"
+  provider_zip: "Provider Zip"
+  if_statewide: "Please change to the city or county name unless this is a statewide resource"
+  click_to_edit: "Click to Edit"
+  reference_num: "Reference Number (if applicable)"
+  patient_name: "Patient Full Name"
+  provider: "Provider"
+  coach_notes: "Coach Notes"
+  communicated: "Has the patient been contacted by you and/or another coach?"
+  communication_status: "Communication Status"
+  date: "Date"
+  time: "Time"
+  booked_by_name: "Booked By"

@@ -229,12 +229,10 @@ request_statuses:
   - 'Patient Confirmed'
   - 'Completed'
 
-organization_statuses:
-  - 'Non-profit'
-  - 'For-profit'
-  - 'Public Benefit Corporation'
-  - 'Not incorporated'
-
+communication_statuses:
+  - 'Texted'
+  - 'Emailed'
+  - 'Called'
 
 # If a appointment has less than N patients
 # it can ask to be highlighted.
