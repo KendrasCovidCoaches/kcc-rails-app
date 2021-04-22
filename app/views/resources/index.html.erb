@@ -5,7 +5,7 @@
 
 <section class="resource-section">
   <div class="container mb-8">
-    <% if current_user.is_coach? %>
+    <% if current_user && current_user.is_coach? %>
     <div class="flex-shrink-0 text-center mb-6">
       <span class="inline-flex rounded-md shadow-sm">
         <%= link_to new_resource_path do %>

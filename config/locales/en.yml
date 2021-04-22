@@ -192,7 +192,7 @@ en:
   none: "None"
   apply_filters: "Apply filters"
   no_patients: "No patients"
-  no_appointment_found_try_another_search_br_or_create: "No appointments found."
+  no_appointment_found_try_another_search_br_or_create: "No requests found."
   create_new_appointment: "Create new appointment"
   create_new_request: "Create New Appointment Request"
   appointment_name: "Appointment %{name}"
