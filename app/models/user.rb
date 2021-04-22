@@ -12,6 +12,7 @@ class User < ApplicationRecord
   include PgSearch::Model
 
   has_many :requests #, dependent: :destroy
+  has_many :appointments, through: :requests
   has_many :patients, dependent: :destroy
   has_many :requested_appointments, through: :patients, source: :request, dependent: :destroy
 
