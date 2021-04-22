@@ -63,11 +63,11 @@ class ResourcesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def resource_params
-      params.fetch(:resource, {}).permit(:name, :description, :limitations, :redemption, :location)
+      params.fetch(:resource, {}).permit(:name, :description, :link, :location)
     end
 
     def ensure_owner_or_admin
-      if current_user != @resource.user && !current_user.is_admin?
+      if current_user != @resource.user && !current_user.is_coach?
         flash[:error] = I18n.t('apologies_you_don_t_have_access_to_this')
         redirect_to resources_path
       end

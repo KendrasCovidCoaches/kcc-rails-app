@@ -30,7 +30,7 @@ en:
   create_patient_request: "Create Patient Request"
   created: "Created"
   see_more: "... (see more)"
-  apply_here: "Apply Here"
+  apply_here: "Go to Site"
   this_information_will_be_displayed_publicly: "This information will be displayed publicly."
   this_info_will_only_be_visible_coaches: "This infomation will only be displayed to KCC booking volunteers"
   deals: "KCC Resources"
@@ -281,6 +281,13 @@ en:
   has_been_unbooked: 'The request status has successfully been changed to "unbooked".'
   in_progress: 'Mark as In Progress'
   is_in_progress: 'The request status has successfully been changed to "in progress".'
+  link: 'Link'
+  resource_was_successfully_created: 'Resource successfully created.'
+  resource_was_successfully_updated: 'Resource successfully updated.'
+  resource_was_successfully_destroyed: 'Resource successfully deleted.'
+  provider_name: 'Provider Name'
+  if_statewide: 'Please change to the city or county name unless this is a statewide resource'
+  click_to_edit: 'Click to Edit'
 
 
 

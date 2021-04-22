@@ -1,13 +1,12 @@
 <div class="mt-6 sm:mt-5">
   <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
     <label for="name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      <%= t('name') %>
+      <%= t('provider_name') %>
     </label>
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="max-w-lg flex rounded-md shadow-sm">
         <%= f.text_field "name", class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
       </div>
-      <p class="mt-2 text-sm text-gray-500"><%= t('for_instance_amazon_free_aws_hosting') %></p>
     </div>
   </div>
 
@@ -19,43 +18,29 @@
       <div class="max-w-lg flex rounded-md shadow-sm">
         <%= f.text_area "description", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
       </div>
-      <p class="mt-2 text-sm text-gray-500"><%= t('write_a_few_sentences_about_what_you_are_resourceing') %></p>
     </div>
   </div>
 
   <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-    <label for="limitations" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      <%= t('what_are_the_limitations') %>
+    <label for="link" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+      <%= t('link') %>
     </label>
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="max-w-lg flex rounded-md shadow-sm">
-        <%= f.text_area "limitations", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+        <%= f.text_field "link", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
       </div>
-      <p class="mt-2 text-sm text-gray-500"><%= t('so_there_are_no_wrong_expectations') %></p>
-    </div>
-  </div>
-
-  <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-    <label for="redemption" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      <%= t('how_to_redeem_the_resource') %>
-    </label>
-    <div class="mt-1 sm:mt-0 sm:col-span-2">
-      <div class="max-w-lg flex rounded-md shadow-sm">
-        <%= f.text_area "redemption", rows: 3, class: "form-textarea block w-full transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
-      </div>
-      <p class="mt-2 text-sm text-gray-500"><%= t('how_this_resource_can_be_redeemed_perhaps_email_pe') %></p>
     </div>
   </div>
 
   <div class="mt-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
     <label for="username" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
-      <%= t('location') %>
+      <%= t('location') %><br/>
     </label>
     <div class="mt-1 sm:mt-0 sm:col-span-2">
       <div class="max-w-lg flex rounded-md shadow-sm">
-        <%= f.text_field "location", class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+        <%= f.text_field "location", class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
       </div>
-      <p class="mt-2 text-sm text-gray-500"><%= t('if_the_resource_has_any_geographical_limitation_gl') %></p>
+      <p class="mt-2 text-sm text-gray-500"><%= t('if_statewide') %></p>
     </div>
   </div>
 </div>

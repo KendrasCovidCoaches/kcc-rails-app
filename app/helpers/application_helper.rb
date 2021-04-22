@@ -109,7 +109,7 @@ module ApplicationHelper
     if [ 'alert', 'error'].include?(type)
       base_class += ' bg-red-100 border-red-400 text-red-700'
     elsif type == 'notice'
-      base_class += ' bg-pink-500 border-green-400 text-green-900'
+      base_class += ' bg-green-500 border-green-400 text-black'
     else
       base_class += ' bg-orange-100 border-orange-400 text-orange-700'
     end

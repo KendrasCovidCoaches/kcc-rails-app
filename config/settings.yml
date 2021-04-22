@@ -371,29 +371,22 @@ events:
     cta_text: See slides and recording
     cta_url: https://drive.google.com/drive/u/0/folders/1NATDm5yVsYUo8jRY7svE2fqwm1OwcpMu
 
-# upcoming_events:
-#   - title: COVID 19 Global Hackathon 2.0 - Social & Mental Health.
-#     sub_title: Hack on social issues and mental health with mentorship from nonprofits
-#     cta_text: Register here
-#     cta_url: https://covid-global-hackathon-2.devpost.com/
-#     month: July
-#     day: 3
-#     time: 10:00 AM
-#   - title: COVID 19 Global Hackathon 2.0 - Keynote speaker with Justin Kan, Help With Covid, Deed, 7 Cups
-#     sub_title: Join us for the hackathon kickoff
-#     cta_text: Add to calendar
-#     cta_url: https://calendar.google.com/event?action=TEMPLATE&tmeid=MHRzdGg1cnQwbDNsZW52NTRlaGc1Z2tsdXEgY3J0dGYub3JnX2ZxYWxqM2NsNWpjOHJkcTk3aHBwZTVjZGNzQGc&tmsrc=crttf.org_fqalj3cl5jc8rdq97hppe5cdcs%40group.calendar.google.com
-#     month: July
-#     day: 5
-#     time: 10:00 AM
-#  - title: Private Group Office Hours with Radu
-#    sub_title: Wednesday, May 6th 3:30pm - 4:30pm
-#    month: May
-#    day: 6
-#    time: 3:30 PM - 4:30 PM PST
-#    cta_text: Add to Calendar
-#    cta_url: https://calendar.google.com/event?action=TEMPLATE&tmeid=NWZvanJyZzYybGM2dmhodmc1YmdsNmRpZWcgb3BlbmFpLmNvbV9wOW5mZ2MyZjltcnJkaGE1OW52M2tjYnNya0Bn&tmsrc=openai.com_p9nfgc2f9mrrdha59nv3kcbsrk%40group.calendar.google.com
-
+upcoming_events:
+  - title: Walgreens PFIZER Clinic
+    sub_title: 4501 Guadalupe St, Austin, TX 78751
+    link_text: Register here
+    link: https://www.signupgenius.com/go/20f0d4ba9ab2eaaf85-walgreens6
+    month: April
+    day: 24-30
+    time: 9:30 AM-6:15 PM
+  - title: Auro Pharmacy Moderna Clinic
+    sub_title: 1139 W Braker Lane STE. 102 Austin, TX 78758
+    link_text: Register here
+    link: https://www.signupgenius.com/go/10c0c4aada82ea1fdc25-auro
+    month: April
+    day: 18-23
+    time: 9:00 AM-2:00 PM
+    
 funding_resources:
   - cta_text: YC S2020 Application
     cta_url: https://www.ycombinator.com/apply/

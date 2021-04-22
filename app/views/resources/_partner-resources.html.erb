@@ -3,12 +3,6 @@
     <div class="px-4 sm:px-0 mt-10 mb-6 font-bold text-center">
       Resources for HWC Projects from our Partners
     </div>
-    <div class="grid grid-cols-2 sm:grid-cols-4 row-gap-16 lg:col-gap-12 justify-center w-2/3 mx-auto items-center my-16">
-      <%= image_pack_tag "aws.png", class: "h-8 mx-auto object-contain" %>
-      <%= image_pack_tag "clozeloop.png", class: "h-14 mx-auto object-contain" %>
-      <%= image_pack_tag "turtle_dev.png", class: "h-14 mx-auto object-contain" %>
-      <%= image_pack_tag "blind.png", class: "h-14 mx-auto object-contain -mt-2" %>
-    </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
       <% Settings.partner_resources.each do |partner| %>
         <div class="mx-4 sm:mx-0 flex flex-col hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out shadow bg-white rounded-lg overflow-hidden">

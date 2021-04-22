@@ -1,32 +1,47 @@
-<div class="container">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-    <% @resources.each do |resource| %>
-      <%= link_to resource_path(resource), class: "mx-4 sm:mx-0 flex flex-col justify-between block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out shadow bg-white rounded-lg overflow-hidden" do %>
-        <div class="text-sm leading-5 font-medium text-primary-600 truncate pt-4 px-4 sm:px-6">
-          <%= resource.name %>
-        </div>
-        <div class="mt-2 sm:flex sm:justify-between pt-2 pb-1 px-4 sm:px-6">
-          <div class="text-sm leading-5 text-gray-500">
-            <%= truncate(resource.description, length: 250, omission: t('see_more')) %>
-          </div>
-        </div>
-        <div class="mt-2 sm:flex sm:justify-between px-4 pt-2 pb-2 sm:px-6 bg-secondary-100 text-primary-600">
-          <div class="sm:flex">
-            <div class="mt-2 flex items-center text-xs leading-5 sm:mt-0">
-              <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-              </svg>
-              <%= resource.location.present? ? resource.location : 'Global' %>
+<div class="container pb-8">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
+  <% @resources.each do |resource| %>
+    <div class="mx-4 sm:mx-0 flex flex-col hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out shadow bg-white rounded-lg overflow-hidden">
+      <div class="flex items-center justify-between space-y-top-4 space-y-bottom-4 ml-4">
+          <div class="flex items-center">
+            <div class="text-base leading-5 font-medium text-primary-600 truncate px-2">
+              <%= resource[:name] %>
             </div>
           </div>
-          <div class="mt-2 flex items-center text-xs leading-5 sm:mt-0">
-            <span>
-              <%= t('created') %>
-              <time><%= distance_of_time_in_words_to_now resource.created_at %> ago</time>
-            </span>
+          <% if resource[:link] %>
+            <%= link_to resource[:link], target: '_blank'  do %>
+              <div class="text-sm leading-5 font-medium text-primary-600 truncate px-4 sm:px-6 mr-2">
+                <%= t('apply_here') %>
+                <%= inline_svg_pack_tag 'media/svgs/right-link.svg', class: 'inline-block' %>
+              </div>
+            <% end %>
+          <% end %>
+          </div>
+          <hr>
+          <div class="mt-2 sm:flex sm:justify-between pt-2 pb-1 px-4 sm:px-6 flex-1">
+            <div class="text-sm leading-5 text-gray-500">
+              <p><%= resource[:description] %></p>
+            </div>
+          </div>
+          <div class="mt-4 sm:flex sm:justify-between px-4 pt-2 sm:px-6 pb-2 text-primary-600">
+            <div class="sm:flex">
+              <div class="mt-2 flex items-center text-xs leading-5 sm:mt-0">
+                <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-primary-600" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <%= resource.location.present? ? resource.location : 'Global' %>
+              </div>
+            </div>
+            <div class=" flex items-center text-xs leading-5">
+            <% if current_user.is_coach? %>
+              <%= link_to resource_path(resource), target: '_blank'  do %>
+              <div class="text-sm mr-2 px-1 leading-5 font-medium text-primary-600">
+                <%= t('click_to_edit') %>
+              </div>
+            <% end %>
+            <% end %>
+            </div>
           </div>
         </div>
-      <% end %>
-    <% end %>
-  </div>
+  <% end %>
 </div>
