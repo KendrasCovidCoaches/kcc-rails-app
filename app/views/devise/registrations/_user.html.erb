@@ -2,15 +2,15 @@
   <div class="block focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out">
     <div class="px-4 py-4 sm:px-6">
       <div class="flex items-center justify-between">
-        <div class="text-base leading-5 font-medium text-gray-900 truncate">
-          <%= user.f_name %> <%= user.l_name %> / <span class="text-primary-500 hover:font-bold"><%= mail_to user.email, nil, encode: 'javascript' %></span> / <%= number_to_phone(user.phone, area_code: true) %>
+        <div class="text-sm leading-5 font-medium text-gray-900 truncate">
+          <%= user.f_name %> <%= user.l_name %> / <span class="text-primary-900 hover:font-bold"><%= mail_to user.email, nil, encode: 'javascript' %></span> / <%= number_to_phone(user.phone, area_code: true) %>
         </div>
       </div>
       <% if request.book_with_full_name.present? %>
       <div class="flex py-4 items-center justify-between">
-        <div class="text-base leading-5 font-medium text-gray-900 truncate">
-          <span class="text-lg leading-5 font-medium text-red-600">Requested to book with: </span><br />
-          <%= request.book_with_full_name %> / <span class="text-primary-500 hover:font-bold"><%= mail_to request.book_with_email, nil, encode: 'javascript' %></span> / <%= number_to_phone(request.book_with_phone, area_code: true) %>
+        <div class="text-sm leading-5 font-medium text-gray-900 truncate">
+          <span class="text-base leading-5 font-medium text-red-600">Requested to book with: </span><br />
+          <%= request.book_with_full_name %> / <span class="text-primary-900 hover:font-bold"><%= mail_to request.book_with_email, nil, encode: 'javascript' %></span> / <%= number_to_phone(request.book_with_phone, area_code: true) %>
         </div>
       </div>
       <% end %>

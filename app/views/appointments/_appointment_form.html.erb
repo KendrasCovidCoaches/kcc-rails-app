@@ -13,7 +13,7 @@
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_field :reference_num, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            <%= f.text_field :reference_num, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"%>
           </div>
         </div>
       </div>
@@ -184,8 +184,9 @@
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_field :booked_by_name, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+            <%= f.text_field :booked_by_name, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
           </div>
+          <p class="text-sm text-gray-500">Please enter your full name.</p>
         </div>
       </div>
 

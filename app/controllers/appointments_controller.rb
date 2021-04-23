@@ -54,9 +54,11 @@ class AppointmentsController < ApplicationController
   # DELETE /appointments/1
   # DELETE /appointments/1.json
   def destroy
+    set_appointment
+    req = @appointment.request
     @appointment.destroy
     respond_to do |format|
-      format.html { redirect_to appointments_url, notice: 'Appointment was successfully destroyed.' }
+      format.html { redirect_to request_path(req), notice: 'Appointment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
