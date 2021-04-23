@@ -40,11 +40,9 @@ class AppointmentsController < ApplicationController
   # PATCH/PUT /appointments/1
   # PATCH/PUT /appointments/1.json
   def update
-    @request = Request.find_by(id: params[:request_id])
-    @appointment = @request.appointments.last
     respond_to do |format|
       if @appointment.update(appointment_params)
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully updated.' }
+        format.html { redirect_to request_path(@appointment.request), notice: 'Appointment was successfully updated.' }
         format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :edit }
@@ -66,8 +64,7 @@ class AppointmentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment
-      @request = Request.find_by(id: params[:request_id])
-      @appointment = Appointment.where(request_id: params[:request_id]).last
+      @appointment = Appointment.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
