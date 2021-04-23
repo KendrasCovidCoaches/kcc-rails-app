@@ -8,7 +8,7 @@
 
     <div class="mt-6 sm:mt-5">
       <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
-        <label for="patient email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+        <label for="reference_num" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
           <%= t('reference_num') %><span class="text-red-500">*</span>
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
@@ -159,14 +159,14 @@
               </div>
               <div class="mt-4 sm:mt-0 sm:col-span-2">
                 <div class="max-w-lg">
-                  <% Settings.communication_statuses.each do |status| %>
+                  <% Settings.communication_statuses.each do |communication| %>
                     <div class="relative flex items-start">
                       <div class="absolute flex items-center h-5">
-                        <%= f.check_box :communication_status, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, status, nil %>
+                        <%= f.check_box :communication_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, communication, nil %>
                       </div>
                       <div class="pl-7 text-sm leading-5">
-                        <label for="communication_status<%= status.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
-                          <%= status %>
+                        <label for="weekday_list_<%= communication.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= communication %>
                         </label>
                       </div>
                     </div>
@@ -186,7 +186,6 @@
           <div class="max-w-lg flex rounded-md shadow-sm">
             <%= f.text_field :booked_by_name, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
           </div>
-          <p class="mt-2 text-sm text-gray-500"><%= t('unit') %></p>
         </div>
       </div>
 

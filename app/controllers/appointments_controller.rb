@@ -28,7 +28,7 @@ class AppointmentsController < ApplicationController
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to @appointment, notice: 'Appointment was successfully created.' }
+        format.html { redirect_to request_path(@appointment.request), notice: 'Appointment was successfully created.' }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new }
@@ -69,7 +69,7 @@ class AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.fetch(:appointment, {}).permit(:request_id, :reference_num, :name, :provider, :city, :state,
-        :zip, :coach_notes, :communication_status, :date, :time, :user_id, :booked_by_name, :booked_by_email)
+      params.fetch(:appointment, {}).permit(:request_id, :reference_num, :patient_name, :provider, :address, :city, :state,
+        :zip, :coach_notes, :communication_status, :date, :time, :user_id, :booked_by_name, :booked_by_email, :communication_list => [])
     end
 end

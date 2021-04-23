@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_22_215306) do
+ActiveRecord::Schema.define(version: 2021_04_22_234320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_04_22_215306) do
     t.string "state"
     t.string "zip"
     t.text "coach_notes"
-    t.string "communication_status"
     t.datetime "date"
     t.datetime "time"
     t.datetime "created_at", precision: 6, null: false

@@ -230,9 +230,9 @@ request_statuses:
   - 'Completed'
 
 communication_statuses:
-  - 'Texted'
-  - 'Emailed'
-  - 'Called'
+  - Texted
+  - Emailed
+  - Called
 
 # If a appointment has less than N patients
 # it can ask to be highlighted.
