@@ -1,6 +1,7 @@
-<h1>Editing Appointment</h1>
-
-<%= render 'form', appointment: @appointment %>
-
-<%= link_to 'Show', @appointment %> |
-<%= link_to 'Back', appointments_path %>
+<div class="container">
+  <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+    <%= form_for @request.appointments.last do |f| %>
+      <%= render partial: 'appointment_form', locals: { f: f, title: t('edit_appointment_details', name:  @request.appointments.last.patient_name), cta: t('update_appointment') } %>
+    <% end %>
+  </div>
+</div>
