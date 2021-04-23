@@ -150,8 +150,8 @@
     <% if @request.notes.present? %>
     <div class="mt-4 mx-4 gap-0 rounded-lg bg-white shadow overflow-hidden sm:mx-0">
       <div class="justify-between">
-        <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
-          <h3 class="text-primary-700 font-bold">Notes:</h3>
+        <div class="p-4 sm:px-6 sm:py-3 bg-green-200 border-b border-green-900">
+          <h3 class="text-gray-800 font-bold">Notes:</h3>
         </div>
         <div>
           <% if current_user && (current_user == @request.user || current_user.is_coach?) %>
@@ -182,8 +182,8 @@
     <div class="mt-8 mx-4 sm:grid sm:grid-cols-3 sm:gap-10 sm:mx-0">
       <div class="sm:col-span-2">
         <div class="bg-white overflow-hidden rounded-lg sm:pb-4 shadow">
-          <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
-            <h3 class="text-primary-700 font-bold"><%= t('availability') %></h3>
+          <div class="p-4 sm:px-6 sm:py-3 bg-green-200 border-b border-green-900">
+            <h3 class="text-gray-800 font-bold"><%= t('availability') %></h3>
           </div>
 
           <% if @request.travel_radius.present? %>
@@ -261,8 +261,8 @@
         </div>
 
         <div class="mt-0 bg-white overflow-hidden rounded-lg shadow">
-          <div class="p-4 sm:px-6 sm:py-3 bg-secondary-200 border-b border-primary-400">
-            <h3 class="text-primary-700 font-bold"><%= t('booking_status') %></h3>
+          <div class="p-4 sm:px-6 sm:py-3 bg-green-200 border-b border-green-900">
+            <h3 class="text-gray-800 font-bold"><%= t('booking_status') %></h3>
           </div>
     
       <div class="mt-8 sm:col-span-2 sm:mt-2">
@@ -306,7 +306,7 @@
 
   <% if current_user && @request.requested_users.count > 0 && (current_user == @request.user || current_user.is_coach?) %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
-      <div class="bg-white px-4 py-5 sm:px-6">
+      <div class="bg-green-200 px-4 py-5 sm:px-6 border-b border-green-900">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           <%= t('patients') %>
         </h3>
@@ -324,14 +324,16 @@
 
   <% if current_user && current_user.is_coach? %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
-      <div class="bg-white px-4 py-5 sm:px-6">
+      <div class="bg-green-200 px-4 py-5 sm:px-6 border-b border-green-900">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           <%= t('appointment_details') %>
         </h3>
       </div>
       <!-- create appointment -->
-      <div>
-        <%= link_to new_appointment_path(request_id: @request.id) do %>
+      <div class="border-t border-gray-200 pb-4">
+        <div class="pl-2" >
+          <% if !@request.appointments %>
+            <%= link_to new_appointment_path(request_id: @request.id) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -342,12 +344,12 @@
                   </span>
                 </button>
               </span>
-            <% end %>
-      </div>
+          <% end %>
+          <% end %>
       <!-- edit appointment-->
-        <div>
-        <% @appointment = @request.appointments.last %>
-        <%= link_to edit_appointment_path(@appointment, request_id: @request.id) do %>
+          <% if @request.appointments %>
+          <% @appointment = @request.appointments.last %>
+            <%= link_to edit_appointment_path(@appointment, request_id: @request.id) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -358,7 +360,11 @@
                   </span>
                 </button>
               </span>
-            <% end %>
+          <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 pb-4">
       </div>
     </div>
   <% end %>
