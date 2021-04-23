@@ -7,7 +7,6 @@ class DropColumnsFromUser < ActiveRecord::Migration[6.0]
     remove_column :users, :name
     rename_column :users, :pair_with_appointments, :pair_with_requests
     remove_column :users, :deactivated
-    remove_column :users, :office_hour_description
     remove_column :users, :newsletter_consent
     remove_column :users, :phone
     remove_column :users, :affiliation
