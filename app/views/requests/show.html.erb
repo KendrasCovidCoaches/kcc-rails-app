@@ -323,15 +323,21 @@
   <% end %>
 
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
-    <% @appointment = @request.appointments.last %>
       <div class="bg-green-200 px-4 py-2 sm:px-6 border-b border-green-900">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           <%= t('appointment_details') %>
         </h3>
       </div>
+      <% if @request.appointments.count == 0 %> 
+      <div class="border-t border-gray-200"> 
+      <div class="my-4 mx-4">No appointments have been booked yet.</div>
+      </div> 
+      <% end %>
       <!-- create appointment -->
+      <% if @request.appointments.count == 0 && current_user && current_user.is_coach? %>
       <div class="border-t border-gray-200 pb-4">
         <div class="pl-2" >
+      <% end %>
         <% if current_user && current_user.is_coach? %>
             <% if !@request.appointments %>
             <%= link_to new_appointment_path(request_id: @request.id) do %>
@@ -349,7 +355,7 @@
           <% end %>
         <% end %>
       <!-- edit appointment-->
-          <% if @request.appointments %>
+          <% if @request.appointments.count > 0 %> <% @appointment = @request.appointments.last %>
             <% if current_user && current_user.is_coach? %>
             <%= link_to edit_appointment_path(@appointment, request_id: @request.id) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
@@ -369,7 +375,6 @@
                   At: <span class="text-primary-500 pr-2 font-bold"><%= @appointment.provider %></span> On: <span class="text-primary-500 font-bold"><%= @appointment.date.strftime("%m/%d/%Y") %> <%= @appointment.time.strftime("%I:%M %p") %></span>
                 </div>
               </div>
-          <% end %>
         </div>
       </div>
       <div class="border-t border-gray-200 pb-4">
@@ -449,4 +454,5 @@
       </div>
       <% end %>
     </div>
+  <% end %>
 </div>

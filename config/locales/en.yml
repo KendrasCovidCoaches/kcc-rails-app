@@ -133,7 +133,7 @@ en:
   request_was_successfully_created: "Request was successfully created."
   request_was_successfully_updated: "Request was successfully updated."
   request_was_successfully_deleted: "Request was successfully deleted."
-  we_ve_removed_you_from_the_list_of_requested_peo: "Request canceled and removed."
+  we_ve_removed_you_from_the_list_of_requested_peo: "Request canceled."
   completed: "We have marked your request as complete."
   i_have_self_booked: "I have self-booked"
   patient_completed: "Appointment Completed"

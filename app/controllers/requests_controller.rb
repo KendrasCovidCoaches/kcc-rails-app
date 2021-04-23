@@ -151,7 +151,7 @@ class RequestsController < ApplicationController
     def toggle_patient
       if @request.user == current_user
         #byebug
-        @request.destroy
+        @request.update(status: 'Canceled')
         flash[:notice] = I18n.t('we_ve_removed_you_from_the_list_of_requested_peo')
         # RequestMailer.with(request: @request, user: current_user).cancel_patient.deliver_now
       else
