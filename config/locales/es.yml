@@ -76,7 +76,7 @@ es:
   i_have_self_booked: "" #fix I have self-booked
   patient_completed: "Marcar como completado y eliminar" #fix Appointment Completed
   thanks_for_requesting_the_coaches_will_be: "" #fix Thanks for requesting! The coaches will be alerted.
-  you_got_a_new_patient_for_name: "" fix You got a new patient!
+  you_got_a_new_patient_for_name: "" #fix You got a new patient!
   name: "Nombre"
   your_full_name: "Tu nombre completo."
   phone: "Phone"
@@ -180,5 +180,3 @@ es:
   show_weekends_avail: "" #fix
   show_weekend_time_avail: "" #fix
   availability: "" #fix please check en.yml for added keys/values and paste/translate below
-
-
