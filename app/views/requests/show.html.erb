@@ -116,13 +116,13 @@
           <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-              <span class="text-gray-500 text-xs font-bold leading-tight">
+              <span class="text-gray-500 text-sm font-bold leading-tight">
               <%= @request.city %>
               </span>
             </div>
             <div class="flex items-center text-primary-600 col-span-1">
               <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-              <span class="text-gray-500 text-xs font-bold leading-tight">Created <%= time_ago_in_words(@request.created_at) %> ago</span>
+              <span class="text-gray-500 text-sm font-bold leading-tight">Created <%= time_ago_in_words(@request.created_at) %> ago</span>
             </div>
           </div>
         </div>
@@ -360,7 +360,12 @@
                   </span>
                 </button>
               </span>
-          <% end %>
+              <% end %>
+              <div class="sm:w-4/12 bg-white my-4 mx-4 py-1 rounded-md shadow-sm border border-gray-300 float-right text-center">
+                <div class="text-gray-900 font-bold">
+                  At: <span class="text-primary-500 pr-2 font-bold"><%= @appointment.provider %></span> On: <span class="text-primary-500 font-bold"><%= @appointment.date.strftime("%m/%d/%Y") %> <%= @appointment.time.strftime("%I:%M %p") %></span>
+                </div>
+              </div>
           <% end %>
         </div>
       </div>
@@ -368,13 +373,13 @@
         <div class="mt-0 mx-4 -mb-6 gap-0 bg-white overflow-hidden sm:mx-0 sm:grid sm:grid-cols-2">
           <div class="sm:col-span-1 flex-col justify-between">
             <div class="p-4 sm:p-6">
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
               <strong>Patient Name:</strong> <%= @appointment.patient_name %>
               </span><br />
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Provider:</strong> <%= @appointment.provider %>
               </span><br />
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
               <strong>Provider Address:</strong> <br/>
               <%= @appointment.address %><br/>
               <%= @appointment.city %>, <%= @appointment.state %> <%= @appointment.zip %>
@@ -382,29 +387,36 @@
               <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
                 <div class="flex items-center text-primary-600 col-span-1">
                   <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-                  <span class="text-gray-500 text-xs font-bold leading-tight">
+                  <span class="text-gray-500 text-sm font-bold leading-tight">
                   <%= @appointment.city %>
                   </span>
                 </div>
                 <div class="flex items-center text-primary-600 col-span-1">
                   <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
-                  <span class="text-gray-500 text-xs font-bold leading-tight">Booked <%= time_ago_in_words(@request.created_at) %> ago</span>
+                  <span class="text-gray-500 text-sm font-bold leading-tight">Booked <%= time_ago_in_words(@request.created_at) %> ago</span>
+                </div>
+                <div class="flex items-center text-primary-600 col-span-1">
+                  <%= link_to edit_appointment_path(@appointment, request_id: @request.id, anchor: "notes") do %>
+                    <span class="text-primary-500 text-sm font-bold leading-tight">
+                      <%= t('edit_comm_status') %>
+                    </span>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
           <div class="sm:col-span-1 flex-col justify-between">
             <div class="p-4 sm:p-6">
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Date & Time:</strong> <%= @appointment.date.strftime("%m/%d/%Y") %> <%= @appointment.time.strftime("%I:%M %p") %>
               </span><br />
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Booked by:</strong> <%= @appointment.booked_by_name %> / <%= @appointment.booked_by_email %>
               </span><br />
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Has been communicated with:</strong>  <%= @appointment.communicated ? "Yes" : "No" %>
               </span><br />
-              <span class="text-sm leading-tight text-black font-normal">
+              <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Communication Status:</strong> 
                 <%= @appointment.communication_list[0] %><% if @appointment.communication_list.length > 1 %> + <% end %>
                 <% if @appointment.communication_list[1] %>
@@ -416,6 +428,17 @@
               </span><br />
             </div>
           </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-200 px-4 pb-4">
+        <div class="text-lg font-bold text-gray-900">Coach Notes: </div>
+        <div class="text-base mt-2 font-normal text-gray-900"><%= @appointment.coach_notes %></div>
+        <div class="text-sm mt-2 font-bold text-primary-500">
+          <%= link_to edit_appointment_path(@appointment, request_id: @request.id, anchor: "notes") do %>
+                  <span>
+                    <%= t('edit_notes') %>
+                  </span>
+          <% end %>
         </div>
       </div>
     </div>
