@@ -165,7 +165,7 @@ class RequestsController < ApplicationController
         track_event 'User requested'
       end
   
-      redirect_to own_requests_path(current_user)
+      redirect_to request_path(@request)
     end
   
     def completed_patient

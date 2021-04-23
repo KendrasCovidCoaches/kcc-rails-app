@@ -49,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def to_param
-    [id, name.parameterize].join('-')
+    [id, email.parameterize].join('-')
   end
 
   def self.to_csv

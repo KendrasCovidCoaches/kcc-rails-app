@@ -31,11 +31,9 @@
       <div class="text-gray-500 w-full text-center"><%= time_ago_in_words request.created_at %> ago</div>
       
       <div class="text-gray-500 w-full text-center">
-      <span class="text-gray-900 font-bold">Category:</span>
-      <% if request.categories.present? %>
-            <% request.categories.each do |cat| %>
-              <span><%= cat %></span>
-            <% end %>
+      <span class="text-gray-900 font-bold">Status:</span>
+      <% if request.status.present? %>
+            <%= request.status %>
       <% else %>
         <span>None</span>
     <% end %>
