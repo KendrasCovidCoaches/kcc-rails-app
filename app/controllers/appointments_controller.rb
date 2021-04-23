@@ -70,6 +70,6 @@ class AppointmentsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def appointment_params
       params.fetch(:appointment, {}).permit(:request_id, :reference_num, :patient_name, :provider, :address, :city, :state,
-        :zip, :coach_notes, :communication_status, :date, :time, :user_id, :booked_by_name, :booked_by_email, :communication_list => [])
+        :zip, :coach_notes, :communication_status, :communicated, :date, :time, :user_id, :booked_by_name, :booked_by_email, :communication_list => [])
     end
 end

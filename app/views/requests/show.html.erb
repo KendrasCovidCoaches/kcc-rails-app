@@ -32,7 +32,7 @@
             <% end %>
           </span>
 
-          <% if current_user.is_coach? %>
+          <% if current_user && current_user.is_coach? %>
             <% patient_email = @request.patient_email %>
 
             <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
@@ -50,7 +50,7 @@
             </span>
           <% end %>
 
-          <% if current_user.is_coach? %>
+          <% if current_user && current_user.is_coach? %>
             <%= link_to request_path(request_id: @request.id), method: :delete, data: { confirm: "Are you sure you want to delete this request?" } do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
@@ -365,6 +365,58 @@
         </div>
       </div>
       <div class="border-t border-gray-200 pb-4">
+        <div class="mt-0 mx-4 -mb-6 gap-0 bg-white overflow-hidden sm:mx-0 sm:grid sm:grid-cols-2">
+          <div class="sm:col-span-1 flex-col justify-between">
+            <div class="p-4 sm:p-6">
+              <span class="text-sm leading-tight text-black font-normal">
+              <strong>Patient Name:</strong> <%= @appointment.patient_name %>
+              </span><br />
+              <span class="text-sm leading-tight text-black font-normal">
+                <strong>Provider:</strong> <%= @appointment.provider %>
+              </span><br />
+              <span class="text-sm leading-tight text-black font-normal">
+              <strong>Provider Address:</strong> <br/>
+              <%= @appointment.address %><br/>
+              <%= @appointment.city %>, <%= @appointment.state %> <%= @appointment.zip %>
+              </span><br />
+              <div class="mt-4 flex flex-col lg:flex-row lg:justify-between">
+                <div class="flex items-center text-primary-600 col-span-1">
+                  <%= inline_svg_pack_tag 'media/svgs/location-pin.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
+                  <span class="text-gray-500 text-xs font-bold leading-tight">
+                  <%= @appointment.city %>
+                  </span>
+                </div>
+                <div class="flex items-center text-primary-600 col-span-1">
+                  <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
+                  <span class="text-gray-500 text-xs font-bold leading-tight">Booked <%= time_ago_in_words(@request.created_at) %> ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sm:col-span-1 flex-col justify-between">
+            <div class="p-4 sm:p-6">
+              <span class="text-sm leading-tight text-black font-normal">
+                <strong>Date & Time:</strong> <%= @appointment.date.strftime("%m/%d/%Y") %> <%= @appointment.time.strftime("%I:%M %p") %>
+              </span><br />
+              <span class="text-sm leading-tight text-black font-normal">
+                <strong>Booked by:</strong> <%= @appointment.booked_by_name %> / <%= @appointment.booked_by_email %>
+              </span><br />
+              <span class="text-sm leading-tight text-black font-normal">
+                <strong>Has been communicated with:</strong>  <%= @appointment.communicated ? "Yes" : "No" %>
+              </span><br />
+              <span class="text-sm leading-tight text-black font-normal">
+                <strong>Communication Status:</strong> 
+                <%= @appointment.communication_list[0] %><% if @appointment.communication_list.length > 1 %> + <% end %>
+                <% if @appointment.communication_list[1] %>
+                 <%= @appointment.communication_list[1] %> +
+                <% end %>
+                <% if @appointment.communication_list[2] %>
+                 <%= @appointment.communication_list[2] %>
+                <% end %>
+              </span><br />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   <% end %>
