@@ -306,7 +306,7 @@
 
   <% if current_user && @request.requested_users.count > 0 && (current_user == @request.user || current_user.is_coach?) %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
-      <div class="bg-green-200 px-4 py-5 sm:px-6 border-b border-green-900">
+      <div class="bg-green-200 px-4 py-2 sm:px-6 border-b border-green-900">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           <%= t('patients') %>
         </h3>
@@ -322,9 +322,9 @@
     </div>
   <% end %>
 
-  <% if current_user && current_user.is_coach? %>
     <div class="mt-8 bg-white overflow-hidden sm:rounded-lg sm:shadow">
-      <div class="bg-green-200 px-4 py-5 sm:px-6 border-b border-green-900">
+    <% @appointment = @request.appointments.last %>
+      <div class="bg-green-200 px-4 py-2 sm:px-6 border-b border-green-900">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           <%= t('appointment_details') %>
         </h3>
@@ -332,7 +332,8 @@
       <!-- create appointment -->
       <div class="border-t border-gray-200 pb-4">
         <div class="pl-2" >
-          <% if !@request.appointments %>
+        <% if current_user && current_user.is_coach? %>
+            <% if !@request.appointments %>
             <%= link_to new_appointment_path(request_id: @request.id) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
@@ -344,11 +345,12 @@
                   </span>
                 </button>
               </span>
+            <% end %>
           <% end %>
-          <% end %>
+        <% end %>
       <!-- edit appointment-->
           <% if @request.appointments %>
-          <% @appointment = @request.appointments.last %>
+            <% if current_user && current_user.is_coach? %>
             <%= link_to edit_appointment_path(@appointment, request_id: @request.id) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
@@ -361,7 +363,8 @@
                 </button>
               </span>
               <% end %>
-              <div class="sm:w-4/12 bg-white my-4 mx-4 py-1 rounded-md shadow-sm border border-gray-300 float-right text-center">
+              <% end %>
+              <div class="sm:w-4/12 bg-white my-4 py-1 rounded-md shadow-sm border border-gray-300 <% if current_user && current_user.is_coach? %>mx-4 float-right<% end %> text-center">
                 <div class="text-gray-900 font-bold">
                   At: <span class="text-primary-500 pr-2 font-bold"><%= @appointment.provider %></span> On: <span class="text-primary-500 font-bold"><%= @appointment.date.strftime("%m/%d/%Y") %> <%= @appointment.time.strftime("%I:%M %p") %></span>
                 </div>
@@ -395,6 +398,7 @@
                   <%= inline_svg_pack_tag 'media/svgs/time-ago.svg', class: 'h-6 mr-2 text-primary-600 fill-current' %>
                   <span class="text-gray-500 text-sm font-bold leading-tight">Booked <%= time_ago_in_words(@request.created_at) %> ago</span>
                 </div>
+                <% if current_user && current_user.is_coach? %>
                 <div class="flex items-center text-primary-600 col-span-1">
                   <%= link_to edit_appointment_path(@appointment, request_id: @request.id, anchor: "notes") do %>
                     <span class="text-primary-500 text-sm font-bold leading-tight">
@@ -402,6 +406,7 @@
                     </span>
                   <% end %>
                 </div>
+                <% end %>
               </div>
             </div>
           </div>
@@ -430,6 +435,7 @@
           </div>
         </div>
       </div>
+      <% if current_user && current_user.is_coach? %>
       <div class="border-t border-gray-200 px-4 pb-4">
         <div class="text-lg font-bold text-gray-900">Coach Notes: </div>
         <div class="text-base mt-2 font-normal text-gray-900"><%= @appointment.coach_notes %></div>
@@ -441,6 +447,6 @@
           <% end %>
         </div>
       </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
