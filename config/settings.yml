@@ -1,8 +1,8 @@
 # Main
 site_title: Kendra's Covid Coaches
 site_subtitle: 'Helping facilitate vaccination appointments for central Texas'
-# site_url: https://www.athenshelpwithcovid.com
-# share_image: https://www.helpwithcovid.com/share-image.png
+site_url: https://kcc-web-app-rails.herokuapp.com
+share_image: https://kcc-web-app-rails.herokuapp.com/share-image.png
 
 # Site features
 features_enabled:
