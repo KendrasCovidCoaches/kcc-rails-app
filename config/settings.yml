@@ -233,6 +233,7 @@ communication_statuses:
   - Texted
   - Emailed
   - Called
+  - Left voicemail
 
 # If a appointment has less than N patients
 # it can ask to be highlighted.

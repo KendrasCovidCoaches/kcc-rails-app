@@ -116,7 +116,7 @@
                       <div class="absolute pb-4 flex items-center h-5">
                         <% num = 0 %>
                         <% states_array = Settings.states.map { |state| [state, state] } %>
-                        <%= f.select :state, options_for_select(states_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                        <%= f.select :state, options_for_select(states_array, "Texas"), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
                       </div>
                     </div>
                 </div>

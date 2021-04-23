@@ -347,7 +347,7 @@
       <!-- edit appointment-->
           <% if @request.appointments.count > 0 %> <% @appointment = @request.appointments.last %>
             <% if current_user && current_user.is_coach? %>
-            <%= link_to edit_appointment_path(@appointment, request_id: @request.id) do %>
+            <%= link_to edit_appointment_path(@appointment, request_id: @request.id, patient_name: @request.l_name, f_name: @request.f_name) do %>
               <span class="ml-3 inline-flex rounded-md shadow-sm mt-4">
                 <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                   <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -395,7 +395,7 @@
                 </div>
                 <% if current_user && current_user.is_coach? %>
                 <div class="flex items-center text-primary-600 col-span-1">
-                  <%= link_to edit_appointment_path(@appointment, request_id: @request.id, anchor: "notes") do %>
+                  <%= link_to edit_appointment_path(@appointment, request_id: @request.id, patient_name: @request.l_name, f_name: @request.f_name, anchor: "notes") do %>
                     <span class="text-primary-500 text-xs font-bold leading-tight">
                       <%= t('edit_comm_status') %>
                     </span>
@@ -420,11 +420,15 @@
               <span class="text-sm mb-4 leading-tight text-black font-normal">
                 <strong>Communication Status:</strong> <% if @appointment.communication_list.length == 0 %> N/A <% end %>
                 <%= @appointment.communication_list[0] %><% if @appointment.communication_list.length > 1 %> + <% end %>
-                <% if @appointment.communication_list[1] %>
+                <% if @appointment.communication_list.length == 2 %>
+                 <%= @appointment.communication_list[1] %> 
+                <% elsif @appointment.communication_list.length > 2 %>
                  <%= @appointment.communication_list[1] %> +
                 <% end %>
-                <% if @appointment.communication_list[2] %>
+                <% if @appointment.communication_list.length == 3 %>
                  <%= @appointment.communication_list[2] %>
+                <% elsif @appointment.communication_list.length > 3 %>
+                 <%= @appointment.communication_list[2] %> + <%= @appointment.communication_list[3] %>
                 <% end %>
               </span><br />
               <% end %>
@@ -437,7 +441,7 @@
         <div class="text-lg font-bold text-gray-900">Coach Notes: </div>
         <div class="text-sm mt-2 font-normal text-gray-900"><%= @appointment.coach_notes %></div>
         <div class="text-xs mt-2 font-bold text-primary-500">
-          <%= link_to edit_appointment_path(@appointment, request_id: @request.id, anchor: "notes") do %>
+          <%= link_to edit_appointment_path(@appointment, request_id: @request.id, patient_name: @request.l_name, f_name: @request.f_name, anchor: "notes") do %>
                   <span>
                     <%= t('edit_notes') %>
                   </span>

@@ -37,6 +37,7 @@
           <div class="max-w-lg flex rounded-md shadow-sm">
             <%= f.text_field :provider, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
           </div>
+          <p class="text-sm text-gray-500">Example: Seguin H-E-B (#716)</p>
         </div>
       </div>
 
@@ -78,7 +79,7 @@
                       <div class="absolute pb-4 flex items-center h-5">
                         <% num = 0 %>
                         <% states_array = Settings.states.map { |state| [state, state] } %>
-                        <%= f.select :state, options_for_select(states_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                        <%= f.select :state, options_for_select(states_array, "Texas"), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
                       </div>
                     </div>
                 </div>
