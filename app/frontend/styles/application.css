@@ -1,6 +1,5 @@
 @import '@fancyapps/fancybox/dist/jquery.fancybox.min.css';
 @import './tailwindcss/base.css';
-@import './featured-categories.css';
 @import './scroll-shadow.css';
 @import './scrollbar-hidden.css';
 @import './filters-bar.css';
