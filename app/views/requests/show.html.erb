@@ -413,11 +413,12 @@
               <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Booked by:</strong> <%= @appointment.booked_by_name %> / <%= @appointment.booked_by_email %>
               </span><br />
+              <% if current_user && current_user.is_coach? %>
               <span class="text-base mb-4 leading-tight text-black font-normal">
                 <strong>Has been communicated with:</strong>  <%= @appointment.communicated ? "Yes" : "No" %>
               </span><br />
               <span class="text-base mb-4 leading-tight text-black font-normal">
-                <strong>Communication Status:</strong> 
+                <strong>Communication Status:</strong> <% if @appointment.communication_list.length == 0 %> N/A <% end %>
                 <%= @appointment.communication_list[0] %><% if @appointment.communication_list.length > 1 %> + <% end %>
                 <% if @appointment.communication_list[1] %>
                  <%= @appointment.communication_list[1] %> +
@@ -426,6 +427,7 @@
                  <%= @appointment.communication_list[2] %>
                 <% end %>
               </span><br />
+              <% end %>
             </div>
           </div>
         </div>
