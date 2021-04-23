@@ -24,7 +24,7 @@
         </label>
         <div class="mt-1 sm:mt-0 sm:col-span-2">
           <div class="max-w-lg flex rounded-md shadow-sm">
-            <%= f.text_field :patient_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+            <%= f.text_field :patient_name, value: (params[:f_name] + " " + params[:patient_name]), class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
           </div>
         </div>
       </div>
