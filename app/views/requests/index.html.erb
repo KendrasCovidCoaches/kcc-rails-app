@@ -5,6 +5,7 @@
 
 <div class="container">
   <%= render partial: 'filters-bar' if @show_filters %>
+  <%= react_component("RequestTable", props: {requests: Request.all}, prerender: false) %>
 
   <% if @requests.present? %>
     <div class="mt-4">
