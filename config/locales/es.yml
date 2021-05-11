@@ -92,9 +92,10 @@ es:
   old_password: "Contraseña anterior"
   only_if_you_are_changing_your_password: "Solo si estás cambiando tu contraseña."
   contact: "Contacto"
-  this_information_will_be_displayed_publicly_fill_e: "" #fix This information will be displayed publicly. Fill everything out to be able to request appointments.
+  this_information_will_be_displayed_publicly_fill_e: "
+    Esta información se mostrará públicamente. Rellena todo para poder solicitar citas." #fix This information will be displayed publicly. Fill everything out to be able to request appointments. #dg-fixed
   save_changes: "Save Changes"
-  sign_up_to_patient: "" #fix Sign up to request or book appointments.
+  sign_up_to_patient: "Regístrese para solicitar o reservar citas" #fix Sign up to request or book appointments. #dg-fixed
   no_user_found_try_another_search: "Usuario no encontrado. ¡Intenta otra búsqueda!"
   sign_up_for_an_account: "Regístrate por una cuenta"
   you_ll_be_able_to_either_request_or_create_an_appointment: "Podrás crear un proyecto o alistarte como voluntario después."
@@ -121,40 +122,40 @@ es:
   all: "Todo"
   none: "Ninguno"
   apply_filters: "Aplica filtros"
-  no_patients: "No voluntarios" #fix No patients
-  no_appointment_found_try_another_search_br_or_create: "" #fix No requests found.
-  create_new_appointment: "Crea nuevo proyecto" #fix Create new appointment
-  create_new_request: "" #fix Create New Appointment Request
+  no_patients: "sin pacientes" #fix No patients #dg-fixed
+  no_appointment_found_try_another_search_br_or_create: "No se encontraron solicitudes" #fix No requests found. #dg-fixed
+  create_new_appointment: "Crea nueva cita" #fix Create new appointment #dg-fixed
+  create_new_request: "Crea nueva solicitud de cita" #fix Create New Appointment Request #dg-fixed
   appointment_name: "Cita %{name}"
   request_name: "Solicitud de %{name}"
-  request_status: "" #fix Request Status
+  request_status: "Estado de la solicitud" #fix Request Status #dg-fixed
   how_to_get_in_touch: "Cómo ponerte en contacto"
-  preferred_patient_location: "" #fix Preferred Appointment Location
+  preferred_patient_location: "Lugar preferido para la cita" #fix Preferred Appointment Location #dg-fixed
   only_jpg_and_png_files: "¡Solo se permiten archivos jpg/jpeg y png!"
   you_have_accepted_oh: "Has aceptado."
   please_enter_a_date_and_a_time: "Por favor, introduce una fecha y una hora."
   accept: "Acepta"
-  patient_note: "" #fix Patient note
-  first_name: "" #fix
-  last_name: "" #fix
-  birth_date: "" #fix
-  phone_number: "" #fix
-  phone_format: "" #fix
-  phone_example: "" #fix
-  sex: "" #fix
-  bio_sex: "" #fix
-  female: "" #fix
-  male: "" #fix
-  address: "" #fix
-  unit: "" #fix
+  patient_note: "Nota del paciente" #fix Patient note #dg-fixed
+  first_name: "Primer nombre" #fix #dg-fixed
+  last_name: "Apellido" #fix #dg-fixed
+  birth_date: "Fecha de nacimiento" #fix #dg-fixed
+  phone_number: "Número de teléfono" #fix #dg-fixed
+  phone_format: "Formato de teléfono" #fix #dg-fixed
+  phone_example: "Ejemplo de teléfono" #fix #dg-fixed
+  sex: "Sexo" #fix #dg-fixed
+  bio_sex: "Sexo biológico" #fix #dg-fixed
+  female: "Mujer" #fix #dg-fixed
+  male: "Masculino" #fix #dg-fixed
+  address: "Direccion postal" #fix #dg-fixed
+  unit: "Unidad" #fix #dg-fixed
   city: "Ciudad"
-  state: "" #fix
-  zip: "" #fix
-  preferred_lang: "" #fix
+  state: "Estado" #fix #dg-fixed
+  zip: "Código postal" #fix #dg-fixed
+  preferred_lang: "Idioma preferido" #fix #dg-fixed
   english: "Inglés"
   spanish: "Español"
-  is_self_booking: "" #fix
-  over_50: "" #fix
+  is_self_booking: "Reserva para uno mismo" #fix #dg-fixed
+  over_50: "Más de 50 años" #fix #dg-fixed
   requestor_first: "" #fix
   requestor_last: "" #fix
   requestor_email: "" #fix
