@@ -2,26 +2,26 @@ es:
   cancel: "Cancela"
   apply: "aplica"
   signed_up: "registrados"
-  patients: "Voluntarios" #fix patients
+  patients: "Pacientes" #fix patients #dg-fixed
   resources: "Recursos"
   account: "Cuenta"
-  requested_appointments: "Proyectos elegidos" #fix Requested Appointments
-  requested_requests: "Requests"
-  all_patient_requests: "" #fix All Patient Requests
-  requests_for_patients: "" #fix Requests You Have Made For Patients
-  your_appointments: "" #fix Created Appointments
+  requested_appointments: "Citas solicitadas" #fix Requested Appointments #dg-fixed
+  requested_requests: "Requests" #????
+  all_patient_requests: "Todos las solicitudes de los pacientes" #fix All Patient Requests #dg-fixed
+  requests_for_patients: "Solicitudes que ha realizado para pacientes" #fix Requests You Have Made For Patients #dg-fixed
+  your_appointments: "Tus citas" #fix Created Appointments #dg-fixed
   your_profile: "Cambiar Correo Electrónico y Contraseña"
   dashboard: "Tabla de Analíticas"
   log_out: "Cierre Sesión"
-  create_appointment: "Crea proyecto" #fix Book Appointment
-  request_appointment: "" #fix Request Appointment
-  create_request: "" #fix Submit Request
-  create_patient_request: "" #fix Create Patient Request
+  create_appointment: "Reservar una cita" #fix Book Appointment #dg-fixed
+  request_appointment: "Solicitar una cita" #fix Request Appointment #dg-fixed
+  create_request: "Enviar petición" #fix Submit Request #dg-fixed
+  create_patient_request: "Crear solicitud de paciente" #fix Create Patient Request #dg-fixed
   created: "Creados"
   see_more: "... (ve más)"
-  apply_here: "" #fix Go To Site
+  apply_here: "Ir al sitio" #fix Go To Site #dg-fixed
   this_information_will_be_displayed_publicly: "Esta información mostrará en público."
-  this_info_will_only_be_visible_coaches: "" #fix This infomation will only be displayed to KCC booking volunteers
+  this_info_will_only_be_visible_coaches: "Esta información solo será visible para los voluntarios de KCC" #fix This infomation will only be displayed to KCC booking volunteers #dg-fixed
   create_resource: "Crea recurso"
   here: "aquí"
   create_new_resource: "Crea recurso nuevo"
@@ -29,54 +29,54 @@ es:
   description: "Descripción"
   see_all: "Ve todo"
   sort_by: "Ordena por"
-  patients_needed: "Voluntarios necesitados" #fix Patients Needed
+  patients_needed: "Pacientes necesarios" #fix Patients Needed #dg-fixed
   latest: "Últimos"
   most_recent: "Most Recent"
   earliest: "Más tempranos"
-  oldest: "" #fix Oldest
-  patient: "" #fix Patient
+  oldest: "Mas viejo" #fix Oldest #dg-fixed
+  patient: "Paciente" #fix Patient #dg-fixed
   image: "Imagen"
   who_is_already_working_on_this: "¿Quién ya está trabajando en esto?"
   target_location: "Sitio de destino"
   optional: "(opciónal)"
   best_way_to_get_in_touch: "La mejor manera para contactarte"
-  patient_location: "Localidad de voluntario" #fix Patient Location
-  cancel_request: "Cancela la oferta de voluntario" #fix Cancel Request
+  patient_location: "Ubicación del paciente" #fix Patient Location #dg-fixed
+  cancel_request: "Cancelar petición" #fix Cancel Request #dg-fixed
   send_email_to_patients: "Envia email a los voluntarios" #fix Send Email to Patients
-  export_patients_to_csv: "Exporta voluntarios a CSV" #fix Export patients to CSV
+  export_patients_to_csv: "Exportar pacientes a CSV" #fix Export patients to CSV #dg-fixed
   delete: "Borra"
   don_t_show_this_again: "No muestra esto de nuevo"
   in_progress: "En progreso"
   launched: "Lanzamientodo"
-  about_the_appointment: "Sobre la oportunidad" #fix About the Appointment
+  about_the_appointment: "Sobre la cita" #fix About the Appointment #dg-fixed
   help_needed: "Se necesita ayuda"
-  appointment_details: "Detallas de la oportunidad" #fix Appointment Details
+  appointment_details: "detalles de la cita" #fix Appointment Details #dg-fixed
   not_specified: "No especificado"
   save_appointment: "Guardar Oportunidad" #fix Save Appointment
-  save_request: "" #fix Save Request
-  edit_appointment_name: "Edita Cita %{name}"
-  edit_appointment_details: "Edit Appointment Details" #fix Edit Appointment Details
-  update_appointment: "" #fix Update Appointment
+  save_request: "Guardar solicitud" #fix Save Request #dg-fixed
+  edit_appointment_name: "Editar nombre en la cita" #dg-fixed
+  edit_appointment_details: "Editar detalles de la cita" #fix Edit Appointment Details #dg-fixed
+  update_appointment: "Actualizar la cita" #fix Update Appointment #dg-fixed
   sorry_no_such_user: "Lo sentimos, no hay tal usuario."
   apologies_you_don_t_have_access_to_this: "Disculpas, no tienes acceso a esto."
-  all_appointments: "Todos las oportunidades" #fix All Appointments
-  all_requests: "" #fix All Requests
-  these_are_the_appointments_where_you_requested: "Estas son las oportunidades en las que se ofreció como voluntario." #fix These are the requests you have made.
-  own_appointments: "Oportunidades propios" #fix Own Appointments
-  own_requests: "" #fix Requests you have created for patients
-  these_are_the_appointments_you_created: "Estas son las oportunidades que creó." #fix These are the appointments you have created.
-  appointment_was_successfully_created: "La oportunidad fue creado exitosamente." #fix
-  appointment_was_successfully_updated: "La oportunidad se actualizó con éxito." #fix
-  appointment_was_successfully_deleted: "La oportunidad fue eliminado exitosamente." #fix
-  request_was_successfully_created: "" #fix
-  request_was_successfully_updated: "" #fix
-  request_was_successfully_deleted: "" #fix
-  we_ve_removed_you_from_the_list_of_requested_peo: "Te hemos eliminado de la lista de personas voluntarias." #fix Request canceled.
-  completed: "" #fix We have marked your request as complete.
-  i_have_self_booked: "" #fix I have self-booked
-  patient_completed: "Marcar como completado y eliminar" #fix Appointment Completed
-  thanks_for_requesting_the_coaches_will_be: "" #fix Thanks for requesting! The coaches will be alerted.
-  you_got_a_new_patient_for_name: "" #fix You got a new patient!
+  all_appointments: "Todos las citas" #fix All Appointments #dg-fixed
+  all_requests: "Todos las solicitudes" #fix All Requests #dg-fixed
+  these_are_the_appointments_where_you_requested: "Estas son tus solicitudes" #fix These are the requests you have made. #dg-fixed
+  own_appointments: "Propias citas" #fix Own Appointments #dg-fixed
+  own_requests: "Propias peticiones" #fix Requests you have created for patients #dg-fixed
+  these_are_the_appointments_you_created: "Estas son las citas que ha creado" #fix These are the appointments you have created. #dg-fixed
+  appointment_was_successfully_created: "La cita se creó con éxito." #fix #dg-fixed
+  appointment_was_successfully_updated: "La cita se actualizó con éxito." #fix #dg-fixed
+  appointment_was_successfully_deleted: "La cita se eliminó con éxito." #fix #dg-fixed
+  request_was_successfully_created: "La solicitud fue creada con éxito." #fix #dg-fixed
+  request_was_successfully_updated: "La solicitud fue actualizada" #fix #dg-fixed
+  request_was_successfully_deleted: "La solicitud se eliminó con éxito" #fix #dg-fixed
+  we_ve_removed_you_from_the_list_of_requested_peo: "Solicitud cancelada." #fix Request canceled. #dg-fixed
+  completed: "Hemos marcado su solicitud como completa" #fix We have marked your request as complete. #dg-fixed
+  i_have_self_booked: "He reservado yo mismo" #fix I have self-booked #dg-fixed
+  patient_completed: "La cita completada" #fix Appointment Completed #dg-fixed
+  thanks_for_requesting_the_coaches_will_be: "Gracias por solicitar! Los entrenadores serán alertados." #fix Thanks for requesting! The coaches will be alerted. #dg-fixed
+  you_got_a_new_patient_for_name: "Tienes un nuevo paciente" #fix You got a new patient! #dg-fixed
   name: "Nombre"
   your_full_name: "Tu nombre completo."
   phone: "Phone"
@@ -85,16 +85,16 @@ es:
   options: "Opciones"
   change_your_email_password: "Cambia tu correo electrónico / contraseña"
   email_address: "Dirección de correo electrónico"
-  patient_email: "" #fix Patient Email
+  patient_email: "correo electrónico del paciente" #fix Patient Email #dg-fixed
   password: "Contraseña"
   leave_blank_if_you_don_t_want_to_change_it: "Déjalo en blanco si no deseas cambiarlo."
   password_confirmation: "Confirmación de contraseña"
   old_password: "Contraseña anterior"
   only_if_you_are_changing_your_password: "Solo si estás cambiando tu contraseña."
   contact: "Contacto"
-  this_information_will_be_displayed_publicly_fill_e: "" #fix This information will be displayed publicly. Fill everything out to be able to request appointments.
+  this_information_will_be_displayed_publicly_fill_everything_out_to_be_able_to_request_appointments.: "Esta información se mostrará públicamente. Rellena todo para poder solicitar citas." #fix This information will be displayed publicly. Fill everything out to be able to request appointments. #dg-fixed
   save_changes: "Save Changes"
-  sign_up_to_patient: "" #fix Sign up to request or book appointments.
+  sign_up_to_patient: "Regístrese para solicitar o reservar citas" #fix Sign up to request or book appointments. #dg-fixed
   no_user_found_try_another_search: "Usuario no encontrado. ¡Intenta otra búsqueda!"
   sign_up_for_an_account: "Regístrate por una cuenta"
   you_ll_be_able_to_either_request_or_create_an_appointment: "Podrás crear un proyecto o alistarte como voluntario después."
@@ -121,40 +121,40 @@ es:
   all: "Todo"
   none: "Ninguno"
   apply_filters: "Aplica filtros"
-  no_patients: "No voluntarios" #fix No patients
-  no_appointment_found_try_another_search_br_or_create: "" #fix No requests found.
-  create_new_appointment: "Crea nuevo proyecto" #fix Create new appointment
-  create_new_request: "" #fix Create New Appointment Request
+  no_patients: "sin pacientes" #fix No patients #dg-fixed
+  no_appointment_found_try_another_search_br_or_create: "No se encontraron solicitudes" #fix No requests found. #dg-fixed
+  create_new_appointment: "Crea nueva cita" #fix Create new appointment #dg-fixed
+  create_new_request: "Crea nueva solicitud de cita" #fix Create New Appointment Request #dg-fixed
   appointment_name: "Cita %{name}"
-  request_name: "Solicitud de %{name}" 
-  request_status: "" #fix Request Status
+  request_name: "Solicitud de %{name}"
+  request_status: "Estado de la solicitud" #fix Request Status #dg-fixed
   how_to_get_in_touch: "Cómo ponerte en contacto"
-  preferred_patient_location: "" #fix Preferred Appointment Location
+  preferred_patient_location: "Lugar preferido para la cita" #fix Preferred Appointment Location #dg-fixed
   only_jpg_and_png_files: "¡Solo se permiten archivos jpg/jpeg y png!"
   you_have_accepted_oh: "Has aceptado."
   please_enter_a_date_and_a_time: "Por favor, introduce una fecha y una hora."
   accept: "Acepta"
-  patient_note: "" #fix Patient note
-  first_name: "" #fix
-  last_name: "" #fix
-  birth_date: "" #fix
-  phone_number: "" #fix
-  phone_format: "" #fix
-  phone_example: "" #fix
-  sex: "" #fix
-  bio_sex: "" #fix
-  female: "" #fix
-  male: "" #fix
-  address: "" #fix
-  unit: "" #fix
+  patient_note: "Nota del paciente" #fix Patient note #dg-fixed
+  first_name: "Primer nombre" #fix #dg-fixed
+  last_name: "Apellido" #fix #dg-fixed
+  birth_date: "Fecha de nacimiento" #fix #dg-fixed
+  phone_number: "Número de teléfono" #fix #dg-fixed
+  phone_format: "Formato de teléfono" #fix #dg-fixed
+  phone_example: "Ejemplo de teléfono" #fix #dg-fixed
+  sex: "Sexo" #fix #dg-fixed
+  bio_sex: "Sexo biológico" #fix #dg-fixed
+  female: "Mujer" #fix #dg-fixed
+  male: "Masculino" #fix #dg-fixed
+  address: "Direccion postal" #fix #dg-fixed
+  unit: "Unidad" #fix #dg-fixed
   city: "Ciudad"
-  state: "" #fix
-  zip: "" #fix
-  preferred_lang: "" #fix
+  state: "Estado" #fix #dg-fixed
+  zip: "Código postal" #fix #dg-fixed
+  preferred_lang: "Idioma preferido" #fix #dg-fixed
   english: "Inglés"
   spanish: "Español"
-  is_self_booking: "" #fix
-  over_50: "" #fix
+  is_self_booking: "Reserva para uno mismo" #fix #dg-fixed
+  over_50: "Más de 50 años" #fix #dg-fixed
   requestor_first: "" #fix
   requestor_last: "" #fix
   requestor_email: "" #fix
@@ -180,3 +180,41 @@ es:
   show_weekends_avail: "" #fix
   show_weekend_time_avail: "" #fix
   availability: "" #fix please check en.yml for added keys/values and paste/translate below
+  booking_status: ""
+  confirmation_success: ""
+  click_to_confirm: ""
+  patient_confirm: ""
+  requested_by_name: ""
+  requested_by_email: ""
+  willing_to_travel: ""
+  patient_self_booked: ""
+  booking_in_progress: ""
+  booking_completed_awaiting: ""
+  mark_booking_complete: ""
+  booking_complete: ""
+  unbooked: ""
+  has_been_unbooked: ""
+  in_progress: ""
+  is_in_progress: ""
+  link: ""
+  resource_was_successfully_created: ""
+  resource_was_successfully_updated: ""
+  resource_was_successfully_destroyed: ""
+  provider_name: ""
+  provider_address: ""
+  provider_city: ""
+  provider_state: ""
+  provider_zip: ""
+  if_statewide: ""
+  click_to_edit: ""
+  reference_num: ""
+  patient_name: ""
+  provider: ""
+  coach_notes: ""
+  communicated: ""
+  communication_status: ""
+  date: ""
+  time: ""
+  booked_by_name: ""
+  edit_notes: ""
+  edit_comm_status: ""
