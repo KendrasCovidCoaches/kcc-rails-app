@@ -1,7 +1,7 @@
 es:
   cancel: "Cancela"
-  apply: "aplica"
-  signed_up: "registrados"
+  apply: "Aplica"
+  signed_up: "Registrados"
   patients: "Pacientes" #fix patients #dg-fixed
   resources: "Recursos"
   account: "Cuenta"
@@ -23,7 +23,7 @@ es:
   this_information_will_be_displayed_publicly: "Esta información mostrará en público."
   this_info_will_only_be_visible_coaches: "Esta información solo será visible para los voluntarios de KCC" #fix This infomation will only be displayed to KCC booking volunteers #dg-fixed
   create_resource: "Crea recurso"
-  here: "aquí"
+  here: "Aquí"
   create_new_resource: "Crea recurso nuevo"
   edit: "Edita"
   description: "Descripción"
@@ -50,7 +50,7 @@ es:
   launched: "Lanzamientodo"
   about_the_appointment: "Sobre la cita" #fix About the Appointment #dg-fixed
   help_needed: "Se necesita ayuda"
-  appointment_details: "detalles de la cita" #fix Appointment Details #dg-fixed
+  appointment_details: "Detalles de la cita" #fix Appointment Details #dg-fixed
   not_specified: "No especificado"
   save_appointment: "Guardar Oportunidad" #fix Save Appointment
   save_request: "Guardar solicitud" #fix Save Request #dg-fixed
@@ -85,16 +85,15 @@ es:
   options: "Opciones"
   change_your_email_password: "Cambia tu correo electrónico / contraseña"
   email_address: "Dirección de correo electrónico"
-  patient_email: "correo electrónico del paciente" #fix Patient Email #dg-fixed
+  patient_email: "Correo electrónico del paciente" #fix Patient Email #dg-fixed
   password: "Contraseña"
   leave_blank_if_you_don_t_want_to_change_it: "Déjalo en blanco si no deseas cambiarlo."
   password_confirmation: "Confirmación de contraseña"
   old_password: "Contraseña anterior"
   only_if_you_are_changing_your_password: "Solo si estás cambiando tu contraseña."
   contact: "Contacto"
-  this_information_will_be_displayed_publicly_fill_e: "
-    Esta información se mostrará públicamente. Rellena todo para poder solicitar citas." #fix This information will be displayed publicly. Fill everything out to be able to request appointments. #dg-fixed
-  save_changes: "Save Changes"
+  this_information_will_be_displayed_publicly_fill_everything_out_to_be_able_to_request_appointments: "Esta información se mostrará públicamente. Rellena todo para poder solicitar citas." #fix This information will be displayed publicly. Fill everything out to be able to request appointments. #dg-fixed
+  save_changes: "Guardar cambios"
   sign_up_to_patient: "Regístrese para solicitar o reservar citas" #fix Sign up to request or book appointments. #dg-fixed
   no_user_found_try_another_search: "Usuario no encontrado. ¡Intenta otra búsqueda!"
   sign_up_for_an_account: "Regístrate por una cuenta"
@@ -122,7 +121,7 @@ es:
   all: "Todo"
   none: "Ninguno"
   apply_filters: "Aplica filtros"
-  no_patients: "sin pacientes" #fix No patients #dg-fixed
+  no_patients: "Sin pacientes" #fix No patients #dg-fixed
   no_appointment_found_try_another_search_br_or_create: "No se encontraron solicitudes" #fix No requests found. #dg-fixed
   create_new_appointment: "Crea nueva cita" #fix Create new appointment #dg-fixed
   create_new_request: "Crea nueva solicitud de cita" #fix Create New Appointment Request #dg-fixed
@@ -156,31 +155,31 @@ es:
   spanish: "Español"
   is_self_booking: "Reserva para uno mismo" #fix #dg-fixed
   over_50: "Más de 50 años" #fix #dg-fixed
-  requestor_first: "" #fix
-  requestor_last: "" #fix
-  requestor_email: "" #fix
-  requestor_phone: "" #fix
-  closest_city: "" #fix
-  travel_radius: "" #fix
-  same_day: "" #fix
-  weekdays_avail: "" #fix
-  weekday_times: "" #fix
-  weekend_avail: "" #fix
-  weekend_times: "" #fix
-  critical_sync_book: "" #fix
-  sync_book_info: "" #fix
-  comments: "" #fix
-  please_read: "" #fix
-  terms_and_conds: "" #fix
-  travel_avail: "" #fix
+  requestor_first: "Nombre del solicitante" #fix #dg-fixed
+  requestor_last: "Apellido del solicitante" #fix #dg-fixed
+  requestor_email: "Correo electrónico del solicitante" #fix #dg-fixed
+  requestor_phone: "Teléfono del solicitante" #fix #dg-fixed
+  closest_city: "Ciudad más cercana" #fix #dg-fixed
+  travel_radius: "Radio de recorrido" #fix #dg-fixed
+  same_day: "Mismo día" #fix #dg-fixed
+  weekdays_avail: "Disponibilidad de lunes a viernes" #fix #dg-fixed
+  weekday_times: "Horas de lunes a viernes" #fix #dg-fixed
+  weekend_avail: "Disponibilidad de fin de semana" #fix #dg-fixed
+  weekend_times: "Tiempos de fin de semana" #fix #dg-fixed
+  critical_sync_book: "Reserva de sincronización crítica" #fix dg-fixed
+  sync_book_info: "Sincronizar información de reserva" #fix #dg-fixed
+  comments: "Comentario" #fix #dg-fixed
+  please_read: "Por favor lee" #fix #dg-fixed
+  terms_and_conds: "Términos y condiciones" #fix #dg-fixed
+  travel_avail: "Disponibilidad de viaje" #fix #dg-fixed
   is_yes: "Si"
-  eligibility: "" #fix
-  other_booker: "" #fix
-  show_weekdays_avail: "" #fix
-  show_weekday_time_avail: "" #fix
-  show_weekends_avail: "" #fix
-  show_weekend_time_avail: "" #fix
-  availability: "" #fix please check en.yml for added keys/values and paste/translate below
+  eligibility: "Elegibilidad" #fix #dg-fixed
+  other_booker: "Otro agente de reservas" #fix #dg-fixed
+  show_weekdays_avail: "Mostrar disponibilidad de lunes a viernes" #fix #dg-fixed
+  show_weekday_time_avail: "Mostrar disponibilidad de tiempo entre semana" #fix #dg-fixed
+  show_weekends_avail: "Mostrar disponibilidad fines de semana" #fix #dg-fixed
+  show_weekend_time_avail: "Mostrar disponibilidad de tiempo los fines de semana" #fix #dg-fixed
+  availability: "Disponibilidad" #fix please check en.yml for added keys/values and paste/translate below
   booking_status: ""
   confirmation_success: ""
   click_to_confirm: ""
