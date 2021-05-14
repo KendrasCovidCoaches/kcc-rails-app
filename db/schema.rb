@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_153104) do
+ActiveRecord::Schema.define(version: 2021_04_23_203058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,69 +36,78 @@ ActiveRecord::Schema.define(version: 2020_11_28_153104) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "offers", force: :cascade do |t|
+  create_table "appointments", force: :cascade do |t|
+    t.integer "request_id"
+    t.string "reference_num"
+    t.string "patient_name"
+    t.string "provider"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.text "coach_notes"
+    t.datetime "date"
+    t.datetime "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "booked_by_name"
+    t.string "booked_by_email"
+    t.string "address"
+    t.boolean "communicated", default: false, null: false
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "note", default: "", null: false
+    t.integer "request_id"
+    t.string "f_name"
+    t.string "l_name"
+    t.string "email"
+    t.string "phone"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "patient_email", default: "", null: false
+    t.string "f_name", default: "", null: false
+    t.string "l_name", default: "", null: false
+    t.datetime "birth_date", null: false
+    t.string "phone", default: "", null: false
+    t.string "address", default: "", null: false
+    t.boolean "highlight", default: false, null: false
+    t.string "city", default: "", null: false
+    t.string "state", default: "", null: false
+    t.string "zip", default: "", null: false
+    t.string "sex", default: "", null: false
+    t.string "pref_language", default: "", null: false
+    t.boolean "self_book", default: true, null: false
+    t.string "closest_city", default: "", null: false
+    t.string "travel_radius", default: "", null: false
+    t.string "eligibility_group", default: "", null: false
+    t.boolean "critical_to_book_with", default: false
+    t.string "book_with_full_name", default: ""
+    t.string "book_with_email", default: ""
+    t.string "book_with_phone"
+    t.boolean "open_to_same_day"
+    t.text "notes"
+    t.string "requested_by_email", default: ""
+    t.string "requested_by_name", default: ""
+    t.boolean "over_50"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status", default: "Unbooked", null: false
+  end
+
+  create_table "resources", force: :cascade do |t|
     t.integer "user_id"
     t.string "name", default: "", null: false
     t.string "description", default: "", null: false
-    t.string "limitations", default: "", null: false
-    t.string "redemption", default: "", null: false
-    t.string "location", default: "", null: false
+    t.string "location", default: "Texas (Statewide)", null: false
+    t.string "link", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "office_hours", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "participant_id"
-    t.datetime "start_at", null: false
-    t.datetime "end_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "application_user_ids", default: [], null: false, array: true
-  end
-
-  create_table "projects", force: :cascade do |t|
-    t.integer "user_id"
-    t.string "name", default: "", null: false
-    t.string "description", default: "", null: false
-    t.string "participants", default: "", null: false
-    t.string "looking_for", default: "", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "volunteer_location", default: "", null: false
-    t.string "contact", default: "", null: false
-    t.boolean "highlight", default: false, null: false
-    t.string "progress", default: "", null: false
-    t.string "docs_and_demo", default: "", null: false
-    t.string "number_of_volunteers", default: "", null: false
-    t.string "links", default: ""
-    t.string "status", default: "", null: false
-    t.boolean "accepting_volunteers", default: true
-    t.string "short_description", default: "", null: false
-    t.string "target_country", default: "", null: false
-    t.string "target_location", default: "", null: false
-    t.string "organization_status", default: "", null: false
-    t.string "ein"
-    t.string "organization", default: ""
-    t.string "level_of_urgency", default: "", null: false
-    t.string "start_date", default: ""
-    t.string "end_date", default: ""
-    t.string "compensation", default: ""
-    t.string "organization_mission"
-    t.boolean "organization_registered"
-    t.boolean "end_date_recurring"
-    t.string "level_of_exposure"
-    t.boolean "background_screening_required"
-  end
-
-  create_table "success_stories", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "body"
-    t.text "links"
-    t.text "project_ids"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "highlight", default: false, null: false
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
@@ -141,38 +150,9 @@ ActiveRecord::Schema.define(version: 2020_11_28_153104) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "about", default: "", null: false
-    t.string "location", default: "", null: false
-    t.string "profile_links", default: "", null: false
-    t.boolean "visibility", default: false
-    t.string "name", default: "", null: false
-    t.string "level_of_availability"
-    t.boolean "pair_with_projects", default: false
-    t.boolean "deactivated", default: false, null: false
-    t.text "office_hour_description"
-    t.boolean "newsletter_consent"
-    t.string "phone", default: ""
-    t.string "affiliation", default: ""
-    t.string "resume", default: ""
-    t.string "remote_location", default: ""
-    t.boolean "age_consent", default: false
+    t.boolean "pair_with_requests", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "volunteer_groups", force: :cascade do |t|
-    t.integer "project_id"
-    t.integer "assigned_user_ids", default: [], null: false, array: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "volunteers", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "project_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "note", default: "", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

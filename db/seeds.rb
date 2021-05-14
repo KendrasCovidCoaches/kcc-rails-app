@@ -10,14 +10,8 @@
 
 user = User.create!(
   email: 'user@gmail.com',
-  name: 'Bob Smith',
   password: 'password',
-  password_confirmation: 'password',
-  about: 'about section',
-  location: 'location section',
-  profile_links: 'github.com',
-  visibility: false,
-  level_of_availability: '2-4 hours a day'
+  password_confirmation: 'password'
 )
 
 # user2 = User.create!(
@@ -38,62 +32,62 @@ user = User.create!(
 # user6 = User.create!(email: 'user6@gmail.com', name: 'jamiew', password: 'password', password_confirmation: 'password')
 
 # PROJECTS
-project1 = user.projects.create(
-  status: Settings.project_statuses.shuffle.first,
-  name: 'Act Now Foundation - Import & distribution of 10-minute at home COVID-19 test kits',
-  target_location: 'USA',
-  volunteer_location: 'Anywhere',
-  description: 'A cool description',
-  accepting_volunteers: true,
-  highlight: false)
-project1.skill_list.add('Anything')
-# project1.volunteered_users << user3
-# project1.save! # FIXME is this necessary? We were modifying associations
+# appointment1 = user.appointments.create(
+#   status: Settings.appointment_statuses.shuffle.first,
+#   name: 'Act Now Foundation - Import & distribution of 10-minute at home COVID-19 test kits',
+#   target_location: 'USA',
+#   volunteer_location: 'Anywhere',
+#   description: 'A cool description',
+#   accepting_volunteers: true,
+#   highlight: false)
+# appointment1.skill_list.add('Anything')
+# appointment1.requested_users << user3
+# appointment1.save! # FIXME is this necessary? We were modifying associations
 
-# project2 = Project.create!(
+# appointment2 = Appointment.create!(
 #   user: user2,
-#   status: Settings.project_statuses.shuffle.first,
+#   status: Settings.appointment_statuses.shuffle.first,
 #   name: 'One Gazillion Masks',
 #   description: 'A cool description',
 #   highlight: true,
 #   accepting_volunteers: false)
-# project2.skill_list.add('Design')
-#project2.save! # FIXME is this necessary?
+# appointment2.skill_list.add('Design')
+#appointment2.save! # FIXME is this necessary?
 
-# project3 = Project.create(user: user, status: Settings.project_statuses.shuffle.first, name: 'Virtual homework supervision to help overwhelmed parents while school is closed project', target_location: 'Brooklyn', description: 'With elementary schools suddenly closed for the rest of the year, parents are struggling to balance work, caring for others and the sudden responsibility for keeping their children educated and on track for school.', accepting_volunteers: true, highlight: true)
+# appointment3 = Appointment.create(user: user, status: Settings.appointment_statuses.shuffle.first, name: 'Virtual homework supervision to help overwhelmed parents while school is closed appointment', target_location: 'Brooklyn', description: 'With elementary schools suddenly closed for the rest of the year, parents are struggling to balance work, caring for others and the sudden responsibility for keeping their children educated and on track for school.', accepting_volunteers: true, highlight: true)
 
-# project4 = Project.create(user: user, status: Settings.project_statuses.shuffle.first, name: 'Resistbot', description: %{Resistbot is a multipurpose and multifunction chatbot. Right now it's the easiest way to lobby both federal and state officials who are currently crafting a legislative response to the pandemic. Our end goal is to give everyone a voice and able to fight for what they want to see, no matter what it is, from social distancing measures at the state level, to federal UBI stimulus, to no corporate bailouts, to more health care supplies, and more. We've also just built covid-19 specific functionality to inform users of a variety of important information for their home state.}, accepting_volunteers: true, highlight: true)
+# appointment4 = Appointment.create(user: user, status: Settings.appointment_statuses.shuffle.first, name: 'Resistbot', description: %{Resistbot is a multipurpose and multifunction chatbot. Right now it's the easiest way to lobby both federal and state officials who are currently crafting a legislative response to the pandemic. Our end goal is to give everyone a voice and able to fight for what they want to see, no matter what it is, from social distancing measures at the state level, to federal UBI stimulus, to no corporate bailouts, to more health care supplies, and more. We've also just built covid-19 specific functionality to inform users of a variety of important information for their home state.}, accepting_volunteers: true, highlight: true)
 
-# project5 = Project.create(user: user, status: Settings.project_statuses.shuffle.first, name: 'Selfie lenses to spread public health into in a fun way project ', description: %{We are a group called Lefty Lenses who have been applying selfie lenses (like the Snapchat puppy filter) to politics for the 2020 election. Our lenses have reached 125M people in 10 weeks, and we've spent $0.}, accepting_volunteers: true, highlight: true)
+# appointment5 = Appointment.create(user: user, status: Settings.appointment_statuses.shuffle.first, name: 'Selfie lenses to spread public health into in a fun way appointment ', description: %{We are a group called Lefty Lenses who have been applying selfie lenses (like the Snapchat puppy filter) to politics for the 2020 election. Our lenses have reached 125M people in 10 weeks, and we've spent $0.}, accepting_volunteers: true, highlight: true)
 
 # VOLUNTEERS
-# project1.volunteered_users << [user3]
-# project2.volunteered_users << []
-# project3.volunteered_users << [user, user2, user3, user4]
-# project4.volunteered_users << [user4, user5]
-# project5.volunteered_users << [user5, user6]
+# appointment1.requested_users << [user3]
+# appointment2.requested_users << []
+# appointment3.requested_users << [user, user2, user3, user4]
+# appointment4.requested_users << [user4, user5]
+# appointment5.requested_users << [user5, user6]
 
 # SKILLS
-# project1.skill_list.add('Design')
-# project1.save
+# appointment1.skill_list.add('Design')
+# appointment1.save
 
 
 # PROJECT CATEGORIES/PROBLEMS
-# project1.project_type_list.add('Track the outbreak')
-# project5.project_type_list.add('Track the outbreak')
-# project2.project_type_list.add('Reduce spread')
+# appointment1.appointment_type_list.add('Track the outbreak')
+# appointment5.appointment_type_list.add('Track the outbreak')
+# appointment2.appointment_type_list.add('Reduce spread')
 
-# project1.project_type_list.add('Scale testing')
-# project3.project_type_list.add('Treatment R&D')
-# project4.project_type_list.add('Medical equipments')
+# appointment1.appointment_type_list.add('Scale testing')
+# appointment3.appointment_type_list.add('Treatment R&D')
+# appointment4.appointment_type_list.add('Medical equipments')
 
-# project3.project_type_list.add('E-Learning')
-# project4.project_type_list.add('Social giving')
-# project1.project_type_list.add('Map volunteers to needs')
-# project5.project_type_list.add('News and information')
+# appointment3.appointment_type_list.add('E-Learning')
+# appointment4.appointment_type_list.add('Social giving')
+# appointment1.appointment_type_list.add('Map volunteers to needs')
+# appointment5.appointment_type_list.add('News and information')
 
-# project1.save
-# project2.save
-# project3.save
-# project4.save
-# project5.save
+# appointment1.save
+# appointment2.save
+# appointment3.save
+# appointment4.save
+# appointment5.save

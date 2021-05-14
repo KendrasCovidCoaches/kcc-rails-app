@@ -7,27 +7,27 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   describe 'GET #index' do
     let(:do_request) { get :index }
 
-    shared_examples 'it displays volunteer' do
+    shared_examples 'it displays patient' do
       it 'is successful' do
         expect(response).to be_successful
       end
 
-      it 'displays volunteer' do
+      it 'displays patient' do
         expect(response.body).to include(user.name)
       end
     end
 
-    shared_examples 'it does not display volunteer' do
+    shared_examples 'it does not display patient' do
       it 'is successful' do
         expect(response).to be_successful
       end
 
-      it 'does not display volunteer' do
+      it 'does not display patient' do
         expect(response.body).to_not include(user.name)
       end
     end
 
-    context 'with one volunteer' do
+    context 'with one patient' do
       let!(:user) { create(:user_visible) }
       before(:all){ User.delete_all } # clean slate to avoid data pollution issue in CircleCI builds
 
@@ -46,18 +46,18 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           expect(assigns(:show_filters)).to eq(true)
         end
 
-        it_behaves_like 'it displays volunteer'
+        it_behaves_like 'it displays patient'
 
         context 'when skills are selected' do
           let(:do_request) { get :index, params: params }
           let(:params) { { skills: ['Analytics'] } }
 
-          it_behaves_like 'it does not display volunteer'
+          it_behaves_like 'it does not display patient'
 
           context 'when a user has matching skills' do
             let!(:user) { create(:user_visible, skill_list: ['Analytics']) }
 
-            it_behaves_like 'it displays volunteer'
+            it_behaves_like 'it displays patient'
           end
         end
 
@@ -65,24 +65,24 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           let(:do_request) { get :index, params: params }
           let(:params) { { query: 'paris' } }
 
-          it_behaves_like 'it does not display volunteer'
+          it_behaves_like 'it does not display patient'
 
           context 'when a user has matching value' do
             let!(:user) { create(:user_visible, location: 'Paris') }
 
-            it_behaves_like 'it displays volunteer'
+            it_behaves_like 'it displays patient'
           end
         end
 
-        context 'when volunteer visibility is false' do
+        context 'when patient visibility is false' do
           let!(:user) { create(:user, visibility: false) }
 
-          it_behaves_like 'it does not display volunteer'
+          it_behaves_like 'it does not display patient'
         end
       end
 
       context 'when admin is signed-in' do
-        let (:admin) { create(:user, email: ADMINS[0]) }
+        let (:admin) { create(:user, email: COACHES[0]) }
 
         before do
           sign_in admin
@@ -90,14 +90,14 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           do_request
         end
 
-        context 'when volunteer visibility is false' do
+        context 'when patient visibility is false' do
           let!(:user) { create(:user, visibility: false) }
 
-          it_behaves_like 'it displays volunteer'
+          it_behaves_like 'it displays patient'
         end
       end
 
-      context 'with a second volunteer' do
+      context 'with a second patient' do
         let!(:user_two) { create(:user_visible, created_at: Date.tomorrow) }
 
         before { do_request }
@@ -132,10 +132,10 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       end
     end
 
-    context 'with twenty-six volunteers' do
+    context 'with twenty-six patients' do
       before do
         25.times { create(:user_visible, name: 'Any Name') }
-        create(:user_visible, name: 'Volunteer 26')
+        create(:user_visible, name: 'patient 26')
 
         do_request
       end
@@ -148,9 +148,9 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           expect(response).to be_successful
         end
 
-        it 'only returns the first twenty-five volunteers' do
+        it 'only returns the first twenty-five patients' do
           expect(response.body).to include('Any Name')
-          expect(response.body).to_not include('Volunteer 26')
+          expect(response.body).to_not include('patient 26')
         end
       end
 
@@ -162,11 +162,11 @@ RSpec.describe Users::RegistrationsController, type: :controller do
           expect(response).to be_successful
         end
 
-        it 'returns the twenty-sixth volunteer' do
+        it 'returns the twenty-sixth patient' do
           pending 'FIXME this test is broken; was functionality change or is test brittle?'
 
           expect(response.body).to_not include('Any Name')
-          expect(response.body).to include('Volunteer 26')
+          expect(response.body).to include('patient 26')
         end
       end
     end
@@ -175,12 +175,12 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   describe 'GET #show' do
     let(:subject) { get :show, params: { id: user.id } }
 
-    context 'when a volunteer exists' do
+    context 'when a patient exists' do
       let(:user) { build(:user, id: 9999) }
 
       before { allow(User).to receive(:where).and_return([user]) }
 
-      context 'when user can view volunteer' do
+      context 'when user can view patient' do
         before { allow(user).to receive(:is_visible_to_user?).and_return(true) }
 
         it { is_expected.to be_successful }
@@ -188,12 +188,12 @@ RSpec.describe Users::RegistrationsController, type: :controller do
         it { expect(subject.body).to have_content(user.name) }
       end
 
-      context 'when a user cannot view volunteer' do
+      context 'when a user cannot view patient' do
         before { allow(user).to receive(:is_visible_to_user?).and_return(false) }
 
         it { is_expected.to_not be_successful }
 
-        it { is_expected.to redirect_to(projects_path) }
+        it { is_expected.to redirect_to(appointments_path) }
 
         it 'displays flash error' do
           subject
@@ -203,12 +203,12 @@ RSpec.describe Users::RegistrationsController, type: :controller do
       end
     end
 
-    context 'when volunteer does not exist' do
+    context 'when patient does not exist' do
       let(:user) { double(id: 9999)}
 
       it { is_expected.to_not be_successful }
 
-      it { is_expected.to redirect_to(projects_path) }
+      it { is_expected.to redirect_to(appointments_path) }
 
       it 'displays flash error' do
         subject
@@ -221,7 +221,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
   describe 'GET #new' do
     it 'tracks an event' do
       # The line below doesn't work since the GET request sets and deletes the variable within same request:
-      # expect(session[:track_event]).to eq('Project creation started')
+      # expect(session[:track_event]).to eq('Appointment creation started')
       expect(controller).to receive(:track_event).with('User registration started')
 
       get :new
@@ -246,16 +246,16 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     context 'when email does not already exist' do
       it 'tracks an event' do
         # The line below doesn't work since the GET request sets and deletes the variable within same request:
-        # expect(session[:track_event]).to eq('Project creation started')
+        # expect(session[:track_event]).to eq('Appointment creation started')
         expect(controller).to receive(:track_event).with('User registration complete')
 
         post :create, params: params
       end
 
-      it 'redirects to the projects page' do
+      it 'redirects to the appointments page' do
         post :create, params: params
 
-        expect(response).to redirect_to projects_path
+        expect(response).to redirect_to appointments_path
       end
 
       it 'adds user to db' do
@@ -291,10 +291,10 @@ RSpec.describe Users::RegistrationsController, type: :controller do
 
     before do
       sign_in user
-      session[:return_to] = projects_path
+      session[:return_to] = appointments_path
     end
 
-    it 'we should be on projects path' do
+    it 'we should be on appointments path' do
       put :update, params: params
       
       user.reload
@@ -304,7 +304,7 @@ RSpec.describe Users::RegistrationsController, type: :controller do
     it 'should redirect to return_to cookie path' do
       put :update, params: params
 
-      expect(response).to redirect_to projects_path
+      expect(response).to redirect_to appointments_path
     end
 
   end

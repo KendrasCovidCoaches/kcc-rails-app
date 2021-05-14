@@ -4,11 +4,8 @@ import pluralize from 'pluralize'
 import URI from 'urijs'
 import stickybits from 'stickybits';
 import './direct-upload'
-import VolunteerGroups from './volunteer_groups'
-import Project from './project'
-import ProjectForm from './project_form'
-import OfficeHour from './office_hour'
-import OfficeHourForm from './office_hour_form'
+import Appointment from './appointment'
+import AppointmentForm from './appointment_form'
 import Resources from './resources'
 
 const Covid = {
@@ -19,18 +16,15 @@ const Covid = {
         $('#disable_funding_container').remove();
       })
 
-      $('#disable_highlight_projects_alert').click(() => {
-        Cookies.set('highlight_projects_alert', false, { expires: 99999 })
-        $('#disable_highlight_projects_container').remove();
+      $('#disable_highlight_appointments_alert').click(() => {
+        Cookies.set('highlight_appointments_alert', false, { expires: 99999 })
+        $('#disable_highlight_appointments_container').remove();
       })
     });
 
-    VolunteerGroups.initialize();
-    ProjectForm.initialize();
-    Project.initialize();
+    AppointmentForm.initialize();
+    Appointment.initialize();
     Resources.initialize();
-    OfficeHour.initialize();
-    OfficeHourForm.initialize();
   },
 
   toggleFiltersOpen() {
@@ -175,14 +169,14 @@ const Covid = {
     query[filterKey] = values
     uri.query(query)
 
-    if (uri.path() !== '/projects' && filter === 'project_types') {
-      uri.path('projects')
+    if (uri.path() !== '/requests' && filter === 'Eligibility') {
+      uri.path('requests')
     }
 
     Turbolinks.visit(uri.readable())
   },
   ensureFileType() {
-    const elements = document.getElementsByClassName('js-projects-image-upload-field')
+    const elements = document.getElementsByClassName('js-appointments-image-upload-field')
     if (!elements || elements.length === 0) {
       return
     }

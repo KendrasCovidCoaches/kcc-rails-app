@@ -1,107 +1,260 @@
 # Main
-site_title: ResiTown Sacramento
-site_subtitle: 'A clearing house for projects and volunteers that want to help with the COVID-19 crisis'
-site_url: https://www.athenshelpwithcovid.com
-share_image: https://www.helpwithcovid.com/share-image.png
+site_title: Kendra's Covid Coaches
+site_subtitle: 'Helping facilitate vaccination appointments for central Texas'
+# site_url: https://www.athenshelpwithcovid.com
+# share_image: https://www.helpwithcovid.com/share-image.png
 
 # Site features
 features_enabled:
-  volunteer_directory: true
-  resources: true
-  office_hours: false
-  success_stories: false
+  patient_directory: false
+  resources: false
+  # office_hours: false
+  # success_stories: false
 
-# These are the skills that volunteers can have and projects can request.
-volunteer_skills:
-  - Analytics
-  - Biology
-  - Biotech
-  - Childcare
-  - Communications
-  - Community Outreach
-  - Content
-  - Data Entry
-  - Delivery
-  - Design
-  - Food preparation
-  - Funding
-  - Helpdesk
-  - Healthcare/Public Health
-  - Legal
-  - Manufacturing
-  - Marketing
-  - Medicine
-  - Mechanics & Electronics
-  - Occupational Health
-  - Operations
-  - Process Improvement
-  - Project Management
-  - Quality Assurance
-  - Sales
-  - Social Media
-  - Strategic Planning
-  - Software
-  - Training Development
-  - Tutoring
-  - Other
+# Closest Texas Cities
+closest_cities:
+  - Abilene
+  - Arlington
+  - Amarillo
+  - Austin
+  - Bastrop
+  - Baytown
+  - Beaumont
+  - Belton
+  - Blanco
+  - Boerne
+  - Brenham
+  - Brownsville
+  - Bryan
+  - Buda
+  - Burnet
+  - Carrollton
+  - Cedar Creek
+  - Cedar Park
+  - College Station
+  - Conroe
+  - Corpus Christi
+  - Dallas
+  - Denton
+  - Driftwood
+  - Dripping Springs
+  - El Paso
+  - Elgin
+  - Flower Mound
+  - Fort Worth
+  - Fredericksburg
+  - Frisco
+  - Galveston
+  - Garland
+  - Georgetown
+  - Giddings
+  - Grand Prairie
+  - Harlingen
+  - Houston
+  - Hutto
+  - Irving
+  - Johnson City
+  - Kerrville
+  - Killeen
+  - Kingsland
+  - Kyle
+  - La Grange
+  - Lago Vista
+  - Lakeway
+  - Lampasas
+  - Laredo
+  - League City
+  - Leander
+  - Liberty Hill
+  - Llano
+  - Lockhart
+  - Longview
+  - Lubbock
+  - Manor
+  - Marble Falls
+  - McAllen
+  - McKinney
+  - Mesquite
+  - Midland
+  - New Braunfels
+  - Odessa
+  - Pasadena
+  - Pearland
+  - Pflugerville
+  - Plano
+  - Richardson
+  - Rockdale
+  - Round Rock
+  - Rowlett
+  - S. Austin
+  - San Angelo
+  - San Antonio
+  - San Marcos
+  - Schertz
+  - Seguin
+  - Smithville
+  - Spicewood
+  - Spring
+  - Sugar Land
+  - Taylor
+  - Temple
+  - The Woodlands
+  - Tyler
+  - Uvalde
+  - Victoria
+  - Waco
+  - Wimberly
+  - N/A - Outside of Texas
 
-# Availability windows that are suggested to volunteers
-volunteer_availabilities:
+# US States
+states:
+  - Alabama
+  - Alaska
+  - Arizona
+  - Arkansas
+  - California
+  - Colorado
+  - Connecticut
+  - Delaware			
+  - Florida
+  - Georgia
+  - Hawaii
+  - Idaho
+  - Illinois
+  - Indiana
+  - Iowa
+  - Kansas
+  - Kentucky		
+  - Louisiana		
+  - Maine
+  - Maryland
+  - Massachusetts
+  - Michigan
+  - Minnesota
+  - Mississippi
+  - Missouri
+  - Montana
+  - Nebraska
+  - Nevada
+  - New Hampshire
+  - New Jersey
+  - New Mexico
+  - New York
+  - North Carolina
+  - North Dakota
+  - Ohio
+  - Oklahoma
+  - Oregon
+  - Pennsylvania
+  - Rhode Island
+  - South Carolina
+  - South Dakota
+  - Tennessee
+  - Texas
+  - Utah
+  - Vermont
+  - Virginia
+  - Washington
+  - West Virginia
+  - Wisconsin
+  - Wyoming
+
+# Travel Radius
+travel_rad:
+  - '10'
+  - '25'
+  - '50'
+  - '100'
+  - Over 100
+
+# These are the skills that patients can have and appointments can request.
+eligibility:
+  - Healthcare Professionals
+  - Teachers and Educators
+  - Frontline/Essential Workers
+  - Adults over 50
+  - Ages 16-49 with chronic illness
+  - Ages 16-49, general population
+
+weekdays:
+  - Monday
+  - Tuesday
+  - Wednesday
+  - Thurdsay
+  - Friday
+  - N/A
+
+weekends:
+  - Saturday
+  - Sunday
+  - N/A
+
+times:
+  - Mornings
+  - Midday
+  - Afternoons
+  - Evenings
+  - N/A
+
+
+# Availability windows that are suggested to patients
+patient_availabilities:
   - '1-2 hours a day'
   - '2-4 hours a day'
   - '4+ hours a day'
   - 'Only on Weekends'
   - 'Full Time'
 
-# Options for how many volunteers a project might request
-volunteers_needed_for_project:
+# Options for how many patients a appointment might request
+patients_needed_for_request:
   - '1-10'
   - '10-50'
   - '50-100'
   - '100+'
 
-project_types:
+request_types:
   - E-Learning
   - Help Out Communities
   - Job Placement
   - Other
-  - Map Volunteers To Needs
+  - Map Patients To Needs
   - Mental Health
   - News and Information
   - Social Giving
 
-project_statuses:
-  - 'Just started'
-  - 'In progress'
-  - 'Launched'
+request_statuses:
+  - 'Unbooked'
+  - 'Booking in progress'
+  - 'Booking completed, awaiting patient confirmation'
+  - 'Patient Confirmed'
+  - 'Completed'
 
-organization_statuses:
-  - 'Non-profit'
-  - 'For-profit'
-  - 'Public Benefit Corporation'
-  - 'Not incorporated'
+communication_statuses:
+  - Texted
+  - Emailed
+  - Called
+  - Left voicemail
 
-
-# If a project has less than N volunteers
+# If a appointment has less than N patients
 # it can ask to be highlighted.
-max_volunteers_for_highlight_offer: 30
+max_patients_for_highlight_offer: 30
 
-project_form_locations:
+appointment_form_locations:
   - On-Site
   - Remote
   - Driving
 
-project_form_categories:
+appointment_form_categories:
   - Ongoing
   - Internships
   - One-Time
   - Other
   
-project_locations:
+appointment_locations:
   - name: On-Site
     slug: on-site
-    body: In-person volunteer opportunities
-    project_types:
+    body: In-person patient opportunities
+    appointment_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -109,10 +262,10 @@ project_locations:
     image: on-site
   - name: Remote
     slug: remote
-    body: Volunteer opportunities that can be performed remotely and safely from your home
-    project_types:
+    body: Patient opportunities that can be performed remotely and safely from your home
+    appointment_types:
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -120,31 +273,31 @@ project_locations:
     image: remote
   - name: Driving
     slug: driving
-    body: Volunteer opportunities that require a vehicle
-    project_types:
+    body: Patient opportunities that require a vehicle
+    appointment_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
     color: blue
     image: driving
 
-project_categories:
+request_categories:
   - name: Ongoing
     slug: ongoing
     body: Neighbors helping neighbors for periods of 2 weeks or more
-    project_types:
+    request_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
-      - Map Volunteers To Needs
+      - Map Patients To Needs
     color: blue
     image: ongoing
   - name: Internships
     slug: internships
     body: Turn your love of helping others into a career
-    project_types:
+    request_types:
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -152,8 +305,8 @@ project_categories:
     image: internships
   - name: One-Time
     slug: one-time
-    body: Volunteer opportunities requiring less that 2 hours of your time
-    project_types:
+    body: Patient opportunities requiring less that 2 hours of your time
+    request_types:
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -162,11 +315,11 @@ project_categories:
   - name: Other
     slug: other
     body: Sharing events, news, social giving, and other information
-    project_types:
+    request_types:
       - News and Information
       - Social Giving
       - E-Learning
-      - Map Volunteers To Needs
+      - Map Patients To Needs
       - Job Placement
       - Mental Health
       - Help Out Communities
@@ -174,8 +327,8 @@ project_categories:
     image: other
 
 global_announcements:
-#  - title: Helpful resources for your projects
-#    sub_title: We wrote a playbook on how to manage volunteers, had some amazing panels, and gathered some deals for you.
+#  - title: Helpful resources for your appointments
+#    sub_title: We wrote a playbook on how to manage patients, had some amazing panels, and gathered some deals for you.
 #    cta_text: Browse resources
 #    cta_url: /offers
 
@@ -205,7 +358,7 @@ events:
     cta_text: View recording
     cta_url: https://openai.zoom.us/rec/share/3dZaM6vJy1NJfp3c2UHkfa8oQL-7T6a82yRN-fsOmkl9jfRS3GPg-L-gS4Y9zJu3
   - title: Live panel on How to Scale Volunteers
-    sub_title: Glen Moriarty, founder of 7cups on how he manages 320k volunteers.
+    sub_title: Glen Moriarty, founder of 7cups on how he manages 320k patients.
     cta_text: View recording
     cta_url: https://openai.zoom.us/rec/play/vZN-dbuq-m03TNKSsASDAfEtW466J6qs1XQWrvtYxRvmU3QDNVv0NLJGYbffjdiMo1gf68qHVnbe2mOi?continueMode=true
   - title: Live panel on Picking Ideas to Work On
@@ -217,29 +370,22 @@ events:
     cta_text: See slides and recording
     cta_url: https://drive.google.com/drive/u/0/folders/1NATDm5yVsYUo8jRY7svE2fqwm1OwcpMu
 
-# upcoming_events:
-#   - title: COVID 19 Global Hackathon 2.0 - Social & Mental Health.
-#     sub_title: Hack on social issues and mental health with mentorship from nonprofits
-#     cta_text: Register here
-#     cta_url: https://covid-global-hackathon-2.devpost.com/
-#     month: July
-#     day: 3
-#     time: 10:00 AM
-#   - title: COVID 19 Global Hackathon 2.0 - Keynote speaker with Justin Kan, Help With Covid, Deed, 7 Cups
-#     sub_title: Join us for the hackathon kickoff
-#     cta_text: Add to calendar
-#     cta_url: https://calendar.google.com/event?action=TEMPLATE&tmeid=MHRzdGg1cnQwbDNsZW52NTRlaGc1Z2tsdXEgY3J0dGYub3JnX2ZxYWxqM2NsNWpjOHJkcTk3aHBwZTVjZGNzQGc&tmsrc=crttf.org_fqalj3cl5jc8rdq97hppe5cdcs%40group.calendar.google.com
-#     month: July
-#     day: 5
-#     time: 10:00 AM
-#  - title: Private Group Office Hours with Radu
-#    sub_title: Wednesday, May 6th 3:30pm - 4:30pm
-#    month: May
-#    day: 6
-#    time: 3:30 PM - 4:30 PM PST
-#    cta_text: Add to Calendar
-#    cta_url: https://calendar.google.com/event?action=TEMPLATE&tmeid=NWZvanJyZzYybGM2dmhodmc1YmdsNmRpZWcgb3BlbmFpLmNvbV9wOW5mZ2MyZjltcnJkaGE1OW52M2tjYnNya0Bn&tmsrc=openai.com_p9nfgc2f9mrrdha59nv3kcbsrk%40group.calendar.google.com
-
+upcoming_events:
+  - title: Walgreens PFIZER Clinic
+    sub_title: 4501 Guadalupe St, Austin, TX 78751
+    link_text: Register here
+    link: https://www.signupgenius.com/go/20f0d4ba9ab2eaaf85-walgreens6
+    month: April
+    day: 24-30
+    time: 9:30 AM-6:15 PM
+  - title: Auro Pharmacy Moderna Clinic
+    sub_title: 1139 W Braker Lane STE. 102 Austin, TX 78758
+    link_text: Register here
+    link: https://www.signupgenius.com/go/10c0c4aada82ea1fdc25-auro
+    month: April
+    day: 18-23
+    time: 9:00 AM-2:00 PM
+    
 funding_resources:
   - cta_text: YC S2020 Application
     cta_url: https://www.ycombinator.com/apply/
@@ -262,7 +408,7 @@ funding_resources:
 
 partner_resources:
   - name: AWS
-    description: $10,000 in AWS credits for approved projects. Your project must be a corporate entity. Email helpwithcovid@gmail.com
+    description: $10,000 in AWS credits for approved appointments. Your appointment must be a corporate entity. Email helpwithcovid@gmail.com
     mail_to: info@sacconect.com
   - name: ClozeLoop
     description: |+
@@ -270,18 +416,18 @@ partner_resources:
       $2500 value.
     cta_link: https://clozeloop.typeform.com/to/ccPwVe
   - name: Turtle
-    description: 40 hours of freelance engineering help is available for three companies chosen by the Turtle team. Turtle's developer network is currently specialized to React, React Native, iOS and Android. Based on your project specs and requirements, Turtle will match you with a highly qualified freelance engineer and you'll have full access to the Turtle platform to work together and manage your project. A one hour complimentary product planning session with Turtle's founders will also be available to you.
+    description: 40 hours of freelance engineering help is available for three companies chosen by the Turtle team. Turtle's developer network is currently specialized to React, React Native, iOS and Android. Based on your appointment specs and requirements, Turtle will match you with a highly qualified freelance engineer and you'll have full access to the Turtle platform to work together and manage your appointment. A one hour complimentary product planning session with Turtle's founders will also be available to you.
     cta_link: https://forms.gle/8UaPv6Qjaw8sFBNy9
   - name: Blind
     description: |+
-      We are offering promotion at no cost for 4 projects
-      - Support 3 projects with native advertising
-      - Support 1 project with sponsored AMA post
+      We are offering promotion at no cost for 4 appointments
+      - Support 3 appointments with native advertising
+      - Support 1 appointment with sponsored AMA post
     cta_link: https://bit.ly/helpwithcovid_blind
 
 media_kit:
   - name: HWC badges
-    description: Badge to add to your launched page to gather more team members for your project
+    description: Badge to add to your launched page to gather more team members for your appointment
     cta_link: https://helpwithcovid.com/HWC-media-kit-badges.zip
   - name: HWC logos and wordmarks
     description: Logos, wordmark and banner for any media coverage about HWC
@@ -289,6 +435,9 @@ media_kit:
 
 google_fonts_request: 'Lora&family=Roboto:wght@400;500;700'
 
-homepage_featured_projects_count: 3
+resource_links:
+  -
+
+homepage_featured_requests_count: 3
 
 list_id: 0c97d3c7b8

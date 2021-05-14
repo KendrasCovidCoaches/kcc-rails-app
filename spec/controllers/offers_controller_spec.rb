@@ -124,7 +124,7 @@ RSpec.describe OffersController, type: :controller do
     end
 
     context 'when admin is signed-in' do
-      let (:admin) { create(:user, email: ADMINS[0]) }
+      let (:admin) { create(:user, email: COACHES[0]) }
 
       before do
         sign_in admin
@@ -220,7 +220,7 @@ RSpec.describe OffersController, type: :controller do
     end
 
     context 'when admin is signed in' do
-      let (:admin) { create(:user, email: ADMINS[0]) }
+      let (:admin) { create(:user, email: COACHES[0]) }
 
       before do
         sign_in admin
@@ -257,7 +257,7 @@ RSpec.describe OffersController, type: :controller do
     end
 
     context 'when admin is signed in' do
-      let (:admin) { create(:user, email: ADMINS[0]) }
+      let (:admin) { create(:user, email: COACHES[0]) }
 
       before do
         sign_in admin

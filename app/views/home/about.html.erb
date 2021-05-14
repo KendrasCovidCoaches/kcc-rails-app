@@ -1,61 +1,51 @@
-<div class="flex flex-col justify-center sm:px-2 lg:px-2">
-  <div class="mx-auto w-full max-w-3xl border-2 border-primary-500 p-3">
+<div class="flex flex-col justify-center content-center sm:px-2 lg:px-2">
+  <div class="mx-auto w-full max-w-5xl border-2 border-green-500 p-3">
+  <a id='how-it-works'>
     <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-      Our Story
+    We’d love to get the COVID-19 vaccine into every Central Texan’s arm! There are 2 ways we can help:
     </h2>
-     <p class="mt-8 text-left text-sm leading-5 text-gray-600 max-w">
-      Over 210,000 dead. 8% unemployed. Temperatures rising. Wildfires. Smoke-filled air. 
-      George Floyd. Breonna Taylor. Jacob Blake. Say their names. 
-      On the zipcode level, 23,000+ cases in <%= CITY_NAME %> county alone. 445 deaths. 
+    <p class="mt-6 ml-20 text-left text-xl leading-9 font-bold text-gray-900">
+    Step 1: Choose DIY or Assisted Booking
     </p>
-    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
-      We are living in a nation divided. But in the midst of a global pandemic and climate related risk, 
-      it’s small businesses, people of color, the elderly, the environment, and low-income communities 
-      who are disproportionately impacted.  
+     <p class="mt-2 ml-20 mr-20 text-left text-base leading-5 text-gray-800 max-w">
+      If you are capable of booking your own appointment, <strong>go to Step 2.</strong><br/><br/>
+      If you are comfortable with computers, the internet and following social media, you can do it on your own. 
+      Our resources and coaches have helped hundreds of people book their own appointments.<br/><br/> 
+      You can do it too, even if you’ve tried and failed before!
     </p>
-    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
-      The data looks grim. But on a local level, we can make a difference. 
-      When communities come together, we can make it work. 
+    <p class="mt-6 ml-20 text-left text-xl leading-9 font-bold text-gray-900">
+    Step 2: DIY Booking
     </p>
-    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
-      ResiTown is brought to you by Community Connections: Sacramento. In partnership with the Clinton Foundation, 
-      City Help with COVID, and CSU Northridge's Innovation Corps, we are dedicated to bringing people together and 
-      activating positive change. 
+     <p class="mt-2 ml-20 mr-20 text-left text-base leading-5 text-gray-800 max-w">
+      New appointments are opening every day! It is getting easier to book them. <br/><br/>
+      Once you know the tricks, you should be able to do it on your own.  AND… This method gives you the most <strong>flexibility</strong> in location, vaccine, dates and times. <br/><br/>
+      If you would like to get an appointment on your own, navigate to Self-Booking Resources at the top of this page,
+      or click <%= link_to "HERE", resources_path, class: 'font-medium text-pink-800' %>.
     </p>
-    <p class="mt-4 text-left text-sm leading-5 text-gray-600 max-w">
-      We believe that engaged and connected communities are not only healthier, but also more equitable and resilient. In the 
-      face of COVID-19, we want to help local economies thrive—by connecting students, retirees, individuals looking for work, 
-      and professionals with meaningful opportunities. 
+    <p class="mt-6 ml-20 text-left text-xl leading-9 font-bold text-gray-900">
+    Step 3: Assisted Booking
     </p>
-    <p class="mt-4 mb-4 text-center text-sm leading-5 text-gray-600 max-w">
-      Welcome to our community. We're happy to have you. 
+     <p class="mt-2 ml-20 mr-20 text-left text-base leading-5 text-gray-800 max-w">
+      If you are unable to book your own appointment due to any barriers, please complete 
+      <%= link_to "THIS FORM", new_request_path, class: 'font-medium text-pink-800' %>, 
+      or click the 'Request Appointment button in the top-right corner of this page.<br/><br/>
+      We will need personal information such as name, address, email, cell phone, date of birth, and location/area needs.<br/><br/>
+      Please note that we cannot accommodate vaccine preference requests through Assisted Booking. If 
+      there is a <strong>medical need</strong> for a specific vaccine manufacturer, you may note it in the form.<br/><br/>
+      Our coaches will work to secure an appointment based on your needs and available openings. The more flexible you 
+      are, especially with location, the more quickly we will be able to book you an appointment. <br/><br/> 
+      You will receive an appointment confirmation email once we book you the appointment. 
+      <strong>You will need to respond to this email.</strong> <br/><br/> 
+      If you want to check in with us, please feel free to email us at <%= mail_to ENV['EMAIL_ADDRESS'], nil, target: :_blank, class: 'font-bold mr-6' %><br/> <br/>
+      <span class="text-lg font-bold">Best of luck!</span>
     </p>
-  </div>
-
-  <div class="mx-auto w-full max-w-3xl">
-    <a id='how-it-works'>
-      <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
-        How Does It Work?
+    <div align="center" class="mx-auto mt-4 w-11/12 self-center border-2 border-pink-500">
+      <h2 class="text-center text-xl leading-9 font-extrabold text-gray-900">
+        NOTE: For those individuals who need transportation to vaccine site, information can be found <%= link_to "here", resources_path(anchor: 'transport'), class: 'font-black text-pink-500' %>.
       </h2>
-    </a>
-     <p class="mt-8 text-center text-sm leading-5 text-gray-600 max-w">
-      ResiTown is a web-based platform, where you’ll be able to sign-up for local opportunities - both in-person and remote. 
-    </p>
-    <h3 class="mt-6 text-center text-2xl leading-9 font-extrabold text-gray-900">
-    Here are step-by-step instructions:
-    </h3>
-    <div class="flex justify-center">
-    <p class="mt-8 text-center text-sm leading-5 text-gray-600 max-w">
-      <ol id="instructions" class="mt-4 list-none pl-15 text-sm leading-5 text-gray-600">
-        <li>1. Create a profile on the ResiTown website or click here</li>
-        <li>2. Find a volunteer opportunity that you're interested in</li>
-        <li>3. Sign-up for the opportunity</li>
-        <li>4. Sit tight and an email with additional details will be sent to your inbox</li>
-      </ol>  
-    </p>
-    </div>
+      </div>
   </div>
-
+  
   <div align="center" class="flex flex-col mt-8">
     <div class="sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
       <div class="align-middle inline-block w-max shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
@@ -93,18 +83,21 @@
     <h3 class="mt-8 text-center text-xl leading-9 font-extrabold text-gray-900">
     This platform is powered by City Help!
     </h3>
-    <div class="mt-8 text-center w-max items-center text-xl text-primary-400 leading-9">
+    <div class="mt-8 text-center w-max items-center text-xl text-green-500 leading-9">
       <ul id="city-help-links" class="text-center items-center font-bold">
-        <li class="mr-10 inline hover:text-primary-300">
+        <li class="mr-10 inline hover:text-green-800 hover:font-extrabold">
+          <%= link_to "ResiTown Sacramento", "http://resitown.com", target: "_blank" %>
+        </li>
+        <li class="mr-10 inline hover:text-green-800 hover:font-extrabold">
           <%= link_to "Athens Help With Covid", "http://athenshelpwithcovid.com", target: "_blank" %>
         </li>
-        <li class="mr-10 inline hover:text-primary-300">
+        <li class="mr-10 inline hover:text-green-800 hover:font-extrabold">
         <%= link_to "New Haven Help With Covid", "https://newhavenhelpwithcovid.com", target: "_blank" %>
         </li>
-        <li class="mr-10 inline hover:text-primary-300">
+        <li class="mr-10 inline hover:text-green-800 hover:font-extrabold">
         <%= link_to "City Help", "https://city-help.org/", target: "_blank" %>
         </li>
-        <li class="mr-10 inline hover:text-primary-300">
+        <li class="mr-10 inline hover:text-green-800 hover:font-extrabold">
         <%= link_to "Help With Covid", "https://helpwithcovid.com/", target: "_blank" %>
         </li>
       </ul>

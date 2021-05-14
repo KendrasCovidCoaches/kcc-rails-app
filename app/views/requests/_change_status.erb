@@ -1,0 +1,143 @@
+<div class="text-center">
+  <% if current_user.blank? %>
+      <%= link_to new_user_registration_path do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-50 active:text-gray-800">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+          </svg>
+          <span>
+            <%= t('sign_up_to_patient') %>
+          </span>
+        </button>
+      <% end %>
+  <% else %>
+    <% if current_user.requested_for_appointment?(@request) && @request.status != 'Completed' && current_user.is_patient? %>
+      <%= link_to toggle_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:shadow-outline-orange focus:border-orange-700 active:bg-orange-700">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('cancel_request') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
+      <%= link_to completed_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:shadow-outline-green focus:border-green-800 active:bg-green-800">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('i_have_self_booked') %>
+          </span>
+        </button>
+      <% end %>
+      <% if @request.status == 'Booking completed, awaiting patient confirmation' %>
+        <br /><br />
+        <%= link_to confirm_appointment_request_path(@request), method: :post do %>
+          <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-blue-700">
+            <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+            </svg>
+            <span>
+              <%= t('click_to_confirm') %>
+            </span>
+          </button>
+        <% end %>
+      <% elsif @request.status == 'Patient Confirmed' %>
+        <br /><br />
+        <%= link_to completed_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:shadow-outline-green focus:border-green-800 active:bg-green-800">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('patient_completed') %>
+          </span>
+        </button>
+        <% end %>
+      <% end %>
+    <% end %> <!--end patient options-->
+    <% if current_user.is_coach? %>
+      <%= link_to toggle_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-orange-600 hover:bg-orange-500 focus:outline-none focus:shadow-outline-orange focus:border-orange-700 active:bg-orange-700">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('cancel_request') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
+      <%= link_to completed_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-gray-400 hover:bg-gray-300 focus:outline-none focus:shadow-outline-gray focus:border-gray-400 active:bg-gray-400">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('patient_self_booked') %>
+          </span>
+        </button>
+      <% end %>
+      <br /> <br />
+      <%= link_to mark_as_unbooked_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:shadow-outline-red focus:border-red-700 active:bg-red-700">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('unbooked') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
+      <%= link_to mark_as_in_progress_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-orange-400 hover:bg-orange-300 focus:outline-none focus:shadow-outline-red focus:border-orange-400 active:bg-orange-300">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('in_progress') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
+      <%= link_to mark_as_book_complete_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-yellow-300 hover:bg-yellow-400 focus:outline-none focus:shadow-outline-yellow focus:border-yellow-400 active:bg-yellow-400">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('mark_booking_complete') %>
+          </span>
+        </button>
+      <% end %>
+      <br /><br />
+      <% if @request.status == 'Booking completed, awaiting patient confirmation' %>
+        <%= link_to confirm_appointment_request_path(@request), method: :post do %>
+          <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-700 active:bg-blue-700">
+            <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+            </svg>
+            <span>
+              <%= t('patient_confirm') %>
+            </span>
+          </button>
+        <% end %>
+      <% elsif @request.status == 'Patient Confirmed' %>
+        <%= link_to completed_patient_request_path(@request), method: :post do %>
+        <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-full text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:shadow-outline-green focus:border-green-800 active:bg-green-800">
+          <svg class="-ml-1 mr-2 h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"/>
+          </svg>
+          <span>
+            <%= t('patient_completed') %>
+          </span>
+        </button>
+        <% end %>
+      <% end %>
+    <% end %> <!-- end coach options -->
+  <% end %>
+</div>

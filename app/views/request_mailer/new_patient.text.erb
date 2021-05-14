@@ -1,0 +1,20 @@
+Hey there!
+
+You got a new request for <%= @request.f_name %> <%= @request.l_name %>!
+
+Current requests are visible here: <%= url_for requests_url %>.
+
+Patient Details:
+------------------
+
+Name: <%= @request.f_name %> <%= @request.l_name %>
+Email: <%= @request.email %>
+<%- if @request.phone.present? %>
+  Phone: <%= @request.phone %>
+<%- end -%>
+
+
+
+
+- Your friends at <%= DOMAIN_NAME %>
+For any feedback or questions regarding <%= DOMAIN_NAME %>, let us know at <%= AFFILIATE_EMAIL %>.

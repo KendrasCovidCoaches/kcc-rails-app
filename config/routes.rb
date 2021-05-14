@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :appointments
+  resources :resources
   get 'hello_world', to: 'hello_world#index'
   # Redirect www to non-www.
   if ENV['CANONICAL_HOST']
@@ -10,13 +12,15 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get '/about', to: 'home#about', as: 'about'
-  get '/podcast', to: 'home#podcast', as: 'podcast'
 
-  get '/guidelines', to: 'projects#guidelines', as: 'guidelines'
+  # get '/resources', to: 'home#resources', as: 'resources'
 
-  get '/data/projects',   to: 'data#projects'
+  # get '/guidelines', to: 'appointments#guidelines', as: 'guidelines'
+
+  # get '/data/appointments',   to: 'data#appointments'
+  get '/data/requests',   to: 'data#requests'
   get '/data/users',      to: 'data#users'
-  get '/data/volunteers', to: 'data#volunteers'
+  get '/data/patients', to: 'data#patients'
 
   # get '/reports', to: "reports#index"
 
@@ -27,54 +31,52 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_scope :user do
     get '/users/p/:page' => 'users/registrations#index', as: 'users_with_pagination'
-    get 'users', to: 'users/registrations#index', as: 'volunteers'
-    get 'users/:id', to: 'users/registrations#show', as: 'profile'
+    get 'users', to: 'users/registrations#index', as: 'patients'
+    # get 'users/:id', to: 'users/registrations#show', as: 'profile'
   end
 
-  get '/projects/p/:page' => 'projects#index', as: 'projects_with_pagination'
+  # get '/appointments/p/:page' => 'appointments#index', as: 'appointments_with_pagination'
+  get '/requests/p/:page' => 'requests#index', as: 'requests_with_pagination'
 
   delete '/images/:resource_name/:resource_id', to: 'images#destroy'
 
-  resources :projects do
+  # resources :appointments do
+  #   collection do
+  #     get :requested
+  #     get :own
+  #   end
+
+  #   member do
+  #     post :toggle_patient
+  #     post :completed_patient
+  #     get :patients
+  #   end
+  # end
+
+  resources :requests do
     collection do
-      get :volunteered
+      get :requested
       get :own
     end
 
     member do
-      post :toggle_volunteer
-      post :completed_volunteer
-      get :volunteers
+      post :toggle_patient
+      post :completed_patient
+      post :confirm_appointment
+      post :mark_as_unbooked
+      post :mark_as_in_progress
+      post :mark_as_book_complete
+      get :patients
     end
   end
-
-  resources :offers
-
-  get '/office_hours/u/:id' => 'office_hours#index', as: 'office_hours_for_volunteer'
-  resources :office_hours do
-    member do
-      post :apply
-      post :accept
-    end
-  end
-
-  resources :success_stories
 
   scope 'admin' do
     post :delete_user, to: 'admin#delete_user', as: 'delete_user'
-    post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_project_highlight'
-
-    resources :volunteer_groups, module: 'admin' do
-      collection do
-        post :generate_volunteers
-        get :generate_volunteers
-      end
-    end
+    post :toggle_highlight, to: 'admin#toggle_highlight', as: 'toggle_request_highlight'
   end
 
 
-  get '/:category_slug(/p/:page)', to: 'projects#index', action: :index
-  # get '/:location_slug(/p/:page)', to: 'projects#index', action: :index
+  get '/:category_slug(/p/:page)', to: 'requests#index', action: :index
 
 
 end

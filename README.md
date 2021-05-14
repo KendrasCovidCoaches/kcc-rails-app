@@ -39,7 +39,9 @@ rails db:migrate
 
 ## Configuration
 
-Check config/initializers to edit admins, team, and email settings. All other settings can be configured in settings.yml
+Check config/initializers to edit coaches(admins), team, and email settings. All other settings can be configured in settings.yml
+
+Devs can add their email to the coaches.rb initializer to see the admin view.
 
 ## Launch app
 

@@ -1,0 +1,82 @@
+<div class="border-2 mx-4 border-green-500 p-3">
+    <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+    Transportation Resources
+    </h2>
+    <div align="center" class="mt-8">
+      <div class="sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="align-middle inline-block w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+          <table id="team-table" class="table-auto">
+            <thead>
+              <tr>
+                <th colspan="4" class="bg-primary-500">
+                </th>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-white text-center bg-primary-500">
+                  Name
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-white text-center bg-primary-500">
+                 Phone
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-white text-center bg-primary-500">
+                Link
+                </td>
+                <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-white text-center bg-primary-500">
+                Description
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <% striped_classes_cycle = [ "bg-white", "bg-ltgrey-500" ] %>
+                <tr class="<%= cycle striped_classes_cycle %>">
+                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-left">
+                  CAP Metro
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-right">
+                  512-369-6050
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap font-medium text-primary-900 hover:font-bblack hover:text-primary-700 text-sm leading-5 text-gray-500 text-left">
+                  <a href="https://www.capmetro.org/vaccine-access" target="_blank">CAP Metro Vaccine Access</a>
+                  </td>
+                  <td class="px-6 py-4 whitespace-normal text-sm leading-5 text-gray-500 text-left">
+                  <p>Call Monday-Sunday between 6 a.m. and 9 p.m. to request your trip.<br/><br/>
+                  Same-day reservations are available, time permitting. 24 hour notice ideal.<br/><br/> 
+                  Do not have to be registered with them, no special requirements.<br/><br/> 
+                  Just have to supply name, phone number, appointment time and place, and pick up address.<br/><br/> 
+                  Take appointments 7 am - 6 pm</p>
+                  </td>
+                </tr>
+                <tr class="<%= cycle striped_classes_cycle %>">
+                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 font-medium text-gray-900 text-left">
+                  Ride United
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500 text-right">
+                  833-512-2289
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap font-medium text-primary-500 hover:font-bold hover:text-primary-700 text-sm leading-5 text-gray-500 text-left">
+                  <a href="https://connectatx.unitedwayaustin.org/united-way-for-greater-austin--austin-tx--ride-united-covid-19-vaccine-rides/4706912557989888?postal=78702" target="_blank">ConnectATX</a>
+                  </td>
+                  <td class="px-6 py-4 text-sm whitespace-normal leading-5 text-gray-500 text-left">
+                  <p>United Way for Greater Austin provides rides for those in need transportation to receive the COVID-19 vaccine.<br/><br/>
+
+                    This program provides: Transportation for the COVID-19 vaccine. Clients must have a scheduled vaccination appointment(s) before they schedule a ride.<br/><br/>
+
+                      At this time, drive-through only vaccination sites cannot be accommodated by Lyft and Lyft Codes should not be used for this purpose.<br/><br/>
+
+              Clients must have a smartphone to download the Lyft app as well as either a credit or debit card as method of payment. Each Lyft Code allows for two one-way rides, each ride up to $25 each, scheduled or hailed directly by the Client through Lyft App. If ride costs more than $25 or the Client incurs additional fees, the Client is responsible for payment.<br/><br/>
+
+                    Once a Client adds the Lyft Code to their Lyft App, it will automatically default to be used on the next ride the Client schedules. Clients should only add the Lyft Code when they are ready to schedule their rides to/from their vaccinations. Clients cannot schedule a personal ride first because it will apply it to that.<br/><br/>
+
+                 Clients must comply with Lyft's Health Safety Requirements, which include wearing a face covering.<br/><br/>
+  
+                      Anyone under the age of 18 must be accompanied by a parent or guardian.
+                    </p>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

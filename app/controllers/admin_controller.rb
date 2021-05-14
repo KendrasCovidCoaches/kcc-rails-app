@@ -14,15 +14,15 @@ class AdminController < ApplicationController
     @user.destroy!
 
     flash[:notice] = 'User deleted'
-    redirect_to volunteers_path
+    redirect_to patients_path
   end
 
   def toggle_highlight
-    @project = Project.find(params[:project_id])
-    @project.highlight = !@project.highlight
-    @project.save
+    @request = Request.find(params[:request_id])
+    @request.highlight = !@request.highlight
+    @request.save
 
-    flash[:notice] = @project.highlight? ? 'Project highlighted' : 'Removed highlight on project'
-    redirect_to project_path(@project)
+    flash[:notice] = @request.highlight? ? 'Request highlighted' : 'Removed highlight on request'
+    redirect_to request_path(@request)
   end
 end

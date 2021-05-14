@@ -1,6 +1,20 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
+  factory :appointment do
+    
+  end
+
+  factory :resource do
+    
+  end
+
+  factory :coach do
+    user_id { 1 }
+    first_name { "MyString" }
+    last_name { "MyString" }
+  end
+
   factory :content do
     
   end
@@ -11,7 +25,7 @@ FactoryBot.define do
     links { Faker::Internet.url }
   end
 
-  factory :volunteer_group do
+  factory :patient_group do
   end
 
   factory :user do
@@ -42,18 +56,18 @@ FactoryBot.define do
     skill_list { ['Analytics'] }
   end
 
-  factory :project do
-    name { 'My First Project' }
+  factory :request do
+    name { 'My First Appointment' }
     description { 'My description' }
-    volunteer_location { 'location' }
-    status { Settings.project_statuses.first }
+    patient_location { 'location' }
+    status { Settings.request_statuses.first }
   end
 
-  factory :project_with_type, parent: :project do
-    project_type_list { ['Track the outbreak'] }
+  factory :request_with_type, parent: :request do
+    request_type_list { ['Track the outbreak'] }
   end
 
-  factory :volunteer do
+  factory :patient do
     # ...
   end
 

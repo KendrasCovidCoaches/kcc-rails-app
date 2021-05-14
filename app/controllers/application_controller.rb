@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   around_action :switch_locale
 
   def ensure_admin
-    redirect_to root_path if !current_user || !current_user.is_admin?
+    redirect_to root_path if !current_user || !current_user.is_coach?
   end
 
   def set_filters_open
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_bg_gray
-    @bg_color = 'bg-gray-100'
+    @bg_color = 'bg-ltgrey-500'
   end
 
   def set_bg_white
@@ -61,23 +61,23 @@ class ApplicationController < ActionController::Base
       @users = @users
     end
 
-    if scope == 'office_hours'
-      users_with_office_hours = OfficeHour.where('start_at > ?', DateTime.now).select(:user_id).group(:user_id).all.collect { |oh| oh.user_id }.compact.uniq
-      @users = @users.where(id: users_with_office_hours)
+    # if scope == 'office_hours'
+    #   users_with_office_hours = OfficeHour.where('start_at > ?', DateTime.now).select(:user_id).group(:user_id).all.collect { |oh| oh.user_id }.compact.uniq
+    #   @users = @users.where(id: users_with_office_hours)
 
-      @users = @users.where(id: params[:id]) if params[:id].present?
-      # Make sure the owner's card is always first.
-      @users = @users.order("
-        CASE
-          WHEN id = '#{current_user.id}' THEN '1'
-        END") if current_user
+    #   @users = @users.where(id: params[:id]) if params[:id].present?
+    #   # Make sure the owner's card is always first.
+    #   @users = @users.order("
+    #     CASE
+    #       WHEN id = '#{current_user.id}' THEN '1'
+    #     END") if current_user
 
-      @show_filters = true unless params[:id]
-    else
-      @users = @users.where(visibility: true) unless current_user && current_user.is_admin?
+    #   @show_filters = true unless params[:id]
+    # else
+    #   @users = @users.where(visibility: true) unless current_user && current_user.is_coach?
 
-      @show_filters = true
-    end
+    #   @show_filters = true
+    # end
 
     @users = @users.order(get_order_param) if params[:sort_by]
 
@@ -95,27 +95,16 @@ class ApplicationController < ActionController::Base
 
     end
 
-    def hydrate_project_categories
-      @project_categories = Settings.project_categories
-      @project_locations = Settings.project_locations
-
+    def hydrate_request_categories
+      @request_categories = Settings.request_categories
       exclude_ids = []
-      @project_categories.each do |category|
+      @request_categories.each do |category|
         exclude_ids.flatten!
-        category[:featured_projects] = Rails.cache.fetch("project_category_#{category[:name].downcase}_featured_projects", expires_in: 1.hour) { Project.where(highlight: true).includes(:project_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
-        exclude_ids << category[:featured_projects].map(&:id)
+        category[:featured_requests] = Rails.cache.fetch("request_category_#{category[:name].downcase}_featured_requests", expires_in: 1.hour) { Request.where(highlight: true).includes(:request_types, :skills, :categories, :patients).where.not(id: exclude_ids).tagged_with(category[:name], any: true, on: :categories).limit(3).order('RANDOM()') }
+        exclude_ids << category[:featured_requests].map(&:id)
         # byebug
-        category[:projects_count] = Rails.cache.fetch("project_category_#{category[:name].downcase}_projects_count", expires_in: 1.hour) { Project.tagged_with(category[:name], any: true, on: :categories).count }
+        category[:requests_count] = Rails.cache.fetch("request_category_#{category[:name].downcase}_requests_count", expires_in: 1.hour) { Request.tagged_with(category[:name], any: true, on: :categories).count }
         # byebug
-      end
-      @project_locations.each do |location|
-        exclude_ids.flatten!
-        location[:featured_projects] = Rails.cache.fetch("project_location_#{location[:name].downcase}_featured_projects", expires_in: 1.hour) { Project.where(highlight: true).includes(:project_types, :skills, :categories, :volunteers).where.not(id: exclude_ids).tagged_with(location[:name], any: true, on: :locations).limit(3).order('RANDOM()') }
-        exclude_ids << location[:featured_projects].map(&:id)
-        # byebug
-        location[:projects_count] = Rails.cache.fetch("project_location_#{location[:name].downcase}_projects_count", expires_in: 1.hour) { Project.tagged_with(location[:name], any: true, on: :locations).count }
-        # byebug
-        # puts location[:projects_count]
       end
     end
 

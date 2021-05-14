@@ -11,53 +11,45 @@ class User < ApplicationRecord
 
   include PgSearch::Model
 
-  has_many :projects, dependent: :destroy
-  has_many :volunteers, dependent: :destroy
-  has_many :volunteered_projects, through: :volunteers, source: :project, dependent: :destroy
+  has_many :requests #, dependent: :destroy
+  has_many :appointments, through: :requests
+  has_many :patients, dependent: :destroy
+  has_many :requested_appointments, through: :patients, source: :request, dependent: :destroy
 
-  has_many :offers
   acts_as_taggable_on :skills
-
-  has_many :office_hours
-  has_many :participates_in_office_hours
 
   pg_search_scope :search, against: %i(name email about location level_of_availability)
 
-  def volunteered_for_project?(project)
-    self.volunteered_projects.where(id: project.id).exists?
+  def requested_for_appointment?(request)
+    self.requested_appointments.where(id: request.id).exists?
   end
 
-  def has_complete_profile?
-    self.about.present? && self.profile_links.present? && self.location.present?
-  end
-
-  def has_correct_skills?(project)
-    project_skills = project.skills.map(&:name)
-    return true if project_skills.include?('Anything')
-    (self.skills.map(&:name) & project.skills.map(&:name)).present?
+  def has_correct_skills?(request)
+    request_skills = request.skills.map(&:name)
+    return true if request_skills.include?('Anything')
+    (self.skills.map(&:name) & request.skills.map(&:name)).present?
   end
 
   def is_visible_to_user?(user_trying_view)
     return true if self.visibility == true
     return false if user_trying_view.blank?
-    return true if user_trying_view.is_admin?
+    return true if user_trying_view.is_coach?
     return true if user_trying_view == self
-    return true if self.future_office_hours.length > 0
 
-    # Check if this user volunteered for any project by user_trying_view.
-    self.volunteered_projects.where(user_id: user_trying_view.id).exists?
+    # Check if this user requested for any appointment by user_trying_view.
+    self.requested_appointments.where(user_id: user_trying_view.id).exists?
   end
 
-  def future_office_hours
-    self.office_hours.where('start_at > ?', DateTime.now).order('start_at ASC')
+  def is_coach?
+    COACHES.include?(self.email)
   end
 
-  def is_admin?
-    ADMINS.include?(self.email)
+  def is_patient?
+    !COACHES.include?(self.email)
   end
 
   def to_param
-    [id, name.parameterize].join('-')
+    [id, email.parameterize].join('-')
   end
 
   def self.to_csv
@@ -73,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def active_for_authentication?
-    super && !self.deactivated
+    super
   end
 
 # this function uses Gibbon and Mailchimp API to subscribe/unsubscribe users
@@ -91,22 +83,10 @@ class User < ApplicationRecord
     end
   end
 
-# this function checks the newsletter_consent field in before_save
-  def check_newsletter_consent
-    if self.newsletter_consent
-      subscribe_to_mailchimp(true)
-    else
-      subscribe_to_mailchimp(false)
-    end
-  end
+  
 
 # this function is used with before_create
-  def opt_into_newsletter_on_sign_up
-    if Rails.env.production?
-      self.newsletter_consent = true
-      subscribe_to_mailchimp(true)
-    end
-  end
+  
 
 # this function checks if this user has completed Blank Slate training
   # def finished_training?
@@ -137,14 +117,6 @@ class User < ApplicationRecord
   def age_consent?
     return self.age_consent
   end
-
-# before saving, we check if the user opted in or out,
-# if so they will be subscribed or unsubscribed
-# TODO: prevent unnecessary requests to mailchimp by checking the previous state
-  before_update :check_newsletter_consent
-
-# after sign up, the user will be opted into the newsletter by default
-  before_create :opt_into_newsletter_on_sign_up
 
 end
 

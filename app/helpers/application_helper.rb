@@ -6,7 +6,7 @@ module ApplicationHelper
   def nav_link_active_class(variant = 'DESKTOP')
     case variant
     when 'DESKTOP'
-      'inline-flex items-center px-1 pt-1 border-b-2 border-primary-600 text-sm leading-5 text-teal-500 focus:outline-none focus:border-teal-200 transition duration-150 ease-in-out ml-4 text-center font-bold'
+      'inline-flex items-center px-1 pt-1 border-b-2 border-pink-500 text-sm leading-5 text-white focus:outline-none focus:border-pink-500 transition duration-150 ease-in-out ml-4 text-center font-medium'
     when 'MOBILE'
       'mt-1 block pl-3 pr-4 py-2 border-l-4 border-primary-600 text-base text-primary-700 bg-primary-50 focus:outline-none focus:text-primary-800 focus:bg-primary-100 focus:border-primary-700 transition duration-150 ease-in-out'
     end
@@ -15,7 +15,7 @@ module ApplicationHelper
   def nav_link_inactive_class(variant = 'DESKTOP')
     case variant
     when 'DESKTOP'
-      'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm leading-5 text-white hover:text-teal-500 hover:border-teal-500 focus:outline-none focus:text-teal-200 focus:border-teal-200 transition duration-150 ease-in-out ml-4 text-center'
+      'inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm leading-5 text-white hover:font-medium hover:border-primary-500 focus:outline-none focus:text-white focus:font-medium focus:border-pink-500 transition duration-150 ease-in-out ml-4 text-center'
     when 'MOBILE'
       'mt-1 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out'
     end
@@ -39,20 +39,28 @@ module ApplicationHelper
     end
   end
 
-  def all_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'index' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  def all_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'index' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def podcast_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'home' && params[:action] == 'podcast' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  def c_requested_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'requests' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
-  def volunteered_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'volunteered' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  def resources_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'home' && params[:action] == 'resources' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def own_projects_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'projects' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  def c_all_requests_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'requests' && params[:action] == 'index' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  end
+
+  def p_requested_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'requests' && params[:action] == 'requested' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
+  end
+
+  def own_appointments_nav_link_class(variant = 'DESKTOP')
+    params[:controller] == 'appointments' && params[:action] == 'own' ? sub_nav_link_active_class(variant) : sub_nav_link_inactive_class(variant)
   end
 
   def profile_nav_link_class(variant = 'DESKTOP')
@@ -71,21 +79,21 @@ module ApplicationHelper
     params[:controller] == 'devise/sessions' ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def volunteers_nav_link_class(variant = 'DESKTOP')
+  def patients_nav_link_class(variant = 'DESKTOP')
     params[:controller] == 'users/registrations' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
   end
 
-  def offers_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'offers' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
-  end
+  # def offers_nav_link_class(variant = 'DESKTOP')
+  #   params[:controller] == 'offers' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  # end
 
-  def office_hours_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'office_hours' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
-  end
+  # def office_hours_nav_link_class(variant = 'DESKTOP')
+  #   params[:controller] == 'office_hours' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  # end
 
-  def success_stories_nav_link_class(variant = 'DESKTOP')
-    params[:controller] == 'success_stories' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
-  end
+  # def success_stories_nav_link_class(variant = 'DESKTOP')
+  #   params[:controller] == 'success_stories' && [ 'index' ].include?(params[:action]) ? nav_link_active_class(variant) : nav_link_inactive_class(variant)
+  # end
 
   def logout_nav_link_class(variant = 'DESKTOP')
     sub_nav_link_inactive_class(variant)
@@ -101,7 +109,7 @@ module ApplicationHelper
     if [ 'alert', 'error'].include?(type)
       base_class += ' bg-red-100 border-red-400 text-red-700'
     elsif type == 'notice'
-      base_class += ' bg-green-100 border-green-400 text-green-700'
+      base_class += ' bg-green-500 border-green-400 text-black'
     else
       base_class += ' bg-orange-100 border-orange-400 text-orange-700'
     end
@@ -118,7 +126,7 @@ module ApplicationHelper
 
     applied = get_query_params[filter_by].include?(label)
 
-    if filter_by == 'project_types' and @applied_project_types.present? and @applied_project_types.include?(label)
+    if filter_by == 'request_types' and @applied_request_types.present? and @applied_request_types.include?(label)
       applied = true
     end
 
@@ -196,7 +204,7 @@ module ApplicationHelper
   end
 
   def sort_drop_down_option(path, title, sort_by = nil)
-    new_params = params.permit(:sort_by, :skills, :project_types, :categories, :locations).dup
+    new_params = params.permit(:sort_by, :skills, :request_types, :categories, :locations).dup
 
     case params[:sort_by]
     when sort_by
@@ -216,7 +224,7 @@ module ApplicationHelper
   end
 
   def filter_bar_filter(label, filter, options)
-    render partial: 'projects/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
+    render partial: 'requests/filter-bar-filter', locals: {options: options, label: label, filter: filter.to_s}
   end
 
   def google_analytics_id

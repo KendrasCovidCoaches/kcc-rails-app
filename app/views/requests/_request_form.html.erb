@@ -1,0 +1,612 @@
+<div>
+  <div>
+    <div>
+      <div class="bg-yellow-100 border border-yellow-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+          <strong class="font-bold">
+          <h1 class="text-xl leading-6 font-medium text-gray-900">
+        This form is for FIRST DOSE REQUESTS only. 
+      </h1>
+      <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+        If you need help scheduling an appointment for a second dose we will have a form for those requests soon!
+      </p>
+          </strong>
+      </div>
+      <h3 class="text-lg mt-3 leading-6 font-medium text-gray-900">
+        <%= title %>
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+        <%= t('this_info_will_only_be_visible_coaches') %>
+      </p>
+    </div>
+
+    <div class="mt-6 sm:mt-5">
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="patient email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('patient_email') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :patient_email, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="f_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('first_name')%><span class="text-red-500">*</span><br/>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :f_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="l_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('last_name') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :l_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="birth_date" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('birth_date') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.date_field :birth_date, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('phone_number') %><span class="text-red-500">*</span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_format') %></span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_example') %></span><br />
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :phone, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5", required: true %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="contact" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('address') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :address, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+          <p class="mt-2 text-sm text-gray-500"><%= t('unit') %></p>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="contact" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('city') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :city, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('state') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                    <div class="relative flex items-start">
+                      <div class="absolute pb-4 flex items-center h-5">
+                        <% num = 0 %>
+                        <% states_array = Settings.states.map { |state| [state, state] } %>
+                        <%= f.select :state, options_for_select(states_array, "Texas"), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="contact" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('zip') %><span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :zip, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('sex') %><span class="text-red-500">*</span>
+                </legend>
+                <div class="text-sm text-gray-500"><%= t('bio_sex') %></div>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :sex, "female", class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :sex, t('female'), value: "female", class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :sex, "male", class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :sex, t('male'), value: "male", class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('eligibility') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                <%Settings.eligibility.each do |el_group|%>
+                  <div class="block">
+                    <%= f.radio_button :eligibility_group, el_group, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :eligibility_group, el_group, value: el_group, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('preferred_lang') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :pref_language, "english", class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :pref_language, t('english'), value: "english", class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :pref_language, "spanish", class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :pref_language, t('spanish'), value: "spanish", class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('over_50') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :over_50, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :over_50, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :over_50, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :over_50, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('is_self_booking') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :self_book, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :self_book, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :self_book, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :self_book, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('other_booker') %>
+      </h3>
+
+      <div class="mt-6 sm:mt-5">
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="booker email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('email_address') %>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :requested_by_email, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"%>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="f_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('your_full_name')%>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :requested_by_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5"%>
+          </div>
+        </div>
+      </div>
+  </div>
+
+
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('travel_avail') %>
+      </h3>
+    </div>
+
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('closest_city') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                    <div class="relative flex items-start">
+                      <div class="absolute flex pb-4 items-center h-5">
+                        <% num = 0 %>
+                        <% cities_array = Settings.closest_cities.map { |city| [city, city] } %>
+                        <%= f.select :closest_city, options_for_select(cities_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 is-accepting-patients">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('travel_radius') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <% Settings.travel_rad.each do |number_of_miles| %>
+                    <div class="relative flex items-start">
+                      <div class="absolute flex items-center h-5">
+                        <%= f.radio_button :travel_radius, number_of_miles, { :multiple => false, class:  "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out"} %>
+                      </div>
+                      <div class="pl-7 text-sm leading-5">
+                        <label class="font-medium text-gray-700">
+                          <%= number_of_miles %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('same_day') %><span class="text-red-500">*</span>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :open_to_same_day, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :open_to_same_day, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :open_to_same_day, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :open_to_same_day, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+<!-- WeekDAY availability -->
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('weekdays_avail') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
+                  </p>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <% Settings.weekdays.each do |weekday| %>
+                    <div class="relative flex items-start">
+                      <div class="absolute flex items-center h-5">
+                        <%= f.check_box :weekday_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekday, nil %>
+                      </div>
+                      <div class="pl-7 text-sm leading-5">
+                        <label for="weekday_list_<%= weekday.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= weekday %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('weekday_times') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
+                  </p>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <% Settings.times.each do |time| %>
+                    <div class="relative flex items-start">
+                      <div class="absolute flex items-center h-5">
+                        <%= f.check_box :weekday_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
+                      </div>
+                      <div class="pl-7 text-sm leading-5">
+                        <label for="weekday_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= time %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+<!-- WeekEND availability -->
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('weekends_avail') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
+                  </p>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <% Settings.weekends.each do |weekend| %>
+                    <div class="relative flex items-start">
+                      <div class="absolute flex items-center h-5">
+                        <%= f.check_box :weekend_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, weekend, nil %>
+                      </div>
+                      <div class="pl-7 text-sm leading-5">
+                        <label for="weekend_list_<%= weekend.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= weekend %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 is-accepting-volunteers">
+        <div class="sm:border-t sm:border-gray-200 sm:pt-5">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div>
+                <legend class="text-base leading-6 font-medium text-gray-900 sm:text-sm sm:leading-5 sm:text-gray-700">
+                  <%= t('weekend_times') %><span class="text-red-500">*</span>
+                  <br/>
+                  <span class="text-xs">Select all that apply</span>
+                  </p>
+                </legend>
+              </div>
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <% Settings.times.each do |time| %>
+                    <div class="relative flex items-start">
+                      <div class="absolute flex items-center h-5">
+                        <%= f.check_box :weekend_time_list, { multiple: true, class:  "form-checkbox h-4 w-4 text-primary-600 transition duration-150 ease-in-out"}, time, nil %>
+                      </div>
+                      <div class="pl-7 text-sm leading-5">
+                        <label for="weekend_time_list_<%= time.downcase.gsub(' & ', '__').gsub(' ', '_') %>" class="font-medium text-gray-700">
+                          <%= time %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('critical_sync_book') %>
+      </h3>
+      <div class="mt-2 sm:mt-2">
+          <fieldset>
+            <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline">
+              <div class="mt-4 sm:mt-0 sm:col-span-2">
+                <div class="max-w-lg">
+                  <div class="block">
+                    <%= f.radio_button :critical_to_book_with, true, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :critical_to_book_with, t('is_yes'), value: true, class: "pl-2 text-sm text-gray-700"  %>
+                  </div>
+
+                  <div class="block">
+                    <%= f.radio_button :critical_to_book_with, false, class: "form-radio h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                    <%= f.label :critical_to_book_with, "No", value: false, class: "pl-2 text-sm text-gray-700" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+      </div><br />
+      <span class="text-s"><%= t('sync_book_info') %></span>
+      <div class="mt-6 sm:mt-5">
+      <div class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_email" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('email_address') %>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_email, class: "flex-1 form-input block w-full rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_full_name" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('your_full_name')%>
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_full_name, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <label for="book_with_phone" class="block text-sm font-medium leading-5 text-gray-700 sm:mt-px sm:pt-2">
+          <%= t('phone')%><br />
+          <span class="text-xs text-gray-500"><%= t('phone_format') %></span><br />
+          <span class="text-xs text-gray-500"><%= t('phone_example') %></span><br />
+        </label>
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_field :book_with_phone, class: "flex-1 form-input block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div class="mt-8 border-t border-gray-200 pt-8 sm:mt-5 sm:pt-10">
+    <div>
+      <h3 class="text-lg leading-6 font-medium text-gray-900">
+        <%= t('comments') %>
+      </h3>
+      <div class="mt-6 sm:mt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5">
+        <div class="mt-1 sm:mt-0 sm:col-span-2">
+        <a name="notes"></a>
+          <div class="max-w-lg flex rounded-md shadow-sm">
+            <%= f.text_area :notes, class: "flex-1 form-textarea block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div class="mt-8 border-t border-gray-200 pt-5">
+        <div class="flex justify-end">
+    <span class="ml-3 inline-flex rounded-md shadow-sm">
+      <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-primary-600 hover:bg-primary-500 focus:outline-none focus:border-primary-700 focus:shadow-outline-primary- active:bg-primary-700 transition duration-150 ease-in-out">
+        <%= cta %>
+      </button>
+    </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= content_for(:share_title).present? ? content_for(:share_title)+' | ' : '' %> ResiTown Sacramento</title>
+    <title><%= content_for(:share_title).present? ? content_for(:share_title)+' | ' : '' %> Kendra's Covid Coaches</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -41,7 +41,7 @@
 
       <main class="flex-grow">
         <% if flash.present? %>
-          <div class="container">
+          <div class="container bg-ltgrey-500">
             <% flash.each do |type, msg| %>
               <div class="mb-14 <%= alert_container_class_for_flash_type type %>" role="alert">
                 <span class="block sm:inline"><%= msg %></span>
