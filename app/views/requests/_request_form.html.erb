@@ -322,7 +322,7 @@
                       <div class="absolute flex pb-4 items-center h-5">
                         <% num = 0 %>
                         <% cities_array = Settings.closest_cities.map { |city| [city, city] } %>
-                        <%= f.select :closest_city, options_for_select(cities_array), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
+                        <%= f.select :closest_city, options_for_select(cities_array, @request.closest_city), class:  "form-select h-4 w-4 text-primary-600 transition duration-150 ease-in-out" %>
                       </div>
                     </div>
                 </div>
